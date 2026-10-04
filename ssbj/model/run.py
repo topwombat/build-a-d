@@ -38,12 +38,12 @@ def _nominal(p, results) -> dict:
         "design_trip_fuel_kg": g("design_trip_fuel", "kg"),
         "design_block_fuel_kg": g("design_block_fuel", "kg"),
         "transonic_thrust_margin": g("transonic_thrust_margin"),
-        **_pre_cruise(mis["design_mission"]),
+        **_pre_cruise(mis["range"]),
     }
 
 
 def _pre_cruise(dm: dict) -> dict:
-    """Share of trip fuel and distance used before the range cruise starts (design mission)."""
+    """Share of trip fuel and distance used before the range cruise starts (max-fuel range mission)."""
     legs = dm.get("legs")
     if not legs:
         return {"pre_cruise_fuel_fraction": float("nan"), "pre_cruise_distance_fraction": float("nan")}
