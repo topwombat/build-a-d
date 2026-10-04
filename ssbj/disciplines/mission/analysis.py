@@ -306,20 +306,35 @@ class Mission:
 
         lo, hi = 0.2 * fuel_capacity, 1.5 * fuel_capacity
         f_lo = short(lo)
-        # the heaviest loads may be unflyable (no excess power): shrink hi until it flies
-        for _ in range(12):
+        # the heaviest loads may be unflyable (no excess power): bisect for the heaviest flyable load
+        # (a heavy load whose climb burns all the fuel also counts as unflyable here)
+        def flyable(x):
             try:
-                f_hi = short(hi)
-                break
+                fx = short(x)
             except MissionInfeasible:
-                hi = 0.5 * (lo + hi)
-        else:
-            raise MissionInfeasible("no flyable fuel load above the lower bracket")
+                return None
+            return None if fx <= -distance_nmi else fx
+
+        f_hi = flyable(hi)
+        if f_hi is None:
+            ok, bad = lo, hi
+            for _ in range(20):
+                mid = 0.5 * (ok + bad)
+                f_mid = flyable(mid)
+                if f_mid is not None:
+                    ok, f_ok = mid, f_mid
+                else:
+                    bad = mid
+                if bad - ok < 1.0:
+                    break
+            if ok == lo:
+                raise MissionInfeasible("no flyable fuel load above the lower bracket") from None
+            hi, f_hi = ok, f_ok
         if f_lo > 0:
             lo, f_lo = 0.02 * fuel_capacity, short(0.02 * fuel_capacity)
         if f_hi < 0:
-            raise MissionInfeasible(f"design range not reachable with up to 1.5x the fuel capacity "
-                                    f"({hi:.0f} kg)")
+            raise MissionInfeasible(f"design range not reachable: the heaviest flyable fuel load "
+                                    f"({hi:.0f} kg) falls short by {-f_hi:.0f} nmi")
         x = lo + (hi - lo) * (-f_lo) / (f_hi - f_lo)
         for _ in range(60):
             fx = short(x)

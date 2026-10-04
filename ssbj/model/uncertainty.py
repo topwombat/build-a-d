@@ -75,7 +75,11 @@ def _one(f: Factors):
 
 
 def _segment(reason: str) -> str:
-    return reason.split(":")[0]
+    """Group key: the segment name or the message up to its first number."""
+    import re
+
+    head = reason.split(":")[0]
+    return re.split(r"\s*\(?\d", head)[0].strip()
 
 
 def monte_carlo(case, results: dict, aircraft, n: int = 200, seed: int = 20261004,

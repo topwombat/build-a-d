@@ -159,9 +159,9 @@ def write_report(out: dict) -> str:
             L.append(f"| {g['quantity']} | {_fmt(g['value'])} {g['unit']} | {_fmt(g['model_nominal'])} | "
                      f"{_fmt(g.get('model_p2.5'))} to {_fmt(g.get('model_p97.5'))} | "
                      f"{'yes' if g.get('inside_95') else 'no'} | {g['source_quality']} |")
-        L += ["", "**What this PASS shows and does not show.** Both gates are one published data point read "
+        L += ["", "**What this verdict shows and does not show.** Both gates are one published data point read "
               "two ways. The intervals are wide and conditional on feasibility (see below), so a pass is a "
-              "consistency check. Compare the diagnostics: offsetting errors (e.g. L/D low, TSFC low, "
+              "consistency check and a narrow miss is not decisive either. Compare the diagnostics: offsetting errors (e.g. L/D low, TSFC low, "
               "engine weight low) can produce a correct range for the wrong reasons.", ""]
         L += ["", "### Diagnostics (not gates)", "",
               "| Quantity | Published | Model nominal | Model 95 % interval | Source quality |", "|---|---|---|---|---|"]
