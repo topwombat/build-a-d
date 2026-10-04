@@ -6,7 +6,8 @@
 # Behind a TLS-intercepting proxy, pass its CA as a build secret (optional):
 #   docker build --network host --build-arg HTTPS_PROXY=... \
 #                --secret id=extra_ca,src=/path/to/proxy-ca.crt -t ssbj .
-FROM python:3.11.13-slim-bookworm AS base
+# trixie (GCC 14): OpenVSP 3.49 does not compile with bookworm GCC 12
+FROM python:3.11.13-slim-trixie AS base
 
 ENV DEBIAN_FRONTEND=noninteractive PIP_NO_CACHE_DIR=1 PYTHONDONTWRITEBYTECODE=1 \
     PIP_CERT=/etc/ssl/certs/ca-certificates.crt REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
