@@ -1,0 +1,55 @@
+# Published Concorde figures the blind run is judged against.
+# None of these enter the model. Source quality: see sources_raw.yaml.
+#
+# The two gates are the same published data point read two ways (range at max
+# fuel, and fuel needed for that range); they are not independent evidence.
+gates:
+  - id: range_max_fuel
+    quantity: range at max fuel, 8,845 kg payload, "FAR reserves"
+    model_output: range_nmi
+    value: 3550
+    unit: nmi
+    source: "Heritage Concorde, airframe-performance page (https://www.heritageconcorde.com/airframe-performance)"
+    source_quality: search_snippet
+  - id: fuel_for_range
+    quantity: ramp fuel to fly 3,550 nmi with 8,845 kg payload and reserves (= max fuel)
+    model_output: design_ramp_fuel_kg
+    value: 95680
+    unit: kg
+    alternatives:
+      - {value: 94470, source: "Heritage Concorde fuel-system page (search snippet)"}
+      - {value: 95430, source: "PPRuNe forum (search snippet)"}
+    source: "Heritage Concorde weights page; Wikipedia Concorde specifications (search snippets)"
+    source_quality: search_snippet
+
+diagnostics:  # reported with the model's own error bar; not acceptance gates
+  - id: oew
+    model_output: oew_kg
+    value: 78700
+    unit: kg
+    source: "Heritage weights page / FAA TCDS A45EU (search snippets); SUAVE input"
+    source_quality: search_snippet
+  - id: cruise_tsfc
+    model_output: tsfc_cruise_per_h
+    value: 1.195
+    unit: 1/h
+    source: "Wikipedia / Heritage Olympus 593 snippets: 1.195 lb/(lbf h) at cruise"
+    source_quality: search_snippet
+  - id: ld_mach2
+    model_output: ld_cruise
+    range: [7.14, 7.5]
+    unit: "-"
+    source: "Wikipedia snippets: 7.5 at M2; table value 7.14 at M2.04"
+    source_quality: search_snippet
+  - id: engine_dry_mass
+    model_output: engine_dry_mass_kg
+    value: 3175
+    unit: kg
+    source: "Wikipedia Olympus 593 snippet"
+    source_quality: search_snippet
+  - id: lhr_jfk_fuel_load
+    model_output: none
+    range: [93000, 96000]
+    unit: kg
+    source: "PPRuNe forum thread 45456 (search snippet); anecdotal, route distance unknown"
+    source_quality: search_snippet

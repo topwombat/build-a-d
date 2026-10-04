@@ -1,0 +1,1672 @@
+# Concorde reference data -- RAW, CITED, UNRECONCILED.
+# Rules: every value carries its source; nothing filled from memory; conflicts kept as separate entries.
+# source_quality: page_read (none achieved: all fetches blocked) | search_snippet (WebSearch summary; page not seen)
+#                 | local_textbook (PDF in /home/user/build-a-d) | code_model_input (value used as input in an
+#                 open-source design code, e.g. SUAVE -- secondary, not primary data) | missing.
+# Snippet caveat: WebSearch returns an LLM summary of result pages; the specific URL a figure came from is
+# inferred (domain-restricted searches were used to pin attribution where possible).
+- quantity: length_overall
+  value: 62.1
+  unit: m
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Heritage Concorde - Airframe dimensions
+    url_or_citation: https://www.heritageconcorde.com/airframe-dimensions
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: 'Snippet: ''62.10 m (203 ft 9 in)''. WebSearch restricted to heritageconcorde.com (filter leaked some uspto.gov patent links, but the figure is presented as from the Heritage Concorde page); page
+    itself could not be fetched (egress blocked).'
+- quantity: length_overall
+  value: 61.66
+  unit: m
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Wikipedia - Concorde (Specifications section)
+    url_or_citation: https://en.wikipedia.org/wiki/Concorde
+    page_or_section: Specifications infobox
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: 'Snippet: ''202 ft 4 in (61.66 m)''. Search query contained a candidate value; snippet may echo the query. Treat as weak until confirmed.'
+- quantity: length_overall
+  value: 61.66
+  unit: m
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: SUAVE open-source aircraft design code, regression vehicle model regression/scripts/Vehicles/Concorde.py (git commit f551a684, 2022-12-23)
+    url_or_citation: https://github.com/suavecode/SUAVE/blob/develop/regression/scripts/Vehicles/Concorde.py
+    page_or_section: Concorde.py line 56 (vehicle.total_length) and line 314 (fuselage.lengths.total)
+  source_quality: code_model_input
+  retrieved: '2026-10-04'
+  notes: Model input in an open-source code, not primary data.
+- quantity: length_overall
+  value: 202
+  unit: ft
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: J.D. Anderson, Introduction to Flight (8th ed.?, McGraw-Hill), local copy /home/user/build-a-d/Anderson - Introduction to Flight.pdf
+    url_or_citation: J.D. Anderson, Introduction to Flight (8th ed.?, McGraw-Hill), local copy /home/user/build-a-d/Anderson - Introduction to Flight.pdf
+    page_or_section: Problem 5.20, book p.437 (PDF p.456)
+  source_quality: local_textbook
+  retrieved: '2026-10-04'
+  notes: '''202 ft, which is the length of the Concorde'' (textbook problem statement; = 61.6 m).'
+- quantity: wing_span
+  value: 25.56
+  unit: m
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Heritage Concorde - Airframe dimensions
+    url_or_citation: https://www.heritageconcorde.com/airframe-dimensions
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: 'Snippet: ''25.56 m (83 ft 10 in)''. WebSearch restricted to heritageconcorde.com (filter leaked some uspto.gov patent links, but the figure is presented as from the Heritage Concorde page); page
+    itself could not be fetched (egress blocked).'
+- quantity: wing_span
+  value: 25.6
+  unit: m
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Wikipedia - Concorde (Specifications section)
+    url_or_citation: https://en.wikipedia.org/wiki/Concorde
+    page_or_section: Specifications infobox
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: 'Snippet: ''84 ft 0 in (25.6 m)''. Search query contained a candidate value; snippet may echo the query. Treat as weak until confirmed.'
+- quantity: wing_span
+  value: 25.6
+  unit: m
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: SUAVE open-source aircraft design code, regression vehicle model regression/scripts/Vehicles/Concorde.py (git commit f551a684, 2022-12-23)
+    url_or_citation: https://github.com/suavecode/SUAVE/blob/develop/regression/scripts/Vehicles/Concorde.py
+    page_or_section: line 74 wing.spans.projected
+  source_quality: code_model_input
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: height_overall
+  value: 11.4
+  unit: m
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Heritage Concorde - Airframe dimensions
+    url_or_citation: https://www.heritageconcorde.com/airframe-dimensions
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: 'Snippet: ''11.40 m (37 ft 5 in)''. WebSearch restricted to heritageconcorde.com (filter leaked some uspto.gov patent links, but the figure is presented as from the Heritage Concorde page); page
+    itself could not be fetched (egress blocked).'
+- quantity: height_overall
+  value: 12.2
+  unit: m
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Wikipedia - Concorde (Specifications section)
+    url_or_citation: https://en.wikipedia.org/wiki/Concorde
+    page_or_section: Specifications infobox
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: 'Snippet: ''40 ft 0 in (12.2 m)''. Search query contained a candidate value; snippet may echo the query. Treat as weak until confirmed.'
+- quantity: wing_reference_area_gross
+  value: 358.25
+  unit: m^2
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Heritage Concorde - Airframe dimensions
+    url_or_citation: https://www.heritageconcorde.com/airframe-dimensions
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: 'Snippet: ''358.25 m2 (3,856 sq ft)''. WebSearch restricted to heritageconcorde.com (filter leaked some uspto.gov patent links, but the figure is presented as from the Heritage Concorde page);
+    page itself could not be fetched (egress blocked).'
+- quantity: wing_reference_area_gross
+  value: 358.25
+  unit: m^2
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Wikipedia - Concorde (Specifications section)
+    url_or_citation: https://en.wikipedia.org/wiki/Concorde
+    page_or_section: Specifications infobox
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: 'Snippet: ''3,856.2 sq ft (358.25 m2)''.'
+- quantity: wing_reference_area_gross
+  value: 358.25
+  unit: m^2
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: SUAVE open-source aircraft design code, regression vehicle model regression/scripts/Vehicles/Concorde.py (git commit f551a684, 2022-12-23)
+    url_or_citation: https://github.com/suavecode/SUAVE/blob/develop/regression/scripts/Vehicles/Concorde.py
+    page_or_section: lines 51, 81
+  source_quality: code_model_input
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: wing_planform_description
+  value: ogival (ogee) slender delta; sharp leading edge to promote leading-edge vortex separation; complex camber and droop (anhedral)
+  unit: null
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Heritage Concorde - The wing / wing structure
+    url_or_citation: https://www.heritageconcorde.com/the-wing ; https://www.heritageconcorde.com/wing-structure
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: 'Heritage Concorde: ''ogival wing form ... attempt to modify the optimum delta for greater efficiency at low speeds''; ''leading edge is sharp in order to favour flow separation''. Anderson (Intro
+    to Flight p.392) also: ''highly swept ogival delta planform with complex camber and wing droop (anhedral)''.'
+- quantity: wing_thickness_to_chord_root
+  value: 0.03
+  unit: '-'
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: J.D. Anderson, Introduction to Flight (8th ed.?, McGraw-Hill), local copy /home/user/build-a-d/Anderson - Introduction to Flight.pdf
+    url_or_citation: J.D. Anderson, Introduction to Flight (8th ed.?, McGraw-Hill), local copy /home/user/build-a-d/Anderson - Introduction to Flight.pdf
+    page_or_section: Sec. 5.x delta-wing discussion, book p.392 (PDF p.411)
+  source_quality: local_textbook
+  retrieved: '2026-10-04'
+  notes: '''thickness-to-chord ratio of 3 percent at the root''.'
+- quantity: wing_thickness_to_chord_outboard
+  value: 0.0215
+  unit: '-'
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: J.D. Anderson, Introduction to Flight (8th ed.?, McGraw-Hill), local copy /home/user/build-a-d/Anderson - Introduction to Flight.pdf
+    url_or_citation: J.D. Anderson, Introduction to Flight (8th ed.?, McGraw-Hill), local copy /home/user/build-a-d/Anderson - Introduction to Flight.pdf
+    page_or_section: book p.392 (PDF p.411)
+  source_quality: local_textbook
+  retrieved: '2026-10-04'
+  notes: '''2.15 percent from the nacelle outward''.'
+- quantity: wing_thickness_to_chord
+  value: 0.03
+  unit: '-'
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: SUAVE open-source aircraft design code, regression vehicle model regression/scripts/Vehicles/Concorde.py (git commit f551a684, 2022-12-23)
+    url_or_citation: https://github.com/suavecode/SUAVE/blob/develop/regression/scripts/Vehicles/Concorde.py
+    page_or_section: lines 71,116,128,141,153 (all segments)
+  source_quality: code_model_input
+  retrieved: '2026-10-04'
+  notes: SUAVE uses a constant 3% for all segments; conflicts with Anderson's 2.15% outboard.
+- quantity: wing_root_chord
+  value: 33.8
+  unit: m
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: SUAVE open-source aircraft design code, regression vehicle model regression/scripts/Vehicles/Concorde.py (git commit f551a684, 2022-12-23)
+    url_or_citation: https://github.com/suavecode/SUAVE/blob/develop/regression/scripts/Vehicles/Concorde.py
+    page_or_section: line 76 wing.chords.root
+  source_quality: code_model_input
+  retrieved: '2026-10-04'
+  notes: Only source found; not confirmed by primary data.
+- quantity: wing_tip_chord
+  value: 1.1
+  unit: m
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: SUAVE open-source aircraft design code, regression vehicle model regression/scripts/Vehicles/Concorde.py (git commit f551a684, 2022-12-23)
+    url_or_citation: https://github.com/suavecode/SUAVE/blob/develop/regression/scripts/Vehicles/Concorde.py
+    page_or_section: line 78
+  source_quality: code_model_input
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: wing_mean_aerodynamic_chord
+  value: 18.4
+  unit: m
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: SUAVE open-source aircraft design code, regression vehicle model regression/scripts/Vehicles/Concorde.py (git commit f551a684, 2022-12-23)
+    url_or_citation: https://github.com/suavecode/SUAVE/blob/develop/regression/scripts/Vehicles/Concorde.py
+    page_or_section: line 79
+  source_quality: code_model_input
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: wing_aspect_ratio
+  value: 1.83
+  unit: '-'
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: SUAVE open-source aircraft design code, regression vehicle model regression/scripts/Vehicles/Concorde.py (git commit f551a684, 2022-12-23)
+    url_or_citation: https://github.com/suavecode/SUAVE/blob/develop/regression/scripts/Vehicles/Concorde.py
+    page_or_section: line 68
+  source_quality: code_model_input
+  retrieved: '2026-10-04'
+  notes: Consistent with 25.6^2/358.25 = 1.83.
+- quantity: wing_sweep_leading_edge_equivalent
+  value: 66.5
+  unit: deg
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: SUAVE open-source aircraft design code, regression vehicle model regression/scripts/Vehicles/Concorde.py (git commit f551a684, 2022-12-23)
+    url_or_citation: https://github.com/suavecode/SUAVE/blob/develop/regression/scripts/Vehicles/Concorde.py
+    page_or_section: line 70 wing.sweeps.leading_edge
+  source_quality: code_model_input
+  retrieved: '2026-10-04'
+  notes: Equivalent single-panel value used in model; segment quarter-chord sweeps 67/48/71/0 deg (lines 115,127,140,152).
+- quantity: wing_sweep_quarter_chord_equivalent
+  value: 59.5
+  unit: deg
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: SUAVE open-source aircraft design code, regression vehicle model regression/scripts/Vehicles/Concorde.py (git commit f551a684, 2022-12-23)
+    url_or_citation: https://github.com/suavecode/SUAVE/blob/develop/regression/scripts/Vehicles/Concorde.py
+    page_or_section: line 69
+  source_quality: code_model_input
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: wing_wetted_area
+  value: 601
+  unit: m^2
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: SUAVE open-source aircraft design code, regression vehicle model regression/scripts/Vehicles/Concorde.py (git commit f551a684, 2022-12-23)
+    url_or_citation: https://github.com/suavecode/SUAVE/blob/develop/regression/scripts/Vehicles/Concorde.py
+    page_or_section: line 82
+  source_quality: code_model_input
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: wing_exposed_area
+  value: 326.5
+  unit: m^2
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: SUAVE open-source aircraft design code, regression vehicle model regression/scripts/Vehicles/Concorde.py (git commit f551a684, 2022-12-23)
+    url_or_citation: https://github.com/suavecode/SUAVE/blob/develop/regression/scripts/Vehicles/Concorde.py
+    page_or_section: line 83
+  source_quality: code_model_input
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: fuselage_max_external_width
+  value: 2.88
+  unit: m
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Heritage Concorde - Airframe dimensions
+    url_or_citation: https://www.heritageconcorde.com/airframe-dimensions
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: 'Snippet: ''2.88 m (9 ft 5 in)''. WebSearch restricted to heritageconcorde.com (filter leaked some uspto.gov patent links, but the figure is presented as from the Heritage Concorde page); page
+    itself could not be fetched (egress blocked).'
+- quantity: fuselage_max_external_height
+  value: 1.96
+  unit: m
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Heritage Concorde - Airframe dimensions
+    url_or_citation: https://www.heritageconcorde.com/airframe-dimensions
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: Snippet gives external height 1.96 m (6 ft 5 in), identical to cabin height -- almost certainly a snippet/page error; SUAVE uses 3.32 m. Do not use without checking.
+- quantity: fuselage_max_height
+  value: 3.32
+  unit: m
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: SUAVE open-source aircraft design code, regression vehicle model regression/scripts/Vehicles/Concorde.py (git commit f551a684, 2022-12-23)
+    url_or_citation: https://github.com/suavecode/SUAVE/blob/develop/regression/scripts/Vehicles/Concorde.py
+    page_or_section: lines 318-323
+  source_quality: code_model_input
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: fuselage_width
+  value: 2.88
+  unit: m
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: SUAVE open-source aircraft design code, regression vehicle model regression/scripts/Vehicles/Concorde.py (git commit f551a684, 2022-12-23)
+    url_or_citation: https://github.com/suavecode/SUAVE/blob/develop/regression/scripts/Vehicles/Concorde.py
+    page_or_section: line 316
+  source_quality: code_model_input
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: fuselage_effective_diameter
+  value: 3.1
+  unit: m
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: SUAVE open-source aircraft design code, regression vehicle model regression/scripts/Vehicles/Concorde.py (git commit f551a684, 2022-12-23)
+    url_or_citation: https://github.com/suavecode/SUAVE/blob/develop/regression/scripts/Vehicles/Concorde.py
+    page_or_section: line 329
+  source_quality: code_model_input
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: fuselage_wetted_area
+  value: 442
+  unit: m^2
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: SUAVE open-source aircraft design code, regression vehicle model regression/scripts/Vehicles/Concorde.py (git commit f551a684, 2022-12-23)
+    url_or_citation: https://github.com/suavecode/SUAVE/blob/develop/regression/scripts/Vehicles/Concorde.py
+    page_or_section: line 325
+  source_quality: code_model_input
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: cabin_width
+  value: 2.63
+  unit: m
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Heritage Concorde - Airframe dimensions
+    url_or_citation: https://www.heritageconcorde.com/airframe-dimensions
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: 'Snippet: ''2.63 m (8 ft 7.5 in)''. WebSearch restricted to heritageconcorde.com (filter leaked some uspto.gov patent links, but the figure is presented as from the Heritage Concorde page); page
+    itself could not be fetched (egress blocked).'
+- quantity: cabin_height
+  value: 1.96
+  unit: m
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Heritage Concorde - Airframe dimensions
+    url_or_citation: https://www.heritageconcorde.com/airframe-dimensions
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: 'Snippet: ''1.96 m (6 ft 5 in)''. WebSearch restricted to heritageconcorde.com (filter leaked some uspto.gov patent links, but the figure is presented as from the Heritage Concorde page); page
+    itself could not be fetched (egress blocked).'
+- quantity: fin_area_excluding_dorsal
+  value: 33.91
+  unit: m^2
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Search snippet attributed to Heritage Concorde airframe-dimensions and/or concordesst.com technical specs
+    url_or_citation: https://www.heritageconcorde.com/airframe-dimensions ; http://www.concordesst.com/dimentions.html
+    page_or_section: unknown
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''fin (excluding dorsal fin) area 33.91 m2 (365 sq ft), aerodynamic reference chord at base 10.59 m (34 ft 9 in)''. SUAVE also uses vertical-tail reference area 33.91 m2 (line 234), span 6.0 m,
+    root chord 14.5 m.'
+- quantity: fin_reference_chord_at_base
+  value: 10.59
+  unit: m
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: as above
+    url_or_citation: https://www.heritageconcorde.com/airframe-dimensions ; http://www.concordesst.com/dimentions.html
+    page_or_section: unknown
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: total_wetted_area
+  value: 13196
+  unit: ft^2
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Unattributed search-result summary (results included VT Pressbooks 'Fundamentals of Aerodynamic Drag' (Mason configuration aerodynamics) and MDPI Aerospace 12(6):462 'Wetted and Projected Area
+      Relationships in Commercial Airplane Design')
+    url_or_citation: https://pressbooks.lib.vt.edu/configurationaerodynamics/chapter/fundamentals-of-aerodynamic-drag/ ; https://www.mdpi.com/2226-4310/12/6/462
+    page_or_section: unknown
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: 'Snippet: ''gross weight approximately 400,000 lb with a wing planform area S of 4,151 ft2 and total wetted area Sw of 13,196 ft2''. Note S=4,151 ft2 (385.6 m2) differs from the 3,856 ft2 gross
+    reference area -- likely a different area definition. A follow-up search could not pin the source. WEAK.'
+- quantity: wing_planform_area_alt_definition
+  value: 4151
+  unit: ft^2
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: same unattributed snippet as total_wetted_area
+    url_or_citation: https://pressbooks.lib.vt.edu/configurationaerodynamics/chapter/fundamentals-of-aerodynamic-drag/ (possible)
+    page_or_section: unknown
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: Paired with Sw=13,196 ft2; WEAK.
+- quantity: nacelle_length
+  value: 12.0
+  unit: m
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: SUAVE open-source aircraft design code, regression vehicle model regression/scripts/Vehicles/Concorde.py (git commit f551a684, 2022-12-23)
+    url_or_citation: https://github.com/suavecode/SUAVE/blob/develop/regression/scripts/Vehicles/Concorde.py
+    page_or_section: nacelle section
+  source_quality: code_model_input
+  retrieved: '2026-10-04'
+  notes: Model input; nacelle diameter 1.3 m, inlet diameter 1.1 m, nacelle wetted area 30 m2 each.
+- quantity: MTOW
+  value: 185065
+  unit: kg
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Heritage Concorde - Airframe Weights and loadings
+    url_or_citation: https://www.heritageconcorde.com/airframe-weights-and-loadings
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: 'Snippet: ''408,000 lbs (185,065 kg)''. WebSearch restricted to heritageconcorde.com (filter leaked some uspto.gov patent links, but the figure is presented as from the Heritage Concorde page);
+    page itself could not be fetched (egress blocked).'
+- quantity: MTOW
+  value: 185070
+  unit: kg
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Wikipedia - Concorde (Specifications section)
+    url_or_citation: https://en.wikipedia.org/wiki/Concorde
+    page_or_section: Specifications infobox
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: 'Snippet: ''408,010 lb (185,070 kg)''.'
+- quantity: MTOW
+  value: 185070
+  unit: kg
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: FAA Type Certificate Data Sheet A45EU (Concorde), copy hosted at concordesst.com
+    url_or_citation: 'http://www.concordesst.com/A45eu.pdf (also listed: https://drs.faa.gov/browse/excelExternalWindow/B1C629AE866297538625768000667AF2.0001)'
+    page_or_section: Maximum weights section (not seen directly)
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: 'Search summary of FAA TCDS A45EU: takeoff 185,070 kg (408,000 lb). PDF not readable here.'
+- quantity: MTOW
+  value: 185000
+  unit: kg
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: concordesst.com - Concorde Weights / FAQ
+    url_or_citation: http://www.concordesst.com/weight.html ; http://www.concordesst.com/faq.html
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''408,000 lbs (185,000 kgs)''. All MTOW values are the same 408,000 lb with different kg rounding.'
+- quantity: MTOW
+  value: 185000
+  unit: kg
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: SUAVE open-source aircraft design code, regression vehicle model regression/scripts/Vehicles/Concorde.py (git commit f551a684, 2022-12-23)
+    url_or_citation: https://github.com/suavecode/SUAVE/blob/develop/regression/scripts/Vehicles/Concorde.py
+    page_or_section: line 40
+  source_quality: code_model_input
+  retrieved: '2026-10-04'
+  notes: SUAVE uses takeoff mass 183,000 kg 'adjusted due to significant fuel burn on runway' (line 42).
+- quantity: max_taxi_weight
+  value: 186880
+  unit: kg
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Heritage Concorde - Airframe Weights and loadings
+    url_or_citation: https://www.heritageconcorde.com/airframe-weights-and-loadings
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''Max Taxiing Weight 412,000 lbs (186,880 kg)''. WebSearch restricted to heritageconcorde.com (filter leaked some uspto.gov patent links, but the figure is presented as from the Heritage Concorde
+    page); page itself could not be fetched (egress blocked).'
+- quantity: max_taxi_weight
+  value: 186880
+  unit: kg
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: FAA Type Certificate Data Sheet A45EU (Concorde), copy hosted at concordesst.com
+    url_or_citation: 'http://www.concordesst.com/A45eu.pdf (also listed: https://drs.faa.gov/browse/excelExternalWindow/B1C629AE866297538625768000667AF2.0001)'
+    page_or_section: Maximum weights section (not seen directly)
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: 412,000 lb.
+- quantity: max_landing_weight
+  value: 111130
+  unit: kg
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Heritage Concorde - Airframe Weights and loadings
+    url_or_citation: https://www.heritageconcorde.com/airframe-weights-and-loadings
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''245,000 lbs (111,130 kg)''. WebSearch restricted to heritageconcorde.com (filter leaked some uspto.gov patent links, but the figure is presented as from the Heritage Concorde page); page itself
+    could not be fetched (egress blocked).'
+- quantity: max_landing_weight
+  value: 111130
+  unit: kg
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: FAA Type Certificate Data Sheet A45EU (Concorde), copy hosted at concordesst.com
+    url_or_citation: 'http://www.concordesst.com/A45eu.pdf (also listed: https://drs.faa.gov/browse/excelExternalWindow/B1C629AE866297538625768000667AF2.0001)'
+    page_or_section: Maximum weights section (not seen directly)
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: MZFW
+  value: 92080
+  unit: kg
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Heritage Concorde - Airframe Weights and loadings
+    url_or_citation: https://www.heritageconcorde.com/airframe-weights-and-loadings
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''Max Weight without Fuel 203,000 lbs (92,080 kg)''. WebSearch restricted to heritageconcorde.com (filter leaked some uspto.gov patent links, but the figure is presented as from the Heritage Concorde
+    page); page itself could not be fetched (egress blocked).'
+- quantity: MZFW
+  value: 92080
+  unit: kg
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: FAA Type Certificate Data Sheet A45EU (Concorde), copy hosted at concordesst.com
+    url_or_citation: 'http://www.concordesst.com/A45eu.pdf (also listed: https://drs.faa.gov/browse/excelExternalWindow/B1C629AE866297538625768000667AF2.0001)'
+    page_or_section: Maximum weights section (not seen directly)
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: MZFW
+  value: 92000
+  unit: kg
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: SUAVE open-source aircraft design code, regression vehicle model regression/scripts/Vehicles/Concorde.py (git commit f551a684, 2022-12-23)
+    url_or_citation: https://github.com/suavecode/SUAVE/blob/develop/regression/scripts/Vehicles/Concorde.py
+    page_or_section: line 44
+  source_quality: code_model_input
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: OEW
+  value: 78700
+  unit: kg
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Heritage Concorde - Airframe Weights and loadings
+    url_or_citation: https://www.heritageconcorde.com/airframe-weights-and-loadings
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''Operating Weight Empty 173,500 lbs (78,700 kg)''. WebSearch restricted to heritageconcorde.com (filter leaked some uspto.gov patent links, but the figure is presented as from the Heritage Concorde
+    page); page itself could not be fetched (egress blocked).'
+- quantity: OEW
+  value: 78700
+  unit: kg
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Wikipedia - Concorde (Specifications section)
+    url_or_citation: https://en.wikipedia.org/wiki/Concorde
+    page_or_section: Specifications infobox
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: Wikipedia labels it 'Empty weight' 173,504 lb (78,700 kg). Search query contained a candidate value; snippet may echo the query. Treat as weak until confirmed.
+- quantity: OEW
+  value: 78700
+  unit: kg
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: concordesst.com - Concorde Weights / FAQ
+    url_or_citation: http://www.concordesst.com/weight.html ; http://www.concordesst.com/faq.html
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: 173,500 lbs. Airline-specific OEWs (BA vs AF interiors) not found.
+- quantity: max_payload
+  value: 13380
+  unit: kg
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Heritage Concorde - Airframe Weights and loadings
+    url_or_citation: https://www.heritageconcorde.com/airframe-weights-and-loadings
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''Max Payload 29,500 lbs (13,380 kg)''. Note MZFW-OEW = 13,380 kg, consistent. WebSearch restricted to heritageconcorde.com (filter leaked some uspto.gov patent links, but the figure is presented
+    as from the Heritage Concorde page); page itself could not be fetched (egress blocked).'
+- quantity: max_payload
+  value: 13380
+  unit: kg
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: concordesst.com - Concorde Weights / FAQ
+    url_or_citation: http://www.concordesst.com/weight.html ; http://www.concordesst.com/faq.html
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: 29,500 lbs.
+- quantity: payload_for_range_with_max_fuel
+  value: 8845
+  unit: kg
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Heritage Concorde - Airframe performance
+    url_or_citation: https://www.heritageconcorde.com/airframe-performance
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''range with maximum fuel and FAR reserves with 8,845 kg (19,500 lb) payload ...''. WebSearch restricted to heritageconcorde.com (filter leaked some uspto.gov patent links, but the figure is presented
+    as from the Heritage Concorde page); page itself could not be fetched (egress blocked).'
+- quantity: typical_payload_100pax
+  value: null
+  unit: kg
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: null
+    url_or_citation: null
+    page_or_section: null
+  source_quality: missing
+  retrieved: '2026-10-04'
+  notes: 'No source found giving a mass for the 100-pax payload (per-pax allowance). Only pax counts found: BA 100, AF 92 (concordesst FAQ).'
+- quantity: passenger_capacity
+  value: 92-128
+  unit: pax
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Wikipedia - Concorde (Specifications section)
+    url_or_citation: https://en.wikipedia.org/wiki/Concorde
+    page_or_section: Specifications infobox
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''four-abreast seating for 92 to 128 passengers''.'
+- quantity: passenger_capacity_airline
+  value: BA 100; Air France 92
+  unit: pax
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: concordesst.com - Concorde Weights / FAQ
+    url_or_citation: http://www.concordesst.com/weight.html ; http://www.concordesst.com/faq.html
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: 'Snippet: AF limited to 92 ''due to weight of their interior fittings and tank liner modification''.'
+- quantity: fuel_capacity_mass
+  value: 95680
+  unit: kg
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Heritage Concorde - Airframe Weights and loadings
+    url_or_citation: https://www.heritageconcorde.com/airframe-weights-and-loadings
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''Max Weight of Fuel 26,400 gallons (95,680 kg)''. WebSearch restricted to heritageconcorde.com (filter leaked some uspto.gov patent links, but the figure is presented as from the Heritage Concorde
+    page); page itself could not be fetched (egress blocked).'
+- quantity: fuel_capacity_mass
+  value: 95680
+  unit: kg
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Wikipedia - Concorde (Specifications section)
+    url_or_citation: https://en.wikipedia.org/wiki/Concorde
+    page_or_section: Specifications infobox
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''210,940 lb (95,680 kg); 119,600 L (26,300 imp gal; 31,600 US gal)''.'
+- quantity: fuel_capacity_mass
+  value: 94470
+  unit: kg
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Heritage Concorde - Fuel system general description
+    url_or_citation: https://www.heritageconcorde.com/fuelgeneral
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''13 fuel tanks with a total capacity of 119,280 litres and 94,470 kg''. Conflicts with 95,680 kg on the weights page of the same site.'
+- quantity: fuel_capacity_mass
+  value: 94470
+  unit: kg
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: SUAVE open-source aircraft design code, regression vehicle model regression/scripts/Vehicles/Concorde.py (git commit f551a684, 2022-12-23)
+    url_or_citation: https://github.com/suavecode/SUAVE/blob/develop/regression/scripts/Vehicles/Concorde.py
+    page_or_section: fuel tank definitions lines 161-209, 353-359; 'Masses from http://www.concordesst.com/fuelsys.html'
+  source_quality: code_model_input
+  retrieved: '2026-10-04'
+  notes: Sum of SUAVE tank masses 11096+11943+8396+20038+18992+4450+9140+10415 = 94,470 kg (computed here), matching the concordesst/heritage tank table.
+- quantity: fuel_capacity_mass
+  value: 95430
+  unit: kg
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: PPRuNe forums - 'Concorde fuel consumption' thread (and archive copy)
+    url_or_citation: https://www.pprune.org/questions/45456-concorde-fuel-consumption.html ; https://www.pprune.org/archive/index.php/t-45456.html
+    page_or_section: forum posts (pilot/engineer anecdotes)
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''Total fuel capacity was 95,430 kilograms, or approximately 26,400 gallons'' (forum).'
+- quantity: fuel_capacity_volume
+  value: 119280
+  unit: L
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Heritage Concorde - Fuel system general description
+    url_or_citation: https://www.heritageconcorde.com/fuelgeneral
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: fuel_capacity_volume
+  value: 119600
+  unit: L
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Wikipedia - Concorde (Specifications section)
+    url_or_citation: https://en.wikipedia.org/wiki/Concorde
+    page_or_section: Specifications infobox
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: fuel_capacity_volume
+  value: 26400
+  unit: gal (unit system not stated)
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Heritage Concorde - Airframe Weights and loadings
+    url_or_citation: https://www.heritageconcorde.com/airframe-weights-and-loadings
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: fuel_tank_breakdown
+  value: 'tanks 1-4 (engine feed) 4,198-4,570 kg each; 5: 7,200 kg; 6: 11,587 kg; 7: 7,405 kg; 8: 12,838 kg; 5A/7A: 2,225 kg each; 9: 11,096; 10: 11,943; 11 (tail trim): 10,415 kg'
+  unit: kg
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Heritage Concorde - Fuel system general description
+    url_or_citation: https://www.heritageconcorde.com/fuelgeneral
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: Tank 9-11 figures from SUAVE (citing concordesst.com/fuelsys.html); tanks 1-8, 5A from Heritage snippet. Forward two tanks + tail tank ~33 t used for trim (Heritage).
+- quantity: max_wing_loading
+  value: 488 kg/m^2 (snippet also says '1,000 lb/sq ft' -- inconsistent)
+  unit: kg/m^2
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Heritage Concorde - Airframe Weights and loadings
+    url_or_citation: https://www.heritageconcorde.com/airframe-weights-and-loadings
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: 185,065/358.25 = 516.6 kg/m2 (computed). Snippet value internally inconsistent; do not use.
+- quantity: max_power_loading
+  value: 268
+  unit: kg/kN
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Heritage Concorde - Airframe Weights and loadings
+    url_or_citation: https://www.heritageconcorde.com/airframe-weights-and-loadings
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''approx 268 kg/kN (2.5 lb/lb st)''.'
+- quantity: component_weight_breakdown
+  value: null
+  unit: null
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: null
+    url_or_citation: null
+    page_or_section: null
+  source_quality: missing
+  retrieved: '2026-10-04'
+  notes: 'No wing/fuselage/engine/systems weight breakdown found in any accessible source. (Candidates not reachable: Leyman 1986 Prog. Aerosp. Sci. 23:185-238; NASA CR/TM SST weight studies on ntrs.nasa.gov.)
+    Engine dry weight 3,175 kg x4 = 12,700 kg is the only component figure.'
+- quantity: thrust_SLS_reheat
+  value: 38050
+  unit: lbf
+  aircraft_variant: Rolls-Royce/Snecma Olympus 593 Mk 610 (turbojet with partial reheat)
+  conditions: null
+  source:
+    title: Heritage Concorde - Olympus 593 Mk610 engines
+    url_or_citation: https://www.heritageconcorde.com/concorde-olympus-593-mk610-engines
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''Wet 169.2 kN (38,050 lbf)''. WebSearch restricted to heritageconcorde.com (filter leaked some uspto.gov patent links, but the figure is presented as from the Heritage Concorde page); page itself
+    could not be fetched (egress blocked).'
+- quantity: thrust_SLS_reheat
+  value: 38000
+  unit: lbf
+  aircraft_variant: Rolls-Royce/Snecma Olympus 593 Mk 610 (turbojet with partial reheat)
+  conditions: null
+  source:
+    title: Wikipedia - Rolls-Royce/Snecma Olympus 593 (Specifications, Mk 610)
+    url_or_citation: https://en.wikipedia.org/wiki/Rolls-Royce/Snecma_Olympus_593
+    page_or_section: Specifications (Olympus 593 Mk 610)
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''wet: 169.2 kN (38,000 lbf)'' -- same kN, lbf rounding differs.'
+- quantity: thrust_SLS_dry
+  value: 31350
+  unit: lbf
+  aircraft_variant: Rolls-Royce/Snecma Olympus 593 Mk 610 (turbojet with partial reheat)
+  conditions: null
+  source:
+    title: Heritage Concorde - Olympus 593 Mk610 engines
+    url_or_citation: https://www.heritageconcorde.com/concorde-olympus-593-mk610-engines
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''Dry 139.4 kN (31,350 lbf)''. WebSearch restricted to heritageconcorde.com (filter leaked some uspto.gov patent links, but the figure is presented as from the Heritage Concorde page); page itself
+    could not be fetched (egress blocked).'
+- quantity: thrust_SLS_dry
+  value: 31300
+  unit: lbf
+  aircraft_variant: Rolls-Royce/Snecma Olympus 593 Mk 610 (turbojet with partial reheat)
+  conditions: null
+  source:
+    title: Wikipedia - Rolls-Royce/Snecma Olympus 593 (Specifications, Mk 610)
+    url_or_citation: https://en.wikipedia.org/wiki/Rolls-Royce/Snecma_Olympus_593
+    page_or_section: Specifications (Olympus 593 Mk 610)
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''dry: 139.4 kN (31,300 lbf)''.'
+- quantity: thrust_SLS_dry
+  value: 31000
+  unit: lbf
+  aircraft_variant: Rolls-Royce/Snecma Olympus 593 Mk 610 (turbojet with partial reheat)
+  conditions: null
+  source:
+    title: 'Unattributed search summary (results: heritageconcorde, flyawaysimulation, wikipedia)'
+    url_or_citation: https://flyawaysimulation.com/ask/answers/concorde-engines-supersonic-flight/
+    page_or_section: unknown
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''about 31,000 lbf without reheat and 38,050 lbf with it''; low-quality site.'
+- quantity: thrust_cruise_dry_per_engine
+  value: 10030
+  unit: lbf
+  aircraft_variant: Rolls-Royce/Snecma Olympus 593 Mk 610 (turbojet with partial reheat)
+  conditions: Mach 2, 53,000 ft, ISA+5 C, no reheat
+  source:
+    title: Unattributed search summary (results incl. Wikipedia Olympus 593, heritageconcorde, gracesguide, howstuffworks)
+    url_or_citation: https://en.wikipedia.org/wiki/Rolls-Royce/Snecma_Olympus_593 (probable)
+    page_or_section: unknown
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''approximately 10,030 lbf (44.61 kN) per engine without afterburner at supersonic cruise (53,000 ft / Mach 2, ISA+5C)''. Attribution uncertain.'
+- quantity: SFC_cruise_Mach2
+  value: 1.195
+  unit: lb/(lbf h)
+  aircraft_variant: Rolls-Royce/Snecma Olympus 593 Mk 610 (turbojet with partial reheat)
+  conditions: supersonic cruise
+  source:
+    title: Wikipedia - Rolls-Royce/Snecma Olympus 593 (Specifications, Mk 610)
+    url_or_citation: https://en.wikipedia.org/wiki/Rolls-Royce/Snecma_Olympus_593
+    page_or_section: Specifications (Olympus 593 Mk 610)
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''1.195 lb/(lbf h) (33.8 g/(kN s)) cruise''.'
+- quantity: SFC_cruise_Mach2
+  value: 1.195
+  unit: lb/(lbf h)
+  aircraft_variant: Rolls-Royce/Snecma Olympus 593 Mk 610 (turbojet with partial reheat)
+  conditions: null
+  source:
+    title: Heritage Concorde - Olympus 593 Mk610 engines
+    url_or_citation: https://www.heritageconcorde.com/concorde-olympus-593-mk610-engines
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: WebSearch restricted to heritageconcorde.com (filter leaked some uspto.gov patent links, but the figure is presented as from the Heritage Concorde page); page itself could not be fetched (egress
+    blocked).
+- quantity: SFC_SLS
+  value: 1.39
+  unit: lb/(lbf h)
+  aircraft_variant: Rolls-Royce/Snecma Olympus 593 Mk 610 (turbojet with partial reheat)
+  conditions: sea level (snippet does not say dry or reheat)
+  source:
+    title: Wikipedia - Rolls-Royce/Snecma Olympus 593 (Specifications, Mk 610)
+    url_or_citation: https://en.wikipedia.org/wiki/Rolls-Royce/Snecma_Olympus_593
+    page_or_section: Specifications (Olympus 593 Mk 610)
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''1.39 lb/(lbf h) (39 g/(kN s)) at sea level''. Also on heritageconcorde snippet.'
+- quantity: overall_pressure_ratio
+  value: 15.5
+  unit: '-'
+  aircraft_variant: Rolls-Royce/Snecma Olympus 593 Mk 610 (turbojet with partial reheat)
+  conditions: aircraft stationary
+  source:
+    title: Wikipedia - Rolls-Royce/Snecma Olympus 593 (Specifications, Mk 610)
+    url_or_citation: https://en.wikipedia.org/wiki/Rolls-Royce/Snecma_Olympus_593
+    page_or_section: Specifications (Olympus 593 Mk 610)
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: overall_pressure_ratio
+  value: 15.5
+  unit: '-'
+  aircraft_variant: Rolls-Royce/Snecma Olympus 593 Mk 610 (turbojet with partial reheat)
+  conditions: null
+  source:
+    title: 'GlobalSecurity.org - Concorde propulsion / Airways Magazine ''Rolls-Royce Olympus: The engine that propelled Concorde'''
+    url_or_citation: https://www.globalsecurity.org/military/world/europe/concorde-propulsion.htm ; https://www.airwaysmag.com/new-post/rolls-royce-olympus-concorde
+    page_or_section: unknown
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''airflow 410 lb/sec at a pressure ratio of 15.5 in 14 stages with 7 each on the LP and HP rotors''.'
+- quantity: overall_pressure_ratio_model
+  value: LPC 3.1 x HPC 5.0 = 15.5
+  unit: '-'
+  aircraft_variant: Rolls-Royce/Snecma Olympus 593 Mk 610 (turbojet with partial reheat)
+  conditions: null
+  source:
+    title: SUAVE open-source aircraft design code, regression vehicle model regression/scripts/Vehicles/Concorde.py (git commit f551a684, 2022-12-23)
+    url_or_citation: https://github.com/suavecode/SUAVE/blob/develop/regression/scripts/Vehicles/Concorde.py
+    page_or_section: compressor.pressure_ratio lines in engine section
+  source_quality: code_model_input
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: bypass_ratio
+  value: 0
+  unit: '-'
+  aircraft_variant: Rolls-Royce/Snecma Olympus 593 Mk 610 (turbojet with partial reheat)
+  conditions: null
+  source:
+    title: D. Anderson & S. Eberhardt, Understanding Flight (2nd ed.), local copy /home/user/build-a-d/Anderson - Understanding flight.pdf
+    url_or_citation: D. Anderson & S. Eberhardt, Understanding Flight (2nd ed.), local copy /home/user/build-a-d/Anderson - Understanding flight.pdf
+    page_or_section: Ch.4 p.126 (PDF p.147)
+  source_quality: local_textbook
+  retrieved: '2026-10-04'
+  notes: '''the Concorde used turbojets''. Turbojet => BPR 0.'
+- quantity: mass_flow
+  value: 186
+  unit: kg/s
+  aircraft_variant: Rolls-Royce/Snecma Olympus 593 Mk 610 (turbojet with partial reheat)
+  conditions: null
+  source:
+    title: Wikipedia - Rolls-Royce/Snecma Olympus 593 (Specifications, Mk 610)
+    url_or_citation: https://en.wikipedia.org/wiki/Rolls-Royce/Snecma_Olympus_593
+    page_or_section: Specifications (Olympus 593 Mk 610)
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''Air mass flow: 186 kg (410 lb)/s''.'
+- quantity: mass_flow
+  value: 410
+  unit: lb/s
+  aircraft_variant: Rolls-Royce/Snecma Olympus 593 Mk 610 (turbojet with partial reheat)
+  conditions: null
+  source:
+    title: GlobalSecurity.org Concorde propulsion / Airways Magazine
+    url_or_citation: https://www.globalsecurity.org/military/world/europe/concorde-propulsion.htm ; https://www.airwaysmag.com/new-post/rolls-royce-olympus-concorde
+    page_or_section: unknown
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: Condition (SLS take-off?) not stated.
+- quantity: engine_dry_weight
+  value: 3175
+  unit: kg
+  aircraft_variant: Rolls-Royce/Snecma Olympus 593 Mk 610 (turbojet with partial reheat)
+  conditions: null
+  source:
+    title: Wikipedia - Rolls-Royce/Snecma Olympus 593 (Specifications, Mk 610)
+    url_or_citation: https://en.wikipedia.org/wiki/Rolls-Royce/Snecma_Olympus_593
+    page_or_section: Specifications (Olympus 593 Mk 610)
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''3,175 kg (7,000 lb)''; heritageconcorde snippet gives the same.'
+- quantity: engine_length
+  value: 4.039
+  unit: m
+  aircraft_variant: Rolls-Royce/Snecma Olympus 593 Mk 610 (turbojet with partial reheat)
+  conditions: null
+  source:
+    title: Wikipedia - Rolls-Royce/Snecma Olympus 593 (Specifications, Mk 610)
+    url_or_citation: https://en.wikipedia.org/wiki/Rolls-Royce/Snecma_Olympus_593
+    page_or_section: Specifications (Olympus 593 Mk 610)
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: engine_diameter
+  value: 1.212
+  unit: m
+  aircraft_variant: Rolls-Royce/Snecma Olympus 593 Mk 610 (turbojet with partial reheat)
+  conditions: null
+  source:
+    title: Wikipedia - Rolls-Royce/Snecma Olympus 593 (Specifications, Mk 610)
+    url_or_citation: https://en.wikipedia.org/wiki/Rolls-Royce/Snecma_Olympus_593
+    page_or_section: Specifications (Olympus 593 Mk 610)
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: engine_thrust_to_weight
+  value: 5.4
+  unit: '-'
+  aircraft_variant: Rolls-Royce/Snecma Olympus 593 Mk 610 (turbojet with partial reheat)
+  conditions: null
+  source:
+    title: Wikipedia - Rolls-Royce/Snecma Olympus 593 (Specifications, Mk 610)
+    url_or_citation: https://en.wikipedia.org/wiki/Rolls-Royce/Snecma_Olympus_593
+    page_or_section: Specifications (Olympus 593 Mk 610)
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: intake_pressure_ratio_cruise
+  value: 7.3
+  unit: '-'
+  aircraft_variant: Rolls-Royce/Snecma Olympus 593 Mk 610 (turbojet with partial reheat)
+  conditions: Mach 2 cruise
+  source:
+    title: Airways Magazine / GlobalSecurity (search summary)
+    url_or_citation: https://www.airwaysmag.com/new-post/rolls-royce-olympus-concorde
+    page_or_section: unknown
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''variable intakes, with moving ramps and bleed systems ... intake pressure ratio of 7.3:1 at Mach 2 cruise''. Snecma designed exhaust nozzles; Mk 610-14-28 had reheat, variable-area intake, variable
+    primary and secondary nozzles.'
+- quantity: intake_pressure_recovery_model
+  value: 0.94
+  unit: '-'
+  aircraft_variant: Rolls-Royce/Snecma Olympus 593 Mk 610 (turbojet with partial reheat)
+  conditions: null
+  source:
+    title: SUAVE open-source aircraft design code, regression vehicle model regression/scripts/Vehicles/Concorde.py (git commit f551a684, 2022-12-23)
+    url_or_citation: https://github.com/suavecode/SUAVE/blob/develop/regression/scripts/Vehicles/Concorde.py
+    page_or_section: inlet_nozzle.pressure_recovery
+  source_quality: code_model_input
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: engine_count
+  value: 4
+  unit: '-'
+  aircraft_variant: Rolls-Royce/Snecma Olympus 593 Mk 610 (turbojet with partial reheat)
+  conditions: null
+  source:
+    title: SUAVE open-source aircraft design code, regression vehicle model regression/scripts/Vehicles/Concorde.py (git commit f551a684, 2022-12-23)
+    url_or_citation: https://github.com/suavecode/SUAVE/blob/develop/regression/scripts/Vehicles/Concorde.py
+    page_or_section: turbojet.number_of_engines
+  source_quality: code_model_input
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: cruise_Mach_max
+  value: 2.04
+  unit: '-'
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: at 15,635 m (51,000 ft); 'M2.04 or 530 kt CAS whichever is lesser'
+  source:
+    title: Heritage Concorde - Airframe performance
+    url_or_citation: https://www.heritageconcorde.com/airframe-performance
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: TAS 1,176 kt. WebSearch restricted to heritageconcorde.com (filter leaked some uspto.gov patent links, but the figure is presented as from the Heritage Concorde page); page itself could not be
+    fetched (egress blocked).
+- quantity: cruise_Mach
+  value: 2.0
+  unit: '-'
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: J.D. Anderson, Fundamentals of Aerodynamics, local copy /home/user/build-a-d/Anderson - Fundamentals of Aerodynamics.pdf
+    url_or_citation: J.D. Anderson, Fundamentals of Aerodynamics, local copy /home/user/build-a-d/Anderson - Fundamentals of Aerodynamics.pdf
+    page_or_section: Sec. 9.x sonic boom, book p.685 (PDF p.708)
+  source_quality: local_textbook
+  retrieved: '2026-10-04'
+  notes: '''Concorde ... cruised at a Mach number of 2 at 50,000 ft''.'
+- quantity: cruise_Mach
+  value: 2.0
+  unit: '-'
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: D. Anderson & S. Eberhardt, Understanding Flight (2nd ed.), local copy /home/user/build-a-d/Anderson - Understanding flight.pdf
+    url_or_citation: D. Anderson & S. Eberhardt, Understanding Flight (2nd ed.), local copy /home/user/build-a-d/Anderson - Understanding flight.pdf
+    page_or_section: Ch.1 p.12 (PDF p.33)
+  source_quality: local_textbook
+  retrieved: '2026-10-04'
+  notes: '''cruises at Mach 2 ... 55,000 ft (16,000 m)''.'
+- quantity: cruise_Mach
+  value: 2.2
+  unit: '-'
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: J.D. Anderson, Introduction to Flight (8th ed.?, McGraw-Hill), local copy /home/user/build-a-d/Anderson - Introduction to Flight.pdf
+    url_or_citation: J.D. Anderson, Introduction to Flight (8th ed.?, McGraw-Hill), local copy /home/user/build-a-d/Anderson - Introduction to Flight.pdf
+    page_or_section: book p.391-392 and Problem 5.20 p.437
+  source_quality: local_textbook
+  retrieved: '2026-10-04'
+  notes: Anderson Intro to Flight states Mach 2.2 -- conflicts with all other sources (2.0-2.04); likely textbook error.
+- quantity: cruise_Mach
+  value: 2.02
+  unit: '-'
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: SUAVE open-source aircraft design code, regression vehicle model regression/scripts/Vehicles/Concorde.py (git commit f551a684, 2022-12-23)
+    url_or_citation: https://github.com/suavecode/SUAVE/blob/develop/regression/scripts/Vehicles/Concorde.py
+    page_or_section: concorde.py mission lines 390-425
+  source_quality: code_model_input
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: cruise_TAS
+  value: 1936
+  unit: ft/s
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: 50,000 ft
+  source:
+    title: J.D. Anderson, Introduction to Flight (8th ed.?, McGraw-Hill), local copy /home/user/build-a-d/Anderson - Introduction to Flight.pdf
+    url_or_citation: J.D. Anderson, Introduction to Flight (8th ed.?, McGraw-Hill), local copy /home/user/build-a-d/Anderson - Introduction to Flight.pdf
+    page_or_section: Example 4.14, book p.171 (PDF p.190)
+  source_quality: local_textbook
+  retrieved: '2026-10-04'
+  notes: = Mach 2.0 at 50,000 ft standard.
+- quantity: cruise_altitude_band
+  value: ~50,000 ft start, cruise-climb toward 60,000 ft
+  unit: ft
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: PPRuNe + generic search summary
+    url_or_citation: https://www.pprune.org/questions/45456-concorde-fuel-consumption.html ; https://flyawaysimulation.com/ask/answers/concorde-cruise-altitude/
+    page_or_section: forum / Q&A
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: PPRuNe gives fuel flows at 50,000 and 60,000 ft; flyawaysimulation (low quality) says 50-60 kft with cruise-climb. No primary flight-manual figure for start/end of cruise was found.
+- quantity: max_cruise_altitude
+  value: 60000
+  unit: ft
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Wikipedia - Concorde (Specifications section)
+    url_or_citation: https://en.wikipedia.org/wiki/Concorde
+    page_or_section: Specifications infobox
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: 'Also Heritage Concorde: 18,300 m (60,000 ft).'
+- quantity: max_cruise_altitude
+  value: 18300
+  unit: m
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Heritage Concorde - Airframe performance
+    url_or_citation: https://www.heritageconcorde.com/airframe-performance
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: cruise_altitude_model
+  value: climb to 56,500 ft at M2.02
+  unit: ft
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: SUAVE open-source aircraft design code, regression vehicle model regression/scripts/Vehicles/Concorde.py (git commit f551a684, 2022-12-23)
+    url_or_citation: https://github.com/suavecode/SUAVE/blob/develop/regression/scripts/Vehicles/Concorde.py
+    page_or_section: concorde.py line 408
+  source_quality: code_model_input
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: range_max_fuel
+  value: 3550
+  unit: nmi
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: max fuel, FAR reserves, 8,845 kg (19,500 lb) payload
+  source:
+    title: Heritage Concorde - Airframe performance
+    url_or_citation: https://www.heritageconcorde.com/airframe-performance
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''3,550 n miles (6,580 km)''. WebSearch restricted to heritageconcorde.com (filter leaked some uspto.gov patent links, but the figure is presented as from the Heritage Concorde page); page itself
+    could not be fetched (egress blocked).'
+- quantity: range_max_payload
+  value: 2760
+  unit: nmi
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: max payload, FAR reserves, 'at M0.95 at 9,100 m (30,000 ft)'
+  source:
+    title: Heritage Concorde - Airframe performance
+    url_or_citation: https://www.heritageconcorde.com/airframe-performance
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''2,760 n miles (5,110 km)''. The snippet attaches M0.95/30,000 ft to this figure -- possibly an all-subsonic case or snippet garbling; verify.'
+- quantity: range
+  value: 3900
+  unit: nmi
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: not stated (payload/reserves unspecified)
+  source:
+    title: Wikipedia - Concorde (Specifications section)
+    url_or_citation: https://en.wikipedia.org/wiki/Concorde
+    page_or_section: Specifications infobox
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''3,900 nmi (4,488 mi, 7,222.8 km)''.'
+- quantity: range_100pax
+  value: 4500
+  unit: statute miles
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: 100 passengers + 9 crew, 'under the correct conditions'
+  source:
+    title: concordesst.com - Concorde Weights / FAQ
+    url_or_citation: http://www.concordesst.com/weight.html ; http://www.concordesst.com/faq.html
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: = ~3,910 nmi. Reserves unspecified.
+- quantity: distance_record
+  value: 3965
+  unit: nmi
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: Washington - Nice record flight
+  source:
+    title: concordesst.com - Concorde Weights / FAQ
+    url_or_citation: http://www.concordesst.com/weight.html ; http://www.concordesst.com/faq.html
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: reserves_policy
+  value: '''FAR reserves'' (details not given)'
+  unit: null
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Heritage Concorde - Airframe performance
+    url_or_citation: https://www.heritageconcorde.com/airframe-performance
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: No detailed reserve definition (alternate distance, hold time, % trip) found.
+- quantity: LHR_JFK_fuel_load
+  value: 93-96
+  unit: t
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: PPRuNe forums - 'Concorde fuel consumption' thread (and archive copy)
+    url_or_citation: https://www.pprune.org/questions/45456-concorde-fuel-consumption.html ; https://www.pprune.org/archive/index.php/t-45456.html
+    page_or_section: forum posts (pilot/engineer anecdotes)
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''Typical fuel loads for LHR-JFK were around 93-96 tonnes depending on passenger load and en-route conditions''; ''91,000 kg for a 3 h 20 min LHR-JFK flight sounds typical''. Forum. These are
+    ramp fuel loads, not trip fuel.'
+- quantity: LHR_JFK_fuel_uplift
+  value: 90-95
+  unit: t
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Unattributed search summary (FlyerTalk/Quora/PPRuNe/HN)
+    url_or_citation: https://www.flyertalk.com/forum/british-airways-executive-club/986273-concorde-fuel-usage-vs-744-777-a.html
+    page_or_section: forum
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''Concorde uplifted an average of 90-95 tonnes for LHR-JFK''.'
+- quantity: transatlantic_trip_fuel
+  value: 77
+  unit: t
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Unattributed search summary (Quora/forums)
+    url_or_citation: https://www.quora.com/How-much-fuel-did-Concorde-use
+    page_or_section: Q&A
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''typically used 77 tonnes to cross the Atlantic in 3.5 hours, but with taxi and holding/alternate fuel the normal load was around 92 tonnes''. WEAK.'
+- quantity: taxi_fuel
+  value: up to ~2
+  unit: t
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Hacker News comment / search summary
+    url_or_citation: https://news.ycombinator.com/item?id=23786488
+    page_or_section: comment
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: WEAK anecdote.
+- quantity: cruise_fuel_flow_per_engine
+  value: 5.0
+  unit: t/h
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: Mach 2, 50,000 ft
+  source:
+    title: PPRuNe forums - 'Concorde fuel consumption' thread (and archive copy)
+    url_or_citation: https://www.pprune.org/questions/45456-concorde-fuel-consumption.html ; https://www.pprune.org/archive/index.php/t-45456.html
+    page_or_section: forum posts (pilot/engineer anecdotes)
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''around 5 tonnes/hour per engine, falling to around 4.2 t/h at 60,000 ft''. Forum.'
+- quantity: cruise_fuel_flow_per_engine
+  value: 4.2
+  unit: t/h
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: Mach 2, 60,000 ft
+  source:
+    title: PPRuNe forums - 'Concorde fuel consumption' thread (and archive copy)
+    url_or_citation: https://www.pprune.org/questions/45456-concorde-fuel-consumption.html ; https://www.pprune.org/archive/index.php/t-45456.html
+    page_or_section: forum posts (pilot/engineer anecdotes)
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: takeoff_fuel_flow_per_engine
+  value: 25
+  unit: t/h
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: full reheat at V2 (~220 kt)
+  source:
+    title: PPRuNe forums - 'Concorde fuel consumption' thread (and archive copy)
+    url_or_citation: https://www.pprune.org/questions/45456-concorde-fuel-consumption.html ; https://www.pprune.org/archive/index.php/t-45456.html
+    page_or_section: forum posts (pilot/engineer anecdotes)
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: fuel_burn_per_hour_total
+  value: 20-25
+  unit: t/h
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Unattributed search summary
+    url_or_citation: https://aircrafttechnic.com/aircraft_mechanic/how-was-concordes-fuel-consumption/
+    page_or_section: unknown
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: Also '25,629 L (6,771 gal) per hour'. WEAK.
+- quantity: fuel_burn_per_seat_hour
+  value: 500
+  unit: lb/(seat h)
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: D. Anderson & S. Eberhardt, Understanding Flight (2nd ed.), local copy /home/user/build-a-d/Anderson - Understanding flight.pdf
+    url_or_citation: D. Anderson & S. Eberhardt, Understanding Flight (2nd ed.), local copy /home/user/build-a-d/Anderson - Understanding flight.pdf
+    page_or_section: Ch.8 sidebar p.240 (PDF p.261)
+  source_quality: local_textbook
+  retrieved: '2026-10-04'
+  notes: '''The Concorde burns about 500 lb (225 kg) of fuel per passenger seat per hour'' (vs 40 lb for 777). With 100 seats => ~22.7 t/h, consistent with 20-25 t/h.'
+- quantity: takeoff_field_length
+  value: 3410
+  unit: m
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: take-off distance to 10.7 m (35 ft), presumably MTOW
+  source:
+    title: Heritage Concorde - Airframe performance
+    url_or_citation: https://www.heritageconcorde.com/airframe-performance
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''3,410 m (11,200 ft)''. WebSearch restricted to heritageconcorde.com (filter leaked some uspto.gov patent links, but the figure is presented as from the Heritage Concorde page); page itself could
+    not be fetched (egress blocked).'
+- quantity: takeoff_field_length
+  value: 11300
+  unit: ft
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Unattributed search summary (simviation.com / aerocorner / globalaircraft)
+    url_or_citation: https://simviation.com/rinfoconcorde.htm
+    page_or_section: unknown
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''11,300 feet (3,430 metres)''. WEAK.'
+- quantity: landing_field_length
+  value: 2220
+  unit: m
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: landing distance from 10.7 m (35 ft)
+  source:
+    title: Heritage Concorde - Airframe performance
+    url_or_citation: https://www.heritageconcorde.com/airframe-performance
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''2,220 m (7,300 ft)''.'
+- quantity: min_landing_runway
+  value: 6000
+  unit: ft
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Wikipedia - Concorde (Specifications section)
+    url_or_citation: https://en.wikipedia.org/wiki/Concorde
+    page_or_section: Specifications infobox
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''landing Concorde required a minimum of 6,000 ft (1,800 m) runway length''. Weight unspecified.'
+- quantity: takeoff_speed
+  value: 214
+  unit: kt
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Heritage Concorde - Airframe performance
+    url_or_citation: https://www.heritageconcorde.com/airframe-performance
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: landing_speed
+  value: 162
+  unit: kt
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Heritage Concorde - Airframe performance
+    url_or_citation: https://www.heritageconcorde.com/airframe-performance
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: Heritage 'landing speed'; approach speed definition unclear.
+- quantity: approach_speed
+  value: 165
+  unit: kt
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Unattributed search summary (simviation.com / aerocorner)
+    url_or_citation: https://simviation.com/rinfoconcorde.htm
+    page_or_section: unknown
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: WEAK.
+- quantity: rate_of_climb_SL
+  value: 1525
+  unit: m/min
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Heritage Concorde - Airframe performance
+    url_or_citation: https://www.heritageconcorde.com/airframe-performance
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: 5,000 ft/min.
+- quantity: L_D_cruise_Mach2
+  value: 7.5
+  unit: '-'
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: Mach 2
+  source:
+    title: Wikipedia - Concorde and/or Lift-to-drag ratio article (search snippet did not say which of the two)
+    url_or_citation: https://en.wikipedia.org/wiki/Concorde ; https://en.wikipedia.org/wiki/Lift-to-drag_ratio
+    page_or_section: unknown
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''4:1 at takeoff and landing, increasing to 12:1 at Mach 0.95 and 7.5:1 at Mach 2''. Query was neutral (no value).'
+- quantity: L_D_subsonic_M0.95
+  value: 12
+  unit: '-'
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Wikipedia - Concorde and/or Lift-to-drag ratio article (search snippet did not say which of the two)
+    url_or_citation: https://en.wikipedia.org/wiki/Concorde ; https://en.wikipedia.org/wiki/Lift-to-drag_ratio
+    page_or_section: unknown
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: L_D_takeoff_landing
+  value: 4
+  unit: '-'
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Wikipedia - Concorde and/or Lift-to-drag ratio article (search snippet did not say which of the two)
+    url_or_citation: https://en.wikipedia.org/wiki/Concorde ; https://en.wikipedia.org/wiki/Lift-to-drag_ratio
+    page_or_section: unknown
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: L_D_table
+  value: low speed 3.94; approach 4.35; 250 kt/10,000 ft 9.27; M0.94 11.47; M2.04 7.14
+  unit: '-'
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Wikipedia - Concorde and/or Lift-to-drag ratio article (search snippet did not say which of the two)
+    url_or_citation: https://en.wikipedia.org/wiki/Concorde ; https://en.wikipedia.org/wiki/Lift-to-drag_ratio
+    page_or_section: unknown
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: Snippet says 'from the Concorde's technical documentation'. Source page within Wikipedia not identified; a follow-up search for these numbers returned nothing. MEDIUM-WEAK, but the M2.04=7.14 value
+    conflicts with 7.5.
+- quantity: L_D_cruise_Mach2
+  value: 7.3
+  unit: '-'
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: 'F. Starr, ''The Supersonic Conundrum'' (PDF) / ''Concorde: An Engineering Failure'''
+    url_or_citation: https://fredstarr.com/wp-content/uploads/The-Supersonic-Conundrum-pdf.pdf
+    page_or_section: unknown
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''The "B" wing raises the lift/drag ratio from 7.3 to 7.8 at Mach 2'' => production ~7.3. Search snippet attribution between Starr PDF and a patent unclear.'
+- quantity: L_D_cruise_Mach2
+  value: about 7
+  unit: '-'
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: 'Unattributed (results: Leeham News Bjorn''s Corner drag part 16; RAeS ''Aerodynamics as the basis of aviation''; VT pressbooks)'
+    url_or_citation: https://leehamnews.com/2018/02/09/bjorns-corner-aircraft-drag-reduction-part-16/
+    page_or_section: unknown
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''Concorde had a lift/drag ratio of about 7 at Mach 2, whereas a 747 has about 17''.'
+- quantity: L_D_Mach2_Concorde_B_projected
+  value: 7.8
+  unit: '-'
+  aircraft_variant: Concorde B (unbuilt derivative)
+  conditions: null
+  source:
+    title: 'F. Starr, ''The Supersonic Conundrum'' (PDF) / ''Concorde: An Engineering Failure'''
+    url_or_citation: https://fredstarr.com/wp-content/uploads/The-Supersonic-Conundrum-pdf.pdf
+    page_or_section: unknown
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: CD_components_Mach2
+  value: lift-dependent wave drag CD ~0.001; induced (vortex) CD ~0.004; 'fuselage volume drag CD ~0.025'
+  unit: '-'
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: Unattributed search summary (likely VT Pressbooks 'Fundamentals of Aerodynamic Drag' or RAeS paper)
+    url_or_citation: https://pressbooks.lib.vt.edu/configurationaerodynamics/chapter/fundamentals-of-aerodynamic-drag/ ; https://www.aerosociety.com/media/8042/aerodynamics-as-the-basis-of-aviation-how-well-did-it-do.pdf
+    page_or_section: unknown
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: Reference area / basis not given; 0.025 volume drag looks implausibly large if referenced to wing area. Do NOT use for validation without seeing the source.
+- quantity: area_rule_wave_drag_reduction
+  value: 1.8
+  unit: '% of wave drag at M2'
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: same unattributed summary
+    url_or_citation: https://pressbooks.lib.vt.edu/configurationaerodynamics/chapter/fundamentals-of-aerodynamic-drag/ (possible)
+    page_or_section: unknown
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''reduced at Mach 2 by 1.8% by applying the area rule which extended the rear fuselage 3.73 m (12.2 ft) on the production aircraft''.'
+- quantity: CD0_vs_Mach
+  value: null
+  unit: null
+  aircraft_variant: Concorde production (Olympus 593 Mk 610)
+  conditions: null
+  source:
+    title: null
+    url_or_citation: null
+    page_or_section: null
+  source_quality: missing
+  retrieved: '2026-10-04'
+  notes: 'No published zero-lift drag coefficient vs Mach or drag polar found in accessible sources. Best candidate references (not reachable): Leyman, C.S., ''A review of the technical development of Concorde'',
+    Prog. Aerospace Sci. 23(3):185-238, 1986 (https://www.sciencedirect.com/science/article/abs/pii/0376042186900072); Anderson Intro to Flight Fig 6.62 gives generic (L/D)max vs Mach from NASA SP-292 (not
+    Concorde-specific).'
+- quantity: wave_drag_efficiency_factor_E_WD_typical_SST
+  value: 1.4-2.0
+  unit: '-'
+  aircraft_variant: generic SST (not Concorde-specific)
+  conditions: null
+  source:
+    title: 'D.P. Raymer, Aircraft Design: A Conceptual Approach, 2nd ed. (AIAA, 1992), local scanned copy /home/user/build-a-d/Raymer - Aircraft Design - A Conceptual Approach.pdf (OCR''d with rapidocr)'
+    url_or_citation: 'D.P. Raymer, Aircraft Design: A Conceptual Approach, 2nd ed. (AIAA, 1992), local scanned copy /home/user/build-a-d/Raymer - Aircraft Design - A Conceptual Approach.pdf (OCR''d with
+      rapidocr)'
+    page_or_section: Sec. 12.x supersonic parasite drag, book p.293 (PDF p.154)
+  source_quality: local_textbook
+  retrieved: '2026-10-04'
+  notes: '''A more typical supersonic fighter, bomber, or SST design has an E_WD of about 1.4-2.0''; very clean blended delta as low as 1.2. Raymer 2nd ed. does not index ''Concorde'' (index pages not in
+    scan; OCR of supersonic-drag pages showed no Concorde data).'
