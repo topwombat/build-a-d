@@ -12,7 +12,6 @@ Cycle variables exposed to the optimizer (brief: "three or four"):
 """
 from __future__ import annotations
 
-import numpy as np
 import openmdao.api as om
 import pycycle.api as pyc
 

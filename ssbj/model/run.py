@@ -16,7 +16,7 @@ from ssbj.specs.schema import load_case
 
 
 def _nominal(p, results) -> dict:
-    g = lambda n, u=None: float(p.get_val(n, units=u)[0]) if u else float(p.get_val(n)[0])  # noqa: E731
+    g = lambda n, u=None: float(p.get_val(n, units=u)[0]) if u else float(p.get_val(n)[0])
     mis = results["mission"].outputs
     cruise = next(l for l in mis["range"]["legs"] if l["kind"] == "cruise")
     return {
@@ -158,8 +158,11 @@ def write_report(out: dict) -> str:
         for k, s in st.items():
             nd = 3 if "margin" in k else 0
             L.append(f"| {k} | " + " | ".join(_fmt(s[f'p{p}'], nd) for p in ("2.5", "16", "50", "84", "97.5")) + " |")
-        if mc.get("infeasible_reasons"):
-            L += ["", "Infeasible samples (examples): " + "; ".join(mc["infeasible_reasons"][:3])]
+        L += ["", mc["note"]]
+        if mc.get("n_infeasible"):
+            L += ["", f"**{mc['n_infeasible']} of {mc['n_samples']} samples could not fly the profile**, by "
+                  "segment: " + ", ".join(f"{k} {v}" for k, v in sorted(mc["infeasible_by_segment"].items())) + ".",
+                  "", "Examples: " + "; ".join(mc["infeasible_reasons"][:3])]
         L += ["", "Error factors sampled (1-sigma, relative):", ""]
         for f in mc["factors"]:
             L.append(f"- `{f['name']}` {f['sigma_rel']:.0%}: {f['basis']}")

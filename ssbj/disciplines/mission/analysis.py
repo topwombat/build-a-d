@@ -120,7 +120,7 @@ class Mission:
     def _takeoff(self, s, w):
         ff = self.deck.max_fuel_flow(0.2, 0.0, reheat=(s.power == "max_reheat"), factors=self.f)
         fuel = s.minutes * 60 * ff
-        return Leg(s.name, "takeoff", fuel, 0.0, s.minutes, w, w - fuel), (0.3, 1500.0)
+        return Leg(s.name, "takeoff", fuel, 0.0, s.minutes, w, w - fuel), (s.end_mach, s.end_altitude_ft)
 
     def _climb(self, s, w, state, margins):
         m0, h0 = state

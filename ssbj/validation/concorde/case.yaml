@@ -6,10 +6,10 @@
 # (range, fuel burn, OEW, cruise SFC, L/D) is an input. Reference values for
 # the comparison live in reference.yaml.
 #
-# Source quality: almost every external figure below is a web-search snippet
-# (the pages themselves were blocked by the session's network policy) or an
-# input from the open-source SUAVE Concorde model. See sources_raw.yaml and
-# GAPS.md. Treat the whole case as provisional until primary sources are read.
+# Source quality: figures were first gathered as web-search snippets, then
+# re-verified on the pages themselves (validation/concorde/VERIFICATION.md,
+# sources_verified.yaml). Geometry still leans on the open-source SUAVE model.
+# The FAA type certificate data sheet and Leyman (1986) remain unread.
 schema_version: 1
 name: concorde
 description: Concorde (Olympus 593 Mk 610), max-fuel range point with 8,845 kg payload and "FAR reserves".
@@ -39,7 +39,7 @@ mission:
   sonic_boom: report
   profile:
     - {segment: taxi, name: taxi_out, minutes: 10.0, thrust_fraction_of_sls_dry: 0.05}
-    - {segment: takeoff, name: takeoff, minutes: 1.5, power: max_reheat}
+    - {segment: takeoff, name: takeoff, minutes: 1.5, power: max_reheat, end_mach: 0.4, end_altitude_ft: 1500.0}
     - {segment: climb, name: subsonic_climb, to_mach: 0.95, to_altitude_ft: 28000.0, power: max_dry}
     - {segment: climb, name: transonic_acceleration, to_mach: 1.7, to_altitude_ft: 43000.0, power: max_reheat}
     - {segment: climb, name: supersonic_climb, to_mach: 2.0, to_altitude_ft: 50000.0, power: max_dry}
@@ -107,7 +107,7 @@ design:
     electrical_kva: 60.0
     avionics_uninstalled_kg: 635.0
     apu_uninstalled_kg: 0.0
-    control_surface_area_m2: 36.0
+    control_surface_area_m2: 42.4
     operator_items_kg: 1500.0
     thrust_reversers: true
 
@@ -116,12 +116,12 @@ provenance:
   mission.payload.mass_per_passenger_kg: "Derived: published payload 8,845 kg (Heritage Concorde, airframe-performance, search snippet) / 100 seats, to match the published range condition."
   mission.payload.cargo_kg: "ASSUMPTION: all payload carried as passengers."
   mission.design_range_nmi: "Heritage Concorde airframe-performance (search snippet): range 3,550 nmi with max fuel, FAR reserves, 8,845 kg payload. Used as the fuel-burn evaluation distance."
-  mission.cruise.mach: "Search snippets (Heritage, Wikipedia, SUAVE) give 2.0-2.04; 2.0 used."
-  mission.cruise.altitude_min_ft: "Search snippets (PPRuNe, flyawaysimulation) ~50,000 ft at start of cruise; weak."
-  mission.cruise.altitude_max_ft: "Heritage snippet: max altitude 60,000 ft."
-  mission.reserves: "ASSUMPTION: 'FAR reserves' interpreted as FAR 121.645-style international reserves (10 % trip contingency, 200 nmi alternate, 30 min hold at 1,500 ft). The regulation text was not read in this session; detail values are assumptions."
+  mission.cruise.mach: "ICAS 1976 p.566 (read): best-range cruise is a cruise climb at M = 2.0 at maximum continuous power."
+  mission.cruise.altitude_min_ft: "McKinlay, Heaton & Franchi, Operational experience on Concorde, ICAS 1976, p.566 (read): North Atlantic cruise starts at 50,000 ft and reaches 57,000 ft by the end."
+  mission.cruise.altitude_max_ft: "ICAS 1976 p.566 and Heritage: maximum authorised altitude 60,000 ft."
+  mission.reserves: "ASSUMPTION: Heritage gives only 'FAR reserves'. 14 CFR 121.645(b) (eCFR, read) requires fuel for 10 % of flight time, then to the most distant named alternate, then 30 min at 1,500 ft. Used here: 10 % of trip fuel (proxy for time), a 200 nmi alternate (not in the rule; no distance published), 30 min hold at 1,500 ft."
   mission.field_length_ft: "Heritage snippet: take-off distance 3,410 m (11,190 ft); reported only."
-  mission.profile: "ASSUMPTION: generic SST profile (subsonic climb, reheat transonic acceleration, supersonic climb, cruise-climb, idle descent); no sourced Concorde schedule was found."
+  mission.profile: "Shape supported by ICAS 1976 (read): climb at Vmo, subsonic cruise M0.95 near 27,000 ft, reheat off at M1.7. Segment end points are ASSUMPTIONS: generic SST profile (take-off allowance 1.5 min at full reheat ending at ~250 kt, M0.4 / 1,500 ft: set after the first run showed a climb from M0.3 infeasible with the no-vortex-lift polar, see decision log; subsonic climb, reheat transonic acceleration, supersonic climb, cruise-climb, idle descent); no sourced Concorde schedule was found."
   design.wing.stations: "SUAVE Concorde.py (commit f551a684) segment planform: LE x and span stations from its quarter-chord sweeps; chords scaled by 0.8848 so the gross area equals the published 358.25 m^2 (Heritage, Wikipedia, SUAVE agree). t/c 3 % root, 2.15 % outboard: Anderson, Introduction to Flight, p.392 (local copy)."
   design.wing.max_thickness_chord_fraction: "ASSUMPTION: parabolic-arc section (max thickness at 50 % chord)."
   design.fuselage.length_m: "SUAVE fuselage.lengths.total and Wikipedia snippet: 61.66 m (Heritage snippet gives 62.10 m overall)."
@@ -135,7 +135,7 @@ provenance:
   design.engine.count: "4 engines (all sources)."
   design.engine.fn_sls_dry_kN: "Wikipedia/Heritage snippets: Olympus 593 Mk 610 dry 139.4 kN."
   design.engine.opr: "Wikipedia/Heritage snippets: overall pressure ratio 15.5."
-  design.engine.t4_max_K: "Matched (ssbj.disciplines.propulsion.match) so the design point swallows the published SLS airflow 186 kg/s (Wikipedia/Heritage snippets) at 139.4 kN dry. Design-definition data, not performance."
+  design.engine.t4_max_K: "Matched (ssbj.disciplines.propulsion.match) so the design point swallows the published airflow 186 kg/s (Wikipedia Olympus 593 page only, condition not stated, taken as SLS) at 139.4 kN dry. Design-definition data, not performance."
   design.engine.t_ab_K: "Matched so SLS full reheat gives the published 169.2 kN (Wikipedia/Heritage snippets)."
   design.engine.comp_eff: "ASSUMPTION: pyCycle example default class value."
   design.engine.turb_eff: "ASSUMPTION: pyCycle example default class value."
@@ -145,7 +145,7 @@ provenance:
   design.weights.max_landing_mass_kg: "111,130 kg: Heritage weights / TCDS (search snippets)."
   design.weights.fuel_capacity_kg: "95,680 kg: Heritage weights page and Wikipedia (snippets). Conflicts with 94,470 kg (Heritage fuel page); see reference.yaml."
   design.weights.limit_load_factor: "SUAVE envelope.limit_load 2.5."
-  design.weights.crew: "concordesst snippet: '100 passengers + 9 crew'."
+  design.weights.crew: "UNVERIFIED: concordesst.com snippet '100 passengers + 9 crew' (page returns 403). Pages read give flight crew 3 (Wikipedia; ICAS 1976 p.569); cabin crew not found."
   design.weights.crew_mass_kg: "ASSUMPTION: 85 kg per crew member with bags."
   design.weights.main_gear_length_m: "ASSUMPTION: not sourced (enters eq. 15.29 with exponent 0.4)."
   design.weights.nose_gear_length_m: "ASSUMPTION: not sourced (eq. 15.30, exponent 0.5)."
@@ -159,6 +159,6 @@ provenance:
   design.weights.electrical_kva: "ASSUMPTION: Raymer p.407 transports typically 40-60 kVA; upper end used."
   design.weights.avionics_uninstalled_kg: "ASSUMPTION: Raymer p.407 typical 800-1,400 lb; upper end (1,400 lb) used."
   design.weights.apu_uninstalled_kg: "ASSUMPTION: no APU modelled."
-  design.weights.control_surface_area_m2: "ASSUMPTION: elevons plus rudder ~10 % of wing area; not sourced (exponents 0.1-0.2)."
+  design.weights.control_surface_area_m2: "Heritage Concorde airframe-dimensions (page read): elevons 32.00 m^2 + rudder 10.40 m^2 (was ASSUMPTION 36 m^2 until page verification, D-016)."
   design.weights.operator_items_kg: "ASSUMPTION: catering, water, manuals for a 100-seat long-range cabin; not sourced (30 % sigma)."
   design.weights.thrust_reversers: "ASSUMPTION: thrust reversers fitted (Raymer Ktr = 1.18)."

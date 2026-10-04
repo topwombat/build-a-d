@@ -1,0 +1,956 @@
+{
+  "$defs": {
+    "Climb": {
+      "additionalProperties": false,
+      "description": "Climb and/or accelerate along a straight line in (Mach, altitude) to the end point.\n\nIntegrated in energy height: each step uses specific excess power at the\nselected power setting. ``power: max_reheat`` is the transonic acceleration.",
+      "properties": {
+        "segment": {
+          "const": "climb",
+          "title": "Segment",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "to_mach": {
+          "exclusiveMinimum": 0,
+          "maximum": 3,
+          "title": "To Mach",
+          "type": "number"
+        },
+        "to_altitude_ft": {
+          "maximum": 70000,
+          "minimum": 0,
+          "title": "To Altitude Ft",
+          "type": "number"
+        },
+        "power": {
+          "enum": [
+            "max_dry",
+            "max_reheat"
+          ],
+          "title": "Power",
+          "type": "string"
+        }
+      },
+      "required": [
+        "segment",
+        "name",
+        "to_mach",
+        "to_altitude_ft",
+        "power"
+      ],
+      "title": "Climb",
+      "type": "object"
+    },
+    "CruiseSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "mach": {
+          "exclusiveMinimum": 0,
+          "maximum": 3,
+          "title": "Mach",
+          "type": "number"
+        },
+        "altitude_min_ft": {
+          "maximum": 70000,
+          "minimum": 0,
+          "title": "Altitude Min Ft",
+          "type": "number"
+        },
+        "altitude_max_ft": {
+          "maximum": 70000,
+          "minimum": 0,
+          "title": "Altitude Max Ft",
+          "type": "number"
+        },
+        "mode": {
+          "default": "cruise_climb",
+          "enum": [
+            "cruise_climb",
+            "constant_altitude"
+          ],
+          "title": "Mode",
+          "type": "string"
+        }
+      },
+      "required": [
+        "mach",
+        "altitude_min_ft",
+        "altitude_max_ft"
+      ],
+      "title": "CruiseSpec",
+      "type": "object"
+    },
+    "Descent": {
+      "additionalProperties": false,
+      "properties": {
+        "segment": {
+          "const": "descent",
+          "title": "Segment",
+          "type": "string"
+        },
+        "name": {
+          "default": "descent",
+          "title": "Name",
+          "type": "string"
+        },
+        "to_altitude_ft": {
+          "default": 0.0,
+          "minimum": 0,
+          "title": "To Altitude Ft",
+          "type": "number"
+        },
+        "to_mach": {
+          "default": 0.3,
+          "exclusiveMinimum": 0,
+          "title": "To Mach",
+          "type": "number"
+        },
+        "lift_to_drag_glide": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "if omitted, the aero polar at idle is used",
+          "title": "Lift To Drag Glide"
+        }
+      },
+      "required": [
+        "segment"
+      ],
+      "title": "Descent",
+      "type": "object"
+    },
+    "Design": {
+      "additionalProperties": false,
+      "properties": {
+        "wing": {
+          "$ref": "#/$defs/Wing"
+        },
+        "fuselage": {
+          "$ref": "#/$defs/Fuselage"
+        },
+        "fin": {
+          "$ref": "#/$defs/FinSpec"
+        },
+        "nacelles": {
+          "$ref": "#/$defs/NacelleSpec"
+        },
+        "engine": {
+          "$ref": "#/$defs/Engine"
+        },
+        "weights": {
+          "$ref": "#/$defs/WeightsInputs"
+        }
+      },
+      "required": [
+        "wing",
+        "fuselage",
+        "fin",
+        "nacelles",
+        "engine",
+        "weights"
+      ],
+      "title": "Design",
+      "type": "object"
+    },
+    "Engine": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "ab_turbojet",
+          "default": "ab_turbojet",
+          "title": "Type",
+          "type": "string"
+        },
+        "count": {
+          "maximum": 8,
+          "minimum": 1,
+          "title": "Count",
+          "type": "integer"
+        },
+        "fn_sls_dry_kN": {
+          "description": "dry SLS thrust per engine at the design point",
+          "exclusiveMinimum": 0,
+          "title": "Fn Sls Dry Kn",
+          "type": "number"
+        },
+        "opr": {
+          "exclusiveMaximum": 60,
+          "exclusiveMinimum": 2,
+          "title": "Opr",
+          "type": "number"
+        },
+        "t4_max_K": {
+          "exclusiveMaximum": 2200,
+          "exclusiveMinimum": 1000,
+          "title": "T4 Max K",
+          "type": "number"
+        },
+        "t_ab_K": {
+          "description": "afterburner exit temperature at full reheat",
+          "exclusiveMaximum": 2400,
+          "exclusiveMinimum": 1200,
+          "title": "T Ab K",
+          "type": "number"
+        },
+        "comp_eff": {
+          "default": 0.85,
+          "exclusiveMaximum": 0.95,
+          "exclusiveMinimum": 0.6,
+          "title": "Comp Eff",
+          "type": "number"
+        },
+        "turb_eff": {
+          "default": 0.88,
+          "exclusiveMaximum": 0.96,
+          "exclusiveMinimum": 0.6,
+          "title": "Turb Eff",
+          "type": "number"
+        },
+        "nozzle_cv": {
+          "default": 0.99,
+          "exclusiveMinimum": 0.9,
+          "maximum": 1.0,
+          "title": "Nozzle Cv",
+          "type": "number"
+        },
+        "customer_bleed_fraction": {
+          "default": 0.0,
+          "exclusiveMaximum": 0.1,
+          "minimum": 0,
+          "title": "Customer Bleed Fraction",
+          "type": "number"
+        }
+      },
+      "required": [
+        "count",
+        "fn_sls_dry_kN",
+        "opr",
+        "t4_max_K",
+        "t_ab_K"
+      ],
+      "title": "Engine",
+      "type": "object"
+    },
+    "FinSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "x_le_root_m": {
+          "title": "X Le Root M",
+          "type": "number"
+        },
+        "root_chord_m": {
+          "exclusiveMinimum": 0,
+          "title": "Root Chord M",
+          "type": "number"
+        },
+        "tip_chord_m": {
+          "minimum": 0,
+          "title": "Tip Chord M",
+          "type": "number"
+        },
+        "height_m": {
+          "exclusiveMinimum": 0,
+          "title": "Height M",
+          "type": "number"
+        },
+        "sweep_le_deg": {
+          "exclusiveMaximum": 85,
+          "minimum": 0,
+          "title": "Sweep Le Deg",
+          "type": "number"
+        },
+        "tc": {
+          "exclusiveMaximum": 0.3,
+          "exclusiveMinimum": 0,
+          "title": "Tc",
+          "type": "number"
+        }
+      },
+      "required": [
+        "x_le_root_m",
+        "root_chord_m",
+        "tip_chord_m",
+        "height_m",
+        "sweep_le_deg",
+        "tc"
+      ],
+      "title": "FinSpec",
+      "type": "object"
+    },
+    "FixedCruise": {
+      "additionalProperties": false,
+      "description": "Cruise a fixed distance at fixed Mach and altitude (e.g. a subsonic overland leg).",
+      "properties": {
+        "segment": {
+          "const": "cruise_fixed",
+          "title": "Segment",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "distance_nmi": {
+          "minimum": 0,
+          "title": "Distance Nmi",
+          "type": "number"
+        },
+        "mach": {
+          "exclusiveMinimum": 0,
+          "maximum": 3,
+          "title": "Mach",
+          "type": "number"
+        },
+        "altitude_ft": {
+          "maximum": 70000,
+          "minimum": 0,
+          "title": "Altitude Ft",
+          "type": "number"
+        }
+      },
+      "required": [
+        "segment",
+        "name",
+        "distance_nmi",
+        "mach",
+        "altitude_ft"
+      ],
+      "title": "FixedCruise",
+      "type": "object"
+    },
+    "Fuselage": {
+      "additionalProperties": false,
+      "properties": {
+        "length_m": {
+          "exclusiveMinimum": 0,
+          "title": "Length M",
+          "type": "number"
+        },
+        "max_diameter_m": {
+          "exclusiveMinimum": 0,
+          "title": "Max Diameter M",
+          "type": "number"
+        },
+        "nose_length_m": {
+          "exclusiveMinimum": 0,
+          "title": "Nose Length M",
+          "type": "number"
+        },
+        "tail_length_m": {
+          "exclusiveMinimum": 0,
+          "title": "Tail Length M",
+          "type": "number"
+        },
+        "tail_end_diameter_m": {
+          "default": 0.0,
+          "minimum": 0,
+          "title": "Tail End Diameter M",
+          "type": "number"
+        },
+        "cabin_pressure_differential_psi": {
+          "exclusiveMinimum": 0,
+          "title": "Cabin Pressure Differential Psi",
+          "type": "number"
+        }
+      },
+      "required": [
+        "length_m",
+        "max_diameter_m",
+        "nose_length_m",
+        "tail_length_m",
+        "cabin_pressure_differential_psi"
+      ],
+      "title": "Fuselage",
+      "type": "object"
+    },
+    "Mission": {
+      "additionalProperties": false,
+      "properties": {
+        "payload": {
+          "$ref": "#/$defs/Payload"
+        },
+        "design_range_nmi": {
+          "description": "trip distance for the fuel-burn evaluation",
+          "exclusiveMinimum": 0,
+          "title": "Design Range Nmi",
+          "type": "number"
+        },
+        "cruise": {
+          "$ref": "#/$defs/CruiseSpec"
+        },
+        "reserves": {
+          "$ref": "#/$defs/Reserves"
+        },
+        "field_length_ft": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "reported in Phase 4; not evaluated yet",
+          "title": "Field Length Ft"
+        },
+        "takeoff_noise": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Takeoff Noise"
+        },
+        "sonic_boom": {
+          "default": "report",
+          "enum": [
+            "report",
+            "constrain"
+          ],
+          "title": "Sonic Boom",
+          "type": "string"
+        },
+        "profile": {
+          "items": {
+            "discriminator": {
+              "mapping": {
+                "climb": "#/$defs/Climb",
+                "cruise": "#/$defs/RangeCruise",
+                "cruise_fixed": "#/$defs/FixedCruise",
+                "descent": "#/$defs/Descent",
+                "takeoff": "#/$defs/Takeoff",
+                "taxi": "#/$defs/Taxi"
+              },
+              "propertyName": "segment"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/$defs/Taxi"
+              },
+              {
+                "$ref": "#/$defs/Takeoff"
+              },
+              {
+                "$ref": "#/$defs/Climb"
+              },
+              {
+                "$ref": "#/$defs/FixedCruise"
+              },
+              {
+                "$ref": "#/$defs/RangeCruise"
+              },
+              {
+                "$ref": "#/$defs/Descent"
+              }
+            ]
+          },
+          "title": "Profile",
+          "type": "array"
+        }
+      },
+      "required": [
+        "payload",
+        "design_range_nmi",
+        "cruise",
+        "reserves",
+        "profile"
+      ],
+      "title": "Mission",
+      "type": "object"
+    },
+    "NacelleSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "y_m": {
+          "description": "starboard nacelle centreline positions",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 1,
+          "title": "Y M",
+          "type": "array"
+        },
+        "x_inlet_m": {
+          "title": "X Inlet M",
+          "type": "number"
+        },
+        "z_m": {
+          "title": "Z M",
+          "type": "number"
+        },
+        "length_m": {
+          "exclusiveMinimum": 0,
+          "title": "Length M",
+          "type": "number"
+        },
+        "width_m": {
+          "exclusiveMinimum": 0,
+          "title": "Width M",
+          "type": "number"
+        },
+        "height_m": {
+          "exclusiveMinimum": 0,
+          "title": "Height M",
+          "type": "number"
+        },
+        "capture_area_m2": {
+          "exclusiveMinimum": 0,
+          "title": "Capture Area M2",
+          "type": "number"
+        }
+      },
+      "required": [
+        "y_m",
+        "x_inlet_m",
+        "z_m",
+        "length_m",
+        "width_m",
+        "height_m",
+        "capture_area_m2"
+      ],
+      "title": "NacelleSpec",
+      "type": "object"
+    },
+    "Payload": {
+      "additionalProperties": false,
+      "properties": {
+        "passengers": {
+          "minimum": 0,
+          "title": "Passengers",
+          "type": "integer"
+        },
+        "mass_per_passenger_kg": {
+          "description": "passenger plus baggage",
+          "exclusiveMinimum": 0,
+          "title": "Mass Per Passenger Kg",
+          "type": "number"
+        },
+        "cargo_kg": {
+          "default": 0.0,
+          "minimum": 0,
+          "title": "Cargo Kg",
+          "type": "number"
+        }
+      },
+      "required": [
+        "passengers",
+        "mass_per_passenger_kg"
+      ],
+      "title": "Payload",
+      "type": "object"
+    },
+    "RangeCruise": {
+      "additionalProperties": false,
+      "description": "The range-filling cruise: constant Mach, cruise-climb within the altitude band.",
+      "properties": {
+        "segment": {
+          "const": "cruise",
+          "title": "Segment",
+          "type": "string"
+        },
+        "name": {
+          "default": "cruise",
+          "title": "Name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "segment"
+      ],
+      "title": "RangeCruise",
+      "type": "object"
+    },
+    "Reserves": {
+      "additionalProperties": false,
+      "properties": {
+        "contingency_fraction_of_trip": {
+          "maximum": 0.5,
+          "minimum": 0,
+          "title": "Contingency Fraction Of Trip",
+          "type": "number"
+        },
+        "diversion_nmi": {
+          "minimum": 0,
+          "title": "Diversion Nmi",
+          "type": "number"
+        },
+        "diversion_mach": {
+          "exclusiveMinimum": 0,
+          "maximum": 1.0,
+          "title": "Diversion Mach",
+          "type": "number"
+        },
+        "diversion_altitude_ft": {
+          "maximum": 45000,
+          "minimum": 0,
+          "title": "Diversion Altitude Ft",
+          "type": "number"
+        },
+        "hold_minutes": {
+          "minimum": 0,
+          "title": "Hold Minutes",
+          "type": "number"
+        },
+        "hold_altitude_ft": {
+          "maximum": 45000,
+          "minimum": 0,
+          "title": "Hold Altitude Ft",
+          "type": "number"
+        },
+        "hold_mach": {
+          "exclusiveMinimum": 0,
+          "maximum": 1.0,
+          "title": "Hold Mach",
+          "type": "number"
+        }
+      },
+      "required": [
+        "contingency_fraction_of_trip",
+        "diversion_nmi",
+        "diversion_mach",
+        "diversion_altitude_ft",
+        "hold_minutes",
+        "hold_altitude_ft",
+        "hold_mach"
+      ],
+      "title": "Reserves",
+      "type": "object"
+    },
+    "Takeoff": {
+      "additionalProperties": false,
+      "description": "Fixed-time allowance covering ground roll, rotation and acceleration to climb speed.\n\nLow-speed aerodynamics (vortex lift, high-lift devices) are Phase 4, so the\nmission starts its energy integration at the end state given here.",
+      "properties": {
+        "segment": {
+          "const": "takeoff",
+          "title": "Segment",
+          "type": "string"
+        },
+        "name": {
+          "default": "takeoff",
+          "title": "Name",
+          "type": "string"
+        },
+        "minutes": {
+          "exclusiveMinimum": 0,
+          "title": "Minutes",
+          "type": "number"
+        },
+        "power": {
+          "default": "max_reheat",
+          "enum": [
+            "max_dry",
+            "max_reheat"
+          ],
+          "title": "Power",
+          "type": "string"
+        },
+        "end_mach": {
+          "default": 0.3,
+          "exclusiveMinimum": 0,
+          "maximum": 0.6,
+          "title": "End Mach",
+          "type": "number"
+        },
+        "end_altitude_ft": {
+          "default": 1500.0,
+          "maximum": 10000,
+          "minimum": 0,
+          "title": "End Altitude Ft",
+          "type": "number"
+        }
+      },
+      "required": [
+        "segment",
+        "minutes"
+      ],
+      "title": "Takeoff",
+      "type": "object"
+    },
+    "Taxi": {
+      "additionalProperties": false,
+      "properties": {
+        "segment": {
+          "const": "taxi",
+          "title": "Segment",
+          "type": "string"
+        },
+        "name": {
+          "default": "taxi",
+          "title": "Name",
+          "type": "string"
+        },
+        "minutes": {
+          "minimum": 0,
+          "title": "Minutes",
+          "type": "number"
+        },
+        "thrust_fraction_of_sls_dry": {
+          "default": 0.05,
+          "exclusiveMinimum": 0,
+          "maximum": 1,
+          "title": "Thrust Fraction Of Sls Dry",
+          "type": "number"
+        }
+      },
+      "required": [
+        "segment",
+        "minutes"
+      ],
+      "title": "Taxi",
+      "type": "object"
+    },
+    "WeightsInputs": {
+      "additionalProperties": false,
+      "properties": {
+        "design_gross_mass_kg": {
+          "description": "MTOW used by the statistical equations",
+          "exclusiveMinimum": 0,
+          "title": "Design Gross Mass Kg",
+          "type": "number"
+        },
+        "max_landing_mass_kg": {
+          "exclusiveMinimum": 0,
+          "title": "Max Landing Mass Kg",
+          "type": "number"
+        },
+        "fuel_capacity_kg": {
+          "exclusiveMinimum": 0,
+          "title": "Fuel Capacity Kg",
+          "type": "number"
+        },
+        "limit_load_factor": {
+          "exclusiveMinimum": 1,
+          "title": "Limit Load Factor",
+          "type": "number"
+        },
+        "crew": {
+          "minimum": 1,
+          "title": "Crew",
+          "type": "integer"
+        },
+        "crew_mass_kg": {
+          "exclusiveMinimum": 0,
+          "title": "Crew Mass Kg",
+          "type": "number"
+        },
+        "main_gear_length_m": {
+          "exclusiveMinimum": 0,
+          "title": "Main Gear Length M",
+          "type": "number"
+        },
+        "nose_gear_length_m": {
+          "exclusiveMinimum": 0,
+          "title": "Nose Gear Length M",
+          "type": "number"
+        },
+        "main_wheels": {
+          "minimum": 1,
+          "title": "Main Wheels",
+          "type": "integer"
+        },
+        "main_struts": {
+          "minimum": 1,
+          "title": "Main Struts",
+          "type": "integer"
+        },
+        "nose_wheels": {
+          "minimum": 1,
+          "title": "Nose Wheels",
+          "type": "integer"
+        },
+        "fuel_tanks": {
+          "minimum": 1,
+          "title": "Fuel Tanks",
+          "type": "integer"
+        },
+        "hydraulic_functions": {
+          "minimum": 1,
+          "title": "Hydraulic Functions",
+          "type": "integer"
+        },
+        "control_functions": {
+          "minimum": 1,
+          "title": "Control Functions",
+          "type": "integer"
+        },
+        "mechanical_functions": {
+          "minimum": 0,
+          "title": "Mechanical Functions",
+          "type": "integer"
+        },
+        "electrical_kva": {
+          "exclusiveMinimum": 0,
+          "title": "Electrical Kva",
+          "type": "number"
+        },
+        "avionics_uninstalled_kg": {
+          "exclusiveMinimum": 0,
+          "title": "Avionics Uninstalled Kg",
+          "type": "number"
+        },
+        "apu_uninstalled_kg": {
+          "minimum": 0,
+          "title": "Apu Uninstalled Kg",
+          "type": "number"
+        },
+        "control_surface_area_m2": {
+          "exclusiveMinimum": 0,
+          "title": "Control Surface Area M2",
+          "type": "number"
+        },
+        "operator_items_kg": {
+          "description": "operational items added to empty weight",
+          "minimum": 0,
+          "title": "Operator Items Kg",
+          "type": "number"
+        },
+        "thrust_reversers": {
+          "default": false,
+          "title": "Thrust Reversers",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "design_gross_mass_kg",
+        "max_landing_mass_kg",
+        "fuel_capacity_kg",
+        "limit_load_factor",
+        "crew",
+        "crew_mass_kg",
+        "main_gear_length_m",
+        "nose_gear_length_m",
+        "main_wheels",
+        "main_struts",
+        "nose_wheels",
+        "fuel_tanks",
+        "hydraulic_functions",
+        "control_functions",
+        "mechanical_functions",
+        "electrical_kva",
+        "avionics_uninstalled_kg",
+        "apu_uninstalled_kg",
+        "control_surface_area_m2",
+        "operator_items_kg"
+      ],
+      "title": "WeightsInputs",
+      "type": "object"
+    },
+    "Wing": {
+      "additionalProperties": false,
+      "properties": {
+        "stations": {
+          "items": {
+            "$ref": "#/$defs/WingStation"
+          },
+          "minItems": 2,
+          "title": "Stations",
+          "type": "array"
+        },
+        "max_thickness_chord_fraction": {
+          "default": 0.5,
+          "exclusiveMaximum": 0.9,
+          "exclusiveMinimum": 0.1,
+          "title": "Max Thickness Chord Fraction",
+          "type": "number"
+        }
+      },
+      "required": [
+        "stations"
+      ],
+      "title": "Wing",
+      "type": "object"
+    },
+    "WingStation": {
+      "additionalProperties": false,
+      "properties": {
+        "y_m": {
+          "minimum": 0,
+          "title": "Y M",
+          "type": "number"
+        },
+        "x_le_m": {
+          "title": "X Le M",
+          "type": "number"
+        },
+        "chord_m": {
+          "minimum": 0,
+          "title": "Chord M",
+          "type": "number"
+        },
+        "tc": {
+          "exclusiveMaximum": 0.3,
+          "exclusiveMinimum": 0,
+          "title": "Tc",
+          "type": "number"
+        }
+      },
+      "required": [
+        "y_m",
+        "x_le_m",
+        "chord_m",
+        "tc"
+      ],
+      "title": "WingStation",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "name": {
+      "title": "Name",
+      "type": "string"
+    },
+    "description": {
+      "default": "",
+      "title": "Description",
+      "type": "string"
+    },
+    "validation_case": {
+      "default": false,
+      "title": "Validation Case",
+      "type": "boolean"
+    },
+    "mission": {
+      "$ref": "#/$defs/Mission"
+    },
+    "design": {
+      "$ref": "#/$defs/Design"
+    },
+    "provenance": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "title": "Provenance",
+      "type": "object"
+    }
+  },
+  "required": [
+    "name",
+    "mission",
+    "design"
+  ],
+  "title": "Case",
+  "type": "object"
+}

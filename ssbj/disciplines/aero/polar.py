@@ -6,7 +6,11 @@ interpolated by the mission analysis.
 """
 from __future__ import annotations
 
+import hashlib
+import json
+import os
 from dataclasses import dataclass
+from pathlib import Path
 
 import numpy as np
 from scipy.interpolate import RegularGridInterpolator
@@ -84,7 +88,8 @@ class AeroPolar:
         wave = np.interp(mach, self.mach, self.cd_wave)
         wf = np.where(mach >= 1.2, f("aero.wave"), f("aero.wave_transonic"))
         k = np.interp(mach, self.mach, self.k) * f("aero.K")
-        return cf + misc + wave * wf + k * np.asarray(cl) ** 2
+        out = cf + misc + wave * wf + k * np.asarray(cl) ** 2
+        return float(np.squeeze(out)) if np.ndim(mach) == 0 else out
 
     def breakdown(self, mach, alt_ft, cl):
         cf = float(self._f([[mach, alt_ft]])[0])
@@ -137,12 +142,31 @@ def _friction_table(ac) -> np.ndarray:
     return out
 
 
+CACHE_DIR = Path(os.environ.get("SSBJ_WAVE_CACHE", Path(__file__).parent / "wave_cache"))
+
+
+def _cached_wave(ac, machs) -> np.ndarray:
+    """Harris wave drag (CD on s_ref) at ``machs``, cached on disk by geometry and source hash."""
+    src = b"".join((Path(__file__).parent / f).read_bytes()
+                   for f in ("wave_drag.py",)) + (Path(__file__).parents[2] / "geometry" / "parametric.py").read_bytes()
+    key = hashlib.sha256(json.dumps({"design": ac.design.model_dump(exclude={"engine", "weights"}),
+                                     "mach": list(map(float, machs)),
+                                     "src": hashlib.sha256(src).hexdigest()}, sort_keys=True).encode()).hexdigest()[:16]
+    path = CACHE_DIR / f"wave_{key}.json"
+    if path.exists():
+        return np.array(json.loads(path.read_text())["cd_wave"])
+    cd = np.array([harris_wave_drag(ac, m)["D_q"] / ac.s_ref for m in machs])
+    CACHE_DIR.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps({"mach": list(map(float, machs)), "cd_wave": cd.tolist()}))
+    return cd
+
+
 def build_polar(ac) -> DisciplineResult:
     validity = Validity("aerodynamics", list(LIMITS))
     cd0f = _friction_table(ac)
 
     sup = MACH_GRID[MACH_GRID >= M_HARRIS_MIN]
-    wave_sup = np.array([harris_wave_drag(ac, m)["D_q"] / ac.s_ref for m in sup])
+    wave_sup = _cached_wave(ac, sup)
     # transonic fairing: cubic Hermite from (M_WAVE_START, 0, slope 0) to the first Harris point
     m1, w1 = sup[0], wave_sup[0]
     slope1 = (wave_sup[1] - wave_sup[0]) / (sup[1] - sup[0])

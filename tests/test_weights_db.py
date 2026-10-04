@@ -33,9 +33,8 @@ def test_run_db_records_success_and_failure(tmp_path):
     db = RunDB(tmp_path)
     with db.record("c", "unit", {"a": 1}, "h", {"git_sha": "x"}) as run:
         run["outputs"] = {"y": 2}
-    with pytest.raises(RuntimeError):
-        with db.record("c", "unit", {"a": 2}, "h2", {"git_sha": "x"}):
-            raise RuntimeError("boom")
+    with pytest.raises(RuntimeError), db.record("c", "unit", {"a": 2}, "h2", {"git_sha": "x"}):
+        raise RuntimeError("boom")
     rows = db.list("c")
     assert [r["status"] for r in rows] == ["ok", "failed"]
     got = db.get(rows[0]["run_id"])

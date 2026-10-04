@@ -2,8 +2,12 @@
 import numpy as np
 import pytest
 
-from ssbj.disciplines.aero.wave_drag import (harris_wave_drag, sears_haack_area, sears_haack_drag,
-                                             slender_body_drag)
+from ssbj.disciplines.aero.wave_drag import (
+    harris_wave_drag,
+    sears_haack_area,
+    sears_haack_drag,
+    slender_body_drag,
+)
 
 
 @pytest.mark.parametrize("length,a_max", [(10.0, 1.0), (61.66, 7.5), (30.0, 0.3)])

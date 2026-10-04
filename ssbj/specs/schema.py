@@ -16,7 +16,7 @@ The JSON schema is exported to ``ssbj/specs/case.schema.json`` by
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Annotated, Literal, Union
+from typing import Annotated, Literal
 
 import yaml
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
@@ -45,10 +45,18 @@ class Taxi(_M):
 
 
 class Takeoff(_M):
+    """Fixed-time allowance covering ground roll, rotation and acceleration to climb speed.
+
+    Low-speed aerodynamics (vortex lift, high-lift devices) are Phase 4, so the
+    mission starts its energy integration at the end state given here.
+    """
+
     segment: Literal["takeoff"]
     name: str = "takeoff"
     minutes: float = Field(gt=0)
     power: Literal["max_dry", "max_reheat"] = "max_reheat"
+    end_mach: float = Field(0.3, gt=0, le=0.6)
+    end_altitude_ft: float = Field(1500.0, ge=0, le=10000)
 
 
 class Climb(_M):
@@ -91,7 +99,7 @@ class Descent(_M):
         None, gt=0, description="if omitted, the aero polar at idle is used")
 
 
-Segment = Annotated[Union[Taxi, Takeoff, Climb, FixedCruise, RangeCruise, Descent], Field(discriminator="segment")]
+Segment = Annotated[Taxi | Takeoff | Climb | FixedCruise | RangeCruise | Descent, Field(discriminator="segment")]
 
 
 class CruiseSpec(_M):

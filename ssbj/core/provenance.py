@@ -40,7 +40,7 @@ def _lib_versions() -> dict:
         except Exception:
             out[name] = None
     try:
-        import openvsp  # noqa: F401
+        import openvsp
 
         out["openvsp"] = openvsp.GetVSPVersion()
     except Exception:

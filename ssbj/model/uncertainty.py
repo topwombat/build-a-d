@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import multiprocessing as mp
 import os
+from collections import Counter
 
 import numpy as np
 
@@ -89,7 +90,10 @@ def monte_carlo(case, results: dict, aircraft, n: int = 200, seed: int = 2026100
     return {
         "n_samples": n, "n_ok": len(ok), "n_infeasible": n - len(ok), "seed": seed,
         "infeasible_reasons": sorted({r["reason"] for r in rows if not r["ok"]})[:10],
+        "infeasible_by_segment": dict(Counter(r["reason"].split(":")[0] for r in rows if not r["ok"])),
         "factors": [u.__dict__ for u in uncs],
         "stats": stats,
-        "note": "Independent factors (plus declared shared factors); 95 % interval = p2.5-p97.5.",
+        "note": ("Independent factors (plus declared shared factors); 95 % interval = p2.5-p97.5. "
+                 "Percentiles are over the feasible samples only, i.e. conditional on the modelled "
+                 "aircraft being able to fly the profile; the infeasible fraction is part of the result."),
     }

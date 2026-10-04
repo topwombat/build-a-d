@@ -89,8 +89,13 @@ def in_envelope(mach: float, alt_ft: float) -> bool:
 
 
 def _cycle_source_hash() -> str:
-    src = (Path(__file__).parent / "cycle.py").read_bytes() + Path(__file__).read_bytes()
-    return hashlib.sha256(src).hexdigest()[:12]
+    """Hash of everything that determines generated deck values (not the query code)."""
+    import inspect
+
+    parts = [(Path(__file__).parent / "cycle.py").read_text()]
+    parts += [inspect.getsource(f) for f in (ram_recovery, in_envelope, _new_problem, _solve_row)]
+    parts.append(repr((MACH.tolist(), ALT_FT.tolist(), T4_FRACS.tolist(), Q_MAX_PA)))
+    return hashlib.sha256("".join(parts).encode()).hexdigest()[:12]
 
 
 def deck_key(engine) -> str:
@@ -270,13 +275,15 @@ class EngineDeck:
     fn: np.ndarray  # (n_mach, n_alt, n_set) N per engine; last setting is full reheat
     ff: np.ndarray  # kg/s per engine
     count: int
-    filled: np.ndarray  # bool mask of points filled from neighbours
+    filled: np.ndarray  # in-envelope points that failed to converge, filled from neighbours
+    outside: np.ndarray  # points outside the solved envelope, extrapolated (should not be queried)
 
     @classmethod
     def from_raw(cls, raw: dict, count: int):
         fn = np.array(raw["fn_N"], dtype=float)
         ff = np.array(raw["ff_kg_s"], dtype=float)
         filled = ~np.isfinite(fn)
+        envelope = np.array([[in_envelope(m, h) for h in ALT_FT] for m in MACH])
         for i in range(fn.shape[0]):
             for k in range(fn.shape[2]):
                 good = np.isfinite(fn[i, :, k])
@@ -291,7 +298,7 @@ class EngineDeck:
                     pr = atmosphere(ALT_FT[j] * FT)[1] / atmosphere(ALT_FT[jj] * FT)[1]
                     fn[i, j, k] = fn[i, jj, k] * pr
                     ff[i, j, k] = ff[i, jj, k] * pr
-        return cls(fn, ff, count, filled)
+        return cls(fn, ff, count, filled & envelope[:, :, None], filled & ~envelope[:, :, None])
 
     def _bilinear(self, arr, mach, alt_ft):
         im = int(np.clip(np.searchsorted(MACH, mach) - 1, 0, len(MACH) - 2))
@@ -342,8 +349,9 @@ def build_engine(engine, processes: int | None = None) -> DisciplineResult:
     deck = EngineDeck.from_raw(raw, engine.count)
     validity = Validity("propulsion", list(LIMITS))
     n_fill = int(deck.filled.sum())
+    n_in = int(deck.filled.size - deck.outside.sum())
     if n_fill:
-        validity.warn(f"{n_fill} of {deck.filled.size} deck points did not converge and were filled "
+        validity.warn(f"{n_fill} of {n_in} in-envelope deck points did not converge and were filled "
                       "from the nearest converged altitude (pressure-ratio scaling)")
     fn_sls_dry = float(deck.fn[0, 0, 0])
     fn_sls_wet = float(deck.fn[0, 0, -1])

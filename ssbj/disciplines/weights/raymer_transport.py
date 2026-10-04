@@ -29,7 +29,7 @@ STRUCTURE = ("wing", "vertical_tail", "fuselage", "main_gear", "nose_gear", "nac
 # judgment values fixed before the Concorde comparison was run (see decision log).
 SIGMA = {
     "wing": 0.25, "vertical_tail": 0.25, "fuselage": 0.20, "main_gear": 0.15, "nose_gear": 0.15,
-    "nacelle_group": 0.30, "engines": 0.30, "engine_controls": 0.30, "starter": 0.30,
+    "nacelle_group": 0.30, "engine_controls": 0.30, "starter": 0.30,
     "fuel_system": 0.30, "flight_controls": 0.25, "apu": 0.20, "instruments": 0.25,
     "hydraulics": 0.30, "electrical": 0.25, "avionics": 0.20, "furnishings": 0.25,
     "passenger_furnishings": 0.25, "air_conditioning": 0.25, "anti_ice": 0.40,
@@ -39,6 +39,8 @@ CLASS_SIGMA = 0.10
 
 UNCERTAINTIES = [Uncertainty(f"weights.{k}", v, "Judgment; Raymer gives no scatter statistics.", k)
                  for k, v in SIGMA.items()] + [
+    # engine dry weight carries prop.weight (declared by the propulsion module)
+
     Uncertainty("weights.class_structure", CLASS_SIGMA,
                 "Correlated error on all structure groups: subsonic-transport regression applied to a "
                 "supersonic slender-delta transport (Raymer §15.4).", "all structure groups")]

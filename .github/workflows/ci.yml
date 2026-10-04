@@ -1,0 +1,49 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    # Unit tests + the Concorde acceptance test. OpenVSP cross-check tests skip here (no OpenVSP);
+    # they run in the image job below.
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install pinned dependencies
+        run: |
+          pip install -r requirements.lock
+          pip install --no-deps -e .
+      - name: Lint
+        run: ruff check ssbj tests
+      - name: Docs and schema in sync
+        run: pytest -q tests/test_docs.py
+      - name: Tests (unit + Concorde validation)
+        run: pytest -q
+
+  image:
+    # Builds the pinned container (includes OpenVSP 3.49 from source, ~15 min) and runs the full
+    # suite inside it, including the OpenVSP cross-checks.
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - name: Build image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          load: true
+          tags: ssbj:ci
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+      - name: Test in image
+        run: docker run --rm ssbj:ci python -m pytest -q

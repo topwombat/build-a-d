@@ -21,6 +21,8 @@ def main(argv: list[str] | None = None) -> int:
     s.add_argument("--out", type=Path, default=Path(__file__).parent / "specs" / "case.schema.json")
     v = sub.add_parser("validate", help="validate a case file without running it")
     v.add_argument("case", type=Path)
+    lim = sub.add_parser("limits", help="write the known-limits register from the modules")
+    lim.add_argument("--out", type=Path, default=Path(__file__).parent / "docs" / "known_limits.md")
     ls = sub.add_parser("runs", help="list recorded runs")
     ls.add_argument("--case", default=None)
     ls.add_argument("--runs-dir", type=Path, default=None)
@@ -43,6 +45,11 @@ def main(argv: list[str] | None = None) -> int:
             print("geometry failures:\n  " + "\n  ".join(e.failures))
             return 2
         print(f"{c.name}: valid; geometry warnings: {ac.checks or 'none'}")
+    elif a.cmd == "limits":
+        from ssbj.docs.register import render
+
+        a.out.write_text(render())
+        print(f"wrote {a.out}")
     elif a.cmd == "runs":
         from ssbj.runs.db import RunDB
 

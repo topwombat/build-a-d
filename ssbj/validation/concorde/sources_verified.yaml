@@ -1,0 +1,1474 @@
+# Concorde reference data -- VERIFIED against pages actually fetched on 2026-10-04.
+# Companion to sources_raw.yaml (search snippets). One entry per checked quantity/source.
+# source_quality: page_read (HTML page fetched and read) | pdf_read (PDF fetched and read; ICAS 1976 is a scan read
+#   visually, quotes transcribed) | not_found_on_page (figure absent from the page, or page could not be fetched -- see notes).
+# quote: exact text as extracted from the page (HTML tags stripped, whitespace collapsed; some Heritage tables run cells
+#   together and are quoted as extracted). Arithmetic in notes is labelled as such; nothing is filled from memory.
+# Not reachable this session: concordesst.com (403), web.archive.org (connection reset), drs.faa.gov document API (403),
+#   pprune.org (403), airliners.net, core.ac.uk (egress blocked); Leyman 1986 (Prog. Aerosp. Sci. 23:185-238) paywalled.
+- quantity: length_overall
+  value: 62.1
+  unit: m
+  conditions: production aircraft
+  source:
+    title: Heritage Concorde - Airframe Dimensions
+    url: https://www.heritageconcorde.com/airframe-dimensions
+    page_or_section: Production Airframe Dimensions
+  quote: Length overall 62.10 m (203 ft 9 in)
+  source_quality: page_read
+  previous_snippet_value: 62.1
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: length_overall
+  value: 61.66
+  unit: m
+  conditions: production aircraft
+  source:
+    title: Wikipedia - Concorde
+    url: https://en.wikipedia.org/wiki/Concorde
+    page_or_section: Specifications - General characteristics
+  quote: 'Length: 202 ft 4 in (61.66 m)'
+  source_quality: page_read
+  previous_snippet_value: 61.66
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: 'Wikipedia spec block: "Data from The Wall Street Journal,[235] The Concorde Story,[236] The International Directory of Civil
+    Aircraft,[73] Aerospatiale/BAC Concorde 1969 Onwards (All Models)[237]". Case uses 61.66 m as fuselage length; Heritage 62.10 m
+    is overall length. Conflict kept.'
+- quantity: wing_span
+  value: 25.56
+  unit: m
+  conditions: production aircraft
+  source:
+    title: Heritage Concorde - Airframe Dimensions
+    url: https://www.heritageconcorde.com/airframe-dimensions
+    page_or_section: Production Airframe Dimensions
+  quote: Wing span 25.56 m (83 ft 10 in)
+  source_quality: page_read
+  previous_snippet_value: 25.56
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: wing_span
+  value: 25.6
+  unit: m
+  conditions: null
+  source:
+    title: Wikipedia - Concorde
+    url: https://en.wikipedia.org/wiki/Concorde
+    page_or_section: Specifications
+  quote: 'Wingspan: 84 ft 0 in (25.6 m)'
+  source_quality: page_read
+  previous_snippet_value: 25.6
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: height_overall
+  value: 11.4
+  unit: m
+  conditions: production aircraft
+  source:
+    title: Heritage Concorde - Airframe Dimensions
+    url: https://www.heritageconcorde.com/airframe-dimensions
+    page_or_section: Production Airframe Dimensions
+  quote: Height overall 11.40 m (37 ft 5 in)
+  source_quality: page_read
+  previous_snippet_value: 11.4
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: height_overall
+  value: 12.2
+  unit: m
+  conditions: null
+  source:
+    title: Wikipedia - Concorde
+    url: https://en.wikipedia.org/wiki/Concorde
+    page_or_section: Specifications
+  quote: 'Height: 40 ft 0 in (12.2 m)'
+  source_quality: page_read
+  previous_snippet_value: 12.2
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: Conflicts with Heritage 11.40 m; not a model input.
+- quantity: wing_reference_area_gross
+  value: 358.25
+  unit: m^2
+  conditions: null
+  source:
+    title: Heritage Concorde - Airframe Dimensions
+    url: https://www.heritageconcorde.com/airframe-dimensions
+    page_or_section: Production Airframe Dimensions - Areas
+  quote: Wings, gross 358.25 m2 (3,856 sq ft)
+  source_quality: page_read
+  previous_snippet_value: 358.25
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: wing_reference_area_gross
+  value: 358.25
+  unit: m^2
+  conditions: null
+  source:
+    title: Wikipedia - Concorde
+    url: https://en.wikipedia.org/wiki/Concorde
+    page_or_section: Specifications
+  quote: 'Wing area: 3,856.2 sq ft (358.25 m2)'
+  source_quality: page_read
+  previous_snippet_value: 358.25
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: wing_aspect_ratio
+  value: 1.7
+  unit: '-'
+  conditions: null
+  source:
+    title: Heritage Concorde - Airframe Dimensions
+    url: https://www.heritageconcorde.com/airframe-dimensions
+    page_or_section: Production Airframe Dimensions
+  quote: Wing aspect ratio 1.7
+  source_quality: page_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: Not previously captured from a page. 25.56^2/358.25 = 1.82 (arithmetic); the page value 1.7 is as printed.
+- quantity: wing_reference_chord_at_root
+  value: 27.66
+  unit: m
+  conditions: aerodynamic reference chord (definition not given)
+  source:
+    title: Heritage Concorde - Airframe Dimensions
+    url: https://www.heritageconcorde.com/airframe-dimensions
+    page_or_section: Production Airframe Dimensions
+  quote: Wing aerodynamic reference chord at root 27.66 m (90 ft 9 in)
+  source_quality: page_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: case.yaml root station chord is 29.907 m at y=0 (SUAVE-derived, scaled to area). Different definitions possible (centreline
+    vs side-of-body reference chord); flagged for information.
+- quantity: fin_area_excluding_dorsal
+  value: 33.91
+  unit: m^2
+  conditions: null
+  source:
+    title: Heritage Concorde - Airframe Dimensions
+    url: https://www.heritageconcorde.com/airframe-dimensions
+    page_or_section: Production Airframe Dimensions - Areas
+  quote: Fin (excl dorsal fin) 33.91 m2 (365 sq ft)
+  source_quality: page_read
+  previous_snippet_value: 33.91
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: fin_reference_chord_at_base
+  value: 10.59
+  unit: m
+  conditions: aerodynamic reference chord at base
+  source:
+    title: Heritage Concorde - Airframe Dimensions
+    url: https://www.heritageconcorde.com/airframe-dimensions
+    page_or_section: Production Airframe Dimensions
+  quote: Fin aerodynamic reference chord at base 10.59 m (34 ft 9 in)
+  source_quality: page_read
+  previous_snippet_value: 10.59
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: elevon_area_total
+  value: 32.0
+  unit: m^2
+  conditions: null
+  source:
+    title: Heritage Concorde - Airframe Dimensions
+    url: https://www.heritageconcorde.com/airframe-dimensions
+    page_or_section: Production Airframe Dimensions - Areas
+  quote: Elevons (total) 32.00 m2 (344.44 sq ft)
+  source_quality: page_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: New. case.yaml control_surface_area_m2 = 36.0 is an ASSUMPTION; page gives elevons 32.00 + rudder 10.40 = 42.40 m2 (sum is
+    arithmetic).
+- quantity: rudder_area
+  value: 10.4
+  unit: m^2
+  conditions: null
+  source:
+    title: Heritage Concorde - Airframe Dimensions
+    url: https://www.heritageconcorde.com/airframe-dimensions
+    page_or_section: Production Airframe Dimensions - Areas
+  quote: Rudder 10.40 m2 (112 sq ft)
+  source_quality: page_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: New; see elevon_area_total.
+- quantity: fuselage_max_external_width
+  value: 2.88
+  unit: m
+  conditions: null
+  source:
+    title: Heritage Concorde - Airframe Dimensions
+    url: https://www.heritageconcorde.com/airframe-dimensions
+    page_or_section: Prototype and Pre-production sections (no production fuselage width line)
+  quote: FUSELAGE MAX EXTERNAL WIDTH – 2.88M (9’5”)
+  source_quality: page_read
+  previous_snippet_value: 2.88
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: On the page this line appears only under the prototype and pre-production headings.
+- quantity: fuselage_max_external_width
+  value: 2.87
+  unit: m
+  conditions: null
+  source:
+    title: Wikipedia - Concorde
+    url: https://en.wikipedia.org/wiki/Concorde
+    page_or_section: Specifications
+  quote: 'Fuselage width: maximum of 9 ft 5 in (2.87 m) external, 8 ft 7 in (2.62 m) internal'
+  source_quality: page_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: fuselage_max_external_height
+  value: 3.3
+  unit: m
+  conditions: null
+  source:
+    title: Wikipedia - Concorde
+    url: https://en.wikipedia.org/wiki/Concorde
+    page_or_section: Specifications
+  quote: 'Fuselage height: maximum of 10 ft 10 in (3.30 m) external, 6 ft 5 in (1.96 m) internal'
+  source_quality: page_read
+  previous_snippet_value: 1.96
+  agrees_with_snippet: false
+  retrieved: '2026-10-04'
+  notes: Previous snippet value 1.96 m (Heritage) is printed on the Heritage page ("FUSELAGE MAX EXTERNAL HEIGHT – 1.96M (77”)") under
+    prototype headings but equals cabin internal height; Wikipedia gives 3.30 m external. Equal-area circle of a 2.87 x 3.30 m ellipse
+    = 3.08 m (arithmetic), consistent with case max_diameter_m 3.1 (SUAVE).
+- quantity: cabin_width
+  value: 2.63
+  unit: m
+  conditions: null
+  source:
+    title: Heritage Concorde - Airframe Dimensions
+    url: https://www.heritageconcorde.com/airframe-dimensions
+    page_or_section: Dimensions, Internal
+  quote: Width 2.63 m (8 ft 71/2 in) Height 1.96 m (6 ft 5 in)
+  source_quality: page_read
+  previous_snippet_value: 2.63
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: cabin_length
+  value: 39.32
+  unit: m
+  conditions: flight deck door to rear pressure bulkhead, incl galley and toilets
+  source:
+    title: Heritage Concorde - Airframe Dimensions
+    url: https://www.heritageconcorde.com/airframe-dimensions
+    page_or_section: Dimensions, Internal
+  quote: Length, flight deck door to rear pressure bulkhead, incl galley and toilets 39.32 m (129 ft 0 in)
+  source_quality: page_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: MTOW
+  value: 185065
+  unit: kg
+  conditions: 408,000 lb
+  source:
+    title: Heritage Concorde - Airframe Weights and loadings
+    url: https://www.heritageconcorde.com/airframe-weights-and-loadings
+    page_or_section: Airframe Weights and loadings
+  quote: Max T-O weight 185,065 kg (408,000 lb)
+  source_quality: page_read
+  previous_snippet_value: 185065
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: case.yaml uses 185,070 kg (Wikipedia rounding of 408,010 lb). 5 kg difference, immaterial; both from 408,000 lb.
+- quantity: MTOW
+  value: 185070
+  unit: kg
+  conditions: null
+  source:
+    title: Wikipedia - Concorde
+    url: https://en.wikipedia.org/wiki/Concorde
+    page_or_section: Specifications
+  quote: 'Max takeoff weight: 408,010 lb (185,070 kg)'
+  source_quality: page_read
+  previous_snippet_value: 185070
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: MTOW
+  value: 185065
+  unit: kg
+  conditions: null
+  source:
+    title: Aerospaceweb.org - Concorde aircraft data
+    url: https://aerospaceweb.org/aircraft/jetliner/concorde/
+    page_or_section: Weights table
+  quote: 408,000 lb (185,065 kg)
+  source_quality: page_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: MTOW_FAA_TCDS
+  value: null
+  unit: kg
+  conditions: FAA TCDS A45EU
+  source:
+    title: Wikipedia - Concorde
+    url: https://en.wikipedia.org/wiki/Concorde
+    page_or_section: n/a
+  quote: null
+  source_quality: not_found_on_page
+  previous_snippet_value: 185070
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: 'FAA TCDS A45EU NOT read: concordesst.com returns 403, web.archive.org connections reset, drs.faa.gov document API returns
+    403 to unauthenticated requests. TCDS-attributed values in sources_raw.yaml remain search_snippet.'
+- quantity: max_taxi_weight
+  value: 186880
+  unit: kg
+  conditions: null
+  source:
+    title: Heritage Concorde - Airframe Weights and loadings
+    url: https://www.heritageconcorde.com/airframe-weights-and-loadings
+    page_or_section: Airframe Weights and loadings
+  quote: Max taxing Weight – 412,000 lbs (186,880 kgs)
+  source_quality: page_read
+  previous_snippet_value: 186880
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: max_taxi_weight
+  value: 187000
+  unit: kg
+  conditions: null
+  source:
+    title: Wikipedia - Concorde
+    url: https://en.wikipedia.org/wiki/Concorde
+    page_or_section: Specifications
+  quote: 'Maximum taxiing weight: 412,000 lb (187,000 kg)'
+  source_quality: page_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: max_landing_weight
+  value: 111130
+  unit: kg
+  conditions: null
+  source:
+    title: Heritage Concorde - Airframe Weights and loadings
+    url: https://www.heritageconcorde.com/airframe-weights-and-loadings
+    page_or_section: Airframe Weights and loadings
+  quote: Max landing weight 111,130 kg (245,000 lb)
+  source_quality: page_read
+  previous_snippet_value: 111130
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: max_landing_weight
+  value: 111130
+  unit: kg
+  conditions: labelled "Gross weight" on Wikipedia
+  source:
+    title: Wikipedia - Concorde
+    url: https://en.wikipedia.org/wiki/Concorde
+    page_or_section: Specifications
+  quote: 'Gross weight: 245,000 lb (111,130 kg)'
+  source_quality: page_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: Wikipedia labels the 245,000 lb figure "Gross weight"; Heritage labels it max landing weight.
+- quantity: MZFW
+  value: 92080
+  unit: kg
+  conditions: null
+  source:
+    title: Heritage Concorde - Airframe Weights and loadings
+    url: https://www.heritageconcorde.com/airframe-weights-and-loadings
+    page_or_section: Airframe Weights and loadings
+  quote: Max zero-fuel weight 92,080 kg (203,000 lb)
+  source_quality: page_read
+  previous_snippet_value: 92080
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: OEW
+  value: 78700
+  unit: kg
+  conditions: null
+  source:
+    title: Heritage Concorde - Airframe Weights and loadings
+    url: https://www.heritageconcorde.com/airframe-weights-and-loadings
+    page_or_section: Airframe Weights and loadings
+  quote: Operating weight empty 78,700 kg (173,500 lb)
+  source_quality: page_read
+  previous_snippet_value: 78700
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: 'Also: "Operating Weight Empty – 173,500 lbs (78,700 kgs)". Airline (BA/AF) specific OEW not found.'
+- quantity: OEW
+  value: 78700
+  unit: kg
+  conditions: labelled "Empty weight"
+  source:
+    title: Wikipedia - Concorde
+    url: https://en.wikipedia.org/wiki/Concorde
+    page_or_section: Specifications
+  quote: 'Empty weight: 173,504 lb (78,700 kg)'
+  source_quality: page_read
+  previous_snippet_value: 78700
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: Wikipedia label is "Empty weight", not OEW.
+- quantity: max_payload
+  value: 13380
+  unit: kg
+  conditions: null
+  source:
+    title: Heritage Concorde - Airframe Weights and loadings
+    url: https://www.heritageconcorde.com/airframe-weights-and-loadings
+    page_or_section: Airframe Weights and loadings
+  quote: Max Payload – 29,500 lbs (13,380 kgs
+  source_quality: page_read
+  previous_snippet_value: 13380
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: 'Same page also gives a second, different value: see next entry. MZFW - OEW = 13,380 (arithmetic).'
+- quantity: max_payload
+  value: 12700
+  unit: kg
+  conditions: null
+  source:
+    title: Heritage Concorde - Airframe Weights and loadings
+    url: https://www.heritageconcorde.com/airframe-weights-and-loadings
+    page_or_section: Airframe Weights and loadings
+  quote: Max payload 12,700 kg (28,000 lb)
+  source_quality: page_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: CONFLICT on the same page with 13,380 kg.
+- quantity: typical_payload
+  value: 11340
+  unit: kg
+  conditions: null
+  source:
+    title: Heritage Concorde - Airframe Weights and loadings
+    url: https://www.heritageconcorde.com/airframe-weights-and-loadings
+    page_or_section: Airframe Weights and loadings
+  quote: Typical payload 11,340 kg (25,000 lb)
+  source_quality: page_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: fuel_capacity_mass
+  value: 95680
+  unit: kg
+  conditions: '"26,400 gallons" (gallon type not stated)'
+  source:
+    title: Heritage Concorde - Airframe Weights and loadings
+    url: https://www.heritageconcorde.com/airframe-weights-and-loadings
+    page_or_section: Airframe Weights and loadings
+  quote: Max Weight of Fuel – 26,400 gallons <=>95,680 kgs
+  source_quality: page_read
+  previous_snippet_value: 95680
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: 95,680 kg / 26,400 imp gal (120,016 L) = 0.797 kg/L; per US gal it would be 0.957 kg/L, so the gallons are evidently imperial
+    (arithmetic, not stated on page).
+- quantity: fuel_capacity_mass
+  value: 95680
+  unit: kg
+  conditions: null
+  source:
+    title: Wikipedia - Concorde
+    url: https://en.wikipedia.org/wiki/Concorde
+    page_or_section: Specifications
+  quote: 'Fuel capacity: 210,940 lb (95,680 kg); 119,600 L (26,300 imp gal; 31,600 US gal)'
+  source_quality: page_read
+  previous_snippet_value: 95680
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: Implied density 0.800 kg/L (arithmetic).
+- quantity: fuel_capacity_mass
+  value: 94470
+  unit: kg
+  conditions: 13 tanks, 119,280 litres
+  source:
+    title: Heritage Concorde - Concorde fuel additives (page also holds the FUEL TANK CAPACITY table)
+    url: https://www.heritageconcorde.com/fuel-addcap
+    page_or_section: FUEL TANK CAPACITY table
+  quote: TOTALS13 TANKS119 ,280 94,470
+  source_quality: page_read
+  previous_snippet_value: 94470
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: Quote is the text as extracted (table cells run together). The table is on /fuel-addcap, NOT /fuelgeneral as sources_raw.yaml
+    and reference.yaml state. Implied density 0.792 kg/L (arithmetic).
+- quantity: fuel_capacity_mass
+  value: 95254
+  unit: kg
+  conditions: Concorde A (production) max fuel quoted in the Concorde B study
+  source:
+    title: Heritage Concorde - Concorde 'B'
+    url: https://www.heritageconcorde.com/concorde-b
+    page_or_section: Fuel tanks modifications
+  quote: The maximum quantity of fuel that can be put on board increases from 95,254 kg to 99,790 kg.
+  source_quality: page_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: NEW alternative not previously captured.
+- quantity: fuel_capacity_mass
+  value: 95430
+  unit: kg
+  conditions: PPRuNe forum
+  source:
+    title: Wikipedia - Concorde
+    url: https://en.wikipedia.org/wiki/Concorde
+    page_or_section: n/a
+  quote: null
+  source_quality: not_found_on_page
+  previous_snippet_value: 95430
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: PPRuNe returned 403; not verified. Keep as snippet only.
+- quantity: fuel_capacity_volume
+  value: 119280
+  unit: L
+  conditions: 13 tanks
+  source:
+    title: Heritage Concorde - Concorde fuel additives (page also holds the FUEL TANK CAPACITY table)
+    url: https://www.heritageconcorde.com/fuel-addcap
+    page_or_section: FUEL TANK CAPACITY table
+  quote: TOTALS13 TANKS119 ,280 94,470
+  source_quality: page_read
+  previous_snippet_value: 119280
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: fuel_capacity_volume
+  value: 119600
+  unit: L
+  conditions: null
+  source:
+    title: Wikipedia - Concorde
+    url: https://en.wikipedia.org/wiki/Concorde
+    page_or_section: Specifications
+  quote: 119,600 L (26,300 imp gal; 31,600 US gal)
+  source_quality: page_read
+  previous_snippet_value: 119600
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: fuel_tank_breakdown
+  value: 'tank: litres / kg -- 1: 5,300/4,198; 2: 5,770/4,570; 3: 5,770/4,570; 4: 5,300/4,198; 5: 9,090/7,200; 6: 14,630/11,587; 7:
+    9,350/7,405; 8: 16,210/12,838; 5A: 2,810/2,225; 7A: 2,810/2,225; 9: 14,010/11,096; 10: 15,080/11,943; 11: 13,150/10,415'
+  unit: L / kg
+  conditions: null
+  source:
+    title: Heritage Concorde - Concorde fuel additives (page also holds the FUEL TANK CAPACITY table)
+    url: https://www.heritageconcorde.com/fuel-addcap
+    page_or_section: FUEL TANK CAPACITY table
+  quote: Engine supply 15,3004,198
+  source_quality: page_read
+  previous_snippet_value: tanks 1-8, 5A from Heritage snippet; 9-11 from SUAVE
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: All 13 rows read on the page (cells run together in extraction, e.g. "Storage614,63011,587", "Transfer and 914, 010 11,096",
+    "Reserve Tanks1015,08011,943", " 1113,15010,415"). Tanks 9-11 are now page-verified. Page groups 9, 10, 11 as "Transfer and Reserve
+    Tanks".
+- quantity: fuel_tank_count
+  value: 13
+  unit: '-'
+  conditions: null
+  source:
+    title: Heritage Concorde - Concorde fuel system - General description
+    url: https://www.heritageconcorde.com/fuelgeneral
+    page_or_section: Fuel tank structure
+  quote: Concorde’s fuel is stored in thirteen sealed tanks which are integral with the wing and fuselage structures.
+  source_quality: page_read
+  previous_snippet_value: 13
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: 'Also /fuel-addcap: "TOTALS13 TANKS".'
+- quantity: max_wing_loading
+  value: 488
+  unit: kg/m^2
+  conditions: approx
+  source:
+    title: Heritage Concorde - Airframe Weights and loadings
+    url: https://www.heritageconcorde.com/airframe-weights-and-loadings
+    page_or_section: Airframe Weights and loadings
+  quote: Max wing loading approx 488 kg/m2 (1,000 lb/sq ft)
+  source_quality: page_read
+  previous_snippet_value: 488
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: Internally inconsistent on the page (488 kg/m2 = 100 lb/sq ft); 185,065/358.25 = 516.6 kg/m2 (arithmetic). Do not use.
+- quantity: max_power_loading
+  value: 268
+  unit: kg/kN
+  conditions: approx
+  source:
+    title: Heritage Concorde - Airframe Weights and loadings
+    url: https://www.heritageconcorde.com/airframe-weights-and-loadings
+    page_or_section: Airframe Weights and loadings
+  quote: Max power loading approx 268 kg/kN (2.5 lb/lb st)
+  source_quality: page_read
+  previous_snippet_value: 268
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: crew
+  value: 3
+  unit: flight crew
+  conditions: normal flight deck complement
+  source:
+    title: Wikipedia - Concorde
+    url: https://en.wikipedia.org/wiki/Concorde
+    page_or_section: Specifications
+  quote: 'Crew: 3 (2 pilots and 1 flight engineer)'
+  source_quality: page_read
+  previous_snippet_value: '9 (concordesst: 100 passengers + 9 crew)'
+  agrees_with_snippet: false
+  retrieved: '2026-10-04'
+  notes: 'case.yaml crew = 9 (flight + cabin) came from a concordesst.com snippet that could not be fetched (403). Pages read give only
+    flight crew = 3; cabin crew number NOT found on any page read. ICAS 1976 p.569: "sufficient space for a crew of four although the
+    normal crew complement is three."'
+- quantity: passenger_capacity
+  value: 92-128
+  unit: pax
+  conditions: null
+  source:
+    title: Wikipedia - Concorde
+    url: https://en.wikipedia.org/wiki/Concorde
+    page_or_section: Lead section
+  quote: four-abreast seating for 92 to 128 passengers
+  source_quality: page_read
+  previous_snippet_value: 92-128
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: 'Spec block: "Capacity: 92–120 passengers (128 in high-density layout)". BA 100 / AF 92 split (concordesst) not verified (403).'
+- quantity: thrust_SLS_dry
+  value: 139.4
+  unit: kN
+  conditions: Olympus 593 Mk 610, per engine
+  source:
+    title: Wikipedia - Rolls-Royce/Snecma Olympus 593
+    url: https://en.wikipedia.org/wiki/Rolls-Royce/Snecma_Olympus_593
+    page_or_section: Specifications (Olympus 593 Mk 610), "Data from Jane's.[30][31]"
+  quote: 'dry: 139.4 kN (31,300 lbf)'
+  source_quality: page_read
+  previous_snippet_value: 139.4
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: Refs [30] "Rolls Royce SNECMA Olympus", Janes Transport News, 25 July 2000; [31] "Data on Large Turbofan Engines", 2001 (both
+    archived web pages).
+- quantity: thrust_SLS_dry
+  value: 139.4
+  unit: kN
+  conditions: Olympus 593 Mk 610, per engine
+  source:
+    title: Heritage Concorde - Olympus 593 Mk610 engines
+    url: https://www.heritageconcorde.com/concorde-olympus-593-mk610-engines
+    page_or_section: Specifications (Olympus 593 Mk 610)
+  quote: 'dry: 139.4 kN (31,350 lbf)'
+  source_quality: page_read
+  previous_snippet_value: 139.4
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: Heritage spec block is near-verbatim the Wikipedia block.
+- quantity: thrust_SLS_dry
+  value: 142
+  unit: kN
+  conditions: '"593-610-14-28 - Final version fitted to production Concorde"'
+  source:
+    title: Heritage Concorde - Olympus 593 Mk610 engines
+    url: https://www.heritageconcorde.com/concorde-olympus-593-mk610-engines
+    page_or_section: THE CONCORDE 593 ENGINE VARIANTS
+  quote: 'Thrust : 32,000 lbf (142 kN) dry / 38,050 lbf (169 kN) reheat'
+  source_quality: page_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: CONFLICT on the same page with 139.4 kN (31,350 lbf). Same 32,000 lbf line appears in Wikipedia Olympus variants list.
+- quantity: thrust_SLS_dry
+  value: 140
+  unit: kN
+  conditions: per engine
+  source:
+    title: Wikipedia - Concorde
+    url: https://en.wikipedia.org/wiki/Concorde
+    page_or_section: Specifications - Powerplant
+  quote: 31,000 lbf (140 kN) thrust each dry, 38,050 lbf (169.3 kN) with afterburner
+  source_quality: page_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: Third dry-thrust value (31,000 lbf). Conflict kept.
+- quantity: thrust_SLS_reheat
+  value: 169.2
+  unit: kN
+  conditions: per engine
+  source:
+    title: Wikipedia - Rolls-Royce/Snecma Olympus 593
+    url: https://en.wikipedia.org/wiki/Rolls-Royce/Snecma_Olympus_593
+    page_or_section: Specifications
+  quote: 'Maximum thrust: wet: 169.2 kN (38,000 lbf)'
+  source_quality: page_read
+  previous_snippet_value: 169.2
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: thrust_SLS_reheat
+  value: 169.2
+  unit: kN
+  conditions: per engine
+  source:
+    title: Heritage Concorde - Olympus 593 Mk610 engines
+    url: https://www.heritageconcorde.com/concorde-olympus-593-mk610-engines
+    page_or_section: Specifications
+  quote: 'Maximum Thrust: wet: 169.2 kN (38,050 lbf)'
+  source_quality: page_read
+  previous_snippet_value: 169.2
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: overall_pressure_ratio
+  value: 15.5
+  unit: '-'
+  conditions: with aircraft stationary
+  source:
+    title: Wikipedia - Rolls-Royce/Snecma Olympus 593
+    url: https://en.wikipedia.org/wiki/Rolls-Royce/Snecma_Olympus_593
+    page_or_section: Specifications
+  quote: 'Overall pressure ratio: 15.5:1 (with aircraft stationary)'
+  source_quality: page_read
+  previous_snippet_value: 15.5
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: 'Same page: "about 82:1 at Mach 2.0 (includes pressure rise in intake, 7.3:1, and in engine, 11.3:1 ...)" citing Cumpsty, Jet
+    Propulsion, p.149.'
+- quantity: overall_pressure_ratio
+  value: 15.5
+  unit: '-'
+  conditions: null
+  source:
+    title: Heritage Concorde - Olympus 593 Mk610 engines
+    url: https://www.heritageconcorde.com/concorde-olympus-593-mk610-engines
+    page_or_section: Specifications
+  quote: 'Overall pressure ratio: 15.5:1'
+  source_quality: page_read
+  previous_snippet_value: 15.5
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: engine_pressure_ratio_cruise
+  value: 11.3
+  unit: '-'
+  conditions: Mach 2.0 cruise at 51,000 ft, engine compressors only (intake 7.3)
+  source:
+    title: Wikipedia - Rolls-Royce/Snecma Olympus 593
+    url: https://en.wikipedia.org/wiki/Rolls-Royce/Snecma_Olympus_593
+    page_or_section: Air intake / Specifications
+  quote: The overall pressure ratio for the powerplant at Mach 2.0 cruise at 51,000 ft (15,500 m) was about 82:1, with 7.3:1 from the
+    intake and 11.3:1 from the two engine compressors
+  source_quality: page_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: Useful check on the cycle model at cruise; cites Hooker 1984 and Cumpsty.
+- quantity: mass_flow_SLS
+  value: 186
+  unit: kg/s
+  conditions: per engine (condition not stated)
+  source:
+    title: Wikipedia - Rolls-Royce/Snecma Olympus 593
+    url: https://en.wikipedia.org/wiki/Rolls-Royce/Snecma_Olympus_593
+    page_or_section: Specifications
+  quote: 'Air mass flow: (186 kg (410 lb))/s)'
+  source_quality: page_read
+  previous_snippet_value: 186
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: 'Only source found. NOT on the Heritage engine page (sources_raw/case provenance say "Wikipedia/Heritage"): Heritage attribution
+    does not hold. No condition given.'
+- quantity: mass_flow_SLS
+  value: null
+  unit: kg/s
+  conditions: null
+  source:
+    title: Heritage Concorde - Olympus 593 Mk610 engines
+    url: https://www.heritageconcorde.com/concorde-olympus-593-mk610-engines
+    page_or_section: Specifications (Olympus 593 Mk 610)
+  quote: null
+  source_quality: not_found_on_page
+  previous_snippet_value: 186
+  agrees_with_snippet: false
+  retrieved: '2026-10-04'
+  notes: Heritage spec block lists length, diameter, dry weight, thrust, OPR, SFC, T/W but no airflow.
+- quantity: SFC_cruise
+  value: 1.195
+  unit: lb/(lbf h)
+  conditions: '"cruise" -- Mach, altitude, thrust setting NOT stated'
+  source:
+    title: Wikipedia - Rolls-Royce/Snecma Olympus 593
+    url: https://en.wikipedia.org/wiki/Rolls-Royce/Snecma_Olympus_593
+    page_or_section: Specifications
+  quote: 'Specific fuel consumption: 1.195 lb/(lbf⋅h) (33.8 g/(kN⋅s)) cruise / 1.39 lb/(lbf⋅h) (39 g/(kN⋅s)) SL (sea level).[citation
+    needed]'
+  source_quality: page_read
+  previous_snippet_value: 1.195
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: Marked [citation needed] on Wikipedia. No conditions. Installed vs uninstalled not stated.
+- quantity: SFC_cruise
+  value: 1.195
+  unit: lb/(lbf h)
+  conditions: '"cruise", no conditions'
+  source:
+    title: Heritage Concorde - Olympus 593 Mk610 engines
+    url: https://www.heritageconcorde.com/concorde-olympus-593-mk610-engines
+    page_or_section: Specifications
+  quote: 'Specific fuel consumption: 1.195 (cruise), 1.39 (SL) lb/(h·lbf)'
+  source_quality: page_read
+  previous_snippet_value: 1.195
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: Heritage block duplicates Wikipedia; not independent.
+- quantity: engine_dry_mass
+  value: 3175
+  unit: kg
+  conditions: null
+  source:
+    title: Wikipedia - Rolls-Royce/Snecma Olympus 593
+    url: https://en.wikipedia.org/wiki/Rolls-Royce/Snecma_Olympus_593
+    page_or_section: Specifications
+  quote: 'Dry weight: 3,175 kg (7,000 lb)'
+  source_quality: page_read
+  previous_snippet_value: 3175
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: engine_dry_mass
+  value: 3175
+  unit: kg
+  conditions: null
+  source:
+    title: Heritage Concorde - Olympus 593 Mk610 engines
+    url: https://www.heritageconcorde.com/concorde-olympus-593-mk610-engines
+    page_or_section: Specifications
+  quote: 'Dry weight: 3175 kg (7,000 lb)'
+  source_quality: page_read
+  previous_snippet_value: 3175
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: engine_length
+  value: 4.039
+  unit: m
+  conditions: null
+  source:
+    title: Wikipedia - Rolls-Royce/Snecma Olympus 593
+    url: https://en.wikipedia.org/wiki/Rolls-Royce/Snecma_Olympus_593
+    page_or_section: Specifications
+  quote: 'Length: 4.039 m (13 ft 3.0 in)'
+  source_quality: page_read
+  previous_snippet_value: 4.039
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: engine_diameter
+  value: 1.212
+  unit: m
+  conditions: null
+  source:
+    title: Wikipedia - Rolls-Royce/Snecma Olympus 593
+    url: https://en.wikipedia.org/wiki/Rolls-Royce/Snecma_Olympus_593
+    page_or_section: Specifications
+  quote: 'Diameter: 1.212 m (3 ft 11.7 in)'
+  source_quality: page_read
+  previous_snippet_value: 1.212
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: thrust_cruise_per_engine
+  value: 10000
+  unit: lbf
+  conditions: cruise at Mach 2.02
+  source:
+    title: Wikipedia - Rolls-Royce/Snecma Olympus 593
+    url: https://en.wikipedia.org/wiki/Rolls-Royce/Snecma_Olympus_593
+    page_or_section: Performance section
+  quote: During cruise at Mach 2.02 each Olympus 593 was producing around 10,000 lbf (44 kN) of thrust
+  source_quality: page_read
+  previous_snippet_value: 10030
+  agrees_with_snippet: false
+  retrieved: '2026-10-04'
+  notes: Snippet said ~10,030 lbf (44.61 kN) at 53,000 ft; the page says "around 10,000 lbf (44 kN)" at Mach 2.02, no altitude.
+- quantity: thrust_cruise_total
+  value: 27160
+  unit: lbf
+  conditions: four engines, cruise at 60,000 ft
+  source:
+    title: Heritage Concorde - Olympus 593 Mk610 engines
+    url: https://www.heritageconcorde.com/concorde-olympus-593-mk610-engines
+    page_or_section: BASIC BACKGROUND TO THE OLYMPUS 593-610
+  quote: together they produce 152,200 lbs of thrust at take-off and 27,160lbs of thrust during the cruise at 60,000feet
+  source_quality: page_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: New. 6,790 lbf per engine (arithmetic) at 60,000 ft vs ~10,000 lbf per engine (Wikipedia, no altitude).
+- quantity: reheat_use
+  value: null
+  unit: null
+  conditions: transonic acceleration
+  source:
+    title: Wikipedia - Rolls-Royce/Snecma Olympus 593
+    url: https://en.wikipedia.org/wiki/Rolls-Royce/Snecma_Olympus_593
+    page_or_section: Design
+  quote: for transonic acceleration from Mach 0.95 up to Mach 1.7; the aircraft flew supersonically without reheat above that speed
+  source_quality: page_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: 'Supports case profile (reheat transonic acceleration to M1.7). ICAS 1976 p.566 agrees: "Reheat is selected off at M = 1.7".'
+- quantity: range_max_fuel
+  value: 3550
+  unit: nmi
+  conditions: '"with max fuel, FAR reserves and 8,845 kg (19,500 lb)"'
+  source:
+    title: Heritage Concorde - Airframe Performance
+    url: https://www.heritageconcorde.com/airframe-performance
+    page_or_section: Airframe Performance
+  quote: Range with max fuel, FAR reserves and 8,845 kg (19,500 lb) 3,550 n miles (6,580 km; 4,090 miles)
+  source_quality: page_read
+  previous_snippet_value: 3550
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: Page text does not contain the word "payload" after 8,845 kg; reading it as payload is an inference (the only sensible one).
+    No reserve definition anywhere on the page. Cruise Mach for this point not stated. The list format matches a Jane's-style entry
+    but the page does not name its source.
+- quantity: range_max_fuel
+  value: 3560
+  unit: nmi
+  conditions: '"max fuel"'
+  source:
+    title: Aerospaceweb.org - Concorde aircraft data
+    url: https://aerospaceweb.org/aircraft/jetliner/concorde/
+    page_or_section: Performance - Range
+  quote: 'max fuel: 3,560 nm (6,580 km)'
+  source_quality: page_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: Same 6,580 km; nmi conversion differs by 10. No payload/reserve stated.
+- quantity: range_max_payload
+  value: 2760
+  unit: nmi
+  conditions: '"with max payload, FAR reserves: at M0.95 at 9,100 m (30,000 ft)"'
+  source:
+    title: Heritage Concorde - Airframe Performance
+    url: https://www.heritageconcorde.com/airframe-performance
+    page_or_section: Airframe Performance
+  quote: 'Range with max payload, FAR reserves: at M0.95 at 9,100 m (30,000 ft) 2,760 n miles (5,110 km; 3,180 miles)'
+  source_quality: page_read
+  previous_snippet_value: 2760
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: As printed this reads as an all-subsonic (M0.95, 30,000 ft) max-payload range. Possibly a truncated Jane's entry that originally
+    listed a supersonic value too; cannot tell from the page.
+- quantity: range_max_payload
+  value: 3365
+  unit: nmi
+  conditions: '"max payload"; cruise Mach and reserves not stated'
+  source:
+    title: Aerospaceweb.org - Concorde aircraft data
+    url: https://aerospaceweb.org/aircraft/jetliner/concorde/
+    page_or_section: Performance - Range
+  quote: 'max payload: 3,365 nm (6,230 km)'
+  source_quality: page_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: Search snippet attributed "at Mach 2.02 cruise ... with reserves" to airliners.net (blocked, not verified). Aerospaceweb page
+    itself gives no conditions.
+- quantity: range_maximum
+  value: 3900
+  unit: nmi
+  conditions: null
+  source:
+    title: Wikipedia - Concorde
+    url: https://en.wikipedia.org/wiki/Concorde
+    page_or_section: Specifications
+  quote: 'Range: 3,900.0 nmi (4,488.0 mi, 7,222.8 km)'
+  source_quality: page_read
+  previous_snippet_value: 3900
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: No payload/reserve conditions.
+- quantity: range_maximum
+  value: 3900
+  unit: nmi
+  conditions: '"Maximum Permissible Range"'
+  source:
+    title: Heritage Concorde - Airframe Performance
+    url: https://www.heritageconcorde.com/airframe-performance
+    page_or_section: Airspeed and Altitude Limits
+  quote: Maximum Permissible Range – 4500 Miles (3900 Naut’ Miles)
+  source_quality: page_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: range_design_spec_and_LHR_BGI
+  value: null
+  unit: statute miles
+  conditions: BA Concorde A design spec 3,690 mi; LHR-Barbados 4,250 mi
+  source:
+    title: Heritage Concorde - Concorde 'B'
+    url: https://www.heritageconcorde.com/concorde-b
+    page_or_section: Concorde B narrative
+  quote: had a design specification range of 3690 miles, had to regularly fly 4250 miles on a route between London Heathrow and Barbados
+  source_quality: page_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: Qualitative/anecdotal; units "miles" (statute presumed).
+- quantity: reserves_policy
+  value: '"FAR reserves" -- no definition'
+  unit: null
+  conditions: null
+  source:
+    title: Heritage Concorde - Airframe Performance
+    url: https://www.heritageconcorde.com/airframe-performance
+    page_or_section: Airframe Performance
+  quote: Range with max fuel, FAR reserves and 8,845 kg (19,500 lb)
+  source_quality: page_read
+  previous_snippet_value: FAR reserves (details not given)
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: No page read defines the reserve policy behind 3,550 nmi. See FAR_121_645 entries for the regulation text.
+- quantity: FAR_121_645_b
+  value: 10% of time to destination + fly to most distant alternate + 30 min hold at 1,500 ft over alternate, standard temperature
+  unit: null
+  conditions: flag/supplemental ops outside the 48 contiguous states, turbine (non-turboprop)
+  source:
+    title: 'eCFR - 14 CFR 121.645 Fuel supply: Turbine-engine powered airplanes, other than turbo propeller: Flag and supplemental operations
+      (current text)'
+    url: https://www.ecfr.gov/api/renderer/v1/content/enhanced/current/title-14?part=121&section=121.645
+    page_or_section: 14 CFR 121.645(b)(1)-(4)
+  quote: (2) After that, to fly for a period of 10 percent of the total time required to fly from the airport of departure to, and land
+    at, the airport to which it was released; (3) After that, to fly to and land at the most distant alternate airport specified in
+    the flight release, if an alternate is required; and (4) After that, to fly for 30 minutes at holding speed at 1,500 feet above
+    the alternate airport (or the destination airport if no alternate is required) under standard temperature conditions.
+  source_quality: page_read
+  previous_snippet_value: 'case assumption: 10% trip contingency, 200 nmi alternate, 30 min hold at 1,500 ft'
+  agrees_with_snippet: false
+  retrieved: '2026-10-04'
+  notes: 'The rule does NOT specify an alternate distance (200 nmi is a modelling assumption) and the 10 % is of flight TIME, not trip
+    fuel. History line: "[Docket 6258, 29 FR 19222, Dec. 31, 1964, as amended by Amdt. 121-10, 30 FR 10025, Aug. 12, 1965; Amdt. 121-144,
+    43 FR 22649, May 25, 1978; Amdt. 121-253, 61 FR 2615, Jan. 26, 1996]" -- the rule existed in Concorde''s era. Whether Heritage''s
+    "FAR reserves" means 121.645 is not stated anywhere read. Fetched via the eCFR renderer API URL given.'
+- quantity: FAR_121_645_c
+  value: 2 h at normal cruising consumption when no alternate specified
+  unit: null
+  conditions: null
+  source:
+    title: 'eCFR - 14 CFR 121.645 Fuel supply: Turbine-engine powered airplanes, other than turbo propeller: Flag and supplemental operations
+      (current text)'
+    url: https://www.ecfr.gov/api/renderer/v1/content/enhanced/current/title-14?part=121&section=121.645
+    page_or_section: 14 CFR 121.645(c)
+  quote: to fly to that airport and thereafter to fly for at least two hours at normal cruising fuel consumption.
+  source_quality: page_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: cruise_Mach
+  value: 2.0
+  unit: '-'
+  conditions: 'best range cruise: cruise climb at maximum continuous power'
+  source:
+    title: McKinlay, Heaton & Franchi, "Operational experience on Concorde", ICAS 1976 (10th Congress, Ottawa), General Lecture, pp.
+      563-571
+    url: https://www.icas.org/icas_archive/ICAS1976/Page%20563.pdf
+    page_or_section: p.566, "Cruise"
+  quote: Best range cruise is obtained on Concorde in a cruise climb at M = 2.0 at maximum continuous power with the c.g. set to give
+    ½° down elevon.
+  source_quality: pdf_read
+  previous_snippet_value: 2.0-2.04
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: Scanned PDF read visually (no OCR text layer); quote transcribed from the page image.
+- quantity: cruise_Mach
+  value: 2.02
+  unit: '-'
+  conditions: '"cruising speed for optimum fuel consumption"'
+  source:
+    title: Wikipedia - Concorde
+    url: https://en.wikipedia.org/wiki/Concorde
+    page_or_section: Design - General features
+  quote: Mach 2.02 (~2,154 km/h or 1,338 mph) cruising speed[73] for optimum fuel consumption
+  source_quality: page_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: Cites Frawley 2003, p.14.
+- quantity: cruise_Mach_max
+  value: 2.04
+  unit: '-'
+  conditions: at 15,635 m (51,000 ft), or 530 kt CAS whichever lesser
+  source:
+    title: Heritage Concorde - Airframe Performance
+    url: https://www.heritageconcorde.com/airframe-performance
+    page_or_section: Airframe Performance
+  quote: Max cruising speed at 15,635 m (51,000 ft) M2.04 or 530 kt CAS, whichever is the lesser, equivalent to TAS of 1,176 kt (2,179
+    km/h; 1,345 mph)
+  source_quality: page_read
+  previous_snippet_value: 2.04
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: cruise_altitude_band
+  value: 'North Atlantic: start ~50,000 ft, end ~57,000 ft; tropics: start ~53,000 ft, up to 60,000 ft'
+  unit: ft
+  conditions: cruise climb
+  source:
+    title: McKinlay, Heaton & Franchi, "Operational experience on Concorde", ICAS 1976 (10th Congress, Ottawa), General Lecture, pp.
+      563-571
+    url: https://www.icas.org/icas_archive/ICAS1976/Page%20563.pdf
+    page_or_section: p.566, "Cruise"
+  quote: In the high upper atmosphere temperatures of the North Atlantic cruise would start at 50,000 ft. and reach 57,000 ft. by the
+    end of cruise. In the tropics where it is much colder cruise would start at 53,000 ft. and finish at the maximum authorised altitude
+    of 60,000 ft.
+  source_quality: pdf_read
+  previous_snippet_value: ~50,000 ft start, cruise-climb toward 60,000 ft (PPRuNe/flyawaysimulation snippets)
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: Upgrades case altitude_min_ft 50,000 from forum snippet to a manufacturer paper. Note North Atlantic cruise ends ~57,000 ft,
+    below the case max 60,000 ft.
+- quantity: max_altitude
+  value: 60000
+  unit: ft
+  conditions: service ceiling approx
+  source:
+    title: Heritage Concorde - Airframe Performance
+    url: https://www.heritageconcorde.com/airframe-performance
+    page_or_section: Airframe Performance
+  quote: Service ceiling approx 18,290 m (60,000 ft)
+  source_quality: page_read
+  previous_snippet_value: 60000
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: Also "Maximum operating altitude – 60,000Ft".
+- quantity: max_altitude
+  value: 60000
+  unit: ft
+  conditions: null
+  source:
+    title: Wikipedia - Concorde
+    url: https://en.wikipedia.org/wiki/Concorde
+    page_or_section: Specifications
+  quote: 'Service ceiling: 60,000 ft (18,300 m)'
+  source_quality: page_read
+  previous_snippet_value: 60000
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: subsonic_cruise
+  value: best subsonic cruise M0.95 at ~27,000 ft (heavy weights); climb at Vmo
+  unit: null
+  conditions: null
+  source:
+    title: McKinlay, Heaton & Franchi, "Operational experience on Concorde", ICAS 1976 (10th Congress, Ottawa), General Lecture, pp.
+      563-571
+    url: https://www.icas.org/icas_archive/ICAS1976/Page%20563.pdf
+    page_or_section: p.566, "Subsonic Climb/Cruise"
+  quote: Concorde is unusual in that its best climb speed is at Vmo (Maximum normal C.A.S.) and its best cruise speed subsonic is at
+    a Mach Number of M = 0.95.
+  source_quality: pdf_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: 'Same section: "the subsonic cruise altitudes appropriate to heavy weight, i.e. approximately 27,000 ft., are available." Supports
+    case diversion/subsonic segment assumptions (case: subsonic climb to M0.95/28,000 ft; diversion M0.93/30,000 ft).'
+- quantity: fuel_burn_start_of_cruise
+  value: 20 % of total fuel burn-off used while 9 % of distance covered
+  unit: '-'
+  conditions: null
+  source:
+    title: McKinlay, Heaton & Franchi, "Operational experience on Concorde", ICAS 1976 (10th Congress, Ottawa), General Lecture, pp.
+      563-571
+    url: https://www.icas.org/icas_archive/ICAS1976/Page%20563.pdf
+    page_or_section: p.567
+  quote: at the start of cruise 20% of the total fuel burn-off will have been consumed while only 9% of the total distance will have
+    been covered.
+  source_quality: pdf_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: Good check for the model climb/acceleration fuel fraction.
+- quantity: payload_to_fuel_ratio
+  value: 0.1
+  unit: '-'
+  conditions: normal operations
+  source:
+    title: McKinlay, Heaton & Franchi, "Operational experience on Concorde", ICAS 1976 (10th Congress, Ottawa), General Lecture, pp.
+      563-571
+    url: https://www.icas.org/icas_archive/ICAS1976/Page%20563.pdf
+    page_or_section: p.567
+  quote: our payload is normally only 10% of the total fuel load
+  source_quality: pdf_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: typical_flight_profile_LHR_IAD
+  value: Fig. 5 typical London-Washington profile, ~3,000+ nmi axis; M1.0 at ~30,000 ft, M2.0 from ~50,000 ft
+  unit: '-'
+  conditions: null
+  source:
+    title: McKinlay, Heaton & Franchi, "Operational experience on Concorde", ICAS 1976 (10th Congress, Ottawa), General Lecture, pp.
+      563-571
+    url: https://www.icas.org/icas_archive/ICAS1976/Page%20563.pdf
+    page_or_section: p.566, Fig. 5 "Typical Flight Profile"
+  quote: A typical flight profile for a London - Washington flight is shown on Figure 5.
+  source_quality: pdf_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: Figure read visually only; values not digitised.
+- quantity: cruise_fuel_flow_total
+  value: 4800
+  unit: US gal/h
+  conditions: Mach 2, 60,000 ft
+  source:
+    title: Wikipedia - Concorde
+    url: https://en.wikipedia.org/wiki/Concorde
+    page_or_section: Design - General features
+  quote: fuel consumption at Mach 2 (2,120 km/h; 1,320 mph) and at altitude of 60,000 feet (18,000 m) was 4,800 US gallons per hour
+    (18,000 L/h).
+  source_quality: page_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: Cites Allen, Roy, Concorde The Magnificent, Airliner Classics, July 2012, p.65. ~14.4 t/h at 0.80 kg/L (arithmetic).
+- quantity: fuel_consumption_per_distance
+  value: 13.2
+  unit: kg/km
+  conditions: null
+  source:
+    title: Wikipedia - Concorde
+    url: https://en.wikipedia.org/wiki/Concorde
+    page_or_section: Specifications
+  quote: 'Fuel consumption: 47 lb/mi (13.2 kg/km)'
+  source_quality: page_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: No conditions.
+- quantity: LHR_JFK_great_circle
+  value: 2999
+  unit: nmi
+  conditions: 'computed (WGS84 Vincenty) from Wikipedia airport coordinates LHR 51.47750,-0.46139; JFK 40.63972,-73.77889 (spherical:
+    2,991 nmi)'
+  source:
+    title: Wikipedia - Concorde operational history
+    url: https://en.wikipedia.org/wiki/Concorde_operational_history
+    page_or_section: n/a (derived)
+  quote: null
+  source_quality: not_found_on_page
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: 'Derived value, not a page quote. Coordinates read from en.wikipedia.org/wiki/Heathrow_Airport and /John_F._Kennedy_International_Airport.
+    Wikipedia Concorde operational history: "for a 3,050 nmi (5,650 km) London–New York sector" (1971 cost comparison, ref [40]).'
+- quantity: London_New_York_sector
+  value: 3050
+  unit: nmi
+  conditions: 1971 operating-cost comparison
+  source:
+    title: Wikipedia - Concorde operational history
+    url: https://en.wikipedia.org/wiki/Concorde_operational_history
+    page_or_section: Operations / costs
+  quote: for a 3,050 nmi (5,650 km) London–New York sector
+  source_quality: page_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: LHR_JFK_fuel_load
+  value: 93-96
+  unit: t
+  conditions: PPRuNe
+  source:
+    title: Wikipedia - Concorde
+    url: https://en.wikipedia.org/wiki/Concorde
+    page_or_section: n/a
+  quote: null
+  source_quality: not_found_on_page
+  previous_snippet_value: 93-96 t
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: PPRuNe 403; not verified. No reputable page with LHR-JFK trip/block fuel was found.
+- quantity: takeoff_field_length
+  value: 3410
+  unit: m
+  conditions: to 10.7 m (35 ft), MTOW implied
+  source:
+    title: Heritage Concorde - Airframe Performance
+    url: https://www.heritageconcorde.com/airframe-performance
+    page_or_section: Airframe Performance
+  quote: Runway LCN at max T-O weight 90T-O weight to 10.7 m (35 ft) 3,410 m (11,200 ft)
+  source_quality: page_read
+  previous_snippet_value: 3410
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: Text appears run together on the page.
+- quantity: landing_field_length
+  value: 2220
+  unit: m
+  conditions: from 10.7 m (35 ft)
+  source:
+    title: Heritage Concorde - Airframe Performance
+    url: https://www.heritageconcorde.com/airframe-performance
+    page_or_section: Airframe Performance
+  quote: Landing from 10.7 m (35 ft) 2,220 m (7,300 ft)
+  source_quality: page_read
+  previous_snippet_value: 2220
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: min_landing_runway
+  value: 6000
+  unit: ft
+  conditions: null
+  source:
+    title: Wikipedia - Concorde
+    url: https://en.wikipedia.org/wiki/Concorde
+    page_or_section: Operational considerations
+  quote: Landing Concorde required a minimum of 6,000 feet (1,800 m) runway length
+  source_quality: page_read
+  previous_snippet_value: 6000
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: takeoff_speed
+  value: 214
+  unit: kt
+  conditions: null
+  source:
+    title: Heritage Concorde - Airframe Performance
+    url: https://www.heritageconcorde.com/airframe-performance
+    page_or_section: Airframe Performance
+  quote: T-O speed 214 kt (397 km/h; 246 mph)
+  source_quality: page_read
+  previous_snippet_value: 214
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: landing_speed
+  value: 162
+  unit: kt
+  conditions: null
+  source:
+    title: Heritage Concorde - Airframe Performance
+    url: https://www.heritageconcorde.com/airframe-performance
+    page_or_section: Airframe Performance
+  quote: Landing speed 162 kt (300 km/h; 187 mph)
+  source_quality: page_read
+  previous_snippet_value: 162
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: rate_of_climb_SL
+  value: 5000
+  unit: ft/min
+  conditions: null
+  source:
+    title: Heritage Concorde - Airframe Performance
+    url: https://www.heritageconcorde.com/airframe-performance
+    page_or_section: Airframe Performance
+  quote: Rate of climb at S/L 1,525 m (5,000 ft)/min
+  source_quality: page_read
+  previous_snippet_value: 1525 m/min
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: L_D_table
+  value: low speed 3.94; approach 4.35; 250 kn/10,000 ft 9.27; M0.94 11.47; M2.04 7.14
+  unit: '-'
+  conditions: null
+  source:
+    title: Wikipedia - Concorde
+    url: https://en.wikipedia.org/wiki/Concorde
+    page_or_section: Specifications - Performance
+  quote: 'Lift-to-drag: Low speed: 3.94; Approach: 4.35; 250 kn, 10,000 ft: 9.27; Mach 0.94: 11.47, Mach 2.04: 7.14'
+  source_quality: page_read
+  previous_snippet_value: same
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: No inline citation on the L/D line; spec block sources are WSJ, Kelly 2005 (The Concorde Story), International Directory of
+    Civil Aircraft, Haynes manual (Leney & Macdonald 2020). Weight/altitude for the M2.04 value not stated.
+- quantity: L_D_cruise_Mach2
+  value: 7.5
+  unit: '-'
+  conditions: Mach 2
+  source:
+    title: Wikipedia - Lift-to-drag ratio
+    url: https://en.wikipedia.org/wiki/Lift-to-drag_ratio
+    page_or_section: Examples table
+  quote: Concorde at takeoff and landing 4:1, increasing to 12:1 at Mach 0.95 and 7.5:1 at Mach 2[11]
+  source_quality: page_read
+  previous_snippet_value: 7.5
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: 'Ref [11]: Christopher Orlebar (1997), The Concorde Story, Osprey, p.116 (Wikipedia marks the link dead). The snippet attributed
+    it to the Concorde article; it is in the Lift-to-drag ratio article.'
+- quantity: L_D_cruise_Mach2
+  value: 7
+  unit: '-'
+  conditions: '"about 7 at Mach 2"'
+  source:
+    title: Wikipedia - Lift-to-drag ratio
+    url: https://en.wikipedia.org/wiki/Lift-to-drag_ratio
+    page_or_section: Supersonic
+  quote: Concorde had a lift/drag ratio of about 7 at Mach 2
+  source_quality: page_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: drag_sensitivity
+  value: effect of 1 % drag increase table (Airbus vs Concorde)
+  unit: null
+  conditions: Concorde column (OCR garbled; conditions unreadable)
+  source:
+    title: 'Berger, "A comparison of predictions obtained from wind tunnel tests and the results from cruising flight: Airbus and Concorde",
+      NASA-TM-75238 (transl. of AGARD-CP-242 paper)'
+    url: https://ntrs.nasa.gov/api/citations/19790022965/downloads/19790022965.pdf
+    page_or_section: Fig. 3, p.34 of translation
+  quote: null
+  source_quality: not_found_on_page
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: PDF read but OCR is badly garbled; numbers not reliably readable. Paper reports a slight flight-vs-prediction drag deficit
+    for Concorde explained by ~1 % raw thrust deficit. No usable L/D or SFC number extracted.

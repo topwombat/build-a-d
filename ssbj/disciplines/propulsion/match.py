@@ -62,16 +62,16 @@ def match_sls(engine, airflow_kg_s: float, fn_reheat_kN: float, tol: float = 1e-
         prev = cur
     else:
         raise ValueError("reheat thrust target not reachable below FAR 0.06")
-    (a, (fa, ta)), (b, (fb, tb)) = prev, cur
+    (a, (fa, _)), (b, (fb, _)) = prev, cur
     for _ in range(20):
         m = a + (target - fa) * (b - a) / (fb - fa)
         fm, tm = thrust(m)
         if abs(fm - target) < tol * target:
             break
         if fm < target:
-            a, fa, ta = m, fm, tm
+            a, fa = m, fm
         else:
-            b, fb, tb = m, fm, tm
+            b, fb = m, fm
     eng = eng.model_copy(update={"t_ab_K": round(tm, 1)})
     return {"engine": eng, "t4_max_K": t4, "t_ab_K": tm, "airflow_kg_s": airflow_kg_s + f1,
             "fn_reheat_kN": fm, "ab_far": m}
