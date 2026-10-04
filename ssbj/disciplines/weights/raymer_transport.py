@@ -88,7 +88,7 @@ def build_weights(ac, engine_dry_weight_kg: float, payload, factors: Factors | N
     Lt = max((x_fin_qc - x_wing_qc) / FT, 1.0)
 
     n_en = d.engine.count
-    Wen = engine_dry_weight_kg * LB_PER_KG
+    Wen = engine_dry_weight_kg * f("prop.weight") * LB_PER_KG  # sampled engine weight feeds 15.31/15.33 too
     nac = ac.nacelles[0]
     Wec = 2.331 * Wen**0.901 * 1.0 * (1.18 if wi.thrust_reversers else 1.0)
     Sn = nac.wetted_area() / FT2  # per nacelle
@@ -132,7 +132,7 @@ def build_weights(ac, engine_dry_weight_kg: float, payload, factors: Factors | N
     W["electrical"] = 7.291 * wi.electrical_kva**0.782 * La**0.346 * n_en**0.10  # 15.39
     Wuav = wi.avionics_uninstalled_kg * LB_PER_KG
     W["avionics"] = 1.73 * Wuav**0.983  # 15.40
-    Wc = payload.cargo_kg * LB_PER_KG
+    Wc = wi.max_cargo_mass_kg * LB_PER_KG  # Raymer p.407: W_c = maximum cargo weight
     W["furnishings"] = 0.0577 * wi.crew**0.1 * max(Wc, 1.0) ** 0.393 * Sf**0.75  # 15.41
     # Raymer Table 15.3: passenger seat 32 lb, long-range lavatories 1.11 Npass^1.33
     W["passenger_furnishings"] = 32.0 * payload.passengers + 1.11 * payload.passengers**1.33
@@ -143,9 +143,7 @@ def build_weights(ac, engine_dry_weight_kg: float, payload, factors: Factors | N
     nominal_kg = {k: v * LBM for k, v in W.items()}
     comp_kg = {}
     for k, v in nominal_kg.items():
-        fac = f(f"weights.{k}")
-        if k == "engines":
-            fac = f("prop.weight")
+        fac = 1.0 if k == "engines" else f(f"weights.{k}")  # engine factor already in Wen
         if k in STRUCTURE:
             fac *= f("weights.class_structure")
         comp_kg[k] = v * fac

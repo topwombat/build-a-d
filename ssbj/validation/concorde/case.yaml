@@ -109,6 +109,7 @@ design:
     apu_uninstalled_kg: 0.0
     control_surface_area_m2: 42.4
     operator_items_kg: 1500.0
+    max_cargo_mass_kg: 4535.0
     thrust_reversers: true
 
 provenance:
@@ -161,4 +162,5 @@ provenance:
   design.weights.apu_uninstalled_kg: "ASSUMPTION: no APU modelled."
   design.weights.control_surface_area_m2: "Heritage Concorde airframe-dimensions (page read): elevons 32.00 m^2 + rudder 10.40 m^2 (was ASSUMPTION 36 m^2 until page verification, D-016)."
   design.weights.operator_items_kg: "ASSUMPTION: catering, water, manuals for a 100-seat long-range cabin; not sourced (30 % sigma)."
+  design.weights.max_cargo_mass_kg: "Derived: Heritage weights page max payload 13,380 kg (page read; the same page also says 12,700 kg) minus the 8,845 kg passenger payload of this case. Added after the independent verifier found eq. 15.41 used mission cargo (D-018)."
   design.weights.thrust_reversers: "ASSUMPTION: thrust reversers fitted (Raymer Ktr = 1.18)."

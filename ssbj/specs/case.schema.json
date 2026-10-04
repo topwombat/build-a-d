@@ -820,6 +820,12 @@
           "title": "Operator Items Kg",
           "type": "number"
         },
+        "max_cargo_mass_kg": {
+          "description": "maximum cargo weight (Raymer W_c, furnishings eq. 15.41)",
+          "minimum": 0,
+          "title": "Max Cargo Mass Kg",
+          "type": "number"
+        },
         "thrust_reversers": {
           "default": false,
           "title": "Thrust Reversers",
@@ -846,7 +852,8 @@
         "avionics_uninstalled_kg",
         "apu_uninstalled_kg",
         "control_surface_area_m2",
-        "operator_items_kg"
+        "operator_items_kg",
+        "max_cargo_mass_kg"
       ],
       "title": "WeightsInputs",
       "type": "object"

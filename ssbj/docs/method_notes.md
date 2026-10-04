@@ -1,6 +1,6 @@
 # Method notes (Phase 1, low rung)
 
-Every method below has a verification test (honesty rule 9). Equation numbers refer to
+Most methods below have a verification test (honesty rule 9). The exceptions are the climb, descent and reserve segments of the mission, and the transonic drag fairing, which have none yet. Equation numbers refer to
 D. P. Raymer, *Aircraft Design: A Conceptual Approach*, 3rd ed., AIAA, 1999. A scan of it
 is in the repository root; page numbers are those printed in the book.
 
@@ -48,12 +48,15 @@ is in the repository root; page numbers are those printed in the book.
 - **Segments.** Energy-method climbs and accelerations along prescribed (Mach, altitude) lines; cruise-climb at best specific range within the altitude band; idle descent.
 - **Reserves.** Contingency, a diversion flown as level cruise, and a hold.
 - **Verified** against the Breguet range equation for constant L/D and TSFC (`tests/test_mission_breguet.py`, 0.1 %).
+- **Step halving** changes Concorde range by < 0.5 % (`tests/test_mission_convergence.py`). The independent verifier measured <= 0.3 %, so integration error is not sampled.
+- **Fuel-for-distance** inverts range-for-fuel to within 1 nmi, and ramp fuel = block + reserves (same file).
+- **Known weakness found by the verifier.** On Concorde the model reaches cruise with 67 % of trip fuel burned and 54 % of distance covered; ICAS 1976 gives 20 % and 9 %. The dry supersonic climb (M1.7 to 2.0) is far too slow: excess thrust there is too small. The likely causes are the deck's single-spool generic-map engine at high Mach and/or wave drag (Harris runs ~10 % above OpenVSP). Not fixed: changing either now, after seeing the comparison, would be tuning. It is the first target for Phase 2/4.
 
 ## Uncertainty (`ssbj/model/uncertainty.py`)
 
 - **Sampling.** Monte Carlo over every declared factor: 200 samples, a fixed seed, 4 processes.
 - **Correlations.** None, except the shared `weights.class_structure` factor.
-- **Infeasible samples.** Samples that cannot fly the profile are counted and reported. Percentiles are conditional on feasibility (decision D-013).
+- **Infeasible samples.** The range and design missions are recorded independently per sample (D-017). Each output's percentiles are over the samples where its own mission was flyable, so they are conditional and biased toward light, low-drag samples (D-013).
 
 ## Tool check at setup (2026-10-04)
 

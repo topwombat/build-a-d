@@ -50,18 +50,32 @@ def _init(ctx):
 
 
 def _one(f: Factors):
+    """One sample. The range and design missions are recorded independently (D-017)."""
     c = _CTX
+    w = build_weights(c["aircraft"], c["engine_kg"], c["case"].mission.payload, f)
+    row = {"oew_kg": w.outputs["oew_kg"], "engine_dry_mass_kg": c["engine_kg"] * f("prop.weight")}
     try:
-        w = build_weights(c["aircraft"], c["engine_kg"], c["case"].mission.payload, f)
         m = analyse(c["case"].mission, c["polar"], c["deck"], c["s_ref"], w.outputs["oew_kg"],
                     c["mtow"], c["fuel_capacity"], f)
-    except MissionInfeasible as e:
-        return {"ok": False, "reason": str(e)}
+    except MissionInfeasible as e:  # OEW + payload > MTOW: neither mission can start
+        return row | {"range_reason": str(e), "design_reason": str(e)}
     r, d = m.outputs["range"], m.outputs["design_mission"]
-    return {"ok": True, "oew_kg": w.outputs["oew_kg"], "range_nmi": r["range_nmi"],
-            "range_ramp_fuel_kg": r["ramp_fuel_kg"], "design_ramp_fuel_kg": d["ramp_fuel_kg"],
-            "design_trip_fuel_kg": d["trip_fuel_kg"], "design_block_fuel_kg": d["block_fuel_kg"],
-            "transonic_thrust_margin": min(r["transonic_thrust_margin"], d["transonic_thrust_margin"])}
+    if "infeasible" in r:
+        row["range_reason"] = r["infeasible"]
+    else:
+        row |= {"range_nmi": r["range_nmi"], "range_ramp_fuel_kg": r["ramp_fuel_kg"],
+                "ld_cruise": r["ld_cruise"], "tsfc_cruise_per_h": r["tsfc_cruise_per_h"],
+                "transonic_thrust_margin": r["transonic_thrust_margin"]}
+    if "infeasible" in d:
+        row["design_reason"] = d["infeasible"]
+    else:
+        row |= {"design_ramp_fuel_kg": d["ramp_fuel_kg"], "design_trip_fuel_kg": d["trip_fuel_kg"],
+                "design_block_fuel_kg": d["block_fuel_kg"]}
+    return row
+
+
+def _segment(reason: str) -> str:
+    return reason.split(":")[0]
 
 
 def monte_carlo(case, results: dict, aircraft, n: int = 200, seed: int = 20261004,
@@ -80,20 +94,29 @@ def monte_carlo(case, results: dict, aircraft, n: int = 200, seed: int = 2026100
     else:
         _init(ctx)
         rows = [_one(f) for f in factors]
-    ok = [r for r in rows if r["ok"]]
     stats = {}
-    for k in ("oew_kg", "range_nmi", "range_ramp_fuel_kg", "design_ramp_fuel_kg", "design_trip_fuel_kg",
-              "design_block_fuel_kg", "transonic_thrust_margin"):
-        v = np.array([r[k] for r in ok], dtype=float)
+    for k in ("oew_kg", "engine_dry_mass_kg", "range_nmi", "range_ramp_fuel_kg", "ld_cruise",
+              "tsfc_cruise_per_h", "transonic_thrust_margin", "design_ramp_fuel_kg", "design_trip_fuel_kg",
+              "design_block_fuel_kg"):
+        v = np.array([r[k] for r in rows if k in r], dtype=float)
+        if len(v) < 2:
+            continue
         stats[k] = {f"p{p:g}": float(np.percentile(v, p)) for p in PERCENTILES} | {
-            "mean": float(v.mean()), "std": float(v.std(ddof=1))}
+            "mean": float(v.mean()), "std": float(v.std(ddof=1)), "n": int(len(v))}
+    range_bad = [r["range_reason"] for r in rows if "range_reason" in r]
+    design_bad = [r["design_reason"] for r in rows if "design_reason" in r]
     return {
-        "n_samples": n, "n_ok": len(ok), "n_infeasible": n - len(ok), "seed": seed,
-        "infeasible_reasons": sorted({r["reason"] for r in rows if not r["ok"]})[:10],
-        "infeasible_by_segment": dict(Counter(r["reason"].split(":")[0] for r in rows if not r["ok"])),
+        "n_samples": n, "seed": seed,
+        "range_mission": {"n_feasible": n - len(range_bad), "n_infeasible": len(range_bad),
+                          "by_segment": dict(Counter(map(_segment, range_bad))),
+                          "examples": sorted(set(range_bad))[:5]},
+        "design_mission": {"n_feasible": n - len(design_bad), "n_infeasible": len(design_bad),
+                           "by_segment": dict(Counter(map(_segment, design_bad))),
+                           "examples": sorted(set(design_bad))[:5]},
         "factors": [u.__dict__ for u in uncs],
         "stats": stats,
         "note": ("Independent factors (plus declared shared factors); 95 % interval = p2.5-p97.5. "
-                 "Percentiles are over the feasible samples only, i.e. conditional on the modelled "
-                 "aircraft being able to fly the profile; the infeasible fraction is part of the result."),
+                 "Each output's percentiles are over the samples in which its own mission was flyable "
+                 "(conditional; column n), so they are biased toward low-drag, light samples. The "
+                 "infeasible counts are part of the result."),
     }

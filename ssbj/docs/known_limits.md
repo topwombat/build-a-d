@@ -91,7 +91,7 @@ Not trusted when:
 - Diversion flown as level cruise at the reserve Mach and altitude (no climb or descent).
 - No winds, no temperature deviation from ISA, no air-traffic constraints.
 - Centre-of-gravity and trim drag effects (fuel transfer for trim) are not modelled.
+- Reserve detail (alternate distance, hold) is an assumption with no error factor; on Concorde the reserves are ~19 t and removing hold and diversion adds ~700 nmi of range.
 
 | Error factor | 1-sigma | Basis |
 |---|---|---|
-| `mission.integration` | 1% | Step-halving check on the integration; reported per case. |

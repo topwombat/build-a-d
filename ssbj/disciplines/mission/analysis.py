@@ -25,10 +25,9 @@ G = 9.80665
 N_CLIMB = 40
 N_CRUISE = 60
 
-UNCERTAINTIES = [
-    Uncertainty("mission.integration", 0.01,
-                "Step-halving check on the integration; reported per case.", "fuel and range"),
-]
+# Integration error is not sampled: halving or doubling the step counts changes range and fuel by
+# <= 0.3 % on Concorde (tests/test_mission_convergence.py), well inside the other factors.
+UNCERTAINTIES: list[Uncertainty] = []
 
 LIMITS = [
     "Climb, acceleration and descent follow the prescribed straight (Mach, altitude) paths; no "
@@ -39,6 +38,8 @@ LIMITS = [
     "Diversion flown as level cruise at the reserve Mach and altitude (no climb or descent).",
     "No winds, no temperature deviation from ISA, no air-traffic constraints.",
     "Centre-of-gravity and trim drag effects (fuel transfer for trim) are not modelled.",
+    "Reserve detail (alternate distance, hold) is an assumption with no error factor; on Concorde the "
+    "reserves are ~19 t and removing hold and diversion adds ~700 nmi of range.",
 ]
 
 
@@ -283,25 +284,64 @@ class Mission:
             cruise_fuel += err / (1.0 + self.spec.reserves.contingency_fraction_of_trip)
             if cruise_fuel <= 0:
                 raise MissionInfeasible("fuel does not cover the non-cruise segments and reserves")
+        else:
+            raise MissionInfeasible(f"range iteration did not converge (fuel error {err:.1f} kg)")
         return Flight(legs, res, rd, margin, list(self.warnings))
 
     def fly_distance(self, w_zero_fuel: float, distance_nmi: float, fuel_capacity: float) -> tuple[Flight, float]:
-        """Fuel load needed to fly ``distance_nmi`` with reserves; returns (flight, ramp fuel)."""
+        """Fuel load needed to fly ``distance_nmi`` with reserves; returns (flight, ramp fuel).
 
-        def rng(fuel):
-            return self.fly_range(w_zero_fuel + fuel, fuel).range_nmi - distance_nmi
+        Range grows monotonically with fuel. A fuel load too small to cover the fixed segments
+        counts as zero range; any other infeasibility (e.g. no excess power when heavy) is raised.
+        Secant first, bisection if the secant leaves the bracket.
+        """
 
-        x0, x1 = 0.5 * fuel_capacity, 0.7 * fuel_capacity
-        f0, f1 = rng(x0), rng(x1)
-        for _ in range(25):
-            if abs(f1) < 0.5 or f1 == f0:
+        def short(fuel):
+            try:
+                return self.fly_range(w_zero_fuel + fuel, fuel).range_nmi - distance_nmi
+            except MissionInfeasible as e:
+                if "does not cover" in str(e) or "no fuel left" in str(e):
+                    return -distance_nmi
+                raise
+
+        lo, hi = 0.2 * fuel_capacity, 1.5 * fuel_capacity
+        f_lo = short(lo)
+        # the heaviest loads may be unflyable (no excess power): shrink hi until it flies
+        for _ in range(12):
+            try:
+                f_hi = short(hi)
                 break
-            x0, x1, f0 = x1, max(x1 - f1 * (x1 - x0) / (f1 - f0), 0.05 * fuel_capacity), f1
-            f1 = rng(x1)
-        return self.fly_range(w_zero_fuel + x1, x1), x1
+            except MissionInfeasible:
+                hi = 0.5 * (lo + hi)
+        else:
+            raise MissionInfeasible("no flyable fuel load above the lower bracket")
+        if f_lo > 0:
+            lo, f_lo = 0.02 * fuel_capacity, short(0.02 * fuel_capacity)
+        if f_hi < 0:
+            raise MissionInfeasible(f"design range not reachable with up to 1.5x the fuel capacity "
+                                    f"({hi:.0f} kg)")
+        x = lo + (hi - lo) * (-f_lo) / (f_hi - f_lo)
+        for _ in range(60):
+            fx = short(x)
+            if abs(fx) < 0.5 or hi - lo < 1.0:
+                break
+            if fx < 0:
+                lo, f_lo = x, fx
+            else:
+                hi, f_hi = x, fx
+            x_sec = lo + (hi - lo) * (-f_lo) / (f_hi - f_lo)
+            x = x_sec if lo < x_sec < hi and f_lo > -distance_nmi else 0.5 * (lo + hi)
+        else:
+            raise MissionInfeasible("fuel-for-distance search did not converge")
+        return self.fly_range(w_zero_fuel + x, x), x
 
 
 def analyse(spec, polar, deck, s_ref, oew_kg, mtow_kg, fuel_capacity_kg, factors=None) -> DisciplineResult:
+    """Run the max-fuel range mission and the design-distance mission independently.
+
+    Each result is either the mission record or ``{"infeasible": reason}``; one failing does
+    not discard the other.
+    """
     validity = Validity("mission", list(LIMITS))
     m = Mission(spec, polar, deck, s_ref, factors)
     payload = spec.payload.mass_kg
@@ -312,21 +352,32 @@ def analyse(spec, polar, deck, s_ref, oew_kg, mtow_kg, fuel_capacity_kg, factors
         raise MissionInfeasible("OEW + payload exceeds MTOW")
     if ramp_fuel < mtow_kg - zfw:
         validity.warn("range is volume-limited: fuel capacity reached before MTOW")
-    fr = m.fly_range(zfw + ramp_fuel, ramp_fuel)
-    out["range"] = {"ramp_fuel_kg": ramp_fuel, "range_nmi": fr.range_nmi, "trip_fuel_kg": fr.trip_fuel_kg,
-                    "block_fuel_kg": fr.block_fuel_kg, "reserves_kg": fr.reserves_kg,
-                    "reserve_detail": fr.reserve_detail, "transonic_thrust_margin": fr.transonic_margin,
-                    "legs": [l.__dict__ for l in fr.legs], "tow_kg": zfw + ramp_fuel - fr.legs[0].fuel_kg}
-    fd, fuel = m.fly_distance(zfw, spec.design_range_nmi, fuel_capacity_kg)
-    out["design_mission"] = {"distance_nmi": spec.design_range_nmi, "ramp_fuel_kg": fuel,
-                             "trip_fuel_kg": fd.trip_fuel_kg, "block_fuel_kg": fd.block_fuel_kg,
-                             "reserves_kg": fd.reserves_kg, "tow_kg": zfw + fuel - fd.legs[0].fuel_kg,
-                             "legs": [l.__dict__ for l in fd.legs],
-                             "transonic_thrust_margin": fd.transonic_margin}
-    if fuel > fuel_capacity_kg:
-        validity.warn("design mission needs more fuel than the tanks hold")
-    if zfw + fuel > mtow_kg:
-        validity.warn("design mission takeoff weight exceeds MTOW")
+    try:
+        fr = m.fly_range(zfw + ramp_fuel, ramp_fuel)
+        cruise = next(l for l in fr.legs if l.kind == "cruise")
+        out["range"] = {"ramp_fuel_kg": ramp_fuel, "range_nmi": fr.range_nmi, "trip_fuel_kg": fr.trip_fuel_kg,
+                        "block_fuel_kg": fr.block_fuel_kg, "reserves_kg": fr.reserves_kg,
+                        "reserve_detail": fr.reserve_detail, "transonic_thrust_margin": fr.transonic_margin,
+                        "ld_cruise": cruise.detail["l_over_d_mean"],
+                        "tsfc_cruise_per_h": cruise.detail["tsfc_mean_per_h"],
+                        "legs": [l.__dict__ for l in fr.legs], "tow_kg": zfw + ramp_fuel - fr.legs[0].fuel_kg}
+    except MissionInfeasible as e:
+        out["range"] = {"infeasible": str(e)}
+        validity.warn(f"max-fuel range mission infeasible: {e}")
+    try:
+        fd, fuel = m.fly_distance(zfw, spec.design_range_nmi, fuel_capacity_kg)
+        out["design_mission"] = {"distance_nmi": spec.design_range_nmi, "ramp_fuel_kg": fuel,
+                                 "trip_fuel_kg": fd.trip_fuel_kg, "block_fuel_kg": fd.block_fuel_kg,
+                                 "reserves_kg": fd.reserves_kg, "tow_kg": zfw + fuel - fd.legs[0].fuel_kg,
+                                 "legs": [l.__dict__ for l in fd.legs],
+                                 "transonic_thrust_margin": fd.transonic_margin}
+        if fuel > fuel_capacity_kg:
+            validity.warn("design mission needs more fuel than the tanks hold")
+        if zfw + fuel > mtow_kg:
+            validity.warn("design mission takeoff weight exceeds MTOW")
+    except MissionInfeasible as e:
+        out["design_mission"] = {"infeasible": str(e)}
+        validity.warn(f"design-distance mission infeasible: {e}")
     validity.warnings += m.warnings
     return DisciplineResult("mission", "energy-method climb, cruise-climb, idle descent", out,
                             UNCERTAINTIES, validity)

@@ -48,6 +48,18 @@ diagnostics:  # reported with the model's own error bar; not acceptance gates
     unit: kg
     source: "Wikipedia Olympus 593 ('Data from Jane's'); Heritage (pages read)"
     source_quality: page_read
+  - id: pre_cruise_fuel_fraction
+    model_output: pre_cruise_fuel_fraction
+    value: 0.20
+    unit: "-"
+    source: "McKinlay, Heaton & Franchi, Operational experience on Concorde, ICAS 1976 (read): 20 % of trip fuel burned by start of cruise"
+    source_quality: page_read
+  - id: pre_cruise_distance_fraction
+    model_output: pre_cruise_distance_fraction
+    value: 0.09
+    unit: "-"
+    source: "ICAS 1976 (read): 9 % of distance covered by start of cruise"
+    source_quality: page_read
   - id: lhr_jfk_fuel_load
     model_output: none
     range: [93000, 96000]

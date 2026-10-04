@@ -158,12 +158,14 @@ class MissionComp(_Memo):
                       float(inputs["fuel_capacity"][0]), self.options["factors"])
         self._store("mission", res)
         r, dm = res.outputs["range"], res.outputs["design_mission"]
-        outputs["range"] = r["range_nmi"]
-        outputs["range_trip_fuel"] = r["trip_fuel_kg"]
-        outputs["design_ramp_fuel"] = dm["ramp_fuel_kg"]
-        outputs["design_trip_fuel"] = dm["trip_fuel_kg"]
-        outputs["design_block_fuel"] = dm["block_fuel_kg"]
-        outputs["transonic_thrust_margin"] = min(r["transonic_thrust_margin"], dm["transonic_thrust_margin"])
+        nan = float("nan")
+        outputs["range"] = r.get("range_nmi", nan)
+        outputs["range_trip_fuel"] = r.get("trip_fuel_kg", nan)
+        outputs["design_ramp_fuel"] = dm.get("ramp_fuel_kg", nan)
+        outputs["design_trip_fuel"] = dm.get("trip_fuel_kg", nan)
+        outputs["design_block_fuel"] = dm.get("block_fuel_kg", nan)
+        outputs["transonic_thrust_margin"] = np.nanmin([r.get("transonic_thrust_margin", nan),
+                                                        dm.get("transonic_thrust_margin", nan)])
 
 
 class SSBJModel(om.Group):

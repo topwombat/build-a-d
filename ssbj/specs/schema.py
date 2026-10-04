@@ -223,6 +223,7 @@ class WeightsInputs(_M):
     apu_uninstalled_kg: float = Field(ge=0)
     control_surface_area_m2: float = Field(gt=0)
     operator_items_kg: float = Field(ge=0, description="operational items added to empty weight")
+    max_cargo_mass_kg: float = Field(ge=0, description="maximum cargo weight (Raymer W_c, furnishings eq. 15.41)")
     thrust_reversers: bool = False
 
 

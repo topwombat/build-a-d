@@ -18,7 +18,9 @@ from ssbj.specs.schema import load_case
 def _nominal(p, results) -> dict:
     g = lambda n, u=None: float(p.get_val(n, units=u)[0]) if u else float(p.get_val(n)[0])
     mis = results["mission"].outputs
-    cruise = next(l for l in mis["range"]["legs"] if l["kind"] == "cruise")
+    rng = mis["range"]
+    cruise = next((l for l in rng.get("legs", []) if l["kind"] == "cruise"), None)
+    nan = float("nan")
     return {
         "s_ref_m2": g("s_ref", "m**2"),
         "oew_kg": g("oew", "kg"),
@@ -26,16 +28,31 @@ def _nominal(p, results) -> dict:
         "fn_sls_reheat_kN": g("fn_sls_reheat", "kN"),
         "cd0_cruise": g("cd0_cruise"),
         "ld_max_cruise": g("ld_max_cruise"),
-        "ld_cruise": cruise["detail"]["l_over_d_mean"],
-        "tsfc_cruise_per_h": cruise["detail"]["tsfc_mean_per_h"],
-        "cruise_altitude_ft": [cruise["detail"]["altitude_start_ft"], cruise["detail"]["altitude_end_ft"]],
+        "ld_cruise": rng.get("ld_cruise", nan),
+        "tsfc_cruise_per_h": rng.get("tsfc_cruise_per_h", nan),
+        "cruise_altitude_ft": ([cruise["detail"]["altitude_start_ft"], cruise["detail"]["altitude_end_ft"]]
+                               if cruise else None),
         "range_nmi": g("range", "nmi"),
-        "range_ramp_fuel_kg": mis["range"]["ramp_fuel_kg"],
+        "range_ramp_fuel_kg": rng.get("ramp_fuel_kg", nan),
         "design_ramp_fuel_kg": g("design_ramp_fuel", "kg"),
         "design_trip_fuel_kg": g("design_trip_fuel", "kg"),
         "design_block_fuel_kg": g("design_block_fuel", "kg"),
         "transonic_thrust_margin": g("transonic_thrust_margin"),
+        **_pre_cruise(mis["design_mission"]),
     }
+
+
+def _pre_cruise(dm: dict) -> dict:
+    """Share of trip fuel and distance used before the range cruise starts (design mission)."""
+    legs = dm.get("legs")
+    if not legs:
+        return {"pre_cruise_fuel_fraction": float("nan"), "pre_cruise_distance_fraction": float("nan")}
+    i = next(k for k, l in enumerate(legs) if l["kind"] == "cruise")
+    trip = [l for l in legs if l["kind"] != "taxi"]
+    pre = [l for l in legs[:i] if l["kind"] != "taxi"]
+    return {"pre_cruise_fuel_fraction": sum(l["fuel_kg"] for l in pre) / sum(l["fuel_kg"] for l in trip),
+            "pre_cruise_distance_fraction": sum(l["distance_nmi"] for l in pre)
+            / sum(l["distance_nmi"] for l in trip)}
 
 
 def compare(reference: dict, nominal: dict, mc: dict | None) -> dict:
@@ -142,6 +159,10 @@ def write_report(out: dict) -> str:
             L.append(f"| {g['quantity']} | {_fmt(g['value'])} {g['unit']} | {_fmt(g['model_nominal'])} | "
                      f"{_fmt(g.get('model_p2.5'))} to {_fmt(g.get('model_p97.5'))} | "
                      f"{'yes' if g.get('inside_95') else 'no'} | {g['source_quality']} |")
+        L += ["", "**What this PASS shows and does not show.** Both gates are one published data point read "
+              "two ways. The intervals are wide and conditional on feasibility (see below), so a pass is a "
+              "consistency check. Compare the diagnostics: offsetting errors (e.g. L/D low, TSFC low, "
+              "engine weight low) can produce a correct range for the wrong reasons.", ""]
         L += ["", "### Diagnostics (not gates)", "",
               "| Quantity | Published | Model nominal | Model 95 % interval | Source quality |", "|---|---|---|---|---|"]
         for g in comp["diagnostics"]:
@@ -153,16 +174,19 @@ def write_report(out: dict) -> str:
     for k, v in n.items():
         L.append(f"- {k}: {_fmt(v, 4) if isinstance(v, float) and abs(v) < 20 else _fmt(v, 1)}")
     if st:
-        L += ["", f"## Error bars (Monte Carlo, {mc['n_ok']} of {mc['n_samples']} samples feasible, seed {mc['seed']})", "",
-              "| Output | p2.5 | p16 | p50 | p84 | p97.5 |", "|---|---|---|---|---|---|"]
-        for k, s in st.items():
-            nd = 3 if "margin" in k else 0
-            L.append(f"| {k} | " + " | ".join(_fmt(s[f'p{p}'], nd) for p in ("2.5", "16", "50", "84", "97.5")) + " |")
+        L += ["", f"## Error bars (Monte Carlo, {mc['n_samples']} samples, seed {mc['seed']})", "",
+              "| Output | n | p2.5 | p16 | p50 | p84 | p97.5 |", "|---|---|---|---|---|---|---|"]
+        for k, s_ in st.items():
+            nd = 3 if ("margin" in k or "tsfc" in k or "ld_" in k) else 0
+            L.append(f"| {k} | {s_['n']} | " + " | ".join(_fmt(s_[f'p{p}'], nd)
+                                                        for p in ("2.5", "16", "50", "84", "97.5")) + " |")
         L += ["", mc["note"]]
-        if mc.get("n_infeasible"):
-            L += ["", f"**{mc['n_infeasible']} of {mc['n_samples']} samples could not fly the profile**, by "
-                  "segment: " + ", ".join(f"{k} {v}" for k, v in sorted(mc["infeasible_by_segment"].items())) + ".",
-                  "", "Examples: " + "; ".join(mc["infeasible_reasons"][:3])]
+        for name in ("range_mission", "design_mission"):
+            m = mc[name]
+            if m["n_infeasible"]:
+                L += ["", f"**{name}: {m['n_infeasible']} of {mc['n_samples']} samples could not fly the "
+                      "profile**, by segment: " + ", ".join(f"{k} {v}" for k, v in sorted(m["by_segment"].items()))
+                      + ". Example: " + m["examples"][0]]
         L += ["", "Error factors sampled (1-sigma, relative):", ""]
         for f in mc["factors"]:
             L.append(f"- `{f['name']}` {f['sigma_rel']:.0%}: {f['basis']}")

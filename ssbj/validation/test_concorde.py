@@ -37,8 +37,10 @@ def test_infeasible_fraction_is_reported(result):
     """Infeasible samples are part of the result, not discarded silently. No threshold is gated:
     one chosen after seeing the result would be tuning (see reports/decision_log.md, D-009)."""
     mc = result["monte_carlo"]
-    assert mc["n_ok"] + mc["n_infeasible"] == mc["n_samples"]
     report = Path(result["report_path"]).read_text()
     assert "conditional" in report
-    if mc["n_infeasible"]:
-        assert "could not fly the profile" in report
+    for name in ("range_mission", "design_mission"):
+        m = mc[name]
+        assert m["n_feasible"] + m["n_infeasible"] == mc["n_samples"]
+        if m["n_infeasible"]:
+            assert f"{name}: {m['n_infeasible']} of" in report

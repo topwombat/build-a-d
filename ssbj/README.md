@@ -53,7 +53,7 @@ The Monte Carlo samples every declared factor. Each run stores its inputs, code 
 | Cited reference data | `Case` rejects a validation case with any numeric input lacking a provenance entry; `reference.yaml` cites every gate value |
 | Blind reproduction | Inputs are mission plus design definition only (D-005); sigmas committed before the first comparison (D-008) |
 | Tests are the gate | `ssbj/validation/test_concorde.py` |
-| No self-grading | An independent verifier agent re-ran and checked the case (see `reports/concorde_phase1.md`) |
+| No self-grading | A separate verifier agent (not the one that wrote or ran the case) re-ran and audited it: `reports/verification_concorde_phase1.md`. Its findings were fixed in D-017 to D-019. It is still a model checking a model's work, not a human review. |
 | Known limits | `docs/known_limits.md` is generated from the code and checked in CI |
 | Decisions logged | `reports/decision_log.md` |
-| New solvers earn trust | Sears-Haack, Breguet, pyCycle atmosphere and OpenVSP cross-check tests |
+| New solvers earn trust | Sears-Haack, Breguet, step-halving, fuel-for-distance round trip, pyCycle atmosphere and OpenVSP cross-check tests. The climb, descent and reserve segments have no independent verification case yet. |
