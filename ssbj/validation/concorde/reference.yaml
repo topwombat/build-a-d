@@ -1,8 +1,8 @@
 # Published Concorde figures the blind run is judged against.
 # None of these enter the model. Source quality: see sources_verified.yaml and VERIFICATION.md.
 #
-# The two gates are the same published data point read two ways (range at max
-# fuel, and fuel needed for that range); they are not independent evidence.
+# One gate (owner decision D-023): range at max fuel. The fuel needed for that range is the same
+# data point inverted and is reported as a diagnostic only.
 gates:
   - id: range_max_fuel
     quantity: range at max fuel, 8,845 kg payload, "FAR reserves"
@@ -11,6 +11,10 @@ gates:
     unit: nmi
     source: "Heritage Concorde, airframe-performance page (https://www.heritageconcorde.com/airframe-performance): 'Range with max fuel, FAR reserves and 8,845 kg (19,500 lb) 3,550 n miles'. Reserves not defined on the page."
     source_quality: page_read
+
+diagnostics:  # reported with the model's own error bar; not acceptance gates
+  # fuel_for_range was a gate until D-023 (owner decision): it is the range gate inverted and its
+  # interval is censored at tank capacity.
   - id: fuel_for_range
     quantity: ramp fuel to fly 3,550 nmi with 8,845 kg payload and reserves (= max fuel)
     model_output: design_ramp_fuel_kg
@@ -22,8 +26,6 @@ gates:
       - {value: 95430, source: "PPRuNe forum (search snippet; page 403)"}
     source: "Heritage Concorde weights page; Wikipedia Concorde specifications (pages read)"
     source_quality: page_read
-
-diagnostics:  # reported with the model's own error bar; not acceptance gates
   - id: oew
     model_output: oew_kg
     value: 78700
