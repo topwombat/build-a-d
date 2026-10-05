@@ -27,13 +27,13 @@ mission:
     altitude_max_ft: 60000.0
     mode: cruise_climb
   reserves:
-    contingency_fraction_of_trip: 0.10
+    contingency_fraction_of_trip: 0.0
     diversion_nmi: 200.0
     diversion_mach: 0.93
     diversion_altitude_ft: 30000.0
-    hold_minutes: 30.0
-    hold_altitude_ft: 1500.0
-    hold_mach: 0.35
+    hold_minutes: 45.0
+    hold_altitude_ft: 30000.0
+    hold_mach: 0.93
   field_length_ft: 11200.0
   takeoff_noise: not evaluated in Phase 1
   sonic_boom: report
@@ -120,7 +120,7 @@ provenance:
   mission.cruise.mach: "ICAS 1976 p.566 (read): best-range cruise is a cruise climb at M = 2.0 at maximum continuous power."
   mission.cruise.altitude_min_ft: "McKinlay, Heaton & Franchi, Operational experience on Concorde, ICAS 1976, p.566 (read): North Atlantic cruise starts at 50,000 ft and reaches 57,000 ft by the end."
   mission.cruise.altitude_max_ft: "ICAS 1976 p.566 and Heritage: maximum authorised altitude 60,000 ft."
-  mission.reserves: "ASSUMPTION: Heritage gives only 'FAR reserves'. 14 CFR 121.645(b) (eCFR, read) requires fuel for 10 % of flight time, then to the most distant named alternate, then 30 min at 1,500 ft. Used here: 10 % of trip fuel (proxy for time), a 200 nmi alternate (not in the rule; no distance published), 30 min hold at 1,500 ft."
+  mission.reserves: "OWNER DECISION 2026-10-05 (D-021): IFR reserves per 14 CFR 91.167(a) (eCFR, read): fuel to destination, then to the alternate, then 45 min at normal cruising speed; no contingency term. Alternate distance 200 nmi is an ASSUMPTION (the rule names no distance). The 45 min are flown at the subsonic alternate condition (M0.93, 30,000 ft), an interpretation of 'normal cruising speed' after diversion. Heritage's 3,550 nmi figure says only 'FAR reserves', so this remains unconfirmed against the source."
   mission.field_length_ft: "Heritage snippet: take-off distance 3,410 m (11,190 ft); reported only."
   mission.profile: "Shape supported by ICAS 1976 (read): climb at Vmo, subsonic cruise M0.95 near 27,000 ft, reheat off at M1.7. Segment end points are ASSUMPTIONS: generic SST profile (take-off allowance 1.5 min at full reheat ending at ~250 kt, M0.4 / 1,500 ft: set after the first run showed a climb from M0.3 infeasible with the no-vortex-lift polar, see decision log; subsonic climb, reheat transonic acceleration, supersonic climb, cruise-climb, idle descent); no sourced Concorde schedule was found."
   design.wing.stations: "SUAVE Concorde.py (commit f551a684) segment planform: LE x and span stations from its quarter-chord sweeps; chords scaled by 0.8848 so the gross area equals the published 358.25 m^2 (Heritage, Wikipedia, SUAVE agree). t/c 3 % root, 2.15 % outboard: Anderson, Introduction to Flight, p.392 (local copy)."
