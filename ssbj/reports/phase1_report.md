@@ -49,7 +49,7 @@ None of this was tuned away. Error sigmas were committed before the first compar
 | OpenMDAO wiring | Done; `python -m ssbj run <case.yaml>` |
 | Concorde case | Case, cited and page-verified reference data, acceptance test, run report. **Fails the fuel gate** |
 
-**Tests:** 46 unit and verification tests passed inside the built image, OpenVSP cross-checks included. Two mission tests were added after that build; the final full-suite result is recorded in the PR. The Concorde acceptance test is expected to fail as described above.
+**Tests:** final full run at `0dcfb6b`+report: 50 passed, 1 failed (`test_gates_inside_error_bar`, the fuel gate, as described above). 46 tests also passed inside the built image, OpenVSP cross-checks included; the image was built before the last two mission tests were added.
 
 ## What in the brief turned out to be wrong or harder than stated
 
