@@ -74,3 +74,18 @@ None of this was tuned away. Error sigmas were committed before the first compar
 3. Obtain the TCDS and Leyman 1986; then add validation case 2.
 
 Details: `decision_log.md`, `verification_concorde_phase1.md` (independent verifier), `concorde_run_20261004T233754.md`, `../docs/method_notes.md`, `../docs/known_limits.md`, `../validation/concorde/VERIFICATION.md`.
+
+## Update 2026-10-05: IFR reserves (owner decision D-021)
+
+Reserves changed per owner to 14 CFR 91.167(a): alternate (200 nmi assumed) plus 45 min, no contingency. The change was made after results were known and moves range toward the published value. The search bug it exposed is fixed in D-022. Run `20261005T001915-000e00` at `1438c4c`:
+
+| Gate | Published | Model nominal | Model 95 % interval | Result |
+|---|---|---|---|---|
+| Range at max fuel, 8,845 kg | 3,550 nmi | 4,011 nmi (+13 %) | 3,079 – 5,804 (157/200 flyable) | inside |
+| Fuel to fly 3,550 nmi | 95,680 kg | 83,395 kg (−13 %) | 57,105 – 93,336 (147/200) | outside |
+
+**The fuel gate's "outside" is partly a statistical artifact.** The published fuel is the tank capacity, and the search is capped there (D-022). Samples that need more than the tanks are therefore censored as infeasible (33 of 200) instead of entering the interval. Counting them as "needs more than 95,680 kg", 33 of 180 samples that can fly at all lie above the published value, so it would sit inside a censoring-aware 95 % interval. I have not changed the gate evaluation: that would be changing the test after seeing the result. The owner should decide (see below).
+
+Diagnostics are unchanged in substance: L/D 6.61, 61 % of trip fuel and 48 % of distance before cruise (published 20 % and 9 %). The supersonic-climb deficit remains the main model error. The range now overshoots by 13 % instead of undershooting; that swing shows how much the unconfirmed reserve definition moves the answer.
+
+**Decision needed:** (a) drop the fuel gate as redundant (it is the range gate inverted); (b) evaluate it with censoring at tank capacity; or (c) keep it as is (fails).
