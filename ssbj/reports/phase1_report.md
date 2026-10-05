@@ -89,3 +89,10 @@ Reserves changed per owner to 14 CFR 91.167(a): alternate (200 nmi assumed) plus
 Diagnostics are unchanged in substance: L/D 6.61, 61 % of trip fuel and 48 % of distance before cruise (published 20 % and 9 %). The supersonic-climb deficit remains the main model error. The range now overshoots by 13 % instead of undershooting; that swing shows how much the unconfirmed reserve definition moves the answer.
 
 **Decision needed:** (a) drop the fuel gate as redundant (it is the range gate inverted); (b) evaluate it with censoring at tank capacity; or (c) keep it as is (fails).
+
+## Update 2026-10-05: single range gate (owner decision D-023)
+
+The fuel-for-range check is now a diagnostic. The acceptance test (`ssbj/validation/test_concorde.py`) **passes** at commit `2a2ec1f`: 3 passed. The range gate passes with range at 4,011 nmi nominal against the published 3,550 nmi (95 % interval 3,079-5,804).
+
+This pass depends on two owner decisions made after results were known: the IFR reserve definition (D-021) and the single gate (D-023). It is not blind with respect to either. The model errors behind it are unchanged: L/D low, engine weight low, and a supersonic climb about 3x too long. The pass shows the pipeline works end to end with honest error bars. It does not show the low-rung models are accurate for this class.
+
