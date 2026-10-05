@@ -291,7 +291,7 @@ class Mission:
     def fly_distance(self, w_zero_fuel: float, distance_nmi: float, fuel_capacity: float) -> tuple[Flight, float]:
         """Fuel load needed to fly ``distance_nmi`` with reserves; returns (flight, ramp fuel).
 
-        Range grows monotonically with fuel. A fuel load too small to cover the fixed segments
+        Searched between 20 % and 100 % of the fuel capacity. A fuel load too small to cover the fixed segments
         counts as zero range; any other infeasibility (e.g. no excess power when heavy) is raised.
         Secant first, bisection if the secant leaves the bracket.
         """
@@ -304,7 +304,9 @@ class Mission:
                     return -distance_nmi
                 raise
 
-        lo, hi = 0.2 * fuel_capacity, 1.5 * fuel_capacity
+        # Bounded by the tanks: beyond ~capacity range is non-monotonic in fuel (the heavy supersonic
+        # climb collapses), so extrapolating past it gave spurious answers (D-022).
+        lo, hi = 0.2 * fuel_capacity, fuel_capacity
         f_lo = short(lo)
         # the heaviest loads may be unflyable (no excess power): bisect for the heaviest flyable load
         # (a heavy load whose climb burns all the fuel also counts as unflyable here)
@@ -333,8 +335,8 @@ class Mission:
         if f_lo > 0:
             lo, f_lo = 0.02 * fuel_capacity, short(0.02 * fuel_capacity)
         if f_hi < 0:
-            raise MissionInfeasible(f"design range not reachable: the heaviest flyable fuel load "
-                                    f"({hi:.0f} kg) falls short by {-f_hi:.0f} nmi")
+            raise MissionInfeasible(f"design range not reachable within the fuel capacity: the heaviest "
+                                    f"flyable load ({hi:.0f} kg) falls short by {-f_hi:.0f} nmi")
         x = lo + (hi - lo) * (-f_lo) / (f_hi - f_lo)
         for _ in range(60):
             fx = short(x)
