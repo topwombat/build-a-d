@@ -1,0 +1,44 @@
+# Validation results, one entry per check. Updated when a validation test is run; each entry names the
+# test and the commit at which its tolerance was fixed (a priori) and the commit of the recorded result.
+# Read by ssbj/reports/proposal.py.
+cases:
+  - name: Concorde mission (end to end)
+    kind: aircraft, blind except the D-021 reserve and D-023 gate decisions
+    test: ssbj/validation/test_concorde.py
+    run: 20261006T191624-74a9a6
+    checks:
+      - {quantity: "Range at max fuel, 8,845 kg payload", published: "3,550 nmi", model: "3,644 nmi (95 %: 2,457-4,964)", tol: "inside 95 % interval", result: pass}
+  - name: Olympus 593 Mk 610 engine (two-spool turbojet)
+    kind: engine, independent of the Concorde mission data
+    test: ssbj/validation/test_olympus593.py
+    tolerance_commit: before 7716051 (TOL 10 %)
+    checks:
+      - {quantity: "Cruise thrust, M2.0 / 53 kft", published: "10,030 lbf", model: "12,333 lbf (+23 %)", tol: "10 %", result: fail}
+      - {quantity: "Cruise TSFC", published: "1.19 /h", model: "1.20 /h (+1 %)", tol: "10 %", result: pass}
+      - {quantity: "Airflow, M2.0 / 55 kft", published: "~210 lb/s", model: "301 lb/s (+43 %)", tol: "10 %", result: fail}
+      - {quantity: "SLS airflow", published: "186 kg/s", model: "255 kg/s (+37 %)", tol: "10 %", result: fail}
+  - name: NASA TM X-372 arrow wing-body, zero-lift wave drag (wind tunnel)
+    kind: aerodynamics component, wind-tunnel test data
+    test: ssbj/validation/test_wave_drag_tmx372.py
+    tolerance_commit: 5952a51 (TOL 50 %)
+    checks:
+      - {quantity: "CDw at M1.55", published: "0.0063", model: "0.0082 (+29 %)", tol: "50 %", result: pass}
+      - {quantity: "CDw at M1.70", published: "0.0058", model: "0.0073 (+25 %)", tol: "50 %", result: pass}
+      - {quantity: "CDw at M2.00", published: "0.0049", model: "0.0057 (+16 %)", tol: "50 %", result: pass}
+      - {quantity: "CDw at M2.35", published: "0.0038", model: "0.0047 (+24 %)", tol: "50 %", result: pass}
+      - {quantity: "CDw at M3.00", published: "0.0031", model: "0.0038 (+24 %)", tol: "50 %", result: pass}
+  - name: NASA 55t STCA turbofan (CFM56-7B core), M1.4 / 50 kft
+    kind: engine, model-to-model (NASA NPSS)
+    test: ssbj/validation/test_stca_engine.py
+    tolerance_commit: 456e33c (TOL 10 %)
+    checks:
+      - {quantity: "SFC", published: "0.943 /h", model: "0.778 /h (-17 %)", tol: "10 %", result: fail}
+      - {quantity: "Bypass ratio", published: "2.9", model: "4.67 (+61 %)", tol: "10 %", result: fail}
+      - {quantity: "Compressor exit temperature", published: "1,450 R", model: "1,417 R (-2 %)", tol: "10 %", result: pass}
+      - {quantity: "Nozzle pressure ratio", published: "5.9", model: "6.02 (+2 %)", tol: "10 %", result: pass}
+      - {quantity: "Engine-face corrected flow", published: "413 lbm/s", model: "416 lbm/s (+1 %)", tol: "10 %", result: pass}
+  - name: OpenVSP WaveDrag code-to-code (Concorde, no nacelles)
+    kind: verification (code-to-code)
+    test: tests/test_openvsp_crosscheck.py
+    checks:
+      - {quantity: "Wave D/q, M1.2 / 1.6 / 2.0", published: "OpenVSP", model: "-5.6 % / -2.1 % / -0.3 %", tol: "15 %", result: pass}

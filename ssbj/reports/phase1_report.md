@@ -96,3 +96,26 @@ The fuel-for-range check is now a diagnostic. The acceptance test (`ssbj/validat
 
 This pass depends on two owner decisions made after results were known: the IFR reserve definition (D-021) and the single gate (D-023). It is not blind with respect to either. The model errors behind it are unchanged: L/D low, engine weight low, and a supersonic climb about 3x too long. The pass shows the pipeline works end to end with honest error bars. It does not show the low-rung models are accurate for this class.
 
+
+## Update 2026-10-06: roadmap item 1 (supersonic-climb deficit)
+
+Run `20261006T191624-74a9a6` (two-spool engine, corrected wave drag). The acceptance test passes (3 passed).
+
+| Quantity | Published | Before (single spool, 20261005) | Now |
+|---|---|---|---|
+| Range at max fuel | 3,550 nmi | 4,011 | 3,644 (95 %: 2,457-4,964) |
+| Cruise L/D | 7.14-7.5 | 6.61 | 7.19 |
+| Cruise TSFC | 1.195 /h | 1.12 | 1.20 |
+| Trip fuel before cruise | 20 % | 61 % | 24 % |
+| Distance before cruise | 9 % | 48 % | 6.7 % |
+| Engine dry mass | 3,175 kg | 1,767 | 1,767 |
+
+What changed:
+- **Wave drag.** Two code defects were found by the TM X-372 wind-tunnel check: the wing inside the fuselage was counted twice, and the sting closure added a spurious base drag. Concorde wave drag fell 8-10 %, and the OpenVSP gap closed.
+- **Engine.** The engine is now a two-spool turbojet designed at M2 cruise, with spool-speed limits.
+
+What did not change:
+- The engine model still fails its own validation: Olympus cruise thrust +23 % and airflow +43 %; the STCA turbofan SFC is 17 % low.
+- Engine weight is still 44 % low.
+
+Part of the improved climb therefore comes from excess thrust. The human-readable proposal with "Remaining deficiencies" is `proposal.md`.

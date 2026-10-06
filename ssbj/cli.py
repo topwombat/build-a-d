@@ -23,6 +23,7 @@ def main(argv: list[str] | None = None) -> int:
     v.add_argument("case", type=Path)
     lim = sub.add_parser("limits", help="write the known-limits register from the modules")
     lim.add_argument("--out", type=Path, default=Path(__file__).parent / "docs" / "known_limits.md")
+    sub.add_parser("proposal", help="write the proposal document from committed pipeline data")
     ls = sub.add_parser("runs", help="list recorded runs")
     ls.add_argument("--case", default=None)
     ls.add_argument("--runs-dir", type=Path, default=None)
@@ -50,6 +51,10 @@ def main(argv: list[str] | None = None) -> int:
 
         a.out.write_text(render())
         print(f"wrote {a.out}")
+    elif a.cmd == "proposal":
+        from ssbj.reports.proposal import write
+
+        print(f"wrote {write()}")
     elif a.cmd == "runs":
         from ssbj.runs.db import RunDB
 

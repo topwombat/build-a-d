@@ -15,3 +15,9 @@ def test_json_schema_in_sync():
 
     path = Path(__file__).resolve().parents[1] / "ssbj" / "specs" / "case.schema.json"
     assert json.loads(path.read_text()) == json_schema(), "run `python -m ssbj schema`"
+
+
+def test_proposal_in_sync():
+    from ssbj.reports.proposal import HERE, render
+
+    assert (HERE / "proposal.md").read_text() == render(), "run `python -m ssbj proposal`"

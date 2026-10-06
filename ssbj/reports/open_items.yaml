@@ -1,0 +1,16 @@
+# Open items for the proposal's "Remaining deficiencies" section that are not module limits
+# (those come from the known-limits register). Read by ssbj/reports/proposal.py.
+decisions:
+  - "Declared propulsion sigmas (thrust 5 %, SFC 5 %) are contradicted by both engine validations (Olympus thrust +23 %, STCA SFC -17 %). Proposal: widen to thrust 15 %, SFC 15 % until the cycle model passes, which widens the Concorde range interval. Not done without the owner, because it changes the gate after results are known."
+  - "Mixer 'extraction ratio' in AIAA 2020-0263 is undefined; read as Pt_bypass / Pt_core (D-030). Confirm from an NPSS reference or the authors."
+  - "Core choice for the SSBJ engine: CFM56/F101 '1/9' core is the best technical fit (Affinity precedent) but US-export-controlled; PW800 second; RR Pearl the European option but thermally hot. Supplier dialogue needed before the engine requirement is frozen."
+  - "Concorde reserve definition (D-021, IFR 91.167) remains an assumption; ~700 nmi of range depends on it."
+deficiencies:
+  - "The Concorde range pass still rests partly on offsetting errors: the engine model gives 23 % too much cruise thrust (helps the supersonic climb) and the engine weight is 44 % low (1,767 vs 3,175 kg). L/D (7.19 vs 7.14-7.5), TSFC (1.20 vs 1.195) and pre-cruise fuel (24 % vs 20 %) now agree."
+  - "Two-spool engine model: specific thrust 15-27 % low on the Olympus, core work too high on the STCA turbofan (BPR +61 %). No duct or mixer losses, no offtakes, generic maps. 133 of the Concorde deck's in-envelope points did not converge and are neighbour-filled."
+  - "Harris wave drag runs 16-29 % above the TM X-372 wind-tunnel data; no correction applied."
+  - "No SSBJ design exists yet: sizing closure, constraint diagram and optimiser are roadmap item 5. The engine requirement is not yet an output (item 4)."
+  - "Low-speed (field length, Chapter 14 noise, vortex lift), trim, and sonic boom are not modelled (item 4)."
+  - "Only one aircraft-level validation case (Concorde). Mach 1.5-class cases (N+2 studies, AS2, F-16XL) are roadmap item 2."
+  - "CI has not run on GitHub: waiting on the self-hosted runner labels from the owner."
+  - "No human reviewer has signed off any validation case (item 7)."
