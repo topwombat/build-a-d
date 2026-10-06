@@ -22,10 +22,11 @@ is in the repository root; page numbers are those printed in the book.
 ## Aerodynamics (`ssbj/disciplines/aero`)
 
 - **Skin friction.** Turbulent flat plate (eq. 12.27) with the cutoff Reynolds number for smooth paint (eqs. 12.28-12.29, Table 12.4). Subsonic form factors use eqs. 12.30-12.32; there are none supersonically (eq. 12.42).
-- **Wave drag.** Harris far-field area rule: Mach-plane cuts at 24 roll angles, and the von Kármán integral by Fourier-sine fit.
+- **Wave drag.** Harris far-field area rule: Mach-plane cuts at 36 roll angles × 721 stations, and the von Kármán integral by Fourier-sine fit. Wing thickness inside the fuselage radius is not counted (D-027).
   - Verified against the Sears-Haack closed form (eq. 12.45) to 1e-6 on aligned grids, and to O(dx/l) on misaligned ones.
-  - Converged to within 2 % at 24 × 481.
-  - **Code-to-code against OpenVSP WaveDrag** (Concorde, no nacelles): ssbj is 9-11 % higher at M 1.2-2.0. Phase 1 accepts this inside the 25 % `aero.wave` sigma. The cause is not yet resolved; candidates are the thin-wing slicing and OpenVSP's slice count.
+  - Converged to within 0.6 % of 48 × 961 at 36 × 721 (D-029; the earlier 24 × 481 was 3.6 % off after D-027 sharpened the area peaks at 90°/270° roll).
+  - **Against wind-tunnel data (NASA TM X-372 arrow wing-body, M 1.55-3.0):** 16-29 % above measured zero-lift wave drag, inside the 50 % tolerance committed before the run (`ssbj/validation/test_wave_drag_tmx372.py`).
+  - **Code-to-code against OpenVSP WaveDrag** (Concorde, no nacelles): ssbj is 0-6 % lower at M 1.2-2.0 (M1.2 −5.6 %, M1.6 −2.1 %, M2.0 −0.3 %). The earlier 9-11 % excess was the wing-inside-fuselage double count fixed in D-027.
   - The Raymer eq. 12.46 empirical correlation is reported in every run. It sits at about half the Harris value for Concorde. That is a known weakness of the correlation for this configuration, and the run warns.
 - **Lift.** CL_alpha uses eq. 12.6 subsonically and Jones/Stewart linear theory for a delta of equal AR supersonically (verified limits πAR/2 and 4/β). K comes from the leading-edge-suction method with S = 0.2 (assumed).
 

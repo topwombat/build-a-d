@@ -6,3 +6,4 @@ __pycache__/
 ssbj/runs/store/
 .DS_Store
 Unnamed_*
+*_out/

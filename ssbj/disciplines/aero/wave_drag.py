@@ -66,8 +66,15 @@ def sears_haack_drag(length: float, a_max: float) -> float:
     return 4.5 * np.pi * (a_max / length) ** 2
 
 
-def harris_wave_drag(aircraft, mach: float, n_theta: int = 24, n_x: int = 481) -> dict:
+def harris_wave_drag(aircraft, mach: float, n_theta: int = 36, n_x: int = 721,
+                     x_end: float | None = None) -> dict:
     """Wave drag D/q (m^2) of the full configuration at ``mach`` (> 1).
+
+    ``x_end`` is for wind-tunnel models on a sting: the cuts stop at x_end + reach,
+    where every cut still crosses the constant-area sting (the body must extend
+    past x_end + 2 reach). The area there is the base area with S' = 0, which the
+    sine series represents exactly; closing the sting with a step instead adds a
+    spurious base-closure drag.
 
     Returns the average over roll angles plus the per-angle values for inspection.
     Roll angles are taken on [0, pi) and the result uses the left/right symmetry
@@ -78,13 +85,14 @@ def harris_wave_drag(aircraft, mach: float, n_theta: int = 24, n_x: int = 481) -
         raise ValueError("Harris wave drag is defined for M > 1")
     B = np.sqrt(mach**2 - 1.0)
     span = aircraft.wing.span
-    height = aircraft.fin.z_root + aircraft.fin.height
+    height = (aircraft.fin.z_root + aircraft.fin.height) if aircraft.fin is not None else \
+        float(np.max(aircraft.fuselage.radius(np.linspace(0, aircraft.fuselage.length, 200))))
     L = aircraft.length
     thetas = np.linspace(0, 2 * np.pi, n_theta, endpoint=False)
     out = []
     for th in thetas:
         reach = B * (abs(np.cos(th)) * span / 2 + abs(np.sin(th)) * height) + 2.0
-        x0 = np.linspace(-reach, L + reach, n_x)
+        x0 = np.linspace(-reach, (L if x_end is None else x_end) + reach, n_x)
         s = aircraft.mach_plane_areas(mach, th, x0)
         out.append(slender_body_drag(x0, s))
     out = np.array(out)

@@ -3,13 +3,13 @@ import pytest
 
 from ssbj.disciplines.aero.polar import build_polar
 from ssbj.disciplines.mission import analysis
-from ssbj.disciplines.propulsion.deck import build_engine
+from ssbj.disciplines.propulsion.two_spool import build_two_spool
 
 
 @pytest.fixture(scope="module")
 def setup(concorde_case, concorde_aircraft):
     polar = build_polar(concorde_aircraft).outputs["polar"]
-    deck = build_engine(concorde_case.design.engine).outputs["deck"]
+    deck = build_two_spool(concorde_case.design.engine).outputs["deck"]
     zfw = 72000.0 + concorde_case.mission.payload.mass_kg
     return concorde_case, polar, deck, concorde_aircraft.s_ref, zfw
 

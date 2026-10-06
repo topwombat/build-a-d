@@ -33,6 +33,24 @@ class Planform:
     x_le: np.ndarray  # leading-edge x at each station, m
     chord: np.ndarray  # m
     tc: np.ndarray  # thickness/chord at each station
+    profiles: list | None = None  # optional per-station (xi, t/c) arrays; default parabolic arc
+
+    def thickness(self, xi: np.ndarray, yy: np.ndarray) -> np.ndarray:
+        """Local thickness / chord at chord fractions ``xi`` (n, m) on span stations ``yy`` (m,)."""
+        inside = (xi >= 0) & (xi <= 1)
+        if self.profiles is None:
+            tc = np.interp(yy, self.y, self.tc)[None, :]
+            return np.where(inside, 4.0 * tc * xi * (1 - xi), 0.0)
+        k = np.clip(np.searchsorted(self.y, yy) - 1, 0, len(self.y) - 2)
+        w = np.clip((yy - self.y[k]) / (self.y[k + 1] - self.y[k]), 0, 1)
+        out = np.zeros_like(xi)
+        xs = np.clip(xi, 0, 1)
+        for kk in np.unique(k):
+            cols = k == kk
+            a = np.interp(xs[:, cols], *self.profiles[kk])
+            b = np.interp(xs[:, cols], *self.profiles[kk + 1])
+            out[:, cols] = (1 - w[cols]) * a + w[cols] * b
+        return np.where(inside, out, 0.0)
 
     @property
     def span(self) -> float:
@@ -197,10 +215,10 @@ class Fin:
 
 @dataclass
 class Aircraft:
-    design: Design
+    design: Design | None
     wing: Planform
     fuselage: Body
-    fin: Fin
+    fin: Fin | None
     nacelles: list[Nacelle]
     checks: list[str] = field(default_factory=list)  # non-fatal geometry warnings
 
@@ -216,8 +234,9 @@ class Aircraft:
     @property
     def length(self) -> float:
         xs = [self.fuselage.x0 + self.fuselage.length,
-              float(np.max(self.wing.x_le + self.wing.chord)),
-              self.fin.x_le_root + self.fin.root_chord]
+              float(np.max(self.wing.x_le + self.wing.chord))]
+        if self.fin is not None:
+            xs.append(self.fin.x_le_root + self.fin.root_chord)
         xs += [n.x0 + n.length for n in self.nacelles]
         return max(xs)
 
@@ -263,31 +282,34 @@ class Aircraft:
         x0 = np.asarray(x0, dtype=float)
         total = np.zeros_like(x0)
 
-        # wing (thin-wing approximation, both halves): integrate thickness along the cut line in z = 0
+        # wing (thin-wing approximation, both halves): integrate thickness along the cut line in z = 0.
+        # The part of the wing inside the fuselage is excluded (the body's area already covers it).
         w = self.wing
+        b = self.fuselage
         for side in (1.0, -1.0):
             yy = np.linspace(0.0, w.y[-1], 400)
             xle = np.interp(yy, w.y, w.x_le)
             c = np.interp(yy, w.y, w.chord)
-            tc = np.interp(yy, w.y, w.tc)
             dy = yy[1] - yy[0]
             xc = x0[:, None] + B * side * yy[None, :] * ct
             xi = (xc - xle[None, :]) / c[None, :]
-            t = np.where((xi >= 0) & (xi <= 1), 4.0 * tc[None, :] * c[None, :] * xi * (1 - xi), 0.0)
+            t = w.thickness(xi, yy) * c[None, :]
+            # fraction of each span cell outside the body radius (continuous in x0, unlike a step mask)
+            t = t * np.clip((yy[None, :] - b.radius(xc - b.x0)) / dy + 0.5, 0.0, 1.0)
             total += np.trapezoid(t, dx=dy, axis=1)
 
         # fin (thin, in x-z plane at y = 0): cut line x = x0 + B z sin(th)
         f = self.fin
-        zz = np.linspace(0.0, f.height, 120)
-        xle = f.x_le_root + zz * np.tan(f.sweep_le)
-        c = f.root_chord + (f.tip_chord - f.root_chord) * zz / f.height
-        xc = x0[:, None] + B * (f.z_root + zz[None, :]) * st
-        xi = (xc - xle[None, :]) / c[None, :]
-        t = np.where((xi >= 0) & (xi <= 1), 4.0 * f.tc * c[None, :] * xi * (1 - xi), 0.0)
-        total += np.trapezoid(t, zz, axis=1)
+        if f is not None:
+            zz = np.linspace(0.0, f.height, 120)
+            xle = f.x_le_root + zz * np.tan(f.sweep_le)
+            c = f.root_chord + (f.tip_chord - f.root_chord) * zz / f.height
+            xc = x0[:, None] + B * (f.z_root + zz[None, :]) * st
+            xi = (xc - xle[None, :]) / c[None, :]
+            t = np.where((xi >= 0) & (xi <= 1), 4.0 * f.tc * c[None, :] * xi * (1 - xi), 0.0)
+            total += np.trapezoid(t, zz, axis=1)
 
         # fuselage: area of the oblique cut through a body of revolution, numerically on a y-z grid
-        b = self.fuselage
         rmax = float(np.max(b.radius(np.linspace(0, b.length, 400))))
         ys = np.linspace(-rmax, rmax, ny)
         zs = np.linspace(-rmax, rmax, nz * 2)

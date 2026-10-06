@@ -50,7 +50,7 @@ def test_scaling_with_length():
 def test_discretisation_converged(concorde_aircraft):
     """Default resolution is within 3 % of a much finer one (numerical error bar)."""
     base = harris_wave_drag(concorde_aircraft, 2.0)["D_q"]
-    fine = harris_wave_drag(concorde_aircraft, 2.0, n_theta=36, n_x=721)["D_q"]
+    fine = harris_wave_drag(concorde_aircraft, 2.0, n_theta=48, n_x=961)["D_q"]
     assert base == pytest.approx(fine, rel=0.03)
 
 

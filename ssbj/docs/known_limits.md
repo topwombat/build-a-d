@@ -18,6 +18,7 @@ Not trusted when:
 - Linear theory: invalid at high angle of attack where leading-edge vortex lift dominates (take-off, approach); no vortex lift is modelled.
 - Transonic (0.9 < M < 1.2) wave drag is a fairing, not a prediction.
 - Harris area rule assumes slender, smooth configurations; blunt bases, inlet spillage and boundary-layer diverters are not modelled.
+- Harris wave drag is 16-29 % above wind-tunnel data on the NASA TM X-372 arrow wing-body (M 1.55-3.0); not corrected (no calibration on test data yet), inside the aero.wave sigma only at 1 to 1.2 sigma.
 - No trim drag (stability module is Phase 4).
 - No interference factors (Q = 1).
 

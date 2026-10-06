@@ -145,7 +145,23 @@
           "$ref": "#/$defs/NacelleSpec"
         },
         "engine": {
-          "$ref": "#/$defs/Engine"
+          "discriminator": {
+            "mapping": {
+              "ab_turbojet": "#/$defs/Engine",
+              "mixed_flow_turbofan": "#/$defs/TwoSpoolEngine",
+              "two_spool_turbojet": "#/$defs/TwoSpoolEngine"
+            },
+            "propertyName": "type"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/Engine"
+            },
+            {
+              "$ref": "#/$defs/TwoSpoolEngine"
+            }
+          ],
+          "title": "Engine"
         },
         "weights": {
           "$ref": "#/$defs/WeightsInputs"
@@ -713,6 +729,229 @@
         "minutes"
       ],
       "title": "Taxi",
+      "type": "object"
+    },
+    "TwoSpoolEngine": {
+      "additionalProperties": false,
+      "description": "Two-spool engine (D-024). For the turbofan, ``lpc_pr`` is the fan pressure ratio and the HP\ncompressor, burner and HP turbine form the bought core (``core`` names a candidate).",
+      "properties": {
+        "type": {
+          "enum": [
+            "two_spool_turbojet",
+            "mixed_flow_turbofan"
+          ],
+          "title": "Type",
+          "type": "string"
+        },
+        "count": {
+          "maximum": 8,
+          "minimum": 1,
+          "title": "Count",
+          "type": "integer"
+        },
+        "core": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "candidate core id (propulsion/cores) for turbofans",
+          "title": "Core"
+        },
+        "fn_sls_dry_kN": {
+          "description": "max dry SLS thrust per engine (sizing target)",
+          "exclusiveMinimum": 0,
+          "title": "Fn Sls Dry Kn",
+          "type": "number"
+        },
+        "design_mach": {
+          "default": 0.0,
+          "description": "cycle design point Mach (0 = SLS)",
+          "maximum": 3,
+          "minimum": 0,
+          "title": "Design Mach",
+          "type": "number"
+        },
+        "design_alt_ft": {
+          "default": 0.0,
+          "maximum": 70000,
+          "minimum": 0,
+          "title": "Design Alt Ft",
+          "type": "number"
+        },
+        "fn_design_kN": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "thrust at the design point; set by sizing so the limited SLS dry thrust equals fn_sls_dry_kN",
+          "title": "Fn Design Kn"
+        },
+        "lpc_pr": {
+          "description": "LP compressor (turbojet) or fan (turbofan) PR",
+          "exclusiveMaximum": 8.0,
+          "exclusiveMinimum": 1.0,
+          "title": "Lpc Pr",
+          "type": "number"
+        },
+        "hpc_pr": {
+          "exclusiveMaximum": 30.0,
+          "exclusiveMinimum": 1.5,
+          "title": "Hpc Pr",
+          "type": "number"
+        },
+        "t4_max_K": {
+          "exclusiveMaximum": 2200,
+          "exclusiveMinimum": 1000,
+          "title": "T4 Max K",
+          "type": "number"
+        },
+        "t3_max_K": {
+          "anyOf": [
+            {
+              "exclusiveMaximum": 1100,
+              "exclusiveMinimum": 500,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "compressor-exit limit (core)",
+          "title": "T3 Max K"
+        },
+        "hp_speed_max_frac": {
+          "anyOf": [
+            {
+              "exclusiveMaximum": 1.2,
+              "exclusiveMinimum": 0.9,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": 1.05,
+          "description": "HP spool speed limit / design (None: not limited)",
+          "title": "Hp Speed Max Frac"
+        },
+        "afterburner": {
+          "default": true,
+          "title": "Afterburner",
+          "type": "boolean"
+        },
+        "t_ab_K": {
+          "anyOf": [
+            {
+              "exclusiveMaximum": 2400,
+              "exclusiveMinimum": 1200,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "T Ab K"
+        },
+        "lpc_eff_poly": {
+          "default": 0.9,
+          "exclusiveMaximum": 0.95,
+          "exclusiveMinimum": 0.7,
+          "title": "Lpc Eff Poly",
+          "type": "number"
+        },
+        "hpc_eff_poly": {
+          "default": 0.9,
+          "exclusiveMaximum": 0.95,
+          "exclusiveMinimum": 0.7,
+          "title": "Hpc Eff Poly",
+          "type": "number"
+        },
+        "hpt_eff": {
+          "default": 0.885,
+          "exclusiveMaximum": 0.96,
+          "exclusiveMinimum": 0.7,
+          "title": "Hpt Eff",
+          "type": "number"
+        },
+        "lpt_eff": {
+          "default": 0.885,
+          "exclusiveMaximum": 0.96,
+          "exclusiveMinimum": 0.7,
+          "title": "Lpt Eff",
+          "type": "number"
+        },
+        "burner_dpqp": {
+          "default": 0.05,
+          "exclusiveMaximum": 0.15,
+          "minimum": 0,
+          "title": "Burner Dpqp",
+          "type": "number"
+        },
+        "ab_dpqp": {
+          "default": 0.05,
+          "exclusiveMaximum": 0.15,
+          "minimum": 0,
+          "title": "Ab Dpqp",
+          "type": "number"
+        },
+        "nozzle_cv": {
+          "default": 0.98,
+          "exclusiveMinimum": 0.9,
+          "maximum": 1.0,
+          "title": "Nozzle Cv",
+          "type": "number"
+        },
+        "cool_hpt_frac": {
+          "default": 0.0,
+          "exclusiveMaximum": 0.25,
+          "minimum": 0,
+          "title": "Cool Hpt Frac",
+          "type": "number"
+        },
+        "cool_lpt_frac": {
+          "default": 0.0,
+          "exclusiveMaximum": 0.25,
+          "minimum": 0,
+          "title": "Cool Lpt Frac",
+          "type": "number"
+        },
+        "mixer_er": {
+          "default": 1.05,
+          "description": "turbofan mixer total-pressure ratio",
+          "exclusiveMaximum": 1.5,
+          "exclusiveMinimum": 0.8,
+          "title": "Mixer Er",
+          "type": "number"
+        },
+        "inlet": {
+          "const": "mil_e_5008b",
+          "default": "mil_e_5008b",
+          "title": "Inlet",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "count",
+        "fn_sls_dry_kN",
+        "lpc_pr",
+        "hpc_pr",
+        "t4_max_K"
+      ],
+      "title": "TwoSpoolEngine",
       "type": "object"
     },
     "WeightsInputs": {

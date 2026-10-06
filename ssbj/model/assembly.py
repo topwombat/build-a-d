@@ -19,6 +19,7 @@ from ssbj.core.interface import Factors
 from ssbj.disciplines.aero.polar import build_polar
 from ssbj.disciplines.mission.analysis import analyse
 from ssbj.disciplines.propulsion.deck import build_engine
+from ssbj.disciplines.propulsion.two_spool import build_two_spool, size_to_sls
 from ssbj.disciplines.weights.raymer_transport import build_weights
 from ssbj.geometry.parametric import build as build_geometry
 
@@ -95,12 +96,24 @@ class PropulsionComp(_Memo):
         self.add_output("tsfc_cruise", 0.0, units="1/h")
 
     def compute(self, inputs, outputs, discrete_inputs, discrete_outputs):
-        e = self.options["case"].design.engine.model_copy(update={
-            "opr": float(inputs["opr"][0]), "t4_max_K": float(inputs["t4_max"][0]),
-            "fn_sls_dry_kN": float(inputs["fn_sls_dry"][0]), "t_ab_K": float(inputs["t_ab"][0])})
+        base = self.options["case"].design.engine
+        opr, fn = float(inputs["opr"][0]), float(inputs["fn_sls_dry"][0])
+        upd = {"t4_max_K": float(inputs["t4_max"][0]), "t_ab_K": float(inputs["t_ab"][0])}
+        if base.type == "ab_turbojet":
+            e = base.model_copy(update=upd | {"opr": opr, "fn_sls_dry_kN": fn})
+        else:  # two-spool: OPR scales both spools equally; a new SLS thrust is re-sized
+            r = np.sqrt(opr / (base.lpc_pr * base.hpc_pr))
+            r = 1.0 if abs(r - 1.0) < 1e-9 else r
+            e = base.model_copy(update=upd | {"lpc_pr": base.lpc_pr * r, "hpc_pr": base.hpc_pr * r,
+                                              "fn_sls_dry_kN": fn})
         k = _key(e.model_dump())
         if k not in self._memo:
-            self._memo = {k: build_engine(e)}
+            if base.type == "ab_turbojet":
+                self._memo = {k: build_engine(e)}
+            else:
+                if e != base:  # off-nominal input: re-size so SLS thrust is as requested
+                    e, _ = size_to_sls(e)
+                self._memo = {k: build_two_spool(e)}
         res = self._memo[k]
         self._store("propulsion", res)
         deck = res.outputs["deck"]
@@ -179,7 +192,7 @@ class SSBJModel(om.Group):
         ivc = self.add_subsystem("dv", om.IndepVarComp(), promotes=["*"])
         e, w = c.design.engine, c.design.weights
         ivc.add_output("wing_chord_scale", 1.0)
-        ivc.add_output("opr", e.opr)
+        ivc.add_output("opr", e.opr if e.type == "ab_turbojet" else e.lpc_pr * e.hpc_pr)
         ivc.add_output("t4_max", e.t4_max_K, units="K")
         ivc.add_output("fn_sls_dry", e.fn_sls_dry_kN, units="kN")
         ivc.add_output("t_ab", e.t_ab_K, units="K")

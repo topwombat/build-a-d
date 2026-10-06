@@ -20,8 +20,8 @@ def test_concorde_case_loads(concorde_case):
 
 def test_validation_case_needs_provenance():
     d = _raw()
-    del d["provenance"]["design.engine.opr"]
-    with pytest.raises(ValidationError, match="design.engine.opr"):
+    del d["provenance"]["design.engine.lpc_pr"]
+    with pytest.raises(ValidationError, match="design.engine.lpc_pr"):
         Case.model_validate(d)
 
 
@@ -75,5 +75,13 @@ def test_area_distribution_at_mach_one_matches_volume(concorde_aircraft):
     x = np.linspace(-1, ac.length + 1, 2001)
     a = ac.mach_plane_areas(1.0, 0.0, x)
     vol_nac = sum(n.shell_area() * n.length * 0.75 for n in ac.nacelles) * 2  # cosine ramps: 3/4 of box
-    expected = ac.fuselage.volume() + ac.wing.volume() + ac.fin.volume() + vol_nac
+    # wing volume inside the fuselage is not counted twice: integrate it on an independent x-y grid
+    w, b = ac.wing, ac.fuselage
+    yy = np.linspace(0.0, w.y[-1], 300)
+    xx = np.linspace(w.x_le.min(), (w.x_le + w.chord).max(), 3000)
+    c = np.interp(yy, w.y, w.chord)
+    xi = (xx[:, None] - np.interp(yy, w.y, w.x_le)[None, :]) / c[None, :]
+    t = w.thickness(xi, yy) * c[None, :] * (yy[None, :] < b.radius(xx - b.x0)[:, None])
+    inside = 2.0 * np.trapezoid(np.trapezoid(t, yy, axis=1), xx)
+    expected = ac.fuselage.volume() + ac.wing.volume() - inside + ac.fin.volume() + vol_nac
     assert np.trapezoid(a, x) == pytest.approx(expected, rel=0.01)
