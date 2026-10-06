@@ -525,4 +525,26 @@ def olympus_validation_point() -> dict:
     return out
 
 
+def stca_validation_point() -> dict:
+    """Design point of the NASA 55t STCA turbofan (ssbj/validation/stca_engine/engine.yaml)."""
+    import yaml
+
+    from ssbj.specs.schema import TwoSpoolEngine
+
+    raw = yaml.safe_load((Path(__file__).parents[2] / "validation" / "stca_engine" / "engine.yaml").read_text())
+    spec = TwoSpoolEngine.model_validate(raw["engine"])
+    warnings.filterwarnings("ignore")
+    p = new_problem(spec)
+    p.model.OD.nonlinear_solver.options["err_on_non_converge"] = False  # only the design point is checked
+    p.run_model()
+    d = "DESIGN."
+    return {"fn_lbf": float(p.get_val(d + "perf.Fn", units="lbf")[0]),
+            "tsfc_per_h": float(p.get_val(d + "perf.TSFC", units="lbm/(h*lbf)")[0]),
+            "bpr": float(p.get_val(d + "splitter.BPR")[0]),
+            "t3_R": float(p.get_val(d + "hpc.Fl_O:tot:T", units="degR")[0]),
+            "npr": float(p.get_val(d + "nozz.PR")[0]),
+            "wc2_lbm_s": float(p.get_val(d + "lpc.Wc", units="lbm/s")[0]),
+            "w_lbm_s": float(p.get_val(d + "inlet.Fl_O:stat:W", units="lbm/s")[0])}
+
+
 _ = (atmosphere, FT, LBM, REF_ENGINE, Factors)  # re-exported names used by callers
