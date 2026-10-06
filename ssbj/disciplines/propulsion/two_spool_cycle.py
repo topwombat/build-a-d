@@ -8,8 +8,9 @@ One cycle class covers both architectures (D-024):
                   optional afterburner, CD nozzle. The core is the bought gas generator; the
                   fan, LP turbine, mixer and nozzle are ours.
 
-Off-design the nozzle throat is variable (scheduled to hold the LP compressor or fan on its
-design operating line, RlineMap = design value), so reheat does not re-match the gas generator.
+Off-design, dry operation holds the nozzle throat at its design area; with reheat the nozzle
+opens to hold the LP compressor (fan) on the dry operating line, so reheat does not re-match the
+gas generator (``wctl`` selector, s = 0 dry / s = 1 reheat).
 Adapted from pyCycle's ``mixedflow_turbofan.py`` and ``afterburning_turbojet.py`` examples
 (Apache-2.0). Component maps: pyCycle FanMap / LPCMap / HPCMap / HPTMap / LPTMap.
 """
@@ -118,9 +119,19 @@ class TwoSpool(pyc.Cycle):
                 self.connect("balance.BPR", "splitter.BPR")
                 self.connect("mixer.ER", "balance.lhs:BPR")
         else:
+            # Airflow control: s = 0 holds the nozzle throat at its design area (dry operation);
+            # s = 1 holds the LP compressor / fan on a given operating line (reheat: the nozzle opens
+            # so the gas generator keeps its dry match).
+            self.add_subsystem("wctl", om.ExecComp(
+                ["y = s*rline + (1.0 - s)*area/a_ref", "y_tgt = s*rline_tgt + (1.0 - s)"],
+                area={"units": "inch**2", "val": 500.0}, a_ref={"units": "inch**2", "val": 500.0},
+                rline={"val": 2.0}, rline_tgt={"val": 2.0}, s={"val": 0.0}))
+            self.connect("nozz.Throat:stat:area", "wctl.area")
+            self.connect("lpc.map.RlineMap", "wctl.rline")
             bal.add_balance("W", units="lbm/s", eq_units=None, lower=1.0, upper=2000.0, val=100.0)
             self.connect("balance.W", "inlet.Fl_I:stat:W")
-            self.connect("lpc.map.RlineMap", "balance.lhs:W")  # variable nozzle holds the operating line
+            self.connect("wctl.y", "balance.lhs:W")
+            self.connect("wctl.y_tgt", "balance.rhs:W")
             bal.add_balance("LP_Nmech", val=4000.0, units="rpm", lower=200.0, eq_units="hp",
                             use_mult=True, mult_val=-1)
             self.connect("balance.LP_Nmech", "LP_Nmech")
@@ -139,7 +150,7 @@ class TwoSpool(pyc.Cycle):
 
         order = ["fc", "inlet", "lpc"] + (["splitter", "bypass_duct"] if byp else []) + [
             "hpc", "burner", "hpt", "lpt"] + (["mixer"] if byp else []) + (["ab"] if ab else []) + [
-            "nozz", "lp_shaft", "hp_shaft", "perf", "balance"]
+            "nozz", "lp_shaft", "hp_shaft", "perf"] + ([] if design else ["wctl"]) + ["balance"]
         self.set_order(order)
 
         newton = self.nonlinear_solver = om.NewtonSolver()
@@ -185,8 +196,8 @@ class DesignAndOffDesign(pyc.MPCycle):
         if ab:
             self.set_input_defaults("OD.ab.Fl_I:FAR", 0.0)
 
-        # off-design holds the LP compressor / fan on its design operating line (variable nozzle)
-        self.pyc_connect_des_od("lpc.map.RlineMap", "balance.rhs:W")
+        # dry off-design holds the nozzle throat at its design area
+        self.pyc_connect_des_od("nozz.Throat:stat:area", "wctl.a_ref")
         for el in ("lpc", "hpc"):
             for s in ("s_PR", "s_Wc", "s_eff", "s_Nc"):
                 self.pyc_connect_des_od(f"{el}.{s}", f"{el}.{s}")

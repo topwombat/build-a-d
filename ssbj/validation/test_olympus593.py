@@ -37,3 +37,15 @@ def test_cruise_tsfc(olympus_point):
 
 def test_cruise_airflow(olympus_point):
     assert olympus_point["w_kg_s_M2_55k"] / LBM == pytest.approx(210.0, rel=TOL_AIRFLOW)
+
+
+def test_sls_airflow():
+    """Added with D-026 (cruise design point), before the sized engine was run: SLS airflow is no
+    longer a matching target, so it becomes a check. 186 kg/s (Wikipedia Olympus 593, page read)."""
+    from ssbj.disciplines.propulsion.two_spool import size_to_sls
+    from ssbj.specs.schema import load_case
+    from pathlib import Path
+
+    case = load_case(Path(__file__).parent / "concorde" / "case.yaml")
+    _, sls = size_to_sls(case.design.engine)
+    assert sls["w_sls_kg_s"] == pytest.approx(186.0, rel=TOL_AIRFLOW)

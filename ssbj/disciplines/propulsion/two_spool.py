@@ -77,9 +77,10 @@ def new_problem(spec):
     p.model.DESIGN.nonlinear_solver.options["err_on_non_converge"] = True
     p.model.OD.nonlinear_solver.options["err_on_non_converge"] = True
     p.set_solver_print(level=-1)
-    p.set_val("DESIGN.fc.alt", 0.0, units="ft")
-    p.set_val("DESIGN.fc.MN", 1e-6)
-    p.set_val("DESIGN.balance.rhs:W", spec.fn_sls_dry_kN, units="kN")
+    p.set_val("DESIGN.fc.alt", spec.design_alt_ft, units="ft")
+    p.set_val("DESIGN.fc.MN", max(spec.design_mach, 1e-6))
+    p.set_val("DESIGN.inlet.ram_recovery", float(ram_recovery(spec.design_mach)))
+    p.set_val("DESIGN.balance.rhs:W", spec.fn_design_kN or spec.fn_sls_dry_kN, units="kN")
     p.set_val("DESIGN.balance.rhs:FAR", spec.t4_max_K, units="degK")
     p.set_val("DESIGN.lpc.PR", spec.lpc_pr)
     p.set_val("DESIGN.hpc.PR", spec.hpc_pr)
@@ -105,10 +106,12 @@ def new_problem(spec):
     p["DESIGN.balance.FAR"] = 0.02
     p["DESIGN.balance.hpt_PR"] = 3.0
     p["DESIGN.balance.lpt_PR"] = 2.0
-    p["DESIGN.fc.balance.Pt"] = 14.696
-    p["DESIGN.fc.balance.Tt"] = 518.67
-    p.set_val("OD.fc.MN", 1e-6)
-    p.set_val("OD.fc.alt", 0.0, units="ft")
+    T, P, *_ = atmosphere(spec.design_alt_ft * FT)
+    m = spec.design_mach
+    p["DESIGN.fc.balance.Pt"] = P * (1 + 0.2 * m * m) ** 3.5 / 6894.757
+    p["DESIGN.fc.balance.Tt"] = T * (1 + 0.2 * m * m) * 1.8
+    p.set_val("OD.fc.MN", max(spec.design_mach, 1e-6))
+    p.set_val("OD.fc.alt", spec.design_alt_ft, units="ft")
     p.set_val("OD.balance.rhs:FAR", spec.t4_max_K, units="degK")
     p["OD.balance.W"] = w_guess
     p["OD.balance.FAR"] = 0.02
@@ -135,25 +138,41 @@ class _Solver:
         self.seed = self.vec.copy()
         self.last = self.seed.copy()
         self.n_hp_design = float(self.p.get_val("DESIGN.HP_Nmech", units="rpm")[0])
-        self.mach = 1e-6
+        self.mach = max(spec.design_mach, 1e-6)
+        self.rline_dry = float(self.p.get_val("DESIGN.lpc.map.RlineMap")[0])
+        self.nc_last = None
+        self.nc_last = self._nc()
+
+    def _nc(self):
+        return np.array([float(self.p.get_val("OD.lpc.map.NcMap")[0]),
+                         float(self.p.get_val("OD.hpc.map.NcMap")[0])])
 
     def solve(self, alt_ft, frac, ab_far=0.0):
         p = self.p
         for guess in (self.last, self.seed):
             self.vec[:] = guess  # auto-IVC inputs live in this vector too: set inputs after restoring
+            if guess is self.last:
+                self.nc_last = self._nc()
             p.set_val("OD.fc.MN", max(self.mach, 1e-6))
             p.set_val("OD.inlet.ram_recovery", float(ram_recovery(self.mach)))
             p.set_val("OD.fc.alt", alt_ft, units="ft")
             p.set_val("OD.balance.rhs:FAR", self.spec.t4_max_K * frac, units="degK")
             if self.spec.afterburner:
                 p.set_val("OD.ab.Fl_I:FAR", ab_far)
+            p.set_val("OD.wctl.s", 1.0 if ab_far > 0 else 0.0)
+            if ab_far > 0:
+                p.set_val("OD.wctl.rline_tgt", self.rline_dry)
             try:
                 p.run_model()
             except Exception:
                 continue
             if not np.all(np.isfinite(self.vec)):
                 continue
+            nc = self._nc()
+            if self.nc_last is not None and np.max(np.abs(nc - self.nc_last)) > 0.08:
+                continue  # jumped to another solution branch: not a continuation of this one
             self.last = self.vec.copy()
+            self.nc_last = nc
             return True
         self.vec[:] = self.last
         return False
@@ -178,26 +197,54 @@ class _Solver:
             return False
         return not (sp.hp_speed_max_frac is not None and n2 > sp.hp_speed_max_frac + 5e-4)
 
-    def solve_limited(self, alt_ft, f_floor: float = 0.55) -> float | None:
-        """Highest T4 fraction (<= 1) that converges and respects the T3 and HP-speed limits."""
-        if self.solve(alt_ft, 1.0) and self.within_limits():
-            return 1.0
-        lo, hi = f_floor, 1.0
-        if not (self.solve(alt_ft, lo) and self.within_limits()):
-            return None
-        good = self.last.copy()
-        for _ in range(14):
-            mid = 0.5 * (lo + hi)
-            if self.solve(alt_ft, mid) and self.within_limits():
-                lo, good = mid, self.last.copy()
-            else:
+    def solve_limited(self, alt_ft, f_floor: float = 0.55, step: float = 0.02) -> float | None:
+        """Highest T4 fraction (<= 1) that converges and respects the T3 and HP-speed limits.
+
+        Walks T4 in small steps from the previous point's setting (large jumps do not converge),
+        then bisects between the last setting inside the limits and the first outside.
+        """
+        f = min(getattr(self, "f_prev", 1.0), 1.0)
+
+        def ok(x):
+            return self.solve(alt_ft, x) and self.within_limits()
+
+        if ok(f):
+            good_f, good = f, self.last.copy()
+            bad_f = None
+            while good_f < 1.0:  # walk up
+                x = min(good_f + step, 1.0)
+                if ok(x):
+                    good_f, good = x, self.last.copy()
+                else:
+                    bad_f = x
+                    self.last = good.copy()
+                    break
+        else:
+            bad_f, good_f, good = f, None, None
+            x = f
+            while x - step >= f_floor:  # walk down
+                x -= step
+                if ok(x):
+                    good_f, good = x, self.last.copy()
+                    break
+            if good_f is None:
+                return None
+        if bad_f is not None:
+            lo, hi = good_f, bad_f
+            for _ in range(8):
+                mid = 0.5 * (lo + hi)
                 self.last = good.copy()
-                hi = mid
-            if hi - lo < 1e-3:
-                break
+                if ok(mid):
+                    lo, good = mid, self.last.copy()
+                else:
+                    hi = mid
+                if hi - lo < 1e-3:
+                    break
+            good_f = lo
         self.last = good
-        self.solve(alt_ft, lo)
-        return lo
+        self.solve(alt_ft, good_f)
+        self.f_prev = good_f
+        return good_f
 
     def t_ab(self):
         return float(self.p.get_val("OD.ab.Fl_O:tot:T", units="degK")[0]) - self.spec.t_ab_K
@@ -206,7 +253,11 @@ class _Solver:
         return self.reheat_at(alt_ft, 1.0)
 
     def reheat_at(self, alt_ft, frac):
-        """Ramp then secant-iterate the afterburner FAR to reach t_ab_K at T4 fraction ``frac``."""
+        """Ramp then secant-iterate the afterburner FAR to reach t_ab_K at T4 fraction ``frac``.
+
+        The caller must have just solved the dry point at ``frac``: its LP operating line is held.
+        """
+        self.rline_dry = float(self.p.get_val("OD.lpc.map.RlineMap")[0])
         x, t = 0.0, self.t_ab()
         x_prev, t_prev = x, t
         while t < 0:
@@ -281,6 +332,27 @@ def match_sls(spec, airflow_kg_s: float, fn_reheat_kN: float | None, tol: float 
         else:
             b = m
     return spec.model_copy(update={"t_ab_K": round(m, 1)})
+
+
+def size_to_sls(spec, tol: float = 1e-3, max_iter: int = 6):
+    """Set fn_design_kN so the limited max-dry SLS thrust equals fn_sls_dry_kN.
+
+    The cycle scales with design airflow, so thrust at any point scales with fn_design: a few
+    proportional updates converge. Returns (sized spec, SLS diagnostics).
+    """
+    fn_d = spec.fn_design_kN or spec.fn_sls_dry_kN
+    for _ in range(max_iter):
+        sp = spec.model_copy(update={"fn_design_kN": fn_d})
+        s = _Solver(sp)
+        frac = s.go_to(0.0, 0.0, steps=40)
+        if frac is None or not s.at(0.0, 0.0):
+            raise RuntimeError("engine did not converge at SLS during sizing")
+        f, w, t3, n2, wa = s.read()
+        ratio = spec.fn_sls_dry_kN * 1000 / f
+        if abs(ratio - 1) < tol:
+            break
+        fn_d *= ratio
+    return sp, {"fn_sls_N": f, "w_sls_kg_s": wa, "t4_frac_sls": frac, "n2_frac_sls": n2, "t3_sls_K": t3}
 
 
 # ----------------------------------------------------------------------------- deck
@@ -408,7 +480,10 @@ def olympus_validation_point() -> dict:
     warnings.filterwarnings("ignore")
     s = _Solver(spec)
     out = {}
-    frac = s.go_to(2.0, 53000.0, steps=40)
+    frac = s.go_to(2.0, 53000.0, steps=40) if spec.design_mach == 0 else s.solve_limited(53000.0)
+    if spec.design_mach != 0:  # already at the design point; make sure we are at M2.0 / 53 kft
+        s.mach = 2.0
+        frac = s.go_to(2.0, 53000.0, steps=4)
     if frac is None or not s.at(2.0, 53000.0):
         raise RuntimeError("engine did not converge at M2.0 / 53,000 ft: validation not evaluated")
     f, w, t3, n2, wa = s.read()

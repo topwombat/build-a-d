@@ -81,9 +81,12 @@ design:
     type: two_spool_turbojet
     count: 4
     fn_sls_dry_kN: 139.4
-    lpc_pr: 3.937
-    hpc_pr: 3.937
-    t4_max_K: 1418.7
+    design_mach: 2.0
+    design_alt_ft: 53000.0
+    fn_design_kN: null
+    lpc_pr: 3.474
+    hpc_pr: 3.474
+    t4_max_K: 1350.4
     t3_max_K: null
     hp_speed_max_frac: 1.0
     afterburner: true
@@ -145,11 +148,14 @@ provenance:
   design.engine.type: "D-024: two-spool afterburning turbojet (Olympus 593 is two-spool)."
   design.engine.count: "4 engines (all sources)."
   design.engine.fn_sls_dry_kN: "Wikipedia/Heritage (pages read): Olympus 593 Mk 610 dry 139.4 kN."
-  design.engine.lpc_pr: "ASSUMPTION: equal LP/HP pressure-ratio split of the published SLS OPR 15.5 (sqrt 15.5 = 3.937); split not found in any source read."
+  design.engine.design_mach: "D-026: the cycle is designed at its supersonic cruise point, as the Olympus 593 was; M2.0 / 53,000 ft from the cruise condition of NASA TM-4144 Table II."
+  design.engine.design_alt_ft: "D-026: see design_mach."
+  design.engine.fn_design_kN: "Set by sizing (two_spool.size_to_sls) so the limited max-dry SLS thrust equals the published 139.4 kN."
+  design.engine.lpc_pr: "ASSUMPTION: equal LP/HP split of the cruise compressor pressure ratio 12.07 (NASA TM-4144 Fig. 2, pdf_read; conflicts 11.3 Cumpsty, ~14 Berger); sqrt(12.07) = 3.474."
   design.engine.hpc_pr: "ASSUMPTION: see lpc_pr."
-  design.engine.t4_max_K: "Matched (two_spool.match_sls) so the SLS design point swallows the published 186 kg/s (Wikipedia Olympus 593) at 139.4 kN dry. Diagnostic: NASA TM-4144 gives TET 1970 F (1350 K)."
+  design.engine.t4_max_K: "NASA TM-4144 Table II (pdf_read): TET 1970 F = 1350.4 K (text says 1980 F; the table row pairs it with the SLS OPR, so read as the take-off limit). ASSUMPTION: max continuous at cruise uses the same limit."
   design.engine.t3_max_K: "No compressor-exit limit published for the Olympus; not limited."
-  design.engine.hp_speed_max_frac: "ASSUMPTION (D-025): HP spool limited to its take-off (design) speed, generic rating practice; no Olympus limit published. Chosen before the limited M2 result was computed."
+  design.engine.hp_speed_max_frac: "ASSUMPTION (D-025, D-026): HP spool limited to 100 % of its design-point speed (now the cruise design point); no Olympus limit published. Fixed before any limited M2 result was computed."
   design.engine.afterburner: "Partial reheat fitted (all sources)."
   design.engine.t_ab_K: "Matched so SLS full reheat gives the published 169.2 kN."
   design.engine.lpc_eff_poly: "NASA TM-4144 Fig. 2 (pdf_read): compressor polytropic efficiency 0.90 (NASA estimate at cruise, used as the component definition)."

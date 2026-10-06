@@ -209,7 +209,11 @@ class TwoSpoolEngine(_M):
     type: Literal["two_spool_turbojet", "mixed_flow_turbofan"]
     count: int = Field(ge=1, le=8)
     core: str | None = Field(None, description="candidate core id (propulsion/cores) for turbofans")
-    fn_sls_dry_kN: float = Field(gt=0, description="dry SLS thrust per engine at the design point")
+    fn_sls_dry_kN: float = Field(gt=0, description="max dry SLS thrust per engine (sizing target)")
+    design_mach: float = Field(0.0, ge=0, le=3, description="cycle design point Mach (0 = SLS)")
+    design_alt_ft: float = Field(0.0, ge=0, le=70000)
+    fn_design_kN: float | None = Field(None, gt=0, description="thrust at the design point; set by sizing "
+                                       "so the limited SLS dry thrust equals fn_sls_dry_kN")
     lpc_pr: float = Field(gt=1.0, lt=8.0, description="LP compressor (turbojet) or fan (turbofan) PR")
     hpc_pr: float = Field(gt=1.5, lt=30.0)
     t4_max_K: float = Field(gt=1000, lt=2200)
