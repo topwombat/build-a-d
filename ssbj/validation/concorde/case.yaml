@@ -78,16 +78,25 @@ design:
     height_m: 1.152
     capture_area_m2: 0.950
   engine:
-    type: ab_turbojet
+    type: two_spool_turbojet
     count: 4
     fn_sls_dry_kN: 139.4
-    opr: 15.5
-    t4_max_K: 1365.0
-    t_ab_K: 1369.1
-    comp_eff: 0.85
-    turb_eff: 0.88
-    nozzle_cv: 0.99
-    customer_bleed_fraction: 0.0
+    lpc_pr: 3.937
+    hpc_pr: 3.937
+    t4_max_K: 1418.7
+    t3_max_K: null
+    hp_speed_max_frac: 1.0
+    afterburner: true
+    t_ab_K: 1426.6
+    lpc_eff_poly: 0.90
+    hpc_eff_poly: 0.90
+    hpt_eff: 0.885
+    lpt_eff: 0.851
+    burner_dpqp: 0.09
+    ab_dpqp: 0.05
+    nozzle_cv: 0.98
+    cool_hpt_frac: 0.022
+    cool_lpt_frac: 0.113
   weights:
     design_gross_mass_kg: 185070.0
     max_landing_mass_kg: 111130.0
@@ -133,15 +142,26 @@ provenance:
   design.fuselage.cabin_pressure_differential_psi: "ASSUMPTION: not sourced; unused by the Phase 1 equations."
   design.fin: "Area 33.91 m^2 and base chord 10.59 m: Heritage/concordesst snippets; height 6.0 m, quarter-chord sweep ~60 deg, t/c 4 % and trailing edge at x = 56.5 m: SUAVE. Tip chord derived from area. LE sweep ASSUMPTION = SUAVE quarter-chord value."
   design.nacelles: "SUAVE: length 12 m, diameter 1.3 m (square section of equal area used), inlet diameter 1.1 m (capture area 0.95 m^2), x = 37 m, z = -1.3 m. SUAVE spanwise positions 5.3/6.0 m overlap for 1.3 m nacelles; ASSUMPTION: paired, touching, centred at 5.65 m."
+  design.engine.type: "D-024: two-spool afterburning turbojet (Olympus 593 is two-spool)."
   design.engine.count: "4 engines (all sources)."
-  design.engine.fn_sls_dry_kN: "Wikipedia/Heritage snippets: Olympus 593 Mk 610 dry 139.4 kN."
-  design.engine.opr: "Wikipedia/Heritage snippets: overall pressure ratio 15.5."
-  design.engine.t4_max_K: "Matched (ssbj.disciplines.propulsion.match) so the design point swallows the published airflow 186 kg/s (Wikipedia Olympus 593 page only, condition not stated, taken as SLS) at 139.4 kN dry. Design-definition data, not performance."
-  design.engine.t_ab_K: "Matched so SLS full reheat gives the published 169.2 kN (Wikipedia/Heritage snippets)."
-  design.engine.comp_eff: "ASSUMPTION: pyCycle example default class value."
-  design.engine.turb_eff: "ASSUMPTION: pyCycle example default class value."
-  design.engine.nozzle_cv: "ASSUMPTION: pyCycle example default."
-  design.engine.customer_bleed_fraction: "ASSUMPTION: no customer bleed modelled."
+  design.engine.fn_sls_dry_kN: "Wikipedia/Heritage (pages read): Olympus 593 Mk 610 dry 139.4 kN."
+  design.engine.lpc_pr: "ASSUMPTION: equal LP/HP pressure-ratio split of the published SLS OPR 15.5 (sqrt 15.5 = 3.937); split not found in any source read."
+  design.engine.hpc_pr: "ASSUMPTION: see lpc_pr."
+  design.engine.t4_max_K: "Matched (two_spool.match_sls) so the SLS design point swallows the published 186 kg/s (Wikipedia Olympus 593) at 139.4 kN dry. Diagnostic: NASA TM-4144 gives TET 1970 F (1350 K)."
+  design.engine.t3_max_K: "No compressor-exit limit published for the Olympus; not limited."
+  design.engine.hp_speed_max_frac: "ASSUMPTION (D-025): HP spool limited to its take-off (design) speed, generic rating practice; no Olympus limit published. Chosen before the limited M2 result was computed."
+  design.engine.afterburner: "Partial reheat fitted (all sources)."
+  design.engine.t_ab_K: "Matched so SLS full reheat gives the published 169.2 kN."
+  design.engine.lpc_eff_poly: "NASA TM-4144 Fig. 2 (pdf_read): compressor polytropic efficiency 0.90 (NASA estimate at cruise, used as the component definition)."
+  design.engine.hpc_eff_poly: "NASA TM-4144 Fig. 2: 0.90."
+  design.engine.hpt_eff: "NASA TM-4144 Fig. 2: HP turbine adiabatic efficiency 0.885."
+  design.engine.lpt_eff: "NASA TM-4144 Fig. 2: LP turbine adiabatic efficiency 0.851."
+  design.engine.burner_dpqp: "NASA TM-4144 Fig. 2: burner pressure loss 9 %."
+  design.engine.ab_dpqp: "ASSUMPTION: 5 % afterburner pressure loss (not published)."
+  design.engine.nozzle_cv: "ASSUMPTION: 0.98; TM-4144 lists a nozzle Cv loss without a value and an exhaust loss of 2 %."
+  design.engine.cool_hpt_frac: "NASA TM-4144 Fig. 2: cooling bleed 2.2 % HP (interpreted as HP-turbine cooling from HP-compressor exit)."
+  design.engine.mixer_er: "Not used: turbojet has no mixer (schema default)."
+  design.engine.cool_lpt_frac: "NASA TM-4144 Fig. 2: cooling bleed 11.3 % LP (interpreted as LP-turbine cooling from HP-compressor exit; the source does not state the extraction point)."
   design.weights.design_gross_mass_kg: "MTOW 185,070 kg: Heritage weights page / FAA TCDS A45EU (search snippets)."
   design.weights.max_landing_mass_kg: "111,130 kg: Heritage weights / TCDS (search snippets)."
   design.weights.fuel_capacity_kg: "95,680 kg: Heritage weights page and Wikipedia (snippets). Conflicts with 94,470 kg (Heritage fuel page); see reference.yaml."

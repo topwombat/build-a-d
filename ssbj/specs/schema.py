@@ -16,7 +16,7 @@ The JSON schema is exported to ``ssbj/specs/case.schema.json`` by
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Annotated, Literal
+from typing import Annotated, Literal, Union
 
 import yaml
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
@@ -202,6 +202,34 @@ class Engine(_M):
     customer_bleed_fraction: float = Field(0.0, ge=0, lt=0.1)
 
 
+class TwoSpoolEngine(_M):
+    """Two-spool engine (D-024). For the turbofan, ``lpc_pr`` is the fan pressure ratio and the HP
+    compressor, burner and HP turbine form the bought core (``core`` names a candidate)."""
+
+    type: Literal["two_spool_turbojet", "mixed_flow_turbofan"]
+    count: int = Field(ge=1, le=8)
+    core: str | None = Field(None, description="candidate core id (propulsion/cores) for turbofans")
+    fn_sls_dry_kN: float = Field(gt=0, description="dry SLS thrust per engine at the design point")
+    lpc_pr: float = Field(gt=1.0, lt=8.0, description="LP compressor (turbojet) or fan (turbofan) PR")
+    hpc_pr: float = Field(gt=1.5, lt=30.0)
+    t4_max_K: float = Field(gt=1000, lt=2200)
+    t3_max_K: float | None = Field(None, gt=500, lt=1100, description="compressor-exit limit (core)")
+    hp_speed_max_frac: float | None = Field(1.05, gt=0.9, lt=1.2, description="HP spool speed limit / design (None: not limited)")
+    afterburner: bool = True
+    t_ab_K: float | None = Field(None, gt=1200, lt=2400)
+    lpc_eff_poly: float = Field(0.90, gt=0.7, lt=0.95)
+    hpc_eff_poly: float = Field(0.90, gt=0.7, lt=0.95)
+    hpt_eff: float = Field(0.885, gt=0.7, lt=0.96)
+    lpt_eff: float = Field(0.885, gt=0.7, lt=0.96)
+    burner_dpqp: float = Field(0.05, ge=0, lt=0.15)
+    ab_dpqp: float = Field(0.05, ge=0, lt=0.15)
+    nozzle_cv: float = Field(0.98, gt=0.9, le=1.0)
+    cool_hpt_frac: float = Field(0.0, ge=0, lt=0.25)
+    cool_lpt_frac: float = Field(0.0, ge=0, lt=0.25)
+    mixer_er: float = Field(1.05, gt=0.8, lt=1.5, description="turbofan mixer total-pressure ratio")
+    inlet: Literal["mil_e_5008b"] = "mil_e_5008b"
+
+
 class WeightsInputs(_M):
     design_gross_mass_kg: float = Field(gt=0, description="MTOW used by the statistical equations")
     max_landing_mass_kg: float = Field(gt=0)
@@ -232,7 +260,7 @@ class Design(_M):
     fuselage: Fuselage
     fin: FinSpec
     nacelles: NacelleSpec
-    engine: Engine
+    engine: Union[Engine, TwoSpoolEngine] = Field(discriminator="type")
     weights: WeightsInputs
 
 

@@ -1,0 +1,314 @@
+# Wave-drag (far-field area-rule / Harris-type) validation sources
+# retrieved: 2026-10-06 for every entry.
+# Access note: ntrs.nasa.gov (citations API and downloads) returned HTTP 403 (nginx) from this
+# sandbox even with a browser User-Agent. NTRS PDFs were obtained from the archive.org mirror
+# "NASA_NTRS_Archive_<NTRS id>" / "nasa-reports_*" items; TM X-947 from pdas.com.
+# Page numbers: printed page number, with the PDF page index in brackets [pdf N].
+# source_quality: pdf_read = I read the PDF (text layer and/or rendered page images).
+# Values marked "digitized" were read by me from rendered figure images (method in notes);
+# values marked "visual" were read by eye from a rendered figure.
+
+sources:
+
+  # ---------------------------------------------------------------------------------
+  # PRIMARY CASE: NASA TM X-372 arrow model (geometry fully tabulated, wave drag exp+theory)
+  # ---------------------------------------------------------------------------------
+  - item: TM X-372 arrow model - reference geometry
+    values: {S_ref_in2: 800, A: 2, semispan_in: 20, body_length_in: 60, c_root_in: 40, mac_in: 26.67, LE_sweep_deg: 70.82, TE_sweep_deg: 41.19, moment_ref_station_in: 34.50}
+    unit: inch / deg
+    conditions: wind-tunnel model (Ames Unitary Plan)
+    source:
+      title: "Investigation at Mach Numbers of 0.20 to 3.50 of Blended Wing-Body Combinations of Sonic Design with Diamond, Delta, and Arrow Plan Forms"
+      authors: "George H. Holdaway and Jack A. Mellenthin, Ames Research Center"
+      report_number: "NASA TM X-372 (Aug. 1960; declassified Sept. 1, 1961); NTRS 19980235518"
+      url: "https://archive.org/download/NASA_NTRS_Archive_19980235518/NASA_NTRS_Archive_19980235518.pdf"
+      page_figure_table: "fig. 1(d) p. 28 [pdf 30]"
+    quote_or_transcription: "A = 2; b/2 = 20; l = 60; cR = 40; Sw = 800 sq in.; c-bar = 26.67; dimensions in inches; 70.82 deg; 41.19 deg; Sta. 0, Sta. 3.15, Sta. 34.50 (Moment center), Sta. 41.53, Sta. 57.50"
+    source_quality: pdf_read
+    retrieved: 2026-10-06
+    notes: "Full geometry transcription in tmx372_arrow_geometry.yaml."
+
+  - item: TM X-372 arrow wing coordinates (Table IV) and body radii (Table I)
+    values: "streamwise semithickness at y = 0, 2.000, 4.333, 6.667, 10.000, 13.333, 16.667 in; ridge and blunt-TE lines; body radii x = 3.15..60 in"
+    unit: inch
+    conditions: symmetric (uncambered) wing, body of revolution
+    source:
+      title: NASA TM X-372 (as above)
+      report_number: NASA TM X-372
+      url: "https://archive.org/download/NASA_NTRS_Archive_19980235518/NASA_NTRS_Archive_19980235518.pdf"
+      page_figure_table: "Table I p. 18 [pdf 20]; Table IV p. 21-22 [pdf 23-24]; text p. 5 [pdf 8]"
+    quote_or_transcription: >
+      Table IV transcribed in full into tmx372_arrow_geometry.yaml. Text: "The wing thickness in
+      each case is formed by straight-line elements perpendicular to the model center line which
+      form triangular spanwise sections as shown in figure 2. Note that the rear portion of the
+      arrow wing was designed with a blunt trailing edge ... the trailing-edge thicknesses of the
+      arrow wing were half the ridge thicknesses, except near the body juncture" (p. 5).
+      Table I footnote 2: "Part of a von Karman ogive (l = 40 in. and rb = 1.625 in.)".
+    source_quality: pdf_read
+    retrieved: 2026-10-06
+    notes: >
+      Several body radii in the blended region (x=38-45, 55-57.5) have a faint last digit
+      (flagged in the geometry file). Forward body x=3.15-35.23 verified against the analytic
+      von Karman ogive to 0.001 in. Table IV y=6.667, x=44.000 is printed 0.371; linear run-out
+      implies 0.321 (probable misprint; my inference).
+
+  - item: TM X-372 arrow model - zero-lift wave drag, experiment (incl. wing base drag) and area-rule theory
+    values:
+      columns: [M, dCDo_exp, dCDo_theory]
+      data:
+        - [1.55, 0.00626, 0.00685]
+        - [1.60, 0.00613, 0.00646]
+        - [1.65, 0.00591, 0.00624]
+        - [1.70, 0.00582, 0.00582]
+        - [1.75, 0.00566, 0.00566]
+        - [1.80, 0.00550, 0.00550]
+        - [1.85, 0.00537, 0.00537]
+        - [1.90, 0.00523, 0.00523]
+        - [2.00, 0.00486, 0.00510]
+        - [2.10, 0.00455, 0.00493]
+        - [2.20, 0.00426, 0.00476]
+        - [2.30, 0.00388, 0.00462]
+        - [2.35, 0.00384, 0.00452]
+        - [2.40, null, 0.00441]
+        - [2.50, 0.00387, 0.00420]
+        - [2.60, 0.00369, 0.00409]
+        - [2.70, 0.00352, 0.00388]
+        - [2.80, 0.00338, 0.00382]
+        - [2.90, 0.00322, 0.00375]
+        - [3.00, 0.00305, 0.00378]
+        - [3.10, 0.00294, 0.00369]
+        - [3.20, 0.00289, 0.00357]
+        - [3.30, 0.00287, 0.00340]
+        - [3.40, 0.00288, 0.00330]
+    unit: dimensionless, based on S = 800 in^2
+    conditions: "zero lift; transition fixed (grit); R/ft ~2-4 million (fig. 11); M 1.55-2.35 Ames 9x7 ft, M 2.50-3.50 Ames 8x7 ft Unitary Plan; body base pressure set to p_inf"
+    source:
+      title: NASA TM X-372 (as above)
+      report_number: NASA TM X-372
+      url: "https://archive.org/download/NASA_NTRS_Archive_19980235518/NASA_NTRS_Archive_19980235518.pdf"
+      page_figure_table: "fig. 13(d) p. 58 [pdf 60]; text p. 8-9 [pdf 10-11]"
+    quote_or_transcription: >
+      Digitized from fig. 13(d) (solid = Experiment, dashed = Theory). Text: "The experimental
+      zero-lift wave-drag coefficients ... were determined from the basic data by removing the
+      friction-drag coefficients. The friction-drag coefficients were assumed to be equal to the
+      zero-lift drag coefficient at M = 0.60 and were adjusted at each Mach number to account for
+      the variation with Mach number of the friction-drag coefficient for fully turbulent flow over
+      a smooth surface." "The theoretical wave-drag coefficients were computed with the procedures
+      of reference 4, and 49 harmonics were used to define the derivative of the model area
+      distributions." "The experimental wave-drag coefficients shown for the arrow model in figure
+      13(d) include the wing base-drag coefficient."
+    source_quality: pdf_read
+    retrieved: 2026-10-06
+    notes: >
+      digitized: page rendered at 400 dpi, rotated; vertical grid lines (0.1 M) and horizontal
+      grid lines (0.002) located by pixel detection; scan skew corrected by a fitted zero line
+      (2532 - 0.00965*(x-1000) px). Solid/dashed separated by line continuity. Read uncertainty
+      ~ +/-0.0001. Where only one value is given for both (M 1.70-1.90) the two curves coincide
+      within line width. The experimental curve is a faired line (no symbols); there is a data
+      gap M 2.35-2.50 (two tunnels). Ref. 4 = Holdaway & Mersman, NACA RM A55J28 (Tchebichef
+      harmonic analysis, supersonic area rule) - i.e. a far-field area-rule method comparable to
+      Harris. Note the text's general statement: "the experimental wave-drag coefficients for the
+      three plan forms investigated are lower than the theoretical wave-drag coefficients near
+      sonic wing-edge conditions."
+
+  - item: TM X-372 arrow model - wing base drag (to remove from experimental wave drag)
+    values:
+      columns: [M, CDb_wing]
+      data: [[1.55, 0.0029], [1.95, 0.0022], [2.35, 0.0017], [2.50, 0.0012], [3.00, 0.0008], [3.50, 0.0003]]
+    unit: dimensionless, based on wing planform area (800 in^2)
+    conditions: zero lift, measured base pressures
+    source:
+      title: NASA TM X-372 (as above)
+      report_number: NASA TM X-372
+      url: "https://archive.org/download/NASA_NTRS_Archive_19980235518/NASA_NTRS_Archive_19980235518.pdf"
+      page_figure_table: "fig. 14(b) p. 59 [pdf 61]; text p. 9-10 [pdf 11-12]"
+    quote_or_transcription: "\"The wing base-drag coefficients of the arrow model, based on the wing plan-form area, decreased from a peak value of 0.0029 at Mach number 1.55 to 0.0003 at Mach number 3.50.\""
+    source_quality: pdf_read
+    retrieved: 2026-10-06
+    notes: "M 1.55 and 3.50 values are the text values; M 1.95, 2.35, 2.50, 3.00 are visual reads of the experiment symbols in fig. 14(b), +/-0.0002."
+
+  - item: TM X-372 arrow model - total zero-lift drag spot value
+    values: {M: 1.55, CD0: 0.0137}
+    unit: dimensionless (S = 800 in^2)
+    conditions: transition fixed, Ames 9x7 ft, R/ft 3-4 million
+    source:
+      title: NASA TM X-372 (as above)
+      report_number: NASA TM X-372
+      url: "https://archive.org/download/NASA_NTRS_Archive_19980235518/NASA_NTRS_Archive_19980235518.pdf"
+      page_figure_table: "fig. 7(b) p. 44 [pdf 46]"
+    quote_or_transcription: "visual read of the arrow-model (filled triangle) polar at CL = 0, M = 1.55 panel"
+    source_quality: pdf_read
+    retrieved: 2026-10-06
+    notes: "+/-0.0003. Other Mach numbers not read (offset polars, three overlaid models). Implied friction-level estimate 0.0137 - 0.0063 ~ 0.0074 (derived by me)."
+
+  - item: TM X-372 - grit drag penalty and test practice
+    values: {grit_penalty_dCD0: 0.0003, grit_height_in: 0.040, grit_location_in_aft_of_LE: 1.13}
+    unit: dimensionless / inch
+    conditions: delta model, M = 3.00 (Appendix B)
+    source:
+      title: NASA TM X-372 (as above)
+      report_number: NASA TM X-372
+      url: "https://archive.org/download/NASA_NTRS_Archive_19980235518/NASA_NTRS_Archive_19980235518.pdf"
+      page_figure_table: "p. 7-8 [pdf 9-10]"
+    quote_or_transcription: "\"The analysis indicated a grit penalty in CDo of 0.0003 separate from and above the effect of fixing transition. The wave drag due to the grit appeared to be negligible.\" ... \"Transition was fixed ... with distributed roughness composed of grit with an average height of about 0.040 inch. The grit was located 1.13 inches rearward of the wing leading edges\""
+    source_quality: pdf_read
+    retrieved: 2026-10-06
+    notes: "Results in the main body are NOT corrected for the grit penalty."
+
+  - item: TM X-372 delta model without bump - zero-lift wave drag, experiment and theory (secondary case, no wing base)
+    values:
+      columns: [M, dCDo_exp, dCDo_theory]
+      data:
+        - [1.60, 0.00375, 0.00375]
+        - [1.80, 0.00351, 0.00351]
+        - [2.00, 0.00346, 0.00346]
+        - [2.20, 0.00342, 0.00342]
+        - [2.30, 0.00339, 0.00339]
+        - [2.50, 0.00357, 0.00318]
+        - [2.60, 0.00351, null]
+        - [2.70, 0.00344, 0.00298]
+        - [2.80, 0.00338, 0.00287]
+        - [3.00, 0.00326, 0.00270]
+        - [3.20, 0.00313, 0.00250]
+        - [3.40, 0.00301, 0.00232]
+    unit: dimensionless, S = 800 in^2
+    conditions: as arrow model
+    source:
+      title: NASA TM X-372 (as above)
+      report_number: NASA TM X-372
+      url: "https://archive.org/download/NASA_NTRS_Archive_19980235518/NASA_NTRS_Archive_19980235518.pdf"
+      page_figure_table: "fig. 13(c) p. 58 [pdf 60]; geometry Table I (delta without bump column) p. 18, Table III p. 20 [pdf 22]"
+    quote_or_transcription: "digitized from fig. 13(c); the report notes \"the delta model ... had perfect agreement between theory and experiment at sonic leading-edge conditions\" (p. 9)"
+    source_quality: pdf_read
+    retrieved: 2026-10-06
+    notes: "Digitized same way as arrow (separate grid calibration). For M 1.55-2.30 the two curves coincide within line width. Delta geometry (LE sweep 59.04 deg, A = 2) was NOT transcribed; Table III exists. Delta-without-bump has ~10% less volume."
+
+  # ---------------------------------------------------------------------------------
+  # SECONDARY CASE: NASA TN D-3034 (SST-like 76-deg arrow wing-body, flat reference model)
+  # ---------------------------------------------------------------------------------
+  - item: TN D-3034 flat CA-025 model (model 1) - geometry
+    values: {span_in: 20.0, S_ft2: 1.62, mac_in: 13.97, LE_sweep_deg: 76, AR: 1.71, body_length_in: 38.0, wing_apex_station_in: 10.0, overall_length_to_tip_TE_in: 50.0, tip_chord_in: 8.3, section: "2.5-percent-thick streamwise circular arc", body: "Table II three-arc non-circular cross sections R1,R2,R3,H,zb vs x = 0..38 in"}
+    unit: inch / ft^2 / deg
+    conditions: flat (uncambered, untwisted) wing; body volume equally above/below wing reference plane
+    source:
+      title: "Effects of Thickness on Supersonic Performance of a Wing-Body Configuration Employing a Warped Highly Swept Arrow Wing"
+      authors: "F. Edward McLean and Dennis E. Fuller, Langley Research Center"
+      report_number: "NASA TN D-3034 (Oct. 1965); NTRS 19650025463"
+      url: "https://archive.org/download/NASA_NTRS_Archive_19650025463/NASA_NTRS_Archive_19650025463.pdf"
+      page_figure_table: "symbols p. 2-3; fig. 1(a) p. 14 [pdf 16]; Table II p. 13 [pdf 15]"
+    quote_or_transcription: "\"b wing span, 20 inches\"; \"c-bar wing mean aerodynamic chord, 13.97 inches\"; \"S wing planform area, 1.62 sq ft\"; \"The wing planform had 76 deg leading-edge sweep, and aspect ratio of 1.71, and the wing tips were clipped perpendicular to the stream direction\"; fig. 1(a) dimensions 10.0, 29.3, 30.0, 38.0, 50.0, 8.3, 20.0"
+    source_quality: pdf_read
+    retrieved: 2026-10-06
+    notes: >
+      Body cross-sections are a three-arc construction (R1, R2, R3, H, zb) - area computable
+      but construction needs interpretation; TE sweep not stated (must be derived from fig. 1(a)
+      dimensions: tip LE at x=10+10*tan76=50.1 ~ 50.0, tip chord 8.3; the drawing appears to
+      place the TE-centreline intersection at the 30.0 dimension, but this is my reading of
+      the drawing, not a stated value). Table II not transcribed numerically here (image at PDF page 15).
+
+  - item: TN D-3034 flat CA-025 model - minimum (zero-lift) drag coefficient
+    values: {M2.40: 0.0076, M2.60: 0.0070, M2.86: 0.0065}
+    unit: dimensionless, S = 1.62 ft^2
+    conditions: "Langley Unitary Plan, R = 3.5e6 based on MAC; transition strips (no. 60 grit on nose, no. 120 grit 1/16 in. behind wing LE); stagnation temperature 150 F"
+    source:
+      title: NASA TN D-3034 (as above)
+      report_number: NASA TN D-3034
+      url: "https://archive.org/download/NASA_NTRS_Archive_19650025463/NASA_NTRS_Archive_19650025463.pdf"
+      page_figure_table: "fig. 3(c) p. 19 [pdf 21]; test conditions p. 4-5"
+    quote_or_transcription: "visual reads of model 1 (flat CA-025, circle symbols) polar minima in fig. 3(c)"
+    source_quality: pdf_read
+    retrieved: 2026-10-06
+    notes: >
+      +/-0.0003 (visual). Balance accuracy quoted "CD +/-0.0005". No friction or wave-drag split
+      given in the report; the only drag-level statement is "With a CD,o of 0.0072 estimated for
+      the wing-body configuration" (for the design Mach number 2.6, p. 5). Only M = 2.40 lies in
+      the requested 1.2-2.5 band.
+
+  # ---------------------------------------------------------------------------------
+  # CONTEXT / LEADS
+  # ---------------------------------------------------------------------------------
+  - item: Harris TM X-947 - method of separating experimental wave drag; configurations correlated
+    values: "Fig. 6 scatter: SCAT 15 (M 2.3, 2.6, 3.0), SCAT 15-A (2.3, 3.0), SCAT 15-B (1.6, 2.2 - legend partly garbled), SCAT 16 (2.4, 2.6, 3.0), SCAT 16-A (2.4, 2.6, 3.0), SCAT 4 (2.3, 2.6, 3.0, 3.5), FIGHTER (1.4, 2.2); experimental vs computed CD,wave 0-0.010"
+    unit: dimensionless
+    conditions: transition fixed near leading edges; zero lift
+    source:
+      title: "An Analysis and Correlation of Aircraft Wave Drag"
+      authors: "Roy V. Harris, Jr., Langley Research Center"
+      report_number: "NASA TM X-947 (March 1964)"
+      url: "https://www.pdas.com/refs/tmx947.pdf"
+      page_figure_table: "p. 5-8 [pdf 9-12], fig. 3, 5, 6"
+    quote_or_transcription: "\"The experimental wave-drag coefficients were determined for each configuration by subtracting the equivalent flat-plate turbulent skin-friction drag and an estimated camber drag from the measured total drag at zero lift.\" (p. 6). Semispan wings: \"The wave-drag coefficients were determined by subtracting the equivalent flat-plate turbulent skin-friction drag coefficients from the measured total-drag coefficients.\" (p. 5)"
+    source_quality: pdf_read
+    retrieved: 2026-10-06
+    notes: >
+      No geometry tables in TM X-947 (sketches only); airplane data only as a computed-vs-measured
+      scatter (fig. 6) with no point labels by Mach number. Geometry/tests are in refs 11-16:
+      TM X-815, TM X-803, TM X-817 (SCAT 16 blended wing-body), TM X-800 (arrow-wing transport),
+      TM X-759 (fighter), TM X-905. Semispan wings 1-4 from TN D-631 and TM X-332 (all circular-arc
+      sections; wing-alone, M ~1.4-2.2) - simple fully-defined geometry if a wing-alone check is wanted.
+      Not usable on its own as a validation case.
+
+  - item: TP 1358 SCAT 15-F-9898 model friction and computed wave drag at M 2.70
+    values: {model_CD_f: 0.00765, model_CD_w_computed: 0.00110, airplane_CD_f: 0.00379, airplane_CD_w: 0.00122, grit_drag_increment: -0.00040}
+    unit: dimensionless
+    conditions: "SCAT 15-F-9898 wind-tunnel model (0.015 scale) at design M = 2.70; values are COMPUTED (T' friction method; far-field area-rule wave drag)"
+    source:
+      title: "Theoretical Evaluation of High-Speed Aerodynamics for Arrow-Wing Configurations"
+      authors: "Samuel M. Dollyhigh, Langley Research Center"
+      report_number: "NASA TP-1358 (Jan. 1979)"
+      url: "https://archive.org/download/nasa-reports_nas-1601358/nasa-reports_nas-1601358.pdf"
+      page_figure_table: "Table I p. 23 [pdf 25]"
+    quote_or_transcription: "TABLE I.- EXTRAPOLATION OF SCAT 15-F-9898 MODEL DATA TO FULL SCALE: Skin friction (model CD,f = 0.00765; airplane Cd,f = 0.00379) -0.00386; Roughness drag 0.00023; Wave drag (model CD,w = 0.00110; airplane Cd,w = 0.00122) 0.00012; Grit drag -0.00040; Total -0.00391"
+    source_quality: pdf_read
+    retrieved: 2026-10-06
+    notes: >
+      SCAT 15-F (74 deg warped arrow wing, 4 nacelles) is the most SST-representative case, with
+      wind-tunnel data at M 2.30 and 2.70 tabulated in TP-1358's appendix (from NASA TM-78706,
+      Morris/Fuller/Watson 1978, and TM-78726). But geometry in TP-1358 is drawings + "table AI"
+      only; wing is warped (camber drag must be separated). Not used as primary case. Full
+      geometry would need TM-78706 / earlier SCAT-15F reports (not retrieved).
+
+  - item: Lead - NACA RM L57A25 arrow wing + fineness-ratio-20 body, free flight M 1.2-1.9
+    values: {S_ft2: 4.31, mac_ft: 2.03, span_ft: 2.83, LE_sweep_deg: 67.5, AR: 1.86, airfoil: "NACA 65A004 wing, 65A003 vertical tail", body_fineness: 20}
+    unit: ft / deg
+    conditions: rocket-propelled free-flight model, Wallops, M 1.2-1.9
+    source:
+      title: "Supersonic Aerodynamic Characteristics of a Low-Drag Aircraft Configuration Having an Arrow Wing of Aspect Ratio 1.86 and a Body of Fineness Ratio 20"
+      authors: "Warren Gillespie, Jr."
+      report_number: "NACA RM L57A25 (March 1957); NTRS 19930089506"
+      url: "https://archive.org/download/NASA_NTRS_Archive_19930089506/NASA_NTRS_Archive_19930089506.pdf"
+      page_figure_table: "summary p. 1; symbols p. 5; model p. 5 (fuselage ordinates in table I, physical characteristics table II)"
+    quote_or_transcription: "\"The model consisted of an aspect-ratio-1.86 arrow wing with 67.5 deg leading-edge sweep and NACA 65A004 airfoil section, and a triangular vertical tail with 60 deg sweep and NACA 65A003 section, in combination with a body of fineness ratio 20.\" \"The zero-lift drag and the drag-due-to-lift parameter of the test configuration varied linearly with Mach number.\""
+    source_quality: pdf_read
+    retrieved: 2026-10-06
+    notes: "Good alternative in the 1.2-1.9 band (fuselage ordinates tabulated; standard NACA sections). CDmin vs M is in a figure; total drag includes base drag of a free-flight model. Not transcribed."
+
+  - item: Lead - NASA TN D-446 (Nelson & Welsh) area-rule wave drag vs experiment
+    values: "24-term Fourier supersonic-area-rule wave drags vs experiment for bodies and wing-body combinations"
+    unit: n/a
+    conditions: mostly flight/tunnel fighter-type wing-bodies, M up to ~2
+    source:
+      title: "Some Examples of the Applications of the Transonic and Supersonic Area Rules to the Prediction of Wave Drag"
+      authors: "Robert L. Nelson and Clement J. Welsh"
+      report_number: "NASA TN D-446 (Sept. 1960); NTRS 19980227964"
+      url: "https://archive.org/download/NASA_NTRS_Archive_19980227964/NASA_NTRS_Archive_19980227964.pdf"
+      page_figure_table: "summary p. 1"
+    quote_or_transcription: "\"The wave drags computed using the supersonic area rule are shown to be in best agreement with the experimental results for configurations employing the thinnest wings.\""
+    source_quality: pdf_read
+    retrieved: 2026-10-06
+    notes: "Not SST-like; useful only as additional area-rule-vs-experiment evidence."
+
+  - item: Lead - NACA RM A56I07 (Petersen) wave drag of wing-body-tail combinations to M 1.9
+    values: "experimental vs theoretical zero-lift wave drag, Ames 6x6 ft; fighter-type models"
+    unit: n/a
+    conditions: M up to 1.9
+    source:
+      title: "Comparison of Experimental and Theoretical Zero-Lift Wave-Drag Results for Various Wing-Body-Tail Combinations at Mach Numbers up to 1.9"
+      authors: "Robert B. Petersen"
+      report_number: "NACA RM A56I07 (March 1957); NTRS 19660010455"
+      url: "https://archive.org/download/NASA_NTRS_Archive_19660010455/NASA_NTRS_Archive_19660010455.pdf"
+      page_figure_table: "title/summary p. 1; errata sheet"
+    quote_or_transcription: "\"Comparisons are made of experimental and theoretical zero-lift wave drag for several nose shapes, wing-body combinations, and models of current airplanes at Mach numbers up to 1.9.\""
+    source_quality: pdf_read
+    retrieved: 2026-10-06
+    notes: "Not SST-like; not transcribed."

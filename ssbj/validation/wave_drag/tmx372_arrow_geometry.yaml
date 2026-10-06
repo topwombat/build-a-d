@@ -1,0 +1,614 @@
+# Geometry + measured zero-lift wave drag: NASA TM X-372 "arrow model"
+# Holdaway, G. H. and Mellenthin, J. A.: Investigation at Mach Numbers of 0.20 to 3.50
+# of Blended Wing-Body Combinations of Sonic Design with Diamond, Delta, and Arrow
+# Plan Forms. NASA TM X-372, Ames Research Center, Aug. 1960 (declassified Sept. 1, 1961).
+# PDF read: https://archive.org/download/NASA_NTRS_Archive_19980235518/NASA_NTRS_Archive_19980235518.pdf
+#   (archive.org mirror of NTRS 19980235518; ntrs.nasa.gov returned HTTP 403 from this sandbox)
+# retrieved: 2026-10-06
+# Page numbers below are PRINTED page numbers ("p. 21") with the PDF page in brackets [pdf 23].
+# All dimensions in inches (model scale). Model is symmetric about the wing plane
+# (uncambered, untwisted; semithickness tabulated as +/- t/2).
+#
+# Transcription status flags:
+#   ok        = clearly legible in scan
+#   faint     = digit legible but faint; best reading given
+#   uncertain = last digit not resolvable; alternatives in note
+#   derived   = computed by me from tabulated/stated quantities (not printed in the report)
+
+case_name: tmx372_arrow
+description: >
+  Ames blended wing-body "of sonic design" with an aspect-ratio-2 arrow wing
+  (LE sweep 70.82 deg, TE sweep 41.19 deg, pointed tips), body of revolution of
+  length 60 in, all models built to the same M=1.00 design area distribution.
+  Wing has a blunt trailing edge (base) and a straight "ridge" (max-thickness line)
+  at 83.3% local chord. Wind-tunnel model, sting mounted, transition fixed.
+
+reference:
+  S_ref_in2: 800.0          # "Sw = 800 sq in." fig. 1(d) p. 28 [pdf 30]; text p. 7: coefficients "based on the complete plan-form area of the wings of 800 square inches" (scan: "@00 square i...", value confirmed by fig. 1(d))
+  aspect_ratio: 2           # fig. 1(d) "A = 2"
+  semispan_in: 20.0         # fig. 1(d) "b/2 = 20"
+  body_length_in: 60.0      # fig. 1(d) "l = 60"
+  root_chord_in: 40.0       # fig. 1(d) "cR = 40"
+  mac_in: 26.67             # fig. 1(d) "c-bar = 26.67"
+  le_sweep_deg: 70.82       # fig. 1(d) and summary p. 1
+  te_sweep_deg: 41.19       # fig. 1(d)
+  moment_ref_station_in: 34.50
+  source: "NASA TM X-372, fig. 1(d) p. 28 [pdf 30]"
+
+planform:   # all derived from fig. 1(d) + Table IV, and checked against Table IV entries
+  wing_apex_x_in: 0.0       # Table IV row x=0.000, y=0 semithickness 0.000; fig.1(d) "Sta. 0" at apex
+  leading_edge: "x_le = 2.875*y  (tan 70.82 deg = 2.875; Table IV: y=2.000 starts at x=5.750, y=16.667 at x=47.918)"
+  trailing_edge: "x_te = 40 + 0.875*y (tan 41.19 deg = 0.875; Table IV TE column: y=2.286 at x=42.000, y=20.000 at x=57.500)"
+  ridge_line: "x_ridge = 33.333 + 1.2083*y  (Table IV ridge column: y=0 at x=33.333, y=20.000 at x=57.500) -> 83.3% local chord at every station"
+  tip: "pointed, x=57.500, y=20.000 (Table IV last row)"
+  status: derived
+
+wing_stations:
+  # Streamwise sections at constant y, taken directly from the columns of Table IV
+  # (p. 21-22 [pdf 23-24]). x is body station (= distance from wing apex; apex at x=0).
+  # thickness_distribution_type: tabulated semithickness (NOT a standard airfoil);
+  # sections are formed by straight-line elements perpendicular to the model centre line
+  # forming triangular spanwise sections (text p. 5 [pdf 8]); blunt trailing edge.
+  # t_over_c = 2*max(t/2)/chord (derived); max is at the ridge (83.3% c).
+  - y: 0.0
+    x_le: 0.000
+    chord: 40.000
+    t_over_c_max: 0.0493     # derived: 2*0.986/40
+    te_semithickness: 0.387  # Table IV row x=40.000 (TE column t/2=0.387 at y=0)
+    note: "Inside body for x>3.15 (body radius > y). Wing-alone region x=0..3.15 (Table I 'Wing alone')."
+    semithickness:   # [x, +/-t/2]
+      - [0.000, 0.000]
+      - [0.500, 0.086]
+      - [1.000, 0.171]
+      - [1.500, 0.207]
+      - [2.000, 0.237]
+      - [2.500, 0.270]
+      - [3.000, 0.304]
+      - [3.500, 0.337]
+      - [4.000, 0.360]
+      - [4.500, 0.380]
+      - [5.000, 0.395]
+      - [5.500, 0.402]
+      - [6.000, 0.408]
+      - [6.500, 0.414]
+      - [7.000, 0.426]
+      - [7.500, 0.443]
+      - [8.000, 0.467]
+      - [9.000, 0.505]
+      - [10.000, 0.534]
+      - [11.000, 0.552]
+      - [12.000, 0.567]
+      - [13.000, 0.587]
+      - [14.000, 0.610]
+      - [15.000, 0.640]
+      - [16.000, 0.669]
+      - [17.000, 0.688]
+      - [17.500, 0.696]
+      - [18.000, 0.704]
+      - [18.500, 0.712]
+      - [19.000, 0.718]
+      - [19.500, 0.725]
+      - [20.000, 0.731]
+      - [21.000, 0.746]
+      - [22.000, 0.764]
+      - [23.000, 0.789]
+      - [24.000, 0.814]
+      - [25.000, 0.833]
+      - [26.000, 0.851]
+      - [27.000, 0.864]
+      - [28.000, 0.877]
+      - [29.000, 0.890]
+      - [30.000, 0.906]
+      - [31.000, 0.925]
+      - [32.000, 0.948]
+      - [33.000, 0.977]
+      - [33.333, 0.986]   # ridge
+      - [34.000, 0.955]
+      - [34.500, 0.932]
+      - [35.000, 0.908]
+      - [35.230, 0.898]
+      - [36.000, 0.852]
+      - [36.500, 0.815]
+      - [37.000, 0.768]
+      - [37.500, 0.710]
+      - [38.000, 0.642]
+      - [38.500, 0.576]
+      - [39.000, 0.508]
+      - [39.500, 0.445]
+      - [40.000, 0.387]   # blunt TE
+  - y: 2.000
+    x_le: 5.750
+    chord: 36.000
+    t_over_c_max: 0.0474     # derived: 2*0.853/36
+    te_semithickness: 0.251
+    semithickness:
+      - [5.750, 0.000]
+      - [6.000, 0.017]
+      - [6.500, 0.048]
+      - [7.000, 0.076]
+      - [7.500, 0.103]
+      - [8.000, 0.131]
+      - [9.000, 0.182]
+      - [10.000, 0.227]
+      - [11.000, 0.263]
+      - [12.000, 0.295]
+      - [13.000, 0.327]
+      - [14.000, 0.359]
+      - [15.000, 0.395]
+      - [16.000, 0.429]
+      - [17.000, 0.455]
+      - [17.500, 0.467]
+      - [18.000, 0.479]
+      - [18.500, 0.491]
+      - [19.000, 0.501]
+      - [19.500, 0.511]
+      - [20.000, 0.521]
+      - [21.000, 0.542]
+      - [22.000, 0.564]
+      - [23.000, 0.592]
+      - [24.000, 0.619]
+      - [25.000, 0.641]
+      - [26.000, 0.663]
+      - [27.000, 0.680]
+      - [28.000, 0.697]
+      - [29.000, 0.714]
+      - [30.000, 0.732]
+      - [31.000, 0.753]
+      - [32.000, 0.778]
+      - [33.000, 0.807]
+      - [33.333, 0.816]
+      - [34.000, 0.832]
+      - [34.500, 0.845]
+      - [35.000, 0.853]   # faint (could be .851)
+      - [35.230, 0.855]
+      - [35.750, 0.853]   # ridge (footnote 1)
+      - [36.000, 0.839]
+      - [36.500, 0.805]
+      - [37.000, 0.769]
+      - [37.500, 0.725]
+      - [38.000, 0.674]
+      - [38.500, 0.620]
+      - [39.000, 0.565]
+      - [39.500, 0.509]
+      - [40.000, 0.458]
+      - [40.500, 0.397]
+      - [41.000, 0.338]
+      - [41.532, 0.268]
+      - [41.750, 0.251]   # blunt TE
+  - y: 4.333
+    x_le: 12.457
+    chord: 31.333
+    t_over_c_max: 0.0426     # derived: 2*0.667/31.333
+    te_semithickness: 0.218
+    semithickness:
+      - [12.457, 0.000]
+      - [13.000, 0.025]
+      - [14.000, 0.067]
+      - [15.000, 0.108]
+      - [16.000, 0.148]
+      - [17.000, 0.184]
+      - [17.500, 0.201]
+      - [18.000, 0.217]
+      - [18.500, 0.233]
+      - [19.000, 0.247]
+      - [19.500, 0.262]
+      - [20.000, 0.276]
+      - [21.000, 0.303]
+      - [22.000, 0.331]
+      - [23.000, 0.362]
+      - [24.000, 0.391]
+      - [25.000, 0.418]
+      - [26.000, 0.443]
+      - [27.000, 0.465]
+      - [28.000, 0.487]
+      - [29.000, 0.508]
+      - [30.000, 0.530]
+      - [31.000, 0.553]
+      - [32.000, 0.579]
+      - [33.000, 0.608]
+      - [33.333, 0.617]
+      - [34.000, 0.635]
+      - [34.500, 0.648]
+      - [35.000, 0.657]
+      - [35.230, 0.661]
+      - [36.000, 0.665]
+      - [36.500, 0.666]
+      - [37.000, 0.668]
+      - [37.500, 0.668]
+      - [38.000, 0.668]
+      - [38.500, 0.667]
+      - [38.569, 0.667]   # ridge
+      - [39.000, 0.632]
+      - [39.500, 0.584]
+      - [40.000, 0.540]
+      - [40.500, 0.493]
+      - [41.000, 0.441]
+      - [41.532, 0.386]
+      - [42.000, 0.350]
+      - [42.500, 0.314]
+      - [43.000, 0.277]
+      - [43.791, 0.218]   # blunt TE
+  - y: 6.667
+    x_le: 19.167
+    chord: 26.667
+    t_over_c_max: 0.0385     # derived: 2*0.513/26.667
+    te_semithickness: 0.186
+    semithickness:
+      - [19.167, 0.000]
+      - [19.500, 0.012]
+      - [20.000, 0.030]
+      - [21.000, 0.065]
+      - [22.000, 0.098]
+      - [23.000, 0.131]
+      - [24.000, 0.164]
+      - [25.000, 0.194]
+      - [26.000, 0.224]
+      - [27.000, 0.251]
+      - [28.000, 0.277]
+      - [29.000, 0.302]
+      - [30.000, 0.327]
+      - [31.000, 0.353]
+      - [32.000, 0.380]
+      - [33.000, 0.410]
+      - [33.333, 0.419]
+      - [34.000, 0.437]
+      - [34.500, 0.450]
+      - [35.000, 0.462]
+      - [35.230, 0.466]
+      - [36.000, 0.476]
+      - [36.500, 0.480]
+      - [37.000, 0.486]
+      - [37.500, 0.489]
+      - [38.000, 0.492]
+      - [38.500, 0.495]
+      - [39.000, 0.499]
+      - [39.500, 0.499]
+      - [40.000, 0.502]
+      - [40.500, 0.508]
+      - [41.000, 0.508]
+      - [41.389, 0.513]   # ridge
+      - [41.532, 0.504]
+      - [42.000, 0.468]
+      - [42.500, 0.432]
+      - [43.000, 0.395]
+      - [44.000, 0.371]   # AS PRINTED (clearly legible). Probable misprint for 0.321 - see note
+      - [45.000, 0.247]
+      - [45.833, 0.186]   # blunt TE
+    note: >
+      Column y=6.667 aft of the ridge reads 0.513 (41.389), 0.504, 0.468, 0.432, 0.395,
+      0.371 (44.000), 0.247 (45.000), 0.186 (45.833 TE). 0.371 is clearly printed but the
+      section is linear aft of the ridge (slope -0.0736/in from the ridge to the TE), which
+      gives 0.321 at x=44.000 (and 0.247 at 45.000, matching the table). Treat 0.371 as a
+      probable misprint of 0.321 (my inference, not stated in the report).
+  - y: 10.000
+    x_le: 28.750
+    chord: 20.000
+    t_over_c_max: 0.0385     # derived: 2*0.385/20
+    te_semithickness: 0.139
+    semithickness:
+      - [28.750, 0.000]
+      - [29.000, 0.008]
+      - [30.000, 0.038]   # last digit faint; read 0.038 at 600 dpi
+      - [31.000, 0.067]
+      - [32.000, 0.096]
+      - [33.000, 0.126]
+      - [33.333, 0.136]
+      - [34.000, 0.155]
+      - [34.500, 0.169]
+      - [35.000, 0.182]   # faint
+      - [35.230, 0.188]   # faint
+      - [36.000, 0.205]
+      - [36.500, 0.215]
+      - [37.000, 0.225]
+      - [37.500, 0.233]
+      - [38.000, 0.242]
+      - [38.500, 0.250]
+      - [39.000, 0.258]
+      - [39.500, 0.264]
+      - [40.000, 0.271]
+      - [40.500, 0.280]
+      - [41.000, 0.285]
+      - [41.532, 0.295]
+      - [42.000, 0.306]
+      - [42.500, 0.318]
+      - [43.000, 0.329]
+      - [44.000, 0.352]
+      - [45.000, 0.375]
+      - [45.417, 0.385]   # ridge
+      - [46.000, 0.342]
+      - [47.000, 0.268]
+      - [48.000, 0.194]
+      - [48.750, 0.139]   # blunt TE
+    note: "x=30.000 printed '.038' (last digit faint, confirmed at 600 dpi)."
+  - y: 13.333
+    x_le: 38.333
+    chord: 13.333
+    t_over_c_max: 0.0386     # derived: 2*0.257/13.333
+    te_semithickness: 0.093
+    semithickness:
+      - [38.333, 0.000]
+      - [38.500, 0.004]
+      - [39.000, 0.017]
+      - [39.500, 0.029]
+      - [40.000, 0.040]
+      - [40.500, 0.052]
+      - [41.000, 0.062]
+      - [41.532, 0.074]
+      - [42.000, 0.085]
+      - [42.500, 0.096]
+      - [43.000, 0.108]
+      - [44.000, 0.131]
+      - [45.000, 0.154]
+      - [46.000, 0.177]
+      - [47.000, 0.200]
+      - [48.000, 0.223]
+      - [49.000, 0.247]
+      - [49.444, 0.257]   # ridge
+      - [50.000, 0.216]
+      - [51.000, 0.143]
+      - [51.667, 0.093]   # blunt TE
+  - y: 16.667
+    x_le: 47.918
+    chord: 6.667
+    t_over_c_max: 0.0384     # derived: 2*0.128/6.667
+    te_semithickness: 0.046
+    semithickness:
+      - [47.918, 0.000]
+      - [48.000, 0.002]
+      - [49.000, 0.025]
+      - [50.000, 0.048]
+      - [51.000, 0.071]
+      - [52.000, 0.094]
+      - [53.000, 0.117]
+      - [53.473, 0.128]   # ridge (faint, read .128)
+      - [54.000, 0.090]
+      - [54.584, 0.046]   # blunt TE
+  - y: 20.000
+    x_le: 57.500
+    chord: 0.0
+    t_over_c_max: null
+    note: pointed tip
+
+ridge_line_table:   # Table IV "Ridge" columns: [x, +/-t/2, y]
+  - [33.333, 0.986, 0.000]
+  - [34.000, 0.955, 0.552]
+  - [34.500, 0.932, 0.966]
+  - [35.000, 0.905, 1.379]
+  - [35.230, 0.891, 1.570]
+  - [36.000, 0.838, 2.207]
+  - [36.500, 0.802, 2.621]
+  - [37.000, 0.770, 3.034]
+  - [37.500, 0.736, 3.448]
+  - [38.000, 0.703, 3.862]
+  - [38.500, 0.671, 4.276]
+  - [39.000, 0.642, 4.690]
+  - [39.500, 0.609, 5.103]
+  - [40.000, 0.582, 5.517]
+  - [40.500, 0.558, 5.931]
+  - [41.000, 0.530, 6.345]
+  - [41.532, 0.509, 6.785]
+  - [42.000, 0.494, 7.172]
+  - [42.500, 0.473, 7.586]
+  - [43.000, 0.462, 8.000]
+  - [44.000, 0.430, 8.828]
+  - [45.000, 0.398, 9.655]
+  - [46.000, 0.367, 10.483]
+  - [47.000, 0.335, 11.310]
+  - [48.000, 0.303, 12.138]
+  - [49.000, 0.271, 12.966]
+  - [50.000, 0.239, 13.793]
+  - [51.000, 0.207, 14.621]
+  - [52.000, 0.175, 15.448]
+  - [53.000, 0.143, 16.276]
+  - [54.000, 0.112, 17.103]
+  - [55.000, 0.080, 17.931]
+  - [55.500, 0.064, 18.345]
+  - [56.000, 0.048, 18.759]
+  - [56.500, 0.032, 19.172]
+  - [57.000, 0.016, 19.586]
+  - [57.500, 0.000, 20.000]
+
+trailing_edge_table:   # Table IV "Trailing edge" columns: [x, +/-t/2, y]; blunt TE (base)
+  - [40.000, 0.387, 0.000]
+  - [40.500, 0.339, 0.571]
+  - [41.000, 0.300, 1.143]
+  - [41.532, 0.255, 1.750]
+  - [42.000, 0.247, 2.286]
+  - [42.500, 0.239, 2.857]
+  - [43.000, 0.231, 3.429]
+  - [44.000, 0.215, 4.571]
+  - [45.000, 0.199, 5.714]
+  - [46.000, 0.183, 6.857]
+  - [47.000, 0.167, 8.000]
+  - [48.000, 0.151, 9.143]
+  - [49.000, 0.136, 10.286]
+  - [50.000, 0.120, 11.429]
+  - [51.000, 0.104, 12.571]
+  - [52.000, 0.088, 13.714]
+  - [53.000, 0.072, 14.857]
+  - [54.000, 0.056, 16.000]
+  - [55.000, 0.040, 17.143]
+  - [55.500, 0.032, 17.714]
+  - [56.000, 0.024, 18.286]
+  - [56.500, 0.016, 18.857]
+  - [57.000, 0.008, 19.429]
+  - [57.500, 0.000, 20.000]
+trailing_edge_text_quote: >
+    "Note that the rear portion of the arrow wing was designed with a blunt trailing
+    edge, as suggested in reference 2, to avoid wing sections with large rearward slopes.
+    For wing sections perpendicular to the body center line, ... the trailing-edge
+    thicknesses of the arrow wing were half the ridge thicknesses, except near the body
+    juncture, as shown in table IV." (p. 5 [pdf 8])
+
+fuselage:
+  type: body of revolution (circular sections), centred on wing plane
+  source: "Table I 'Coordinates for bodies, inches', column 'Arrow model', p. 18 [pdf 20]"
+  nose_x_in: 3.15       # Table I: 'Wing alone' above x=3.150; r(3.150)=0.311 (body truncated, not pointed)
+  base_x_in: 60.0
+  base_radius_in: 1.625 # Table I footnote 1: aft of x=57.6 'Same as M = 1.00 equivalent body', which ends x=60.000 r=1.625
+  segments:
+    - "x=3.150..35.230: part of a von Karman ogive (l = 40 in. and r_b = 1.625 in.) (Table I footnote 2). All legible table values agree to 0.001 in with r = (1.625/sqrt(pi))*sqrt(theta - sin(2 theta)/2), theta = acos(1 - x/20)."
+    - "x=35.230..57.600: 'Blended body' (tabulated)"
+    - "x=57.600..60.000: same as M=1.00 equivalent body (tabulated in that column)"
+  radius_table:   # [x, r]
+    - [3.150, 0.311]
+    - [4.000, 0.371]
+    - [4.800, 0.424]    # x faint ('4.?00'); confirmed by ogive formula
+    - [5.600, 0.474]
+    - [6.400, 0.522]
+    - [7.200, 0.569]
+    - [8.800, 0.656]    # faint; ogive formula gives 0.656
+    - [10.400, 0.739]
+    - [12.000, 0.816]
+    - [13.600, 0.890]
+    - [15.200, 0.960]
+    - [16.800, 1.026]
+    - [18.400, 1.089]
+    - [19.200, 1.119]
+    - [20.000, 1.149]
+    - [20.800, 1.178]
+    - [21.600, 1.206]
+    - [23.200, 1.260]
+    - [24.800, 1.311]
+    - [26.400, 1.360]
+    - [28.000, 1.405]
+    - [29.600, 1.447]
+    - [31.200, 1.487]
+    - [32.800, 1.522]
+    - [33.600, 1.539]
+    - [34.400, 1.554]
+    - [35.230, 1.570]   # printed 1.570 (formula 1.569)
+    - [36.000, 1.620]
+    - [37.000, 1.660]
+    - [38.000, 1.690]   # uncertain last digit (1.690 or 1.693)
+    - [39.000, 1.705]
+    - [40.000, 1.715]   # uncertain last digit (1.715/1.718)
+    - [40.500, 1.725]
+    - [41.000, 1.735]   # uncertain last digit
+    - [41.532, 1.751]
+    - [42.000, 1.776]   # faint
+    - [43.000, 1.821]   # faint
+    - [45.000, 1.906]   # uncertain last digit
+    - [47.000, 1.975]
+    - [49.000, 2.011]
+    - [51.000, 2.000]
+    - [53.000, 1.942]
+    - [55.000, 1.872]   # faint
+    - [56.000, 1.825]   # faint
+    - [57.000, 1.767]   # faint
+    - [57.500, 1.738]   # uncertain (1.73x)
+    - [57.600, 1.728]
+    - [57.900, 1.709]   # from M=1.00 equivalent-body column
+    - [58.200, 1.692]
+    - [58.500, 1.677]
+    - [58.800, 1.662]   # uncertain (scan illegible, interpolated-looking value 1.66x)
+    - [59.100, 1.649]
+    - [59.400, 1.637]
+    - [59.700, 1.629]
+    - [60.000, 1.625]
+  sting_note: >
+    Body base r=1.625 in at x=60. "At all Mach numbers the drag coefficients were adjusted
+    by setting the body base pressure equal to free-stream static pressure." (p. 7 [pdf 9]).
+    For far-field wave drag, close the area distribution with a constant-area cylinder
+    (sting) aft of x=60 - my assumption; TM X-372 does not state how the base was closed in
+    its theory, only that "The variation of the body area distribution with Mach number,
+    used in the theoretical computations, was based on method 1 described in reference 1"
+    (p. 8 [pdf 10]; ref. 1 = NASA TM X-105).
+
+fins: none (wing-body only; no tail, no nacelles)
+nacelles: none
+
+wing_body_junction_note: >
+  The wing semithickness is tabulated to the centre line (y=0) even where it is buried in
+  the body. The body radii are those of the body of revolution; the wing passes through it.
+  For an area-rule code, either (a) input wing from y=0 and subtract nothing (code must
+  handle overlap), or (b) start the exposed wing at the body surface. The report does
+  not say how its theory handled the overlap; the design was done by "varying the
+  section shape along with the body radii (blending process) to match the prescribed
+  area distribution" (summary p. 1). Figure 3 (p. 32 [pdf 34]) gives the design total
+  cross-sectional area distribution (normal areas, M=1) which can be used to check the
+  reconstruction (not digitized here).
+
+test_conditions:
+  facility: "Ames 9- by 7-foot (M 1.55-2.35) and 8- by 7-foot (M 2.50-3.50) supersonic test sections of the Unitary Plan wind tunnel"
+  reynolds: "about 4,000,000 to 9,000,000 based on MAC (summary); R/ft 2-4 million depending on M (test table p. 6 [pdf 8], fig. 11)"
+  transition: "fixed; grit avg height ~0.040 in, 1.13 in rearward of wing LE (upper and lower) and of body nose (p. 7 [pdf 9]); laminar area ~5% of wing area"
+  grit_penalty: "Appendix B (delta model, M=3.00): grit penalty in CDo of 0.0003 separate from the effect of fixing transition; data NOT corrected for it (p. 8 [pdf 10])"
+  base_pressure: "body base pressure set to free-stream static; WING base drag of the arrow model is NOT removed"
+
+measured_wave_drag:
+  # Figure 13(d), p. 58 [pdf 60]: "Zero-lift wave-drag coefficients of the various models
+  # as determined by experiment and theory. (d) Arrow model."
+  # Digitized by me from a 400-dpi render of the scan: grid lines located by pixel
+  # detection (0.1 in M, 0.002 in dCDo); scan skew (~0.55 deg) corrected with fitted
+  # zero line. Estimated read uncertainty +/-0.0001 (curve-line width ~0.00005).
+  # Solid = experiment (faired curve, no data symbols shown), dashed = theory.
+  # Experiment = CDo(total, body base at p_inf) - friction estimate; INCLUDES wing base drag.
+  definition_quote: >
+    "The experimental zero-lift wave-drag coefficients (fig. 12(b)) were determined from
+    the basic data by removing the friction-drag coefficients. The friction-drag
+    coefficients were assumed to be equal to the zero-lift drag coefficient at M = 0.60
+    and were adjusted at each Mach number to account for the variation with Mach number
+    of the friction-drag coefficient for fully turbulent flow over a smooth surface. ...
+    The friction-drag coefficients used to determine the wave-drag coefficients were also
+    corrected for variations in Reynolds number." (p. 8-9 [pdf 10-11])
+  theory_quote: >
+    "The theoretical wave-drag coefficients were computed with the procedures of
+    reference 4, and 49 harmonics were used to define the derivative of the model area
+    distributions." (p. 8 [pdf 10]); ref. 4 = Holdaway & Mersman, NACA RM A55J28 (Tchebichef
+    harmonic analysis applied to the supersonic area rule).
+  base_quote: >
+    "The experimental wave-drag coefficients shown for the arrow model in figure 13(d)
+    include the wing base-drag coefficient. The agreement between theory and experiment
+    shown at the intermediate supersonic Mach numbers would be poorer if the variation
+    with Mach number of wing base drag were introduced." (p. 9 [pdf 11])
+  units: "dimensionless, based on S = 800 in^2"
+  columns: [M, dCDo_experiment_incl_wing_base, dCDo_theory_area_rule]
+  data:
+    - [1.55, 0.0063, 0.0069]   # start of experimental curve; exp read 0.00626, theory 0.00685
+    - [1.60, 0.0061, 0.0065]
+    - [1.65, 0.0059, 0.0062]
+    - [1.70, 0.0058, 0.0058]   # curves merge (read 0.00582)
+    - [1.75, 0.0057, 0.0057]
+    - [1.80, 0.0055, 0.0055]
+    - [1.85, 0.0054, 0.0054]
+    - [1.90, 0.0052, 0.0052]
+    - [2.00, 0.0049, 0.0051]
+    - [2.10, 0.0046, 0.0049]
+    - [2.20, 0.0043, 0.0048]
+    - [2.30, 0.0039, 0.0046]
+    - [2.35, 0.0038, 0.0045]   # end of 9x7 data
+    - [2.40, null,   0.0044]
+    - [2.50, 0.0039, 0.0042]   # start of 8x7 data (exp read 0.00387, short segment)
+    - [2.60, 0.0037, 0.0041]
+    - [2.70, 0.0035, 0.0039]
+    - [2.80, 0.0034, 0.0038]
+    - [2.90, 0.0032, 0.0038]
+    - [3.00, 0.0031, 0.0038]
+    - [3.10, 0.0029, 0.0037]
+    - [3.20, 0.0029, 0.0036]
+    - [3.30, 0.0029, 0.0034]
+    - [3.40, 0.0029, 0.0033]
+  raw_reads_note: "Unrounded reads (5 decimals) are in sources.yaml."
+
+measured_wing_base_drag:
+  # Figure 14(b), p. 59 [pdf 61], experiment symbols (wing base, based on S=800 in^2)
+  text_quote: >
+    "The wing base-drag coefficients of the arrow model, based on the wing plan-form
+    area, decreased from a peak value of 0.0029 at Mach number 1.55 to 0.0003 at Mach
+    number 3.50." (p. 9-10 [pdf 11-12])
+  columns: [M, CDb_wing]
+  data:
+    - [1.55, 0.0029]   # text value
+    - [1.95, 0.0022]   # visual read from fig. 14(b), +/-0.0002
+    - [2.35, 0.0017]   # visual read, +/-0.0002
+    - [2.50, 0.0012]   # visual read, +/-0.0002
+    - [3.00, 0.0008]   # visual read, +/-0.0002
+    - [3.50, 0.0003]   # text value
+  use: "pressure-wave drag comparable to a far-field area-rule code ~= dCDo_experiment - CDb_wing"
+
+measured_total_cd0_spot:
+  - M: 1.55
+    CD0: 0.0137
+    source: "fig. 7(b) p. 44 [pdf 46], arrow-model (filled triangle) polar at CL=0, visual read +/-0.0003"
+    note: "implies friction + residual ~ 0.0137 - 0.0063 ~ 0.0074 (derived; includes body-base adjustment convention)"
