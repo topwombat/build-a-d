@@ -62,3 +62,20 @@ start inside the engine model.
 The model's specific thrust is 15-27 % low across the envelope (cruise 402 vs 468 N s/kg; SLS 548 vs
 750), so it needs too much airflow, which inflates cruise thrust. Not tuned; see the sensitivity
 study and decision log.
+
+## Sensitivity of the two-spool result (for the owner; nothing adopted)
+
+One assumption changed at a time from the committed case (cruise thrust at M2.0 / 53 kft; published 10,030 lbf, TSFC 1.19; airflow at M2.0 / 55 kft ~210 lb/s; SLS airflow 186 kg/s):
+
+| Variant | Cruise Fn, lbf | TSFC | W at 55 kft, lb/s | SLS W, kg/s |
+|---|---|---|---|---|
+| A baseline | 12,333 | 1.200 | 301 | 255 |
+| B no LPT cooling | did not converge | | | |
+| C HPT/LPT cooling swapped | 11,805 | 1.143 | 275 | 233 |
+| D burner dP 5 % (was 9 %) | 12,193 | 1.181 | 292 | 247 |
+| E LP/HP PR split 2.5 / 4.83 | 12,491 | 1.197 | 304 | 255 |
+| F nozzle Cv 0.995 | 12,634 | 1.154 | 296 | 251 |
+| G LP/HP PR split 4.8 / 2.51 | 12,268 | 1.207 | 301 | 256 |
+| H T4 1,980 °F (text value) | 12,356 | 1.199 | 297 | 252 |
+
+No single plausible assumption moves airflow by more than 9 %: the 37-43 % airflow excess (specific thrust 15-27 % low) is structural, not an input choice. Candidates: the generic maps' off-design flow lapse between the M2 design point and SLS, and the absent variable-geometry intake schedule.
