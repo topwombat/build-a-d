@@ -334,6 +334,34 @@ def match_sls(spec, airflow_kg_s: float, fn_reheat_kN: float | None, tol: float 
     return spec.model_copy(update={"t_ab_K": round(m, 1)})
 
 
+def match_reheat_sls(spec, fn_reheat_kN: float, tol: float = 1e-3):
+    """Afterburner exit temperature so SLS full reheat (at the limited dry setting) gives fn_reheat_kN."""
+    s = _Solver(spec)
+    if s.go_to(0.0, 0.0, steps=40) is None or not s.at(0.0, 0.0):
+        raise RuntimeError("engine did not converge at SLS")
+    top, frac = s.last.copy(), s.f_prev
+    target = fn_reheat_kN * 1000
+
+    def thrust(t_ab):
+        s.spec = s.spec.model_copy(update={"t_ab_K": t_ab})
+        s.last = top.copy()
+        s.solve(0.0, frac)
+        return s.reheat_at(0.0, frac)[0] - target
+
+    a, b = 1100.0, 2200.0
+    fa = thrust(a)
+    for _ in range(25):
+        m = 0.5 * (a + b)
+        fm = thrust(m)
+        if abs(fm) < tol * target:
+            break
+        if (fm < 0) == (fa < 0):
+            a, fa = m, fm
+        else:
+            b = m
+    return spec.model_copy(update={"t_ab_K": round(m, 1)})
+
+
 def size_to_sls(spec, tol: float = 1e-3, max_iter: int = 6):
     """Set fn_design_kN so the limited max-dry SLS thrust equals fn_sls_dry_kN.
 

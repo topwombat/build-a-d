@@ -42,9 +42,10 @@ def test_cruise_airflow(olympus_point):
 def test_sls_airflow():
     """Added with D-026 (cruise design point), before the sized engine was run: SLS airflow is no
     longer a matching target, so it becomes a check. 186 kg/s (Wikipedia Olympus 593, page read)."""
+    from pathlib import Path
+
     from ssbj.disciplines.propulsion.two_spool import size_to_sls
     from ssbj.specs.schema import load_case
-    from pathlib import Path
 
     case = load_case(Path(__file__).parent / "concorde" / "case.yaml")
     _, sls = size_to_sls(case.design.engine)

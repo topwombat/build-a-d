@@ -83,14 +83,14 @@ design:
     fn_sls_dry_kN: 139.4
     design_mach: 2.0
     design_alt_ft: 53000.0
-    fn_design_kN: null
+    fn_design_kN: 54.86
     lpc_pr: 3.474
     hpc_pr: 3.474
     t4_max_K: 1350.4
     t3_max_K: null
     hp_speed_max_frac: 1.0
     afterburner: true
-    t_ab_K: 1426.6
+    t_ab_K: 1271.9
     lpc_eff_poly: 0.90
     hpc_eff_poly: 0.90
     hpt_eff: 0.885

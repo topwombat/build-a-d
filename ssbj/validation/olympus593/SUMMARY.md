@@ -49,3 +49,16 @@ start inside the engine model.
 - Primary sources not reached: Rettie & Lewis 1968, Leyman 1986, Mair & Birdsall (1992), Hooker,
   Cumpsty, SAE 760888, Flight 1969/71.
 - Blocked hosts: heritageconcorde.com, pprune.org, concordesst.com, archive.org.
+
+## Two-spool result (commit after D-026; engine sized at cruise, limited max power)
+
+| Check (tolerance 10 %, committed in advance) | Published | Model | Result |
+|---|---|---|---|
+| Cruise thrust, M2.0 / 53 kft | 10,030 lbf | 12,333 lbf (+23 %) | FAIL |
+| Cruise TSFC | 1.19 /h | within 10 % | pass |
+| Cruise airflow, M2.0 / 55 kft | ~210 lb/s | 301 lb/s (+43 %) | FAIL |
+| SLS airflow | 186 kg/s | 255 kg/s (+37 %) | FAIL |
+
+The model's specific thrust is 15-27 % low across the envelope (cruise 402 vs 468 N s/kg; SLS 548 vs
+750), so it needs too much airflow, which inflates cruise thrust. Not tuned; see the sensitivity
+study and decision log.
