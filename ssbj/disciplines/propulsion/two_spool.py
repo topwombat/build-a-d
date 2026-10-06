@@ -50,7 +50,11 @@ UNCERTAINTIES = [
 
 LIMITS = [
     "Generic compressor and turbine maps (pyCycle LPC/Fan/HPC/HPT/LPT) scaled to the design point.",
-    "Variable nozzle holds the LP compressor (fan) on its design operating line; real schedules differ.",
+    "Dry: fixed nozzle throat area; reheat: nozzle opened to hold the LP compressor on its dry "
+    "operating line. Real schedules differ.",
+    "Validation shows errors larger than the declared 5 % sigmas: Olympus 593 (two-spool turbojet) "
+    "cruise thrust +23 % and airflow +43 %; NASA STCA (bought-core turbofan) SFC -17 % and BPR +61 %. "
+    "No duct or mixer pressure losses are modelled.",
     "Inlet recovery is the MIL-E-5008B standard schedule, not a designed intake.",
     "Reheat at a limited dry point is scaled from the T4_max reheat/dry ratio.",
     "Spillage, bypass, bleed and boat-tail drag not modelled; no customer power offtake.",

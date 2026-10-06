@@ -7,10 +7,10 @@ from __future__ import annotations
 
 from ssbj.disciplines.aero import polar
 from ssbj.disciplines.mission import analysis
-from ssbj.disciplines.propulsion import deck
+from ssbj.disciplines.propulsion import two_spool
 from ssbj.disciplines.weights import raymer_transport
 
-MODULES = [("Aerodynamics", polar), ("Propulsion", deck), ("Weights", raymer_transport),
+MODULES = [("Aerodynamics", polar), ("Propulsion", two_spool), ("Weights", raymer_transport),
            ("Mission", analysis)]
 
 GEOMETRY = [

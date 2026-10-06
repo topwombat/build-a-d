@@ -34,18 +34,19 @@ Not trusted when:
 
 Not trusted when:
 
-- Single-spool turbojet stands in for twin-spool engines; part-power matching is approximate.
-- Generic compressor and turbine maps (pyCycle AXI5, LPT2269) scaled to the design point.
-- No mechanical-speed or T2 limit schedule: only T4 is limited.
+- Generic compressor and turbine maps (pyCycle LPC/Fan/HPC/HPT/LPT) scaled to the design point.
+- Dry: fixed nozzle throat area; reheat: nozzle opened to hold the LP compressor on its dry operating line. Real schedules differ.
+- Validation shows errors larger than the declared 5 % sigmas: Olympus 593 (two-spool turbojet) cruise thrust +23 % and airflow +43 %; NASA STCA (bought-core turbofan) SFC -17 % and BPR +61 %. No duct or mixer pressure losses are modelled.
 - Inlet recovery is the MIL-E-5008B standard schedule, not a designed intake.
-- Spillage, bypass, bleed and nozzle boat-tail drag are not modelled.
-- Idle and descent fuel flow are extrapolated below 65 % of T4_max.
+- Reheat at a limited dry point is scaled from the T4_max reheat/dry ratio.
+- Spillage, bypass, bleed and boat-tail drag not modelled; no customer power offtake.
+- Idle and descent fuel flow extrapolated below 65 % of T4_max.
 
 | Error factor | 1-sigma | Basis |
 |---|---|---|
-| `prop.thrust` | 5% | Single-spool cycle with generic AXI5/LPT2269 maps standing in for the real engine; installation drags not modelled. |
-| `prop.sfc` | 5% | Component efficiencies are assumed; generic maps; no Reynolds or bleed effects. |
-| `prop.weight` | 30% | Scaled from Raymer's 1990s-technology reference engine (bypass 0.41); a 1960s turbojet is expected to be heavier, so this is biased low by an unknown amount. |
+| `prop.thrust` | 5% | Generic pyCycle maps scaled to the design point; LP/HP work split and nozzle coefficient assumed; installation drags not modelled. |
+| `prop.sfc` | 5% | Component efficiencies from published estimates; generic maps. |
+| `prop.weight` | 30% | Scaled from Raymer's 1990s-technology reference engine; biased low for older engines. |
 
 ## Weights
 
