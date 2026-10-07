@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ssbj"
+version = "0.1.0"
+description = "Conceptual-design pipeline for a Mach 1.5 supersonic business jet (Phase 1 thin slice)"
+requires-python = ">=3.11,<3.12"
+# Exact pins live in requirements.lock; these are the compatible ranges.
+dependencies = [
+    "numpy>=2,!=2.4.0,<2.5",
+    "scipy>=1.11",
+    "openmdao>=3.45,<3.46",
+    # pyCycle: 4.4.0 on PyPI breaks on numpy 2; pinned to the git commit that fixes it
+    "om-pycycle @ git+https://github.com/OpenMDAO/pyCycle@ee7e16126a7a54b5fe35292c53b7eb4e9572620b",
+    "pydantic>=2.6,<3",
+    "pyyaml>=6",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.scripts]
+ssbj = "ssbj.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["ssbj*"]
+
+[tool.setuptools.package-data]
+"*" = ["*.yaml", "*.json", "*.md"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "ssbj/validation"]
+markers = ["slow: regenerates engine decks or runs Monte Carlo (minutes)"]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B"]
+ignore = ["E731", "E741", "E501", "B905"]

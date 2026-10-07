@@ -1,0 +1,70 @@
+# Published Concorde figures the blind run is judged against.
+# None of these enter the model. Source quality: see sources_verified.yaml and VERIFICATION.md.
+#
+# One gate (owner decision D-023): range at max fuel. The fuel needed for that range is the same
+# data point inverted and is reported as a diagnostic only.
+gates:
+  - id: range_max_fuel
+    quantity: range at max fuel, 8,845 kg payload, "FAR reserves"
+    model_output: range_nmi
+    value: 3550
+    unit: nmi
+    source: "Heritage Concorde, airframe-performance page (https://www.heritageconcorde.com/airframe-performance): 'Range with max fuel, FAR reserves and 8,845 kg (19,500 lb) 3,550 n miles'. Reserves not defined on the page."
+    source_quality: page_read
+
+diagnostics:  # reported with the model's own error bar; not acceptance gates
+  # fuel_for_range was a gate until D-023 (owner decision): it is the range gate inverted and its
+  # interval is censored at tank capacity.
+  - id: fuel_for_range
+    quantity: ramp fuel to fly 3,550 nmi with 8,845 kg payload and reserves (= max fuel)
+    model_output: design_ramp_fuel_kg
+    value: 95680
+    unit: kg
+    alternatives:
+      - {value: 94470, source: "Heritage Concorde /fuel-addcap tank table (page read)"}
+      - {value: 95254, source: "Heritage Concorde 'B' page (page read)"}
+      - {value: 95430, source: "PPRuNe forum (search snippet; page 403)"}
+    source: "Heritage Concorde weights page; Wikipedia Concorde specifications (pages read)"
+    source_quality: page_read
+  - id: oew
+    model_output: oew_kg
+    value: 78700
+    unit: kg
+    source: "Heritage weights page; Wikipedia ('Empty weight') (pages read)"
+    source_quality: page_read
+  - id: cruise_tsfc
+    model_output: tsfc_cruise_per_h
+    value: 1.195
+    unit: 1/h
+    source: "Wikipedia Olympus 593 (page read; marked [citation needed], conditions not stated)"
+    source_quality: page_read_unsupported
+  - id: ld_mach2
+    model_output: ld_cruise
+    range: [7.14, 7.5]
+    unit: "-"
+    source: "Wikipedia Concorde (7.14 at M2.04) and Lift-to-drag ratio article (7.5 at M2, citing Orlebar 1997 p.116) (pages read)"
+    source_quality: page_read
+  - id: engine_dry_mass
+    model_output: engine_dry_mass_kg
+    value: 3175
+    unit: kg
+    source: "Wikipedia Olympus 593 ('Data from Jane's'); Heritage (pages read)"
+    source_quality: page_read
+  - id: pre_cruise_fuel_fraction
+    model_output: pre_cruise_fuel_fraction
+    value: 0.20
+    unit: "-"
+    source: "McKinlay, Heaton & Franchi, Operational experience on Concorde, ICAS 1976 (read): 20 % of trip fuel burned by start of cruise"
+    source_quality: page_read
+  - id: pre_cruise_distance_fraction
+    model_output: pre_cruise_distance_fraction
+    value: 0.09
+    unit: "-"
+    source: "ICAS 1976 (read): 9 % of distance covered by start of cruise"
+    source_quality: page_read
+  - id: lhr_jfk_fuel_load
+    model_output: none
+    range: [93000, 96000]
+    unit: kg
+    source: "PPRuNe forum thread 45456 (search snippet); anecdotal, route distance unknown"
+    source_quality: search_snippet

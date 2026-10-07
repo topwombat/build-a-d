@@ -1,0 +1,307 @@
+# Aerion AS2 reference data -- RAW, CITED, UNRECONCILED.
+# Rules: every value carries its source; nothing filled from memory; conflicts kept as separate entries.
+# source_quality: page_read (none achieved: all fetches blocked) | search_snippet (WebSearch summary; page not seen)
+#                 | local_textbook (PDF in /home/user/build-a-d) | code_model_input (value used as input in an
+#                 open-source design code, e.g. SUAVE -- secondary, not primary data) | missing.
+# Snippet caveat: WebSearch returns an LLM summary of result pages; the specific URL a figure came from is
+# inferred (domain-restricted searches were used to pin attribution where possible).
+- quantity: cruise_Mach_supersonic
+  value: 1.4
+  unit: '-'
+  aircraft_variant: Aerion AS2 (trijet, 2014-2021 design; never built)
+  conditions: null
+  source:
+    title: Airport Technology - Aerion AS2 Supersonic Business Jet
+    url_or_citation: https://www.airport-technology.com/projects/aerion-as2-supersonic-business-jet/
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''targeting a speed of Mach 1.4''. Also stated by Wikipedia/newatlas (Mach 0.95 and Mach 1.4 optimal cruise speeds).'
+- quantity: cruise_Mach_original_target
+  value: 1.6
+  unit: '-'
+  aircraft_variant: Aerion AS2 (trijet, 2014-2021 design; never built)
+  conditions: null
+  source:
+    title: Wikipedia - Aerion AS2
+    url_or_citation: https://en.wikipedia.org/wiki/Aerion_AS2
+    page_or_section: infobox / text
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''aimed for Mach 1.6 with a supersonic natural laminar flow wing for a minimum projected range of 4,750 nm'' -- earlier design target; later reduced to Mach 1.4.'
+- quantity: cruise_Mach_subsonic
+  value: 0.95
+  unit: '-'
+  aircraft_variant: Aerion AS2 (trijet, 2014-2021 design; never built)
+  conditions: null
+  source:
+    title: Wikipedia - Aerion AS2
+    url_or_citation: https://en.wikipedia.org/wiki/Aerion_AS2
+    page_or_section: infobox / text
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: MTOW
+  value: 121000
+  unit: lb
+  aircraft_variant: Aerion AS2 (trijet, 2014-2021 design; never built)
+  conditions: null
+  source:
+    title: BJT Online - Aerion AS2
+    url_or_citation: https://www.bjtonline.com/business-jet-news/flying/aerion-as2
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''Maximum takeoff weight is 121,000 pounds'' (first seen in neutral query; later confirmed by a query that contained the value). Probably the 2017+ updated design.'
+- quantity: MTOW
+  value: 150000
+  unit: lb
+  aircraft_variant: Aerion AS2 (trijet, 2014-2021 design; never built)
+  conditions: null
+  source:
+    title: Wikipedia - Aerion AS2
+    url_or_citation: https://en.wikipedia.org/wiki/Aerion_AS2
+    page_or_section: infobox / text
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: Wikipedia infobox snippet '150,000 lb (68,039 kg)'. Note 68,039 kg = 150,000 lb. Conflicts with 121,000 lb.
+- quantity: MTOW
+  value: 115000
+  unit: lb
+  aircraft_variant: Aerion AS2 (trijet, 2014-2021 design; never built)
+  conditions: null
+  source:
+    title: New Atlas - 'Aerion's AS2 supersonic business jet gets extra engine and cabin space' (2014)
+    url_or_citation: https://newatlas.com/aerion-as2-supersonic-business-jet/32149/
+    page_or_section: article
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''around 115,000 lb (52,000 kg)'' -- likely the May-2014 trijet launch configuration.'
+- quantity: range_supersonic
+  value: 4200
+  unit: nmi
+  aircraft_variant: Aerion AS2 (trijet, 2014-2021 design; never built)
+  conditions: Mach 1.4
+  source:
+    title: Wikipedia - Aerion AS2
+    url_or_citation: https://en.wikipedia.org/wiki/Aerion_AS2
+    page_or_section: infobox / text
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: 'Also airport-technology: 4,200 nmi at Mach 1.4.'
+- quantity: range_supersonic
+  value: 4750
+  unit: nmi
+  aircraft_variant: Aerion AS2 (trijet, 2014-2021 design; never built)
+  conditions: Mach 1.4 (per BJT/AW snippet 'range was increased to 4,750 nm at Mach 1.4')
+  source:
+    title: BJT Online - Aerion AS2
+    url_or_citation: https://www.bjtonline.com/business-jet-news/flying/aerion-as2
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: Wikipedia attaches 4,750 nm to the original Mach 1.6 SNLF concept. Conflict.
+- quantity: range_subsonic
+  value: 5400
+  unit: nmi
+  aircraft_variant: Aerion AS2 (trijet, 2014-2021 design; never built)
+  conditions: Mach 0.95
+  source:
+    title: Wikipedia - Aerion AS2
+    url_or_citation: https://en.wikipedia.org/wiki/Aerion_AS2
+    page_or_section: infobox / text
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: passengers
+  value: 12
+  unit: pax
+  aircraft_variant: Aerion AS2 (trijet, 2014-2021 design; never built)
+  conditions: null
+  source:
+    title: Airport Technology - Aerion AS2 Supersonic Business Jet
+    url_or_citation: https://www.airport-technology.com/projects/aerion-as2-supersonic-business-jet/
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: Max 12; cabin 30 ft long, ~7.2 ft wide (newatlas/airport-technology snippet).
+- quantity: cabin_length
+  value: 30
+  unit: ft
+  aircraft_variant: Aerion AS2 (trijet, 2014-2021 design; never built)
+  conditions: null
+  source:
+    title: New Atlas - 'Aerion's AS2 supersonic business jet gets extra engine and cabin space' (2014)
+    url_or_citation: https://newatlas.com/aerion-as2-supersonic-business-jet/32149/
+    page_or_section: article
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: cabin_width
+  value: 7.2
+  unit: ft
+  aircraft_variant: Aerion AS2 (trijet, 2014-2021 design; never built)
+  conditions: null
+  source:
+    title: New Atlas - 'Aerion's AS2 supersonic business jet gets extra engine and cabin space' (2014)
+    url_or_citation: https://newatlas.com/aerion-as2-supersonic-business-jet/32149/
+    page_or_section: article
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: wing_area
+  value: 1511
+  unit: ft^2
+  aircraft_variant: Aerion AS2 (trijet, 2014-2021 design; never built)
+  conditions: null
+  source:
+    title: Wikipedia - Aerion AS2
+    url_or_citation: https://en.wikipedia.org/wiki/Aerion_AS2
+    page_or_section: infobox / text
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''1,511 sq ft (140.4 m2)''. Only source found.'
+- quantity: wing_area
+  value: 1200
+  unit: ft^2
+  aircraft_variant: Aerion SBJ (earlier twin-engine predecessor) -- NOT AS2
+  conditions: null
+  source:
+    title: Wikipedia - Aerion AS2
+    url_or_citation: https://en.wikipedia.org/wiki/Aerion_SBJ
+    page_or_section: infobox / text
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: Listed for context only.
+- quantity: length
+  value: 145
+  unit: ft
+  aircraft_variant: Aerion AS2 (trijet, 2014-2021 design; never built)
+  conditions: null
+  source:
+    title: Wikipedia - Aerion AS2
+    url_or_citation: https://en.wikipedia.org/wiki/Aerion_AS2
+    page_or_section: infobox / text
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''145 ft (44 m)''.'
+- quantity: length
+  value: 160
+  unit: ft
+  aircraft_variant: Aerion AS2 (trijet, 2014-2021 design; never built)
+  conditions: null
+  source:
+    title: New Atlas - 'Aerion's AS2 supersonic business jet gets extra engine and cabin space' (2014)
+    url_or_citation: https://newatlas.com/aerion-as2-supersonic-business-jet/32149/
+    page_or_section: article
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''fuselage is 160 ft (48 m) long'' -- conflicts with 145 ft; may be a different design iteration.'
+- quantity: wing_span
+  value: 79
+  unit: ft
+  aircraft_variant: Aerion AS2 (trijet, 2014-2021 design; never built)
+  conditions: null
+  source:
+    title: Wikipedia - Aerion AS2
+    url_or_citation: https://en.wikipedia.org/wiki/Aerion_AS2
+    page_or_section: infobox / text
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''79 ft (24 m)''.'
+- quantity: balanced_field_length
+  value: 7500
+  unit: ft
+  aircraft_variant: Aerion AS2 (trijet, 2014-2021 design; never built)
+  conditions: ISA, sea level
+  source:
+    title: Wikipedia - Aerion AS2
+    url_or_citation: https://en.wikipedia.org/wiki/Aerion_AS2
+    page_or_section: infobox / text
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''7,500 ft / 2,286 m''. Airport-technology: ''runway length of 7,500 ft for take-off ... when fully fuelled''.'
+- quantity: engine_count
+  value: 3
+  unit: '-'
+  aircraft_variant: Aerion AS2 (trijet, 2014-2021 design; never built)
+  conditions: null
+  source:
+    title: BJT Online - Aerion AS2
+    url_or_citation: https://www.bjtonline.com/business-jet-news/flying/aerion-as2
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''trijet design announced in May 2014''.'
+- quantity: engine_type
+  value: 'GE Affinity: twin-shaft, twin-fan (medium bypass) turbofan, no afterburner; development discontinued May 2021'
+  unit: null
+  aircraft_variant: Aerion AS2 (trijet, 2014-2021 design; never built)
+  conditions: null
+  source:
+    title: 'GE Aerospace press release ''GE''s Affinity: The first civil supersonic engine in 55 years'' (Oct 2018) / AirInsight / The Engineer'
+    url_or_citation: https://www.geaerospace.com/news/press-releases/regional-business-engines/ges-affinity-first-civil-supersonic-engine-55-years ; https://airinsight.com/ges-affinity-a-new-supersonic-engine-for-business-aviation/
+    page_or_section: press release
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: engine_thrust_class
+  value: 20000
+  unit: lbf
+  aircraft_variant: Aerion AS2 (trijet, 2014-2021 design; never built)
+  conditions: null
+  source:
+    title: Aviation Week - 'Aerion Unveils Major Updates To AS2 Supersonic Business Jet Design' / 'GE Affinity Turbofans To Power AS2'
+    url_or_citation: https://aviationweek.com/business-aviation/aerion-unveils-major-updates-as2-supersonic-business-jet-design ; https://aviationweek.com/business-aviation/ge-affinity-turbofans-power-as2
+    page_or_section: article
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''20,000-lb.-thrust-class engine'' (AW/AirInsight snippet).'
+- quantity: engine_thrust_class
+  value: 15000
+  unit: lbf
+  aircraft_variant: Aerion AS2 (trijet, 2014-2021 design; never built)
+  conditions: null
+  source:
+    title: Airport Technology - Aerion AS2 Supersonic Business Jet
+    url_or_citation: https://www.airport-technology.com/projects/aerion-as2-supersonic-business-jet/
+    page_or_section: page
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: '''three engines of 15,000 lb thrust class, low bypass'' -- earlier (pre-Affinity) description. Conflict with 20,000 lbf.'
+- quantity: engine_bypass_ratio
+  value: null
+  unit: '-'
+  aircraft_variant: Aerion AS2 (trijet, 2014-2021 design; never built)
+  conditions: null
+  source:
+    title: null
+    url_or_citation: null
+    page_or_section: null
+  source_quality: missing
+  retrieved: '2026-10-04'
+  notes: 'Only qualitative: ''highest bypass ratio of any supersonic engine'', ''medium bypass''. No number found.'
+- quantity: SNLF_drag_benefit
+  value: 20% less drag than conventional delta wing (Aerion estimate)
+  unit: null
+  aircraft_variant: Aerion AS2 (trijet, 2014-2021 design; never built)
+  conditions: null
+  source:
+    title: Wikipedia - Aerion AS2
+    url_or_citation: https://en.wikipedia.org/wiki/Aerion_AS2
+    page_or_section: infobox / text
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: aerodynamics_reference_paper
+  value: Sturdza 2007 AIAA paper on SNLF (abstract only; for the earlier SBJ configuration)
+  unit: null
+  aircraft_variant: Aerion SBJ (predecessor)
+  conditions: null
+  source:
+    title: P. Sturdza, 'Extensive Supersonic Natural Laminar Flow on the Aerion Business Jet', AIAA 2007-685, 45th AIAA Aerospace Sciences Meeting, Jan 2007
+    url_or_citation: https://www.researchgate.net/publication/267787251_Extensive_Supersonic_Natural_Laminar_Flow_on_the_Aerion_Business_Jet
+    page_or_section: abstract
+  source_quality: search_snippet
+  retrieved: '2026-10-04'
+  notes: null

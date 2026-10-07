@@ -1,0 +1,512 @@
+# Olympus 593 Mk 610 (Concorde) engine-deck validation data, plus supporting supersonic-engine data.
+#
+# Rules followed: only figures actually read on a fetched page/PDF are recorded; quotes are verbatim
+# (scanned PDFs read from rendered page images, OCR errors in NASA translations kept as printed).
+# Conflicts are kept as separate entries. Values not found are recorded with source_quality: not_found.
+# source_quality: pdf_read = read in the PDF itself; page_read = read on an HTML page.
+# Wikipedia/Heritage Concorde spec-block values (SLS thrust, OPR 15.5, SFC 1.195, weight) are already
+# in ../concorde/sources_verified.yaml and are not repeated here, except where the Olympus 593
+# Wikipedia article was re-read for cruise items (entries tagged secondary).
+# heritageconcorde.com, pprune.org, concordesst.com, archive.org and web.archive.org were blocked by
+# the egress proxy on 2026-10-06.
+
+entries:
+
+# ---------------------------------------------------------------- 1. Supersonic cruise
+- quantity: net_thrust_cruise_per_engine
+  value: 10030
+  unit: lbf
+  conditions: Mach 2.00, 53,000 ft, cruise; Concorde Olympus (engine + nozzle as installed)
+  source:
+    title: 'Morris, Geiselhart & Coen, "Performance Potential of an Advanced Technology Mach 3 Turbojet Engine Installed on a Conceptual High-Speed Civil Transport", NASA TM-4144, Nov 1989'
+    url: https://ntrs.nasa.gov/api/citations/19900000718/downloads/19900000718.pdf
+    page_or_section: Table II "Engine Comparison", printed p. 9 (PDF p. 13)
+  quote: 'Table II. Engine Comparison ... Concorde Olympus ... Cruise: Mach No. 2.00; Altitude, ft 53 000; Fn, lb 10 030; Fn/W (engine + nozzle) 1.34; Efficiency 0.41'
+  source_quality: pdf_read
+  retrieved: 2026-10-06
+  notes: Best independent cruise-thrust point found. Read from rendered table image. Text cites Jane's 1977-78 (ref. 3) for the engine data. Weight/throttle state not given; Concorde cruises at max continuous (see ICAS entry), so treat as max-dry cruise thrust at M2.0/53 kft (ISA assumed, not stated).
+
+- quantity: net_thrust_cruise_per_engine
+  value: 10000
+  unit: lbf
+  conditions: 'cruise at Mach 2.02, altitude not stated'
+  source:
+    title: Wikipedia - Rolls-Royce/Snecma Olympus 593 (wikitext)
+    url: https://en.wikipedia.org/w/index.php?title=Rolls-Royce/Snecma_Olympus_593&action=raw
+    page_or_section: Secondary nozzle section
+  quote: 'During cruise at Mach 2.02 each Olympus 593 was producing around {{convert|10000|lbf|kN|abbr=on|sigfig=2}} of thrust, equivalent to {{convert|36000|hp|kW|abbr=on}} per engine.'
+  source_quality: page_read
+  retrieved: 2026-10-06
+  notes: Secondary. Cites Hooker & Gunston, "Not Much of an Engineer" (Crowood 2011, Google Books PT277); book page not reachable (Google Books returned no text, archive.org blocked). Agrees with NASA TM-4144 10,030 lbf.
+
+- quantity: net_thrust_cruise_per_engine
+  value: 27000
+  unit: lbf
+  conditions: '"cruise at Mach 2 and 51,000 feet"'
+  source:
+    title: Airways Magazine - Rolls-Royce Olympus (Concorde) article
+    url: https://www.airwaysmag.com/new-post/rolls-royce-olympus-concorde
+    page_or_section: '"Performance in Service"'
+  quote: Each engine generated around 38,000 pounds of thrust at takeoff and about 27,000 pounds during cruise at Mach 2 and 51,000 feet.
+  source_quality: page_read
+  retrieved: 2026-10-06
+  notes: CONFLICT, low-quality popular source with no citation. Inconsistent with 10,000-10,030 lbf from NASA TM-4144 and Hooker; possibly a gross (not net) thrust or simply wrong. Do not use as a gate. Same page claims "around 48% thermal efficiency" at Mach 2 cruise.
+
+- quantity: TSFC_cruise
+  value: 1.19
+  unit: lb/(lbf h)
+  conditions: Mach 2 cruise (altitude/thrust setting not given in this sentence; Table II context M2.00 / 53,000 ft)
+  source:
+    title: NASA TM-4144 (Morris, Geiselhart & Coen 1989)
+    url: https://ntrs.nasa.gov/api/citations/19900000718/downloads/19900000718.pdf
+    page_or_section: Background section, printed p. 2 (PDF p. 6)
+  quote: 'The engine has a mass flow of 410 lb/sec, a turbine entry temperature of 1980°F, and a compressor pressure ratio of 15.5. The Mach 2 cruise specific fuel consumption is 1.19, which gives an overall efficiency of 41 percent.'
+  source_quality: pdf_read
+  retrieved: 2026-10-06
+  notes: Installed-propulsion-system SFC presumably (41% overall efficiency includes intake and nozzle losses per Fig. 2). Consistent with Wikipedia 1.195 (marked "citation needed").
+
+- quantity: TSFC_cruise
+  value: 1.165
+  unit: lb/(lbf h)
+  conditions: '"At Concorde''s cruising speed" (Mach ~2.0-2.05), manufacturer''s value as reported by Mair & Birdsall'
+  source:
+    title: 'Starr, F., "The Supersonic Conundrum" (Newcomen Society talk write-up, 2020)'
+    url: https://fredstarr.com/wp-content/uploads/The-Supersonic-Conundrum-pdf.pdf
+    page_or_section: 'section "Concorde and its Engines - Mair and Birdsall", p. 4-5'
+  quote: 'Specific fuel consumption, above 40000 ft increased by about 6%, between Mach 1 and Mach 2. At Concorde''s cruising speed, the manufacturer''s value was 1.165 lb per hour per lb thrust.'
+  source_quality: pdf_read
+  retrieved: 2026-10-06
+  notes: Tertiary (Starr summarising Mair & Birdsall, "Aircraft Performance", CUP 1992, which used British Aerospace data). Primary book not reached. CONFLICT with 1.19 (NASA) / 1.195 (Wikipedia), ~2-3% lower. Starr's own estimate used 1.15.
+
+- quantity: TSFC_variation_M1_to_M2
+  value: +6
+  unit: percent
+  conditions: above 40,000 ft, Mach 1 -> Mach 2
+  source:
+    title: 'Starr, "The Supersonic Conundrum" (summarising Mair & Birdsall)'
+    url: https://fredstarr.com/wp-content/uploads/The-Supersonic-Conundrum-pdf.pdf
+    page_or_section: 'section "Concorde and its Engines - Mair and Birdsall"'
+  quote: Specific fuel consumption, above 40000 ft increased by about 6%, between Mach 1 and Mach 2.
+  source_quality: pdf_read
+  retrieved: 2026-10-06
+  notes: Tertiary. Useful shape check for the deck's SFC-vs-Mach at altitude (max dry).
+
+- quantity: thrust_variation_M1_to_M2_constant_altitude
+  value: +220
+  unit: percent
+  conditions: constant altitude, Mach 1 -> Mach 2 (throttle setting not stated; presumably max dry)
+  source:
+    title: 'Starr, "The Supersonic Conundrum" (summarising Mair & Birdsall)'
+    url: https://fredstarr.com/wp-content/uploads/The-Supersonic-Conundrum-pdf.pdf
+    page_or_section: 'section "Concorde and its Engines - Mair and Birdsall"'
+  quote: 'What is rather surprising, but not normally mentioned, is that, at a constant height the thrust of the Olympus increases by about 220 % between Mach 1 and Mach 2. This is obviously due to the greater airflow coming into the engine.'
+  source_quality: pdf_read
+  retrieved: 2026-10-06
+  notes: Tertiary. Ambiguous whether "increases by 220%" means x2.2 or x3.2; Starr's wording suggests thrust(M2)/thrust(M1) ~ 2.2 but this is not certain. Treat as qualitative (strong ram-driven thrust rise with Mach at altitude).
+
+- quantity: transonic_dry_thrust_vs_drag
+  value: dry thrust exceeds drag only above M1.2 at 39,000 ft
+  unit: '-'
+  conditions: 39,000 ft, dry (no reheat)
+  source:
+    title: 'Starr, "The Supersonic Conundrum" (summarising Mair & Birdsall graph)'
+    url: https://fredstarr.com/wp-content/uploads/The-Supersonic-Conundrum-pdf.pdf
+    page_or_section: 'section "Concorde and its Engines - Mair and Birdsall"'
+  quote: 'Mair and Birdsall publish a graph which shows that at 39000 ft, partly because of the deficiency of engine power at around Mach 1, and the high level of drag at this speed and altitude, Concorde would not be able to break the sound barrier on "dry thrust" alone. Dry thrust only begins to exceed drag above Mach 1.2.'
+  source_quality: pdf_read
+  retrieved: 2026-10-06
+  notes: Tertiary; aircraft weight not stated in this passage (Starr elsewhere assumes 350,000 lb). Qualitative transonic pinch-point check.
+
+- quantity: engine_airflow_cruise
+  value: 210
+  unit: lb/s
+  conditions: Mach 2.0, 55,000 ft cruise (per engine implied)
+  source:
+    title: 'Berger, J., "A comparison of predictions obtained from wind tunnel tests and the results from cruising flight (Airbus and Concorde)", NASA TM-75238 (translation of AGARD CP-242 paper 20, 1977)'
+    url: https://ntrs.nasa.gov/api/citations/19790022965/downloads/19790022965.pdf
+    page_or_section: section 3.2 Concorde, original p. 20-5 (PDF p. 8)
+  quote: 'The four Concorde engines are Olympus made by Rolls Royce and SNECMA, They are simple flux, double body (BP and HP) with cruising expansion ratio at M = 2.0 on the order of 14. Air flow in cruising at M = 2.0 55,000 ft. is about 210 Ib/s.'
+  source_quality: pdf_read
+  retrieved: 2026-10-06
+  notes: Primary-author (Aerospatiale) figure in translation; "Ib/s" is OCR for lb/s. Per engine not explicitly stated but implied (SLS 410 lb/s per engine per NASA TM-4144). Key validation point for the deck's cruise mass flow.
+
+- quantity: engine_airflow_SLS
+  value: 410
+  unit: lb/s
+  conditions: sea-level static (implied; "The engine has a mass flow of")
+  source:
+    title: NASA TM-4144 (Morris, Geiselhart & Coen 1989)
+    url: https://ntrs.nasa.gov/api/citations/19900000718/downloads/19900000718.pdf
+    page_or_section: Background, printed p. 2 (PDF p. 6)
+  quote: 'The maximum sea level static thrust is 37700 lb, and the engine plus exhaust system weighs 7465 lb. The engine has a mass flow of 410 lb/sec, a turbine entry temperature of 1980°F, and a compressor pressure ratio of 15.5.'
+  source_quality: pdf_read
+  retrieved: 2026-10-06
+  notes: Condition for the mass flow is not stated explicitly; read as the SLS design value. Ratio to Berger cruise airflow 210/410 = 0.51.
+
+- quantity: compressor_pressure_ratio_cruise
+  value: 12.07
+  unit: '-'
+  conditions: Mach 2, 53,000 ft cruise
+  source:
+    title: NASA TM-4144 (Morris, Geiselhart & Coen 1989)
+    url: https://ntrs.nasa.gov/api/citations/19900000718/downloads/19900000718.pdf
+    page_or_section: Background, printed p. 2 (PDF p. 6)
+  quote: 'At cruise, the compressor pressure ratio of 12.07 and the inlet pressure recovery combine to an overall engine total pressure ratio of 88.5.'
+  source_quality: pdf_read
+  retrieved: 2026-10-06
+  notes: CONFLICT with 11.3 (Cumpsty via Wikipedia, M2.0/51,000 ft) and "on the order of 14" (Berger, M2.0, the translated term "expansion ratio" is ambiguous). Overall total pressure ratio 88.5 (NASA) vs about 82 (Wikipedia/Cumpsty).
+
+- quantity: compressor_pressure_ratio_cruise
+  value: 11.3
+  unit: '-'
+  conditions: Mach 2.0 cruise at 51,000 ft
+  source:
+    title: Wikipedia - Rolls-Royce/Snecma Olympus 593 (wikitext)
+    url: https://en.wikipedia.org/w/index.php?title=Rolls-Royce/Snecma_Olympus_593&action=raw
+    page_or_section: Intake section, last paragraph
+  quote: 'The [[overall pressure ratio]] for the powerplant at Mach 2.0 cruise at {{convert|51000|ft|m|abbr=on|sigfig=3}} was about 82:1, with 7.3:1 from the intake and 11.3:1 from the two engine compressors'
+  source_quality: page_read
+  retrieved: 2026-10-06
+  notes: Secondary; cites Cumpsty, "Jet Propulsion", p.149 and Hooker pp.154-155 (books not reached). Conflict with 12.07 (NASA TM-4144).
+
+- quantity: turbine_entry_temperature
+  value: 1970
+  unit: degF
+  conditions: '"Cruise" row of Table II (TET listed under cruise OPR 15.5)'
+  source:
+    title: NASA TM-4144 (Morris, Geiselhart & Coen 1989)
+    url: https://ntrs.nasa.gov/api/citations/19900000718/downloads/19900000718.pdf
+    page_or_section: Table II, printed p. 9 (PDF p. 13)
+  quote: 'Cruise: OPR 15.5; TET, °F 1 970'
+  source_quality: pdf_read
+  retrieved: 2026-10-06
+  notes: CONFLICT within the same report - text (p. 2) gives 1980°F. OPR 15.5 in the same row is the SLS value, so the row label "Cruise" is doubtful.
+
+- quantity: overall_efficiency_cruise
+  value: 0.41
+  unit: '-'
+  conditions: Mach 2, 53,000 ft cruise
+  source:
+    title: NASA TM-4144 (Morris, Geiselhart & Coen 1989)
+    url: https://ntrs.nasa.gov/api/citations/19900000718/downloads/19900000718.pdf
+    page_or_section: Background p. 2 and Figure 2, printed p. 12 (PDF p. 16)
+  quote: 'The ideal cycle efficiency of this engine is approximately 74 percent, the internal engine efficiency is 74 percent, and the propulsive efficiency is 74.5 percent, which combine (0.74 x 0.74 x 0.745 = 0.41) to give the 41 percent overall efficiency.'
+  source_quality: pdf_read
+  retrieved: 2026-10-06
+  notes: Figure 2 loss breakdown (read from image) - "Pressure recovery loss (ΔP/P = 6.3%)", "Compressor loss (ηpoly = 90%)", "Burner ΔP loss (9%)", "Turbine loss, ηad (88.5% HP, 85.1% LP)", "Cooling air bleed (2.2% HP, 11.3% LP)", "Exhaust ΔP loss (2%)", "Nozzle Cv loss". Usable as component-efficiency targets for the deck. Wikipedia (Hooker) gives about 43%.
+
+- quantity: component_losses_cruise
+  value: 'ηpoly compressor 0.90; burner dP 9%; HPT ηad 0.885, LPT ηad 0.851; cooling bleed 2.2% HP, 11.3% LP; exhaust dP 2%'
+  unit: '-'
+  conditions: Mach 2, 53,000 ft cruise (NASA estimate)
+  source:
+    title: NASA TM-4144 (Morris, Geiselhart & Coen 1989)
+    url: https://ntrs.nasa.gov/api/citations/19900000718/downloads/19900000718.pdf
+    page_or_section: Figure 2 "Estimated Concorde cruise propulsion-related efficiency losses at M = 2 and an altitude of 53 000 ft", printed p. 12 (PDF p. 16)
+  quote: 'Compressor loss (ηpoly = 90%) ... Burner ΔP loss (9%) ... Turbine loss, ηad (88.5% HP, 85.1% LP) ... Cooling air bleed (2.2% HP, 11.3% LP) ... Exhaust ΔP loss (2%)'
+  source_quality: pdf_read
+  retrieved: 2026-10-06
+  notes: NASA estimate, not manufacturer data. Good input/consistency check for a cycle deck.
+
+- quantity: spool_speeds_cruise
+  value: null
+  unit: rpm or percent
+  conditions: Mach 2 cruise
+  source:
+    title: none found
+    url: null
+    page_or_section: null
+  quote: null
+  source_quality: not_found
+  retrieved: 2026-10-06
+  notes: No N1/N2 figures found in any fetched source. Likely sources (Concorde flight-crew manuals, concordesst.com powerplant page, Heritage Concorde) were blocked or not reached.
+
+- quantity: fuel_flow_cruise
+  value: null
+  unit: kg/h
+  conditions: Mach 2 cruise
+  source:
+    title: none found
+    url: null
+    page_or_section: null
+  quote: null
+  source_quality: not_found
+  retrieved: 2026-10-06
+  notes: No directly quoted cruise fuel flow found. Derivable from 10,030 lbf x 1.19 = ~11,900 lb/h per engine (derived, not a source value).
+
+# ---------------------------------------------------------------- 2. Intake and nozzle
+- quantity: intake_pressure_recovery_cruise
+  value: 0.937
+  unit: '-'
+  conditions: Mach 2, 53,000 ft cruise
+  source:
+    title: NASA TM-4144 (Morris, Geiselhart & Coen 1989)
+    url: https://ntrs.nasa.gov/api/citations/19900000718/downloads/19900000718.pdf
+    page_or_section: Figure 2, printed p. 12 (PDF p. 16)
+  quote: Pressure recovery loss (ΔP/P = 6.3%)
+  source_quality: pdf_read
+  retrieved: 2026-10-06
+  notes: Value 0.937 = 1 - 0.063 (simple arithmetic on the quoted loss). NASA estimate, not BAC data.
+
+- quantity: intake_pressure_recovery_critical
+  value: 0.96
+  unit: '-'
+  conditions: '"at the critical operating points", Concorde inlet, with 6% slot bleed; "MEX = 1.91" as printed'
+  source:
+    title: 'Slater, J. W., "Design Factors for Two-Dimensional, External-Compression Supersonic Inlets", AIAA 2020-2090 (SciTech 2020)'
+    url: https://ntrs.nasa.gov/api/citations/20200000515/downloads/20200000515.pdf
+    page_or_section: Section IV.G "Mach 2.0 Inlet", p. 17
+  quote: 'As reference, the Concorde inlet was able to obtain a total pressure recovery at the critical operating points of pt2/pt0 ≈ 0.96 with MEX = 1.91 and 6% slot bleed [2].'
+  source_quality: pdf_read
+  retrieved: 2026-10-06
+  notes: 'Ref [2] = Rettie & Lewis, "Design and Development of an Air Intake for a Supersonic Transport Aircraft", J. Aircraft 5(6), 1968, pp. 513-521 (paywalled, not read). "MEX = 1.91" is odd for a Mach 2 intake (Slater uses MEX for external-diffuser exit Mach); it may be the free-stream Mach of the quoted Rettie point. CONFLICT with 0.937 (NASA TM-4144) and with ~0.93 implied by the 7.3:1 intake pressure ratio. 0.96 is a 1968 development-intake critical-point value; in-service supercritical operation would be lower.'
+
+- quantity: intake_pressure_ratio_cruise
+  value: 7.3
+  unit: '-'
+  conditions: Mach 2 cruise (51,000 ft per the overall-pressure-ratio sentence)
+  source:
+    title: Wikipedia - Rolls-Royce/Snecma Olympus 593 (wikitext)
+    url: https://en.wikipedia.org/w/index.php?title=Rolls-Royce/Snecma_Olympus_593&action=raw
+    page_or_section: Intake section
+  quote: The pressure recovery achieved by Concorde's engine intakes at Mach 2 cruise gave an intake pressure ratio of 7.3:1.
+  source_quality: page_read
+  retrieved: 2026-10-06
+  notes: 'Secondary, cites Cumpsty "Jet Propulsion" p.149. Derived (not in source): isentropic pt/p at M2.0 = 7.824, so 7.3/7.824 = 0.933 recovery, consistent with NASA 0.937 rather than 0.96.'
+
+- quantity: thrust_share_intake_nozzle_engine_cruise
+  value: 'intake 63%, nozzle 29% (also stated 28%), engine 8%'
+  unit: percent of propulsion-system thrust
+  conditions: supersonic cruise (Mach 2)
+  source:
+    title: Wikipedia - Rolls-Royce/Snecma Olympus 593 (wikitext)
+    url: https://en.wikipedia.org/w/index.php?title=Rolls-Royce/Snecma_Olympus_593&action=raw
+    page_or_section: Design (reheat paragraph), Intake, Secondary nozzle
+  quote: 'At cruise the engine''s direct contribution (transferred by its mounts to the airframe) to forward thrust was 8% of propulsion system thrust. Its indirect contribution came from inducing air through the intake and pumping it (primary and secondary air) through the airframe nozzle: 63% derived from forward pressure against structures inside the air intake system, and 28% from forward pressure against the exhaust nozzles.'
+  source_quality: page_read
+  retrieved: 2026-10-06
+  notes: 'Secondary, cites Trubshaw, "Brian Trubshaw Test Pilot", Appendix VIIIb, and a Roxburgh powerplant page whose quote reads "only 8% of the power is derived by the engine with the other 29% being from Nozzles and an impressive 63% from the intakes". Internal 28% vs 29% inconsistency kept. These are force-accounting shares (where the net force acts), not cycle contributions, so they are not a deck validation target in themselves.'
+
+- quantity: nozzle_performance_cruise
+  value: null
+  unit: Cv or Cfg
+  conditions: Mach 2 cruise
+  source:
+    title: NASA TM-4144 Figure 2 (names a "Nozzle Cv loss" without a number)
+    url: https://ntrs.nasa.gov/api/citations/19900000718/downloads/19900000718.pdf
+    page_or_section: Figure 2, printed p. 12
+  quote: Nozzle Cv loss
+  source_quality: not_found
+  retrieved: 2026-10-06
+  notes: No numeric nozzle thrust/velocity coefficient found. Berger (AGARD CP-242) says the Concorde nozzle/intake flight analysis used gas-generator altitude-bench data but gives no Cv.
+
+# ---------------------------------------------------------------- Take-off, reheat, transonic
+- quantity: thrust_SLS_max
+  value: 37700
+  unit: lbf
+  conditions: maximum sea-level static (reheat implied)
+  source:
+    title: NASA TM-4144 (Morris, Geiselhart & Coen 1989)
+    url: https://ntrs.nasa.gov/api/citations/19900000718/downloads/19900000718.pdf
+    page_or_section: Background, printed p. 2 (PDF p. 6)
+  quote: The maximum sea level static thrust is 37700 lb, and the engine plus exhaust system weighs 7465 lb.
+  source_quality: pdf_read
+  retrieved: 2026-10-06
+  notes: CONFLICT within the same report - Table II gives SLS Fn 38 900 lb (Fn/W 5.21). Wikipedia/Heritage give 38,050 lbf (169.2 kN) reheat.
+
+- quantity: thrust_SLS_max
+  value: 38900
+  unit: lbf
+  conditions: SLS (Table II)
+  source:
+    title: NASA TM-4144 (Morris, Geiselhart & Coen 1989)
+    url: https://ntrs.nasa.gov/api/citations/19900000718/downloads/19900000718.pdf
+    page_or_section: Table II, printed p. 9 (PDF p. 13)
+  quote: 'SLS: Fn, lb 38 900; Fn/W (engine + nozzle) 5.21'
+  source_quality: pdf_read
+  retrieved: 2026-10-06
+  notes: Conflicts with 37,700 lb in the text of the same report. 7465 x 5.21 = 38,900, so the table is internally consistent.
+
+- quantity: thrust_lapse_SLS_to_cruise
+  value: 0.26-0.27
+  unit: ratio Fn_cruise/Fn_SLS
+  conditions: cruise M2.00/53,000 ft vs SLS max (reheat), same report
+  source:
+    title: NASA TM-4144 Table II (derived)
+    url: https://ntrs.nasa.gov/api/citations/19900000718/downloads/19900000718.pdf
+    page_or_section: Table II, printed p. 9
+  quote: 'Cruise ... Fn, lb 10 030 ... SLS: Fn, lb 38 900'
+  source_quality: pdf_read
+  retrieved: 2026-10-06
+  notes: DERIVED ratio (10,030/38,900 = 0.258; with 37,700 = 0.266). The SLS value is a reheat rating, the cruise value is dry; against a dry SLS of 31,350-32,000 lbf (../concorde/sources_verified.yaml) the ratio is ~0.31-0.32.
+
+- quantity: partial_reheat_thrust_boost
+  value: 20
+  unit: percent
+  conditions: take-off and transonic acceleration M0.95 to M1.7
+  source:
+    title: Wikipedia - Rolls-Royce/Snecma Olympus 593 (wikitext)
+    url: https://en.wikipedia.org/w/index.php?title=Rolls-Royce/Snecma_Olympus_593&action=raw
+    page_or_section: Design section, reheat paragraph
+  quote: 'Partial reheat providing a 20% thrust increase was installed to give the take-off thrust required for Concorde to operate from existing runways, and for transonic acceleration from Mach 0.95 up to Mach 1.7; the aircraft flew supersonically without reheat above that speed.'
+  source_quality: page_read
+  retrieved: 2026-10-06
+  notes: Secondary; cites Hooker pp.154-155. SLS reheat/dry from Wikipedia spec 169.2/139.4 kN = 1.21, consistent.
+
+- quantity: reheat_schedule_transonic
+  value: reheat on from Vmo climb power, off at M1.7
+  unit: '-'
+  conditions: transonic acceleration from M0.95 cruise (or unrestricted) to M1.7
+  source:
+    title: 'McKinlay, Heaton & Franchi, "Operational Experience on Concorde", ICAS 1976 (10th Congress), pp. 563-571'
+    url: https://www.icas.org/icas_archive/ICAS1976/Page%20563.pdf
+    page_or_section: '"Transonic Acceleration and Supersonic Climb", p. 566'
+  quote: 'Either from cruise at M = 0.95, or in the unrestricted case, acceleration through M = 1.0 is commenced by lighting reheat at climb power and climbing the aircraft at Vmo. Reheat is selected off at M = 1.7 and the c.g. is progressively adjusted aft from 55% approximately at M = 0.95 to approximately 59% in cruise conditions.'
+  source_quality: pdf_read
+  retrieved: 2026-10-06
+  notes: Primary (BAC/Aerospatiale). Scanned PDF, read from page images (no text layer). Note the URL path must be lower-case icas_archive; the upper-case path returns 404.
+
+- quantity: cruise_procedure_and_altitudes
+  value: 'cruise climb at M2.0, max continuous; start 50,000 ft, end 57,000 ft (N. Atlantic); tropics start 53,000 ft up to 60,000 ft limit'
+  unit: '-'
+  conditions: best-range cruise
+  source:
+    title: McKinlay, Heaton & Franchi, ICAS 1976
+    url: https://www.icas.org/icas_archive/ICAS1976/Page%20563.pdf
+    page_or_section: '"Cruise", p. 566'
+  quote: 'Best range cruise is obtained on Concorde in a cruise climb at M = 2.0 at maximum continuous power with the c.g. set to give 1/2° down elevon. In the high upper atmosphere temperatures of the North Atlantic cruise would start at 50,000 ft. and reach 57,000 ft. by the end of cruise. In the tropics where it is much colder cruise would start at 53,000 ft. and finish at the maximum authorised altitude of 60,000 ft. where the engines might have to be throttled to maintain M = 2.00.'
+  source_quality: pdf_read
+  retrieved: 2026-10-06
+  notes: Primary. Establishes that cruise thrust = max continuous (max dry) thrust at M2.0, so the deck's max-dry thrust at M2.0/50-57 kft must equal cruise drag. Read from page image.
+
+- quantity: supersonic_climb_cruise_throttle
+  value: throttles fully open, autopilot holds Vmo/Mmo/Tmo
+  unit: '-'
+  conditions: supersonic climb and cruise
+  source:
+    title: McKinlay, Heaton & Franchi, ICAS 1976
+    url: https://www.icas.org/icas_archive/ICAS1976/Page%20563.pdf
+    page_or_section: '"Climb and Cruise", p. 570; "Take-Off", p. 569'
+  quote: 'Supersonic climb and cruise are normally flown by the autopilot using a hold which keeps the aircraft at the most critical of Vmo, Mmo or Tmo with the throttles fully open.'
+  source_quality: pdf_read
+  retrieved: 2026-10-06
+  notes: 'p. 569 adds: "We have done sectors where the throttles were fully opened for take-off and only touched three hours later to throttle back for descent, only the ratings of the engine being changed in between." Mmo = 2.02 (to be re-certified 2.04), p. 568.'
+
+- quantity: takeoff_procedure
+  value: reheat for all normal take-offs; auto-contingency +5% thrust on engine failure
+  unit: '-'
+  conditions: take-off
+  source:
+    title: McKinlay, Heaton & Franchi, ICAS 1976
+    url: https://www.icas.org/icas_archive/ICAS1976/Page%20563.pdf
+    page_or_section: '"Thrust Checking" p. 565; "Take-Off Characteristics" p. 566'
+  quote: 'Reheat is normally used for take-off although operations without reheat are permitted for very light weights. ... In the event of an engine failure on take-off the aircraft is also equipped with an auto-contingency system which automatically increases thrust on the remaining three engines by 5%.'
+  source_quality: pdf_read
+  retrieved: 2026-10-06
+  notes: No take-off thrust number in this paper. Fuel fractions on p. 567 - "at the start of cruise 20% of the total fuel burn-off will have been consumed while only 9% of the total distance will have been covered".
+
+- quantity: fuel_flow_reheat_vs_dry
+  value: '92,500 -> 198,400'
+  unit: lb/h
+  conditions: unstated (aircraft total presumably, at take-off; dry vs reheat)
+  source:
+    title: 'Starr, F., "Concorde - Not Just a Commercial Failure - Also One of Engineering"'
+    url: https://fredstarr.com/wp-content/uploads/Concorde-An-Engineering-Failure.pdf
+    page_or_section: '"The Downside of Reheat"'
+  quote: 'But the main issue with reheat was the dramatic effect in fuel consumption. This more than doubled from 92500 to 198400 lb/hr, when it was in action.'
+  source_quality: pdf_read
+  retrieved: 2026-10-06
+  notes: Low quality - personal essay, condition and source of the figures not given (Starr cites Davis and a 1972 RAeS paper in general). Same page - "the pressure drop caused by the reheat burner nozzles, seem to have led to 1% drop in cruise thrust" and production dry thrust "31350 lb". Use only as a sanity check on reheat SFC (~1.8x dry fuel flow for +20% thrust).
+
+# ---------------------------------------------------------------- 3. Drag
+- quantity: drag_polar_cruise
+  value: null
+  unit: '-'
+  conditions: M2.0, 55,000 ft, pre-production 02, ISA+5
+  source:
+    title: Berger, NASA TM-75238 (AGARD CP-242 paper 20)
+    url: https://ntrs.nasa.gov/api/citations/19790022965/downloads/19790022965.pdf
+    page_or_section: Fig. 23 "Recapitulation M = 2, 55000 pieds", translation p. 58 (PDF p. 60)
+  quote: 'Frottement soufflerie -> vol -8,6%; Effort interne -15,8%; Pression de culot -5,2%; Montage maquette +1,7%; Trainee parasite +2,4%; Effort additif +0,8%; Equilibrage δq=0,5° -0,3%; Total -25%'
+  source_quality: not_found
+  retrieved: 2026-10-06
+  notes: The figure shows the polar as an unlabelled line with scale bars only (0.5 x 10^-2 Cx, 5 x 10^-2 Cz); no absolute CD/CL values can be read. Gives the wind-tunnel-to-flight correction breakdown (sum -25% of Cx at CL const). Text p. 18 - ±0.05 on 100Cx "corresponds to ± 2% of the drag for Airbus and ± 3% for Concorde" (implies cruise CD ~0.017, derived only).
+
+- quantity: friction_share_of_cruise_drag
+  value: about one-third
+  unit: fraction
+  conditions: supersonic cruise
+  source:
+    title: '"The Concorde and aeronautical research" (ONERA), NASA TT translation, NTRS 19840010085'
+    url: https://ntrs.nasa.gov/api/citations/19840010085/downloads/19840010085.pdf
+    page_or_section: '"Friction Drag", PDF p. 10'
+  quote: The significance of its calculation may be realized by recalling that in supersonic cruise flights, the friction contributes about one-third to the drag.
+  source_quality: pdf_read
+  retrieved: 2026-10-06
+  notes: Qualitative drag-breakdown check.
+
+- quantity: CD0_vs_Mach
+  value: null
+  unit: '-'
+  conditions: transonic/supersonic
+  source:
+    title: none found
+    url: null
+    page_or_section: null
+  quote: null
+  source_quality: not_found
+  retrieved: 2026-10-06
+  notes: 'No published Concorde CD0(M) or thrust-required(M) found. Leads not reachable: Mair & Birdsall "Aircraft Performance" (CUP 1992) Concorde worked example with BAe data (has thrust/drag vs Mach at 39,000 ft per Starr); Ricconi 1976 AIAA paper L/D vs Mach to M1.7; Leyman 1986 Prog. Aerospace Sci. 23(3).'
+
+# ---------------------------------------------------------------- 4. Generic Mach 1.4 mixed-flow turbofan (SSBJ)
+- quantity: SSBJ_engine_cruise_point_55t
+  value: 'Fn 3330 lb; SFC 0.943 lb/h/lb; BPR 2.9; T3 1450 °R; T4.1 3180 °R; Tburner 3300 °R; OPR 22; FPR 2.0; CPR 11.2; extraction ratio 1.1; NPR 5.9'
+  unit: mixed (as listed)
+  conditions: M1.4, 50,000 ft, ISA; NASA 55t STCA trijet engine (CFM56-7B core, new single-stage fan, forced mixer, C-D plug nozzle), per engine
+  source:
+    title: 'Berton, Huff & Seidel, "Supersonic Technology Concept Aeroplanes for Environmental Studies", AIAA 2020-0263'
+    url: https://ntrs.nasa.gov/api/citations/20200000513/downloads/20200000513.pdf
+    page_or_section: Table 1 "Performance summary for the 55t trijet engine", p. 3
+  quote: 'M1.4, 50kft, ISA ... Net thrust, lb/engine 3330; Specific fuel consumption, lb/hr/lb 0.943; Bypass ratio 2.9; Burner temperature, °R 3300; Turbine inlet temperature, °R 3180; Compressor exit temperature, °R 1450; Overall pressure ratio 22; Fan pressure ratio 2.0; Compressor pressure ratio 11.2; Extraction ratio 1.1; Nozzle pressure ratio 5.9'
+  source_quality: pdf_read
+  retrieved: 2026-10-06
+  notes: 'T3 1450 °R = 990 °F = 806 K. Same table, M0.25 SL ISA+27°F - 14,140 lb, SFC 0.588, T3 1440 °R; SLS ISA+27°F (derated) - 16,620 lb, SFC 0.479, T3 1430 °R, OPR 21. Thrust lapse SLS->M1.4/50kft = 3330/16620 = 0.20 (derated SLS; derived). Text p. 6 - "Above 10,000 feet, engine thrust is not derated and is limited by hot section temperatures."'
+
+- quantity: SSBJ_engine_cruise_point_45t
+  value: 'Fn 3190 lb; SFC 0.934 lb/h/lb; BPR 3.6; T3 1430 °R; T4.1 3180 °R; OPR 21; FPR 1.9; CPR 11.4; NPR 5.5'
+  unit: mixed (as listed)
+  conditions: M1.4, 50,000 ft, ISA; NASA 45t twinjet engine variant (higher BPR), per engine
+  source:
+    title: Berton, Huff & Seidel, AIAA 2020-0263
+    url: https://ntrs.nasa.gov/api/citations/20200000513/downloads/20200000513.pdf
+    page_or_section: Table 5 "Performance summary for the 45t twinjet engine", p. 16
+  quote: 'M1.4, 50kft, ISA ... Net thrust, lb/engine 3190; Specific fuel consumption, lb/hr/lb 0.934; Bypass ratio 3.6; Burner temperature, °R 3300; Turbine inlet temperature, °R 3180; Compressor exit temperature, °R 1430; Overall pressure ratio 21; Fan pressure ratio 1.9; Compressor pressure ratio 11.4; Extraction ratio 1.1; Nozzle pressure ratio 5.5'
+  source_quality: pdf_read
+  retrieved: 2026-10-06
+  notes: SLS ISA+27°F - 18,540 lb, SFC 0.472, T3 1470 °R, OPR 22.
+
+- quantity: SSBJ_airplane_cruise_LD
+  value: 6.6-7.9
+  unit: '-'
+  conditions: 55t STCA, M1.4 cruise-climb 44-51 kft
+  source:
+    title: Berton, Huff & Seidel, AIAA 2020-0263
+    url: https://ntrs.nasa.gov/api/citations/20200000513/downloads/20200000513.pdf
+    page_or_section: Table 3 "55t trijet performance", p. 5
+  quote: 'Cruise altitude, kft 44-51; Cruise lift-drag ratio 6.6-7.9'
+  source_quality: pdf_read
+  retrieved: 2026-10-06
+  notes: Same table - TOGW 121 klb, OEW 51 klb, block fuel 61 klb, climb 47 min.
+
+- quantity: SSBJ_inlet_recovery_and_corrected_flow
+  value: 'M1.4 - 0.9695/0.9725 (MIL-E 0.9733); M1.7 - 0.9659 (MIL-E 0.9489); M2.0 - 0.9354 (MIL-E 0.9204); WC2 413/383/353 lbm/s at M1.4/50kft, M1.7/55kft, M2.0/60kft'
+  unit: pt2/pt0; lbm/s
+  conditions: CFD (Wind-US) of 2D external-compression inlets sized for the STCA turbofan, critical operation
+  source:
+    title: Slater, AIAA 2020-2090
+    url: https://ntrs.nasa.gov/api/citations/20200000515/downloads/20200000515.pdf
+    page_or_section: Table 1 p. 4; M1.7 recovery Section IV.A p. 11; M1.4 Section IV.F p. 17; M2.0 Section IV.G p. 17
+  quote: 'For M0 = 1.4, the MIL-E model indicates a value of pt2/pt0 = 0.9733. Thus, the values of pt2/pt0 = 0.9695 and 0.9725 are close to the MIL-E model. ... For M0 = 1.7, the MIL-E model indicates a value of pt2/pt0 = 0.9489. Thus, the value of pt2/pt0 = 0.9659 is well above the MIL-E model. ... For M0 = 2.0, the MIL-E model indicates a value of pt2/pt0 = 0.9204. Thus, the value of pt2/pt0 = 0.9354 is above the MIL-E model.'
+  source_quality: pdf_read
+  retrieved: 2026-10-06
+  notes: 'Table 1 - "M0 1.4, h0 50000 ft, WC2 413 lbm/s, M2 0.663; 1.7, 55000, 383, 0.581; 2.0, 60000, 353, 0.514". WC2 at M1.7/2.0 are linear extrapolations of STCA engine data; text says "The engine-face corrected flow rate decreases with freestream Mach number in response to limits on the engine maximum temperature." (i.e., T3-limited flow lapse - a useful deck shape check).'

@@ -1,0 +1,30 @@
+# NASA 55t STCA trijet engine (Berton, Huff & Seidel, AIAA 2020-0263, Table 1), rebuilt as an
+# ssbj mixed-flow turbofan with a bought core. Validation of the turbofan cycle model (roadmap item 1).
+# Inputs are the published design-point definition; outputs checked are in ../test_stca_engine.py.
+engine:
+  type: mixed_flow_turbofan
+  count: 3
+  core: cfm56_7b
+  fn_sls_dry_kN: 73.93        # 16,620 lb, Table 1 SLS ISA+27F derated; not used (fn_design_kN given)
+  design_mach: 1.4            # Table 1 column "M1.4, 50kft, ISA"; ASSUMPTION: the cycle design point
+  design_alt_ft: 50000.0
+  fn_design_kN: 14.813        # 3,330 lb/engine, Table 1
+  lpc_pr: 2.0                 # fan pressure ratio, Table 1
+  hpc_pr: 11.2                # compressor pressure ratio, Table 1
+  t4_max_K: 1833.3            # burner temperature 3,300 R, Table 1
+  t3_max_K: null
+  hp_speed_max_frac: 1.05     # schema default
+  afterburner: false
+  mixer_er: 0.909             # ASSUMPTION: Table 1 "extraction ratio 1.1" read as Pt_bypass / Pt_core
+                              # (the paper does not define it); pyCycle's mixer ER is Pt_core / Pt_bypass
+                              # = 1 / 1.1.
+  # Generic component values (schema defaults or generic, chosen before the run; NOT fitted):
+  lpc_eff_poly: 0.90
+  hpc_eff_poly: 0.90
+  hpt_eff: 0.885
+  lpt_eff: 0.885
+  burner_dpqp: 0.05
+  nozzle_cv: 0.98
+  cool_hpt_frac: 0.05         # ASSUMPTION: generic; CFM56 bleed fractions are not public
+  cool_lpt_frac: 0.05
+  inlet: mil_e_5008b          # Slater AIAA 2020-2090: STCA inlet CFD recovery at M1.4 0.9695-0.9725 vs MIL-E 0.9733

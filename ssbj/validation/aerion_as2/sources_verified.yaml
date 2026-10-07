@@ -1,0 +1,610 @@
+# Aerion AS2 reference data -- VERIFIED against pages actually fetched on 2026-10-04 (lower priority than Concorde).
+# Same schema as ../concorde/sources_verified.yaml. AS2 was never built; all figures are design targets and changed
+# across iterations (2014 trijet, ~2017-2019, 2020 delta-wing redesign). Conflicts are kept, with the design era noted.
+- quantity: cruise_Mach_supersonic
+  value: 1.4
+  unit: '-'
+  conditions: 2020 design
+  source:
+    title: Wikipedia - Aerion AS2
+    url: https://en.wikipedia.org/wiki/Aerion_AS2
+    page_or_section: Specifications
+  quote: 'Cruise speed: 803 kn (924 mph, 1,487 km/h) Mach 1.4, subsonic: Mach 0.95, boomless: Mach 1.1–1.2'
+  source_quality: page_read
+  previous_snippet_value: 1.4
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: cruise_Mach_supersonic
+  value: 1.4
+  unit: '-'
+  conditions: 2020 design, "up to Mach 1.4"
+  source:
+    title: Aviation Week - Aerion Unveils Major Updates To AS2 Supersonic Business Jet Design (Guy Norris, 17 Apr 2020 per Wikipedia
+      ref [23])
+    url: https://aviationweek.com/business-aviation/aerion-unveils-major-updates-as2-supersonic-business-jet-design
+    page_or_section: body
+  quote: Designed to supercruise with nonafterburning engines over ranges around 5,000 nm at up to Mach 1.4
+  source_quality: page_read
+  previous_snippet_value: 1.4
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: cruise_Mach_supersonic
+  value: 1.4
+  unit: '-'
+  conditions: 2014 trijet; max speed Mach 1.6
+  source:
+    title: New Atlas - Aerion's AS2 supersonic business jet gets extra engine and cabin space (21 May 2014)
+    url: https://newatlas.com/aerion-as2-supersonic-business-jet/32149/
+    page_or_section: body
+  quote: Mach 0.95 where supersonic flight is prohibited, and at Mach 1.4 where the SNLF wing characteristics will be at their most
+    efficient
+  source_quality: page_read
+  previous_snippet_value: 1.4
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: cruise_Mach_supersonic
+  value: null
+  unit: '-'
+  conditions: null
+  source:
+    title: Airport Technology - Aerion AS2 Supersonic Business Jet
+    url: https://www.airport-technology.com/projects/aerion-as2-supersonic-business-jet/
+    page_or_section: body
+  quote: null
+  source_quality: not_found_on_page
+  previous_snippet_value: 1.4
+  agrees_with_snippet: false
+  retrieved: '2026-10-04'
+  notes: Snippet quote "targeting a speed of Mach 1.4" is NOT on the airport-technology page; that page gives max Mach 1.6, subsonic
+    up to M0.99, boomless M1.1-1.2.
+- quantity: max_Mach
+  value: 1.6
+  unit: '-'
+  conditions: 2014-era design
+  source:
+    title: Airport Technology - Aerion AS2 Supersonic Business Jet
+    url: https://www.airport-technology.com/projects/aerion-as2-supersonic-business-jet/
+    page_or_section: Key data / body
+  quote: The AS2 supersonic business jet is designed to fly at a maximum speed of Mach 1.6.
+  source_quality: page_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: cruise_Mach_original_target
+  value: 1.6
+  unit: '-'
+  conditions: earlier SNLF design
+  source:
+    title: Wikipedia - Aerion AS2
+    url: https://en.wikipedia.org/wiki/Aerion_AS2
+    page_or_section: Design
+  quote: The Aerion AS2 12-passenger aircraft aimed for Mach 1.6 with a supersonic natural laminar flow wing for a minimum projected
+    range of 4,750 nm (8,800 km).
+  source_quality: page_read
+  previous_snippet_value: 1.6
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: cruise_Mach_subsonic
+  value: 0.95
+  unit: '-'
+  conditions: null
+  source:
+    title: Wikipedia - Aerion AS2
+    url: https://en.wikipedia.org/wiki/Aerion_AS2
+    page_or_section: Specifications
+  quote: 'subsonic: Mach 0.95'
+  source_quality: page_read
+  previous_snippet_value: 0.95
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: MTOW
+  value: 150000
+  unit: lb
+  conditions: 2020 design, projected
+  source:
+    title: Wikipedia - Aerion AS2
+    url: https://en.wikipedia.org/wiki/Aerion_AS2
+    page_or_section: Specifications
+  quote: 'Max takeoff weight: 150,000[36] lb (68,039 kg)'
+  source_quality: page_read
+  previous_snippet_value: 150000
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: 'Ref [36]: Hemmerdinger, Flight Global, 6 April 2020 (FAA noise standards article).'
+- quantity: gross_weight
+  value: 139000
+  unit: lb
+  conditions: 2020 finalized design
+  source:
+    title: Aviation Week - Aerion Unveils Major Updates To AS2 Supersonic Business Jet Design (Guy Norris, 17 Apr 2020 per Wikipedia
+      ref [23])
+    url: https://aviationweek.com/business-aviation/aerion-unveils-major-updates-as2-supersonic-business-jet-design
+    page_or_section: body
+  quote: With a gross weight of 139,000 lb., the aircraft will carry up to 70,000 lb. of fuel and a payload of 8,000 lb.
+  source_quality: page_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: NEW; conflicts with Wikipedia 150,000 lb. Same Aviation Week article Wikipedia cites as [23] for other figures.
+- quantity: MTOW
+  value: 121000
+  unit: lb
+  conditions: pre-2019 three-engine design (article mentions Airbus partnership, engines not yet selected)
+  source:
+    title: Business Jet Traveler - Aerion AS2
+    url: https://www.bjtonline.com/business-jet-news/flying/aerion-as2
+    page_or_section: body
+  quote: Maximum takeoff weight is 121,000 pounds.
+  source_quality: page_read
+  previous_snippet_value: 121000
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: MTOW
+  value: 115000
+  unit: lb
+  conditions: May 2014 trijet launch
+  source:
+    title: New Atlas - Aerion's AS2 supersonic business jet gets extra engine and cabin space (21 May 2014)
+    url: https://newatlas.com/aerion-as2-supersonic-business-jet/32149/
+    page_or_section: body
+  quote: maximum take-off weight is expected to be around 115,000 lb (52,000 kg)
+  source_quality: page_read
+  previous_snippet_value: 115000
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: MTOW
+  value: 52163
+  unit: kg
+  conditions: 2014-era
+  source:
+    title: Airport Technology - Aerion AS2 Supersonic Business Jet
+    url: https://www.airport-technology.com/projects/aerion-as2-supersonic-business-jet/
+    page_or_section: Key data / body
+  quote: with a maximum take-off weight of 52,163kg
+  source_quality: page_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: basic_operating_weight
+  value: 22588
+  unit: kg
+  conditions: 2014-era
+  source:
+    title: Airport Technology - Aerion AS2 Supersonic Business Jet
+    url: https://www.airport-technology.com/projects/aerion-as2-supersonic-business-jet/
+    page_or_section: body
+  quote: AS2’s basic operating weight will be 22,588kg
+  source_quality: page_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: NEW
+- quantity: fuel_capacity
+  value: 70000
+  unit: lb
+  conditions: 2020 design
+  source:
+    title: Aviation Week - Aerion Unveils Major Updates To AS2 Supersonic Business Jet Design (Guy Norris, 17 Apr 2020 per Wikipedia
+      ref [23])
+    url: https://aviationweek.com/business-aviation/aerion-unveils-major-updates-as2-supersonic-business-jet-design
+    page_or_section: body
+  quote: the aircraft will carry up to 70,000 lb. of fuel and a payload of 8,000 lb.
+  source_quality: page_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: NEW
+- quantity: fuel_capacity
+  value: 26800
+  unit: kg
+  conditions: null
+  source:
+    title: Wikipedia - Aerion AS2
+    url: https://en.wikipedia.org/wiki/Aerion_AS2
+    page_or_section: Specifications
+  quote: 'Fuel capacity: 59,084 lbs / 26,800 kg'
+  source_quality: page_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: NEW; conflicts with AW 70,000 lb.
+- quantity: payload
+  value: 8000
+  unit: lb
+  conditions: 2020 design (max-fuel case implied)
+  source:
+    title: Aviation Week - Aerion Unveils Major Updates To AS2 Supersonic Business Jet Design (Guy Norris, 17 Apr 2020 per Wikipedia
+      ref [23])
+    url: https://aviationweek.com/business-aviation/aerion-unveils-major-updates-as2-supersonic-business-jet-design
+    page_or_section: body
+  quote: the aircraft will carry up to 70,000 lb. of fuel and a payload of 8,000 lb.
+  source_quality: page_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: NEW
+- quantity: range_supersonic
+  value: 4200
+  unit: nmi
+  conditions: Mach 1.4
+  source:
+    title: Wikipedia - Aerion AS2
+    url: https://en.wikipedia.org/wiki/Aerion_AS2
+    page_or_section: Specifications
+  quote: 'Range: 4,200 nmi (4,800 mi, 7,800 km) at Mach 1.4, 5,400 nm / 10,000 km at Mach 0.95'
+  source_quality: page_read
+  previous_snippet_value: 4200
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: 'Spec block "Data from Aerion[45]" (Aerion "Performance Objectives & Specifications", archived 2017-12-17). Body text says
+    5,000 nm at up to Mach 1.4 for the 2020 design: internal conflict.'
+- quantity: range_supersonic
+  value: 5000
+  unit: nmi
+  conditions: 2020 design, "around 5,000 nm at up to Mach 1.4"
+  source:
+    title: Aviation Week - Aerion Unveils Major Updates To AS2 Supersonic Business Jet Design (Guy Norris, 17 Apr 2020 per Wikipedia
+      ref [23])
+    url: https://aviationweek.com/business-aviation/aerion-unveils-major-updates-as2-supersonic-business-jet-design
+    page_or_section: body
+  quote: over ranges around 5,000 nm at up to Mach 1.4
+  source_quality: page_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: range_supersonic
+  value: 4750
+  unit: nmi
+  conditions: '"minimum projected range", 2014 design'
+  source:
+    title: New Atlas - Aerion's AS2 supersonic business jet gets extra engine and cabin space (21 May 2014)
+    url: https://newatlas.com/aerion-as2-supersonic-business-jet/32149/
+    page_or_section: body
+  quote: the minimum projected range is predicted to be approximately 4,750 nautical miles (8,800 km), though the company is hoping
+    to achieve an ultimate range of around 5,000 nm (9,260 km).
+  source_quality: page_read
+  previous_snippet_value: 4750
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: range_supersonic
+  value: null
+  unit: nmi
+  conditions: null
+  source:
+    title: Business Jet Traveler - Aerion AS2
+    url: https://www.bjtonline.com/business-jet-news/flying/aerion-as2
+    page_or_section: body
+  quote: null
+  source_quality: not_found_on_page
+  previous_snippet_value: 4750
+  agrees_with_snippet: false
+  retrieved: '2026-10-04'
+  notes: BJT page does NOT give 4,750 nmi for the AS2; its "4,750-nautical-mile" refers to the Falcon 900LX. BJT gives "still have a
+    4,000-nautical-mile range" from Teterboro with lighter loads. Snippet misattribution.
+- quantity: range_reduced_weight
+  value: 4000
+  unit: nmi
+  conditions: lighter loads, Teterboro-length runway
+  source:
+    title: Business Jet Traveler - Aerion AS2
+    url: https://www.bjtonline.com/business-jet-news/flying/aerion-as2
+    page_or_section: body
+  quote: with lighter loads, the AS2 should be able to comfortably operate out of popular business airports such as New Jersey’s Teterboro,
+    outside New York City, and still have a 4,000-nautical-mile range.
+  source_quality: page_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: range_subsonic
+  value: 5400
+  unit: nmi
+  conditions: Mach 0.95
+  source:
+    title: Wikipedia - Aerion AS2
+    url: https://en.wikipedia.org/wiki/Aerion_AS2
+    page_or_section: Specifications
+  quote: 5,400 nm / 10,000 km at Mach 0.95
+  source_quality: page_read
+  previous_snippet_value: 5400
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: passengers
+  value: 8-11
+  unit: pax
+  conditions: null
+  source:
+    title: Wikipedia - Aerion AS2
+    url: https://en.wikipedia.org/wiki/Aerion_AS2
+    page_or_section: Specifications
+  quote: 'Capacity: 8–11 passengers'
+  source_quality: page_read
+  previous_snippet_value: 12
+  agrees_with_snippet: false
+  retrieved: '2026-10-04'
+  notes: Wikipedia infobox 8-11; airport-technology key data 12 and "increasing the total passenger capacity to 11" with divan; AW "cabin
+    large enough for 12 passengers".
+- quantity: passengers
+  value: 12
+  unit: pax
+  conditions: null
+  source:
+    title: Airport Technology - Aerion AS2 Supersonic Business Jet
+    url: https://www.airport-technology.com/projects/aerion-as2-supersonic-business-jet/
+    page_or_section: Key data
+  quote: Passenger Capacity 12
+  source_quality: page_read
+  previous_snippet_value: 12
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: crew
+  value: 2
+  unit: '-'
+  conditions: null
+  source:
+    title: Wikipedia - Aerion AS2
+    url: https://en.wikipedia.org/wiki/Aerion_AS2
+    page_or_section: Specifications
+  quote: 'Crew: 2'
+  source_quality: page_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: cabin_length
+  value: 30
+  unit: ft
+  conditions: null
+  source:
+    title: New Atlas - Aerion's AS2 supersonic business jet gets extra engine and cabin space (21 May 2014)
+    url: https://newatlas.com/aerion-as2-supersonic-business-jet/32149/
+    page_or_section: body
+  quote: With a 30-ft (9.1-m) cabin in a two-lounge configuration
+  source_quality: page_read
+  previous_snippet_value: 30
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: cabin_width
+  value: 7.2
+  unit: ft
+  conditions: rear seating area
+  source:
+    title: New Atlas - Aerion's AS2 supersonic business jet gets extra engine and cabin space (21 May 2014)
+    url: https://newatlas.com/aerion-as2-supersonic-business-jet/32149/
+    page_or_section: body
+  quote: cabin width around 7.2 ft (2.2 m)
+  source_quality: page_read
+  previous_snippet_value: 7.2
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: 'Wikipedia: "7''11\" wide"; BJT: "maximum width is seven and a half feet". Conflict.'
+- quantity: wing_area
+  value: 1511
+  unit: ft^2
+  conditions: null
+  source:
+    title: Wikipedia - Aerion AS2
+    url: https://en.wikipedia.org/wiki/Aerion_AS2
+    page_or_section: Specifications
+  quote: 'Wing area: 1,511 sq ft (140.4 m2)'
+  source_quality: page_read
+  previous_snippet_value: 1511
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: Only source; Aerion spec page via Wikipedia ref [45] (pre-2020 trapezoidal-wing design?) -- the 2020 AW article describes a
+    new cranked arrow delta, so this area may not match the final design.
+- quantity: length
+  value: 144.9
+  unit: ft
+  conditions: 2020 design
+  source:
+    title: Wikipedia - Aerion AS2
+    url: https://en.wikipedia.org/wiki/Aerion_AS2
+    page_or_section: Specifications
+  quote: 'Length: 144.9[26] ft (44.2 m)'
+  source_quality: page_read
+  previous_snippet_value: 145
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: length
+  value: 144.92
+  unit: ft
+  conditions: 2020 design ("144 ft. 11 in.")
+  source:
+    title: Aviation Week - Aerion Unveils Major Updates To AS2 Supersonic Business Jet Design (Guy Norris, 17 Apr 2020 per Wikipedia
+      ref [23])
+    url: https://aviationweek.com/business-aviation/aerion-unveils-major-updates-as2-supersonic-business-jet-design
+    page_or_section: body
+  quote: the AS2 is now 144 ft. 11 in. long, compared to almost 180 ft. in earlier iterations
+  source_quality: page_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: length
+  value: 160
+  unit: ft
+  conditions: 2014 design
+  source:
+    title: New Atlas - Aerion's AS2 supersonic business jet gets extra engine and cabin space (21 May 2014)
+    url: https://newatlas.com/aerion-as2-supersonic-business-jet/32149/
+    page_or_section: body
+  quote: the fuselage is 160 ft (48 m) long
+  source_quality: page_read
+  previous_snippet_value: 160
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: length
+  value: 170
+  unit: ft
+  conditions: pre-2019 design
+  source:
+    title: Business Jet Traveler - Aerion AS2
+    url: https://www.bjtonline.com/business-jet-news/flying/aerion-as2
+    page_or_section: body
+  quote: Nose to tail it measures 170 feet
+  source_quality: page_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: wing_span
+  value: 79
+  unit: ft
+  conditions: null
+  source:
+    title: Wikipedia - Aerion AS2
+    url: https://en.wikipedia.org/wiki/Aerion_AS2
+    page_or_section: Specifications
+  quote: 'Wingspan: 79[26] ft (24 m)'
+  source_quality: page_read
+  previous_snippet_value: 79
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: wing_span
+  value: 79
+  unit: ft
+  conditions: 2020 design
+  source:
+    title: Aviation Week - Aerion Unveils Major Updates To AS2 Supersonic Business Jet Design (Guy Norris, 17 Apr 2020 per Wikipedia
+      ref [23])
+    url: https://aviationweek.com/business-aviation/aerion-unveils-major-updates-as2-supersonic-business-jet-design
+    page_or_section: body
+  quote: The 79-ft.-span wing has large actuated leading and trailing edges
+  source_quality: page_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: balanced_field_length
+  value: 7500
+  unit: ft
+  conditions: ISA, SL
+  source:
+    title: Wikipedia - Aerion AS2
+    url: https://en.wikipedia.org/wiki/Aerion_AS2
+    page_or_section: Specifications
+  quote: 'Balanced field length at ISA, SL: 7,500ft / 2,286m'
+  source_quality: page_read
+  previous_snippet_value: 7500
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: takeoff_length_full_fuel
+  value: 7500
+  unit: ft
+  conditions: fully fuelled
+  source:
+    title: Airport Technology - Aerion AS2 Supersonic Business Jet
+    url: https://www.airport-technology.com/projects/aerion-as2-supersonic-business-jet/
+    page_or_section: body
+  quote: runway length of 7,500ft for take-off are required when fully fuelled.
+  source_quality: page_read
+  previous_snippet_value: 7500
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: engine_count
+  value: 3
+  unit: '-'
+  conditions: null
+  source:
+    title: New Atlas - Aerion's AS2 supersonic business jet gets extra engine and cabin space (21 May 2014)
+    url: https://newatlas.com/aerion-as2-supersonic-business-jet/32149/
+    page_or_section: body
+  quote: the Aerion AS2 will now use a set of three smaller jet engines
+  source_quality: page_read
+  previous_snippet_value: 3
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: engine_thrust
+  value: 18000
+  unit: lbf
+  conditions: GE Affinity, each
+  source:
+    title: Wikipedia - Aerion AS2
+    url: https://en.wikipedia.org/wiki/Aerion_AS2
+    page_or_section: Specifications
+  quote: 'Powerplant: 3 × General Electric Affinity turbofan, 18,000[16] lbf (80 kN) thrust each'
+  source_quality: page_read
+  previous_snippet_value: null
+  agrees_with_snippet: null
+  retrieved: '2026-10-04'
+  notes: NEW; ref [16] Norris, Aviation Week, 3 Jul 2018.
+- quantity: engine_thrust_class
+  value: 20000
+  unit: lbf
+  conditions: GE Affinity
+  source:
+    title: Aviation Week - Aerion Unveils Major Updates To AS2 Supersonic Business Jet Design (Guy Norris, 17 Apr 2020 per Wikipedia
+      ref [23])
+    url: https://aviationweek.com/business-aviation/aerion-unveils-major-updates-as2-supersonic-business-jet-design
+    page_or_section: body
+  quote: the medium-bypass 20,000-lb.-thrust-class Affinity
+  source_quality: page_read
+  previous_snippet_value: 20000
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: engine_thrust_class
+  value: 15000
+  unit: lbf
+  conditions: 2014-era, pre-Affinity
+  source:
+    title: Airport Technology - Aerion AS2 Supersonic Business Jet
+    url: https://www.airport-technology.com/projects/aerion-as2-supersonic-business-jet/
+    page_or_section: body
+  quote: The AS2 will be equipped with three engines of 15,000lb thrust class, supporting a low-bypass configuration.
+  source_quality: page_read
+  previous_snippet_value: 15000
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: null
+- quantity: engine_type
+  value: GE Affinity, medium bypass, nonafterburning
+  unit: null
+  conditions: null
+  source:
+    title: Aviation Week - Aerion Unveils Major Updates To AS2 Supersonic Business Jet Design (Guy Norris, 17 Apr 2020 per Wikipedia
+      ref [23])
+    url: https://aviationweek.com/business-aviation/aerion-unveils-major-updates-as2-supersonic-business-jet-design
+    page_or_section: body
+  quote: Work on the Affinity, the world’s first purpose-designed nonafterburning commercial supersonic engine
+  source_quality: page_read
+  previous_snippet_value: GE Affinity twin-shaft medium bypass
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: Discontinuation date (May 2021) not checked this session (GE page not fetched).
+- quantity: SNLF_drag_benefit
+  value: 20 % less drag than a conventional delta wing (Aerion estimate)
+  unit: null
+  conditions: null
+  source:
+    title: Aviation Week - Aerion Unveils Major Updates To AS2 Supersonic Business Jet Design (Guy Norris, 17 Apr 2020 per Wikipedia
+      ref [23])
+    url: https://aviationweek.com/business-aviation/aerion-unveils-major-updates-as2-supersonic-business-jet-design
+    page_or_section: body
+  quote: Aerion estimated the SNLF wing would have 20% less drag than a conventional delta wing
+  source_quality: page_read
+  previous_snippet_value: 20%
+  agrees_with_snippet: true
+  retrieved: '2026-10-04'
+  notes: AW 2020 also says the final design uses "a lot less supersonic natural laminar flow".

@@ -1,0 +1,7 @@
+*.pdf
+Aircraf Design - Chapters/
+*.md
+!ssbj/**/*.md
+.git
+**/__pycache__
+ssbj/runs/store

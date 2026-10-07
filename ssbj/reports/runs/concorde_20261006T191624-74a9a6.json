@@ -1,0 +1,1026 @@
+{
+  "case": "concorde",
+  "validation_case": true,
+  "nominal": {
+    "s_ref_m2": 358.25070000000005,
+    "oew_kg": 73200.51287758646,
+    "engine_dry_mass_kg": 1767.1000555122873,
+    "fn_sls_reheat_kN": 169.22556965540448,
+    "cd0_cruise": 0.010275453483239874,
+    "ld_max_cruise": 7.2300075911283015,
+    "ld_cruise": 7.193820390321168,
+    "tsfc_cruise_per_h": 1.2044422379902153,
+    "cruise_altitude_ft": [
+      53000.0,
+      60000.0
+    ],
+    "range_nmi": 3643.5058149416764,
+    "range_ramp_fuel_kg": 95680.0,
+    "design_ramp_fuel_kg": 93048.32662259351,
+    "design_trip_fuel_kg": 76932.39130980054,
+    "design_block_fuel_kg": 79660.77664403389,
+    "transonic_thrust_margin": 0.3500790880406614,
+    "pre_cruise_fuel_fraction": 0.23856573608772647,
+    "pre_cruise_distance_fraction": 0.06672077351223457
+  },
+  "monte_carlo": {
+    "n_samples": 200,
+    "seed": 20261004,
+    "range_mission": {
+      "n_feasible": 199,
+      "n_infeasible": 1,
+      "by_segment": {
+        "subsonic_climb": 1
+      },
+      "examples": [
+        "subsonic_climb: no excess power at M 0.41, 1831 ft (T = 484.6 kN, D = 503.2 kN)"
+      ]
+    },
+    "design_mission": {
+      "n_feasible": 127,
+      "n_infeasible": 73,
+      "by_segment": {
+        "design range not reachable within the fuel capacity": 73
+      },
+      "examples": [
+        "design range not reachable within the fuel capacity: the heaviest flyable load (84450 kg) falls short by 3026 nmi",
+        "design range not reachable within the fuel capacity: the heaviest flyable load (86496 kg) falls short by 3016 nmi",
+        "design range not reachable within the fuel capacity: the heaviest flyable load (86887 kg) falls short by 2991 nmi",
+        "design range not reachable within the fuel capacity: the heaviest flyable load (95680 kg) falls short by 1008 nmi",
+        "design range not reachable within the fuel capacity: the heaviest flyable load (95680 kg) falls short by 1052 nmi"
+      ]
+    },
+    "factors": [
+      {
+        "name": "aero.friction",
+        "sigma_rel": 0.08,
+        "basis": "Judgment: turbulent flat-plate correlation, form factors and wetted areas; no supersonic-transport validation data in Phase 1.",
+        "applies_to": "CD0 friction + misc"
+      },
+      {
+        "name": "aero.misc",
+        "sigma_rel": 0.5,
+        "basis": "Leakage/protuberance allowance is a class-average assumption.",
+        "applies_to": "CD misc"
+      },
+      {
+        "name": "aero.wave",
+        "sigma_rel": 0.25,
+        "basis": "Judgment: far-field linear area rule with a thin-wing and smoothed-nacelle model; the Raymer eq. 12.46 cross-check is reported alongside.",
+        "applies_to": "CD wave, M >= 1.2"
+      },
+      {
+        "name": "aero.wave_transonic",
+        "sigma_rel": 0.4,
+        "basis": "Fairing between drag-rise onset and the first Harris point has no physics; widened deliberately.",
+        "applies_to": "CD wave, 0.9 < M < 1.2"
+      },
+      {
+        "name": "aero.K",
+        "sigma_rel": 0.15,
+        "basis": "Leading-edge suction fraction is assumed, not computed; linear theory ignores vortex lift.",
+        "applies_to": "drag due to lift"
+      },
+      {
+        "name": "prop.thrust",
+        "sigma_rel": 0.05,
+        "basis": "Generic pyCycle maps scaled to the design point; LP/HP work split and nozzle coefficient assumed; installation drags not modelled.",
+        "applies_to": "available thrust"
+      },
+      {
+        "name": "prop.sfc",
+        "sigma_rel": 0.05,
+        "basis": "Component efficiencies from published estimates; generic maps.",
+        "applies_to": "fuel flow at given thrust"
+      },
+      {
+        "name": "prop.weight",
+        "sigma_rel": 0.3,
+        "basis": "Scaled from Raymer's 1990s-technology reference engine; biased low for older engines.",
+        "applies_to": "engine dry weight"
+      },
+      {
+        "name": "weights.wing",
+        "sigma_rel": 0.25,
+        "basis": "Judgment; Raymer gives no scatter statistics.",
+        "applies_to": "wing"
+      },
+      {
+        "name": "weights.vertical_tail",
+        "sigma_rel": 0.25,
+        "basis": "Judgment; Raymer gives no scatter statistics.",
+        "applies_to": "vertical_tail"
+      },
+      {
+        "name": "weights.fuselage",
+        "sigma_rel": 0.2,
+        "basis": "Judgment; Raymer gives no scatter statistics.",
+        "applies_to": "fuselage"
+      },
+      {
+        "name": "weights.main_gear",
+        "sigma_rel": 0.15,
+        "basis": "Judgment; Raymer gives no scatter statistics.",
+        "applies_to": "main_gear"
+      },
+      {
+        "name": "weights.nose_gear",
+        "sigma_rel": 0.15,
+        "basis": "Judgment; Raymer gives no scatter statistics.",
+        "applies_to": "nose_gear"
+      },
+      {
+        "name": "weights.nacelle_group",
+        "sigma_rel": 0.3,
+        "basis": "Judgment; Raymer gives no scatter statistics.",
+        "applies_to": "nacelle_group"
+      },
+      {
+        "name": "weights.engine_controls",
+        "sigma_rel": 0.3,
+        "basis": "Judgment; Raymer gives no scatter statistics.",
+        "applies_to": "engine_controls"
+      },
+      {
+        "name": "weights.starter",
+        "sigma_rel": 0.3,
+        "basis": "Judgment; Raymer gives no scatter statistics.",
+        "applies_to": "starter"
+      },
+      {
+        "name": "weights.fuel_system",
+        "sigma_rel": 0.3,
+        "basis": "Judgment; Raymer gives no scatter statistics.",
+        "applies_to": "fuel_system"
+      },
+      {
+        "name": "weights.flight_controls",
+        "sigma_rel": 0.25,
+        "basis": "Judgment; Raymer gives no scatter statistics.",
+        "applies_to": "flight_controls"
+      },
+      {
+        "name": "weights.apu",
+        "sigma_rel": 0.2,
+        "basis": "Judgment; Raymer gives no scatter statistics.",
+        "applies_to": "apu"
+      },
+      {
+        "name": "weights.instruments",
+        "sigma_rel": 0.25,
+        "basis": "Judgment; Raymer gives no scatter statistics.",
+        "applies_to": "instruments"
+      },
+      {
+        "name": "weights.hydraulics",
+        "sigma_rel": 0.3,
+        "basis": "Judgment; Raymer gives no scatter statistics.",
+        "applies_to": "hydraulics"
+      },
+      {
+        "name": "weights.electrical",
+        "sigma_rel": 0.25,
+        "basis": "Judgment; Raymer gives no scatter statistics.",
+        "applies_to": "electrical"
+      },
+      {
+        "name": "weights.avionics",
+        "sigma_rel": 0.2,
+        "basis": "Judgment; Raymer gives no scatter statistics.",
+        "applies_to": "avionics"
+      },
+      {
+        "name": "weights.furnishings",
+        "sigma_rel": 0.25,
+        "basis": "Judgment; Raymer gives no scatter statistics.",
+        "applies_to": "furnishings"
+      },
+      {
+        "name": "weights.passenger_furnishings",
+        "sigma_rel": 0.25,
+        "basis": "Judgment; Raymer gives no scatter statistics.",
+        "applies_to": "passenger_furnishings"
+      },
+      {
+        "name": "weights.air_conditioning",
+        "sigma_rel": 0.25,
+        "basis": "Judgment; Raymer gives no scatter statistics.",
+        "applies_to": "air_conditioning"
+      },
+      {
+        "name": "weights.anti_ice",
+        "sigma_rel": 0.4,
+        "basis": "Judgment; Raymer gives no scatter statistics.",
+        "applies_to": "anti_ice"
+      },
+      {
+        "name": "weights.handling_gear",
+        "sigma_rel": 0.4,
+        "basis": "Judgment; Raymer gives no scatter statistics.",
+        "applies_to": "handling_gear"
+      },
+      {
+        "name": "weights.operator_items",
+        "sigma_rel": 0.3,
+        "basis": "Judgment; Raymer gives no scatter statistics.",
+        "applies_to": "operator_items"
+      },
+      {
+        "name": "weights.class_structure",
+        "sigma_rel": 0.1,
+        "basis": "Correlated error on all structure groups: subsonic-transport regression applied to a supersonic slender-delta transport (Raymer \u00a715.4).",
+        "applies_to": "all structure groups"
+      }
+    ],
+    "stats": {
+      "oew_kg": {
+        "p2.5": 54250.06844682066,
+        "p16": 62400.88487950705,
+        "p50": 73187.31811777907,
+        "p84": 81968.4085725057,
+        "p97.5": 92702.18359919944,
+        "mean": 72790.31619802612,
+        "std": 9762.915432508102,
+        "n": 200
+      },
+      "engine_dry_mass_kg": {
+        "p2.5": 811.8018873801241,
+        "p16": 1313.0788629484018,
+        "p50": 1777.5055712625212,
+        "p84": 2384.6662786168886,
+        "p97.5": 2883.369172918706,
+        "mean": 1806.6265480338145,
+        "std": 561.5963824081982,
+        "n": 200
+      },
+      "range_nmi": {
+        "p2.5": 2457.103560599394,
+        "p16": 3040.260987814273,
+        "p50": 3745.6794832476335,
+        "p84": 4436.522944754725,
+        "p97.5": 4963.51516202353,
+        "mean": 3737.589295040871,
+        "std": 689.7361524434806,
+        "n": 199
+      },
+      "range_ramp_fuel_kg": {
+        "p2.5": 83517.3390697739,
+        "p16": 94499.72436436976,
+        "p50": 95680.0,
+        "p84": 95680.0,
+        "p97.5": 95680.0,
+        "mean": 94491.60602735584,
+        "std": 3155.4079144541047,
+        "n": 199
+      },
+      "ld_cruise": {
+        "p2.5": 6.259790982932018,
+        "p16": 6.600391413855874,
+        "p50": 7.331199155143499,
+        "p84": 8.182146025340604,
+        "p97.5": 8.910649163703624,
+        "mean": 7.378068011571713,
+        "std": 0.7278796983508915,
+        "n": 199
+      },
+      "tsfc_cruise_per_h": {
+        "p2.5": 1.0949022518363416,
+        "p16": 1.1423369741147296,
+        "p50": 1.2145220120056377,
+        "p84": 1.2747498072813521,
+        "p97.5": 1.3388189683009704,
+        "mean": 1.2105465032579834,
+        "std": 0.063002864173317,
+        "n": 199
+      },
+      "transonic_thrust_margin": {
+        "p2.5": 0.17955598690406888,
+        "p16": 0.2532385081031528,
+        "p50": 0.3778847525716485,
+        "p84": 0.5586364627312776,
+        "p97.5": 0.7037083490373333,
+        "mean": 0.4008065728943625,
+        "std": 0.1488388053647451,
+        "n": 199
+      },
+      "design_ramp_fuel_kg": {
+        "p2.5": 66584.55128755537,
+        "p16": 73502.71310821616,
+        "p50": 82804.20906073114,
+        "p84": 91052.6052898612,
+        "p97.5": 95362.45773168784,
+        "mean": 82523.18214056086,
+        "std": 7966.7684260025235,
+        "n": 127
+      },
+      "design_trip_fuel_kg": {
+        "p2.5": 53300.09515157794,
+        "p16": 59087.4686297412,
+        "p50": 67503.98875857679,
+        "p84": 75060.77788311617,
+        "p97.5": 79224.40076405261,
+        "mean": 67380.73161323844,
+        "std": 7265.637197905066,
+        "n": 127
+      },
+      "design_block_fuel_kg": {
+        "p2.5": 55776.26585333288,
+        "p16": 61791.122687117735,
+        "p50": 70219.24873678078,
+        "p84": 78000.50952455692,
+        "p97.5": 81926.10755728849,
+        "mean": 70083.25318705913,
+        "std": 7313.4563911130535,
+        "n": 127
+      }
+    },
+    "note": "Independent factors (plus declared shared factors); 95 % interval = p2.5-p97.5. Each output's percentiles are over the samples in which its own mission was flyable (conditional; column n), so they are biased toward low-drag, light samples. The infeasible counts are part of the result."
+  },
+  "comparison": {
+    "gates": [
+      {
+        "id": "range_max_fuel",
+        "quantity": "range at max fuel, 8,845 kg payload, \"FAR reserves\"",
+        "value": 3550,
+        "range": null,
+        "unit": "nmi",
+        "source": "Heritage Concorde, airframe-performance page (https://www.heritageconcorde.com/airframe-performance): 'Range with max fuel, FAR reserves and 8,845 kg (19,500 lb) 3,550 n miles'. Reserves not defined on the page.",
+        "source_quality": "page_read",
+        "model_nominal": 3643.5058149416764,
+        "model_p2.5": 2457.103560599394,
+        "model_p97.5": 4963.51516202353,
+        "inside_95": true,
+        "nominal_error_pct": 2.6339666180753905
+      }
+    ],
+    "diagnostics": [
+      {
+        "id": "fuel_for_range",
+        "quantity": "ramp fuel to fly 3,550 nmi with 8,845 kg payload and reserves (= max fuel)",
+        "value": 95680,
+        "range": null,
+        "unit": "kg",
+        "source": "Heritage Concorde weights page; Wikipedia Concorde specifications (pages read)",
+        "source_quality": "page_read",
+        "model_nominal": 93048.32662259351,
+        "model_p2.5": 66584.55128755537,
+        "model_p97.5": 95362.45773168784,
+        "inside_95": false,
+        "nominal_error_pct": -2.7504947506338757
+      },
+      {
+        "id": "oew",
+        "quantity": null,
+        "value": 78700,
+        "range": null,
+        "unit": "kg",
+        "source": "Heritage weights page; Wikipedia ('Empty weight') (pages read)",
+        "source_quality": "page_read",
+        "model_nominal": 73200.51287758646,
+        "model_p2.5": 54250.06844682066,
+        "model_p97.5": 92702.18359919944,
+        "inside_95": true,
+        "nominal_error_pct": -6.987912480830421
+      },
+      {
+        "id": "cruise_tsfc",
+        "quantity": null,
+        "value": 1.195,
+        "range": null,
+        "unit": "1/h",
+        "source": "Wikipedia Olympus 593 (page read; marked [citation needed], conditions not stated)",
+        "source_quality": "page_read_unsupported",
+        "model_nominal": 1.2044422379902153,
+        "model_p2.5": 1.0949022518363416,
+        "model_p97.5": 1.3388189683009704,
+        "inside_95": true,
+        "nominal_error_pct": 0.7901454385117375
+      },
+      {
+        "id": "ld_mach2",
+        "quantity": null,
+        "value": null,
+        "range": [
+          7.14,
+          7.5
+        ],
+        "unit": "-",
+        "source": "Wikipedia Concorde (7.14 at M2.04) and Lift-to-drag ratio article (7.5 at M2, citing Orlebar 1997 p.116) (pages read)",
+        "source_quality": "page_read",
+        "model_nominal": 7.193820390321168,
+        "model_p2.5": 6.259790982932018,
+        "model_p97.5": 8.910649163703624,
+        "inside_95": true
+      },
+      {
+        "id": "engine_dry_mass",
+        "quantity": null,
+        "value": 3175,
+        "range": null,
+        "unit": "kg",
+        "source": "Wikipedia Olympus 593 ('Data from Jane's'); Heritage (pages read)",
+        "source_quality": "page_read",
+        "model_nominal": 1767.1000555122873,
+        "model_p2.5": 811.8018873801241,
+        "model_p97.5": 2883.369172918706,
+        "inside_95": false,
+        "nominal_error_pct": -44.34330533819568
+      },
+      {
+        "id": "pre_cruise_fuel_fraction",
+        "quantity": null,
+        "value": 0.2,
+        "range": null,
+        "unit": "-",
+        "source": "McKinlay, Heaton & Franchi, Operational experience on Concorde, ICAS 1976 (read): 20 % of trip fuel burned by start of cruise",
+        "source_quality": "page_read",
+        "model_nominal": 0.23856573608772647,
+        "nominal_error_pct": 19.28286804386323
+      },
+      {
+        "id": "pre_cruise_distance_fraction",
+        "quantity": null,
+        "value": 0.09,
+        "range": null,
+        "unit": "-",
+        "source": "ICAS 1976 (read): 9 % of distance covered by start of cruise",
+        "source_quality": "page_read",
+        "model_nominal": 0.06672077351223457,
+        "nominal_error_pct": -25.865807208628254
+      },
+      {
+        "id": "lhr_jfk_fuel_load",
+        "quantity": null,
+        "value": null,
+        "range": [
+          93000,
+          96000
+        ],
+        "unit": "kg",
+        "source": "PPRuNe forum thread 45456 (search snippet); anecdotal, route distance unknown",
+        "source_quality": "search_snippet",
+        "model_nominal": null
+      }
+    ],
+    "passed": true
+  },
+  "disciplines": {
+    "aerodynamics": {
+      "discipline": "aerodynamics",
+      "method": "component skin friction (Raymer 12.25-12.33) + Harris area-rule wave drag + linear-theory lift with leading-edge-suction K (Raymer 12.6)",
+      "uncertainties": [
+        {
+          "name": "aero.friction",
+          "sigma_rel": 0.08,
+          "basis": "Judgment: turbulent flat-plate correlation, form factors and wetted areas; no supersonic-transport validation data in Phase 1.",
+          "applies_to": "CD0 friction + misc"
+        },
+        {
+          "name": "aero.misc",
+          "sigma_rel": 0.5,
+          "basis": "Leakage/protuberance allowance is a class-average assumption.",
+          "applies_to": "CD misc"
+        },
+        {
+          "name": "aero.wave",
+          "sigma_rel": 0.25,
+          "basis": "Judgment: far-field linear area rule with a thin-wing and smoothed-nacelle model; the Raymer eq. 12.46 cross-check is reported alongside.",
+          "applies_to": "CD wave, M >= 1.2"
+        },
+        {
+          "name": "aero.wave_transonic",
+          "sigma_rel": 0.4,
+          "basis": "Fairing between drag-rise onset and the first Harris point has no physics; widened deliberately.",
+          "applies_to": "CD wave, 0.9 < M < 1.2"
+        },
+        {
+          "name": "aero.K",
+          "sigma_rel": 0.15,
+          "basis": "Leading-edge suction fraction is assumed, not computed; linear theory ignores vortex lift.",
+          "applies_to": "drag due to lift"
+        }
+      ],
+      "not_trusted_when": [
+        "Linear theory: invalid at high angle of attack where leading-edge vortex lift dominates (take-off, approach); no vortex lift is modelled.",
+        "Transonic (0.9 < M < 1.2) wave drag is a fairing, not a prediction.",
+        "Harris area rule assumes slender, smooth configurations; blunt bases, inlet spillage and boundary-layer diverters are not modelled.",
+        "Harris wave drag is 16-29 % above wind-tunnel data on the NASA TM X-372 arrow wing-body (M 1.55-3.0); not corrected (no calibration on test data yet), inside the aero.wave sigma only at 1 to 1.2 sigma.",
+        "No trim drag (stability module is Phase 4).",
+        "No interference factors (Q = 1)."
+      ],
+      "warnings": []
+    },
+    "propulsion": {
+      "discipline": "propulsion",
+      "method": "pyCycle two-spool two spool turbojet deck with T4/T3/HP-speed limits, MIL-E-5008B inlet, Raymer eqs. 10.1-10.3 weight scaling",
+      "uncertainties": [
+        {
+          "name": "prop.thrust",
+          "sigma_rel": 0.05,
+          "basis": "Generic pyCycle maps scaled to the design point; LP/HP work split and nozzle coefficient assumed; installation drags not modelled.",
+          "applies_to": "available thrust"
+        },
+        {
+          "name": "prop.sfc",
+          "sigma_rel": 0.05,
+          "basis": "Component efficiencies from published estimates; generic maps.",
+          "applies_to": "fuel flow at given thrust"
+        },
+        {
+          "name": "prop.weight",
+          "sigma_rel": 0.3,
+          "basis": "Scaled from Raymer's 1990s-technology reference engine; biased low for older engines.",
+          "applies_to": "engine dry weight"
+        }
+      ],
+      "not_trusted_when": [
+        "Generic compressor and turbine maps (pyCycle LPC/Fan/HPC/HPT/LPT) scaled to the design point.",
+        "Dry: fixed nozzle throat area; reheat: nozzle opened to hold the LP compressor on its dry operating line. Real schedules differ.",
+        "Validation shows errors larger than the declared 5 % sigmas: Olympus 593 (two-spool turbojet) cruise thrust +23 % and airflow +43 %; NASA STCA (bought-core turbofan) SFC -17 % and BPR +61 %. No duct or mixer pressure losses are modelled.",
+        "Inlet recovery is the MIL-E-5008B standard schedule, not a designed intake.",
+        "Reheat at a limited dry point is scaled from the T4_max reheat/dry ratio.",
+        "Spillage, bypass, bleed and boat-tail drag not modelled; no customer power offtake.",
+        "Idle and descent fuel flow extrapolated below 65 % of T4_max."
+      ],
+      "warnings": [
+        "133 in-envelope deck points did not converge and were filled from neighbours",
+        "T3 or HP-speed limit binds at 26 (Mach, altitude) points (T4 down to 0.87 of T4_max)"
+      ]
+    },
+    "weights": {
+      "discipline": "weights",
+      "method": "Raymer (1999) cargo/transport statistical group weights, eqs. 15.25-15.44",
+      "uncertainties": [
+        {
+          "name": "weights.wing",
+          "sigma_rel": 0.25,
+          "basis": "Judgment; Raymer gives no scatter statistics.",
+          "applies_to": "wing"
+        },
+        {
+          "name": "weights.vertical_tail",
+          "sigma_rel": 0.25,
+          "basis": "Judgment; Raymer gives no scatter statistics.",
+          "applies_to": "vertical_tail"
+        },
+        {
+          "name": "weights.fuselage",
+          "sigma_rel": 0.2,
+          "basis": "Judgment; Raymer gives no scatter statistics.",
+          "applies_to": "fuselage"
+        },
+        {
+          "name": "weights.main_gear",
+          "sigma_rel": 0.15,
+          "basis": "Judgment; Raymer gives no scatter statistics.",
+          "applies_to": "main_gear"
+        },
+        {
+          "name": "weights.nose_gear",
+          "sigma_rel": 0.15,
+          "basis": "Judgment; Raymer gives no scatter statistics.",
+          "applies_to": "nose_gear"
+        },
+        {
+          "name": "weights.nacelle_group",
+          "sigma_rel": 0.3,
+          "basis": "Judgment; Raymer gives no scatter statistics.",
+          "applies_to": "nacelle_group"
+        },
+        {
+          "name": "weights.engine_controls",
+          "sigma_rel": 0.3,
+          "basis": "Judgment; Raymer gives no scatter statistics.",
+          "applies_to": "engine_controls"
+        },
+        {
+          "name": "weights.starter",
+          "sigma_rel": 0.3,
+          "basis": "Judgment; Raymer gives no scatter statistics.",
+          "applies_to": "starter"
+        },
+        {
+          "name": "weights.fuel_system",
+          "sigma_rel": 0.3,
+          "basis": "Judgment; Raymer gives no scatter statistics.",
+          "applies_to": "fuel_system"
+        },
+        {
+          "name": "weights.flight_controls",
+          "sigma_rel": 0.25,
+          "basis": "Judgment; Raymer gives no scatter statistics.",
+          "applies_to": "flight_controls"
+        },
+        {
+          "name": "weights.apu",
+          "sigma_rel": 0.2,
+          "basis": "Judgment; Raymer gives no scatter statistics.",
+          "applies_to": "apu"
+        },
+        {
+          "name": "weights.instruments",
+          "sigma_rel": 0.25,
+          "basis": "Judgment; Raymer gives no scatter statistics.",
+          "applies_to": "instruments"
+        },
+        {
+          "name": "weights.hydraulics",
+          "sigma_rel": 0.3,
+          "basis": "Judgment; Raymer gives no scatter statistics.",
+          "applies_to": "hydraulics"
+        },
+        {
+          "name": "weights.electrical",
+          "sigma_rel": 0.25,
+          "basis": "Judgment; Raymer gives no scatter statistics.",
+          "applies_to": "electrical"
+        },
+        {
+          "name": "weights.avionics",
+          "sigma_rel": 0.2,
+          "basis": "Judgment; Raymer gives no scatter statistics.",
+          "applies_to": "avionics"
+        },
+        {
+          "name": "weights.furnishings",
+          "sigma_rel": 0.25,
+          "basis": "Judgment; Raymer gives no scatter statistics.",
+          "applies_to": "furnishings"
+        },
+        {
+          "name": "weights.passenger_furnishings",
+          "sigma_rel": 0.25,
+          "basis": "Judgment; Raymer gives no scatter statistics.",
+          "applies_to": "passenger_furnishings"
+        },
+        {
+          "name": "weights.air_conditioning",
+          "sigma_rel": 0.25,
+          "basis": "Judgment; Raymer gives no scatter statistics.",
+          "applies_to": "air_conditioning"
+        },
+        {
+          "name": "weights.anti_ice",
+          "sigma_rel": 0.4,
+          "basis": "Judgment; Raymer gives no scatter statistics.",
+          "applies_to": "anti_ice"
+        },
+        {
+          "name": "weights.handling_gear",
+          "sigma_rel": 0.4,
+          "basis": "Judgment; Raymer gives no scatter statistics.",
+          "applies_to": "handling_gear"
+        },
+        {
+          "name": "weights.operator_items",
+          "sigma_rel": 0.3,
+          "basis": "Judgment; Raymer gives no scatter statistics.",
+          "applies_to": "operator_items"
+        },
+        {
+          "name": "weights.class_structure",
+          "sigma_rel": 0.1,
+          "basis": "Correlated error on all structure groups: subsonic-transport regression applied to a supersonic slender-delta transport (Raymer \u00a715.4).",
+          "applies_to": "all structure groups"
+        }
+      ],
+      "not_trusted_when": [
+        "Regression database is subsonic transports; slender-delta supersonic structure (thin wing, kinetic heating, high-temperature alloys) is outside it.",
+        "Wing equation uses gross reference area as the 'trapezoidal' area and the planform-average quarter-chord sweep; ogee and cranked planforms are not trapezoids.",
+        "Engine dry weight comes from the propulsion module scaling law (30 % sigma).",
+        "No variable-geometry intake or nozzle weight beyond the nacelle-group regression.",
+        "Passenger seats and lavatories from Raymer Table 15.3 averages; galleys not included."
+      ],
+      "warnings": [
+        "aspect ratio 1.83 is far below the transport database (wing weight extrapolated)"
+      ]
+    },
+    "mission": {
+      "discipline": "mission",
+      "method": "energy-method climb, cruise-climb, idle descent",
+      "uncertainties": [],
+      "not_trusted_when": [
+        "Climb, acceleration and descent follow the prescribed straight (Mach, altitude) paths; no trajectory optimisation.",
+        "Flight-path angle is neglected in lift (L = W) and in distance (cos gamma = 1).",
+        "Descent at idle: idle thrust taken as zero, idle fuel flow scaled from the SLS taxi setting by ambient pressure ratio.",
+        "Diversion flown as level cruise at the reserve Mach and altitude (no climb or descent).",
+        "No winds, no temperature deviation from ISA, no air-traffic constraints.",
+        "Centre-of-gravity and trim drag effects (fuel transfer for trim) are not modelled.",
+        "Reserve detail (alternate distance, hold) is an assumption with no error factor; on Concorde the reserves are ~19 t and removing hold and diversion adds ~700 nmi of range."
+      ],
+      "warnings": [
+        "range is volume-limited: fuel capacity reached before MTOW"
+      ]
+    }
+  },
+  "details": {
+    "aero_wave_crosscheck": {
+      "M1.3": {
+        "harris": 0.00474899123519916,
+        "raymer_12_46_EWD_1.4": 0.002685711022715388,
+        "raymer_12_46_EWD_2.0": 0.003836730032450555
+      },
+      "M1.6": {
+        "harris": 0.004570037996755232,
+        "raymer_12_46_EWD_1.4": 0.002621117693343681,
+        "raymer_12_46_EWD_2.0": 0.00374445384763383
+      },
+      "M2.0": {
+        "harris": 0.004412629993512859,
+        "raymer_12_46_EWD_1.4": 0.002563822426816452,
+        "raymer_12_46_EWD_2.0": 0.0036626034668806456
+      }
+    },
+    "wetted_areas_m2": {
+      "wing": 545.7209170631564,
+      "fuselage": 510.4999170184989,
+      "fin": 67.90170000000002,
+      "nacelles": 221.18399999999997
+    },
+    "weights_components_kg": {
+      "wing": 30532.82022286638,
+      "vertical_tail": 2666.9510170067315,
+      "fuselage": 12857.82161774595,
+      "main_gear": 6989.3858275981775,
+      "nose_gear": 881.9956625974955,
+      "nacelle_group": 2192.747602569061,
+      "engines": 7068.400222049149,
+      "engine_controls": 170.98408446036746,
+      "starter": 98.57553205066985,
+      "fuel_system": 1048.3131654392791,
+      "flight_controls": 869.1995952952494,
+      "apu": 0.0,
+      "instruments": 454.4135655082088,
+      "hydraulics": 145.826945854823,
+      "electrical": 461.19944733826657,
+      "avionics": 971.2610944855307,
+      "furnishings": 776.6142534147925,
+      "passenger_furnishings": 1681.633787901327,
+      "air_conditioning": 641.7082334050114,
+      "anti_ice": 370.14000000000004,
+      "handling_gear": 55.520999999999994
+    },
+    "weights_inputs": {
+      "Nz": 3.75,
+      "Sw_ft2": 3856.17844152355,
+      "A": 1.8293334807161579,
+      "tc_root": 0.03,
+      "taper": 0.03253418932022603,
+      "sweep_qc_deg": 62.84223905405347,
+      "Lt_ft": 82.5789171959768,
+      "Kws": 0.6261156548665089,
+      "fuel_gal": 31594.977462034552,
+      "v_stall_kt": 153.1603399170002
+    },
+    "engine": {
+      "deck_key": "b18063026b3d6e8c",
+      "deck_cached": true,
+      "deck_wall_time_s": 4891.6376715940005,
+      "fn_sls_dry_kN": 139.39798394718056,
+      "fn_sls_reheat_kN": 169.22556965540448,
+      "sls_airflow_kg_s": 254.55742849690907,
+      "tsfc_sls_dry_per_h": 0.9382355874271375,
+      "engine_scale_factor": 1.2681140486559306,
+      "engine_dry_weight_kg": 1767.1000555122873,
+      "engine_length_m": 4.469068638141714,
+      "engine_diameter_m": 1.2585357308576286
+    },
+    "mission_range": {
+      "ramp_fuel_kg": 95680.0,
+      "range_nmi": 3643.5058149416764,
+      "trip_fuel_kg": 79564.039518884,
+      "block_fuel_kg": 82292.42485311734,
+      "reserves_kg": 13387.406836432536,
+      "reserve_detail": {
+        "contingency_kg": 0.0,
+        "diversion_kg": 4435.787745931233,
+        "hold_kg": 8951.619090501303
+      },
+      "transonic_thrust_margin": 0.3500790880406614,
+      "ld_cruise": 7.193820390321168,
+      "tsfc_cruise_per_h": 1.2044422379902153,
+      "legs": [
+        {
+          "name": "taxi_out",
+          "kind": "taxi",
+          "fuel_kg": 1818.9235561555552,
+          "distance_nmi": 0.0,
+          "time_min": 10.0,
+          "w_start_kg": 177725.51287758647,
+          "w_end_kg": 175906.58932143092,
+          "detail": {}
+        },
+        {
+          "name": "takeoff",
+          "kind": "takeoff",
+          "fuel_kg": 2396.659738207819,
+          "distance_nmi": 0.0,
+          "time_min": 1.5,
+          "w_start_kg": 175906.58932143092,
+          "w_end_kg": 173509.9295832231,
+          "detail": {}
+        },
+        {
+          "name": "subsonic_climb",
+          "kind": "climb",
+          "fuel_kg": 9170.527652951409,
+          "distance_nmi": 91.11989390446355,
+          "time_min": 12.933198012389003,
+          "w_start_kg": 173509.9295832231,
+          "w_end_kg": 164339.40193027168,
+          "detail": {
+            "min_specific_excess_power_m_s": 11.033643638098011,
+            "power": "max_dry"
+          }
+        },
+        {
+          "name": "transonic_acceleration",
+          "kind": "climb",
+          "fuel_kg": 4416.271474935149,
+          "distance_nmi": 54.76668056830328,
+          "time_min": 4.406893931501327,
+          "w_start_kg": 164339.40193027168,
+          "w_end_kg": 159923.13045533656,
+          "detail": {
+            "min_specific_excess_power_m_s": 30.068096634781895,
+            "power": "max_reheat"
+          }
+        },
+        {
+          "name": "supersonic_climb",
+          "kind": "climb",
+          "fuel_kg": 2997.7947878411433,
+          "distance_nmi": 97.21095179646639,
+          "time_min": 5.449524439717066,
+          "w_start_kg": 159923.13045533656,
+          "w_end_kg": 156925.33566749544,
+          "detail": {
+            "min_specific_excess_power_m_s": 16.00197511900152,
+            "power": "max_dry"
+          }
+        },
+        {
+          "name": "supersonic_cruise",
+          "kind": "cruise",
+          "fuel_kg": 59490.27544581922,
+          "distance_nmi": 3262.285596694862,
+          "time_min": 170.63079088105113,
+          "w_start_kg": 156925.33566749544,
+          "w_end_kg": 97435.0602216763,
+          "detail": {
+            "altitude_start_ft": 53000.0,
+            "altitude_end_ft": 60000.0,
+            "l_over_d_mean": 7.193820390321168,
+            "tsfc_mean_per_h": 1.2044422379902153
+          }
+        },
+        {
+          "name": "descent",
+          "kind": "descent",
+          "fuel_kg": 1092.5104191292564,
+          "distance_nmi": 138.1226919775811,
+          "time_min": 13.55797065320315,
+          "w_start_kg": 97435.0602216763,
+          "w_end_kg": 96342.54980254704,
+          "detail": {}
+        },
+        {
+          "name": "taxi_in",
+          "kind": "taxi",
+          "fuel_kg": 909.4617780777776,
+          "distance_nmi": 0.0,
+          "time_min": 5.0,
+          "w_start_kg": 96342.54980254704,
+          "w_end_kg": 95433.08802446927,
+          "detail": {}
+        }
+      ],
+      "tow_kg": 175906.58932143092
+    },
+    "mission_design": {
+      "distance_nmi": 3550.0,
+      "ramp_fuel_kg": 93048.32662259351,
+      "trip_fuel_kg": 76932.39130980054,
+      "block_fuel_kg": 79660.77664403389,
+      "reserves_kg": 13387.404380639824,
+      "tow_kg": 173274.91594402443,
+      "legs": [
+        {
+          "name": "taxi_out",
+          "kind": "taxi",
+          "fuel_kg": 1818.9235561555552,
+          "distance_nmi": 0.0,
+          "time_min": 10.0,
+          "w_start_kg": 175093.83950017998,
+          "w_end_kg": 173274.91594402443,
+          "detail": {}
+        },
+        {
+          "name": "takeoff",
+          "kind": "takeoff",
+          "fuel_kg": 2396.659738207819,
+          "distance_nmi": 0.0,
+          "time_min": 1.5,
+          "w_start_kg": 173274.91594402443,
+          "w_end_kg": 170878.2562058166,
+          "detail": {}
+        },
+        {
+          "name": "subsonic_climb",
+          "kind": "climb",
+          "fuel_kg": 8649.47195859813,
+          "distance_nmi": 86.06988400436035,
+          "time_min": 12.206578295447887,
+          "w_start_kg": 170878.2562058166,
+          "w_end_kg": 162228.78424721851,
+          "detail": {
+            "min_specific_excess_power_m_s": 11.982371089234405,
+            "power": "max_dry"
+          }
+        },
+        {
+          "name": "transonic_acceleration",
+          "kind": "climb",
+          "fuel_kg": 4306.0682886755585,
+          "distance_nmi": 53.42020037345462,
+          "time_min": 4.29625568996943,
+          "w_start_kg": 162228.78424721851,
+          "w_end_kg": 157922.71595854298,
+          "detail": {
+            "min_specific_excess_power_m_s": 31.08246957323316,
+            "power": "max_reheat"
+          }
+        },
+        {
+          "name": "supersonic_climb",
+          "kind": "climb",
+          "fuel_kg": 2854.7199861016334,
+          "distance_nmi": 92.51463531613045,
+          "time_min": 5.1880525646474265,
+          "w_start_kg": 157922.71595854298,
+          "w_end_kg": 155067.99597244133,
+          "detail": {
+            "min_specific_excess_power_m_s": 17.059215501717905,
+            "power": "max_dry"
+          }
+        },
+        {
+          "name": "supersonic_cruise",
+          "kind": "cruise",
+          "fuel_kg": 57632.96090294112,
+          "distance_nmi": 3179.9672446101476,
+          "time_min": 166.32520661998262,
+          "w_start_kg": 155067.99597244133,
+          "w_end_kg": 97435.03506950056,
+          "detail": {
+            "altitude_start_ft": 53000.0,
+            "altitude_end_ft": 60000.0,
+            "l_over_d_mean": 7.1922537848448505,
+            "tsfc_mean_per_h": 1.204531665035
+          }
+        },
+        {
+          "name": "descent",
+          "kind": "descent",
+          "fuel_kg": 1092.510435276292,
+          "distance_nmi": 138.1226831856275,
+          "time_min": 13.55797018610977,
+          "w_start_kg": 97435.03506950056,
+          "w_end_kg": 96342.52463422428,
+          "detail": {}
+        },
+        {
+          "name": "taxi_in",
+          "kind": "taxi",
+          "fuel_kg": 909.4617780777776,
+          "distance_nmi": 0.0,
+          "time_min": 5.0,
+          "w_start_kg": 96342.52463422428,
+          "w_end_kg": 95433.0628561465,
+          "detail": {}
+        }
+      ],
+      "transonic_thrust_margin": 0.37419217726857024
+    },
+    "geometry_warnings": []
+  },
+  "timing_s": {
+    "nominal": 752.2143315189987,
+    "total": 1090.2485622209988
+  },
+  "code_version": {
+    "package": "0.1.0",
+    "git_sha": "f3ed9ffe54217cec92641f3e4102bcaedd448ee1",
+    "dirty": false,
+    "python": "3.11.15",
+    "libs": {
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "openmdao": "3.45.1",
+      "pycycle": "4.4.1-dev",
+      "pydantic": "2.13.5",
+      "openvsp": "OpenVSP 3.49.0"
+    }
+  },
+  "run_id": "20261006T191624-74a9a6"
+}

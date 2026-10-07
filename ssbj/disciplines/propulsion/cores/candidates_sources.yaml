@@ -1,0 +1,2337 @@
+# Candidate gas-turbine cores for a Mach 1.4-1.6 SSBJ hot section - cited figures.
+# One entry per figure. source_quality: page_read (HTML page / wikitext read), pdf_read (PDF read),
+# inferred (derived by the compiler, not stated by the source). Conflicting values are kept as separate entries.
+# Wikipedia pages were read as wikitext (index.php?action=raw); quotes therefore contain wiki markup.
+# TCDS quotes are pdftotext -layout extractions of tables, flattened to one line.
+# ' ... ' inside a quote marks text elided by the compiler (AvWeek leads also end in the site's own teaser ellipsis).
+# retrieved: 2026-10-06; entries: 163
+entries:
+- engine: GE Affinity
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: core origin
+  value: HP core derived from CFM56 (and F101/F110)
+  unit: '-'
+  conditions: design statement
+  source:
+    title: Aviation Week, 'GE Affinity Turbofans To Power AS2', 16 Nov 2020
+    url: https://aviationweek.com/business-aviation/ge-affinity-turbofans-power-as2
+    page_or_section: article lead
+  quote: GE’s 20,000-lb.-thrust-class Affinity is a low-risk design that uses a high-pressure core adapted from the CFM56 jetliner turbofan and GE F101/F110 military engines...
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Confirms the hypothesis that Affinity used the CFM56 core. Paywalled beyond lead.
+- engine: GE Affinity
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: take-off thrust class
+  value: 20000
+  unit: lbf
+  conditions: thrust class (2020 statement)
+  source:
+    title: Aviation Week, 'GE Affinity Turbofans To Power AS2', 16 Nov 2020
+    url: https://aviationweek.com/business-aviation/ge-affinity-turbofans-power-as2
+    page_or_section: article lead
+  quote: GE’s 20,000-lb.-thrust-class Affinity
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Conflicts with 18,000 lbf (AvWeek 2018, Leeham 2017). Keep both.
+- engine: GE Affinity
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: take-off thrust
+  value: 18000
+  unit: lbf
+  conditions: initial details, Oct 2018
+  source:
+    title: Aviation Week, 'GE Shows Affinity for Supersonics', 15 Oct 2018
+    url: https://aviationweek.com/nbaa-2018/ge-shows-affinity-supersonics
+    page_or_section: article lead
+  quote: GE Aviation has disclosed initial details of the 18,000-lb.-thrust Affinity powerplant, which is the first supersonic engine ever to be developed for a business jet, and the first designed to meet
+    Stage 5 noise limits.
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Conflicts with 20,000-lb class (AvWeek 2020) and 16,000-20,000 lbf (Wikipedia citing GE page).
+- engine: GE Affinity
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: take-off thrust range
+  value: 16000-20000
+  unit: lbf
+  conditions: GE B&GA web page as cited by Wikipedia
+  source:
+    title: 'Wikipedia: General Electric Affinity'
+    url: https://en.wikipedia.org/wiki/General_Electric_Affinity
+    page_or_section: Specifications (jetspecs)
+  quote: '|thrust={{cvt|16,000-20,000|lbf|kN}}'
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation. GE page itself not retrievable (web.archive.org connection reset).
+- engine: GE Affinity
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: HP compressor stages
+  value: 9
+  unit: stages
+  conditions: '-'
+  source:
+    title: 'Wikipedia: General Electric Affinity'
+    url: https://en.wikipedia.org/wiki/General_Electric_Affinity
+    page_or_section: Design
+  quote: The {{cvt|18,000|lbf|kN}} GE Affinity has a nine-stage HP compressor, a single-stage HP turbine and a two-stage low-pressure turbine.
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation. Cites Aviation Week 15 Oct 2018 (paywalled).
+- engine: GE Affinity
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: core derivation detail / fan diameter
+  value: 52
+  unit: in
+  conditions: fan tip diameter
+  source:
+    title: 'Wikipedia: General Electric Affinity'
+    url: https://en.wikipedia.org/wiki/General_Electric_Affinity
+    page_or_section: Design
+  quote: The high-pressure core is derived from the nine-stage [[axial compressor|compressor]] and single-stage [[turbine]] of the CFM56, matched to a new low-pressure section optimised for supersonic speed
+    with a 133 cm (52in) diameter fan instead of the 155-173 cm (61-68.3in) fan of the 6:1 bypass ratio CFM56.
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation. Cites FlightGlobal 22 Feb 2018 (404 on fetch).
+- engine: GE Affinity
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: bypass ratio
+  value: ~3
+  unit: '-'
+  conditions: design
+  source:
+    title: 'Leeham News, ''Bjorn''s Corner: Supersonic transport revival, Part 12'', 26 Oct 2018'
+    url: https://leehamnews.com/2018/10/26/bjorns-corner-supersonic-transport-revival-part-12/
+    page_or_section: The Mach 1.4 engine
+  quote: To keep Ram drag within bounds, GE set the ByPass Ratio (BPR) of Affinity to around 3.
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Analyst article (Bjorn Fehrm), not GE data.
+- engine: GE Affinity
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: cruise net thrust
+  value: 3500
+  unit: lbf
+  conditions: Mach 1.4, 50,000 ft, per engine
+  source:
+    title: 'Leeham News, ''Bjorn''s Corner: Supersonic transport revival, Part 12'', 26 Oct 2018'
+    url: https://leehamnews.com/2018/10/26/bjorns-corner-supersonic-transport-revival-part-12/
+    page_or_section: The Mach 1.4 engine
+  quote: If the engine shall produce 3,500lbf thrust per engine at Mach 1.4 and 50,000ft we need to inject fuel in the combustor to produce 11,000lbf of Gross thrust.
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Analyst estimate; gross thrust 11,000 lbf at same condition.
+- engine: GE Affinity
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: cruise fuel consumption vs CFM56-5
+  value: +50%
+  unit: '%'
+  conditions: Affinity at M1.4 vs CFM56-5 at M0.78
+  source:
+    title: 'Leeham News, ''Bjorn''s Corner: Supersonic transport revival, Part 12'', 26 Oct 2018'
+    url: https://leehamnews.com/2018/10/26/bjorns-corner-supersonic-transport-revival-part-12/
+    page_or_section: The Mach 1.4 engine
+  quote: The increased Ram drag and the lower propulsive efficiency increases the cruise fuel consumption of the Affinity at Mach 1.4 with about 50% over the CFM56-5 at Mach 0.78.
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Analyst estimate.
+- engine: GE Affinity
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: service ceiling
+  value: 60000
+  unit: ft
+  conditions: '-'
+  source:
+    title: AIN Online, 'Aerion Unveils Stage 5 GE Affinity Engine for Supersonic AS2', 15 Oct 2018
+    url: https://www.ainonline.com/aviation-news/business-aviation/2018-10-15/aerion-unveils-stage-5-ge-affinity-engine-supersonic-as2
+    page_or_section: article body
+  quote: Features include a service ceiling of 60,000 feet, the highest bypass ratio of any supersonic engine, a proprietary non-augmented exhaust system (no afterburner required), a combustor with advanced
+    coatings optimized for sustained high-speed operations,
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: ''
+- engine: GE Affinity
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: supersonic / hot-inlet statement
+  value: combustor coatings for sustained high-speed ops
+  unit: '-'
+  conditions: '-'
+  source:
+    title: AIN Online, 'Aerion Unveils Stage 5 GE Affinity Engine for Supersonic AS2', 15 Oct 2018
+    url: https://www.ainonline.com/aviation-news/business-aviation/2018-10-15/aerion-unveils-stage-5-ge-affinity-engine-supersonic-as2
+    page_or_section: article body
+  quote: a combustor with advanced coatings optimized for sustained high-speed operations
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Implies the commercial CFM56 hot section needed modification for sustained supersonic cruise.
+- engine: GE Affinity
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: supersonic / hot-inlet statement
+  value: high intake temperature is key challenge
+  unit: '-'
+  conditions: '-'
+  source:
+    title: 'Wikipedia: General Electric Affinity'
+    url: https://en.wikipedia.org/wiki/General_Electric_Affinity
+    page_or_section: Design
+  quote: Managing the high [[intake]] temperatures at high altitudes is a key challenge for the initial design.
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation. Cites FlightGlobal 15 Dec 2017.
+- engine: GE Affinity
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: design Mach range
+  value: 1.4-1.6
+  unit: Mach
+  conditions: fixed (non-variable) inlet
+  source:
+    title: 'Wikipedia: General Electric Affinity'
+    url: https://en.wikipedia.org/wiki/General_Electric_Affinity
+    page_or_section: Design
+  quote: The Mach 1.4-to-1.6 speed requires no [[Intake ramp|variable-geometry inlet]] and the variable-area [[Propelling nozzle|nozzle]] has a cone moving longitudinally, replacing a [[convergent-divergent
+    nozzle]].
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation. Cites Aviation Week 16 Oct 2018.
+- engine: GE Affinity
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: status
+  value: cancelled May 2021
+  unit: '-'
+  conditions: '-'
+  source:
+    title: FlightGlobal, 'GE stops work on Affinity supersonic engine', 24 May 2021
+    url: https://www.flightglobal.com/business-aviation/ge-stops-work-on-affinity-supersonic-engine/143876.article
+    page_or_section: headline/standfirst
+  quote: Announcement follows last week’s collapse of powerplant’s only customer, AS2 developer Aerion.
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: 'Headline: ''GE stops work on Affinity supersonic engine'', 24 May 2021.'
+- engine: GE Affinity
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: rationale for lower-OPR core
+  value: CFM56 core preferred over LEAP for M1.4
+  unit: '-'
+  conditions: M1.4, 45,000 ft
+  source:
+    title: Leeham News, 'The Supersonic dilemma' (B. Fehrm), 20 Dec 2017
+    url: https://leehamnews.com/2017/12/20/the-supersonic-dilemma/
+    page_or_section: body
+  quote: To fix the high engine temperatures we need an engine with a lower compression ratio. This is where the lower compression core of the CFM56 fits.
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Analyst reasoning; key to core selection for this project.
+- engine: CFM LEAP (as SST core, analyst estimate)
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: compressor exit temperature
+  value: ~650
+  unit: degC
+  conditions: LEAP flown at M1.4, 45,000 ft (compressor inlet +28 degC)
+  source:
+    title: Leeham News, 'The Supersonic dilemma' (B. Fehrm), 20 Dec 2017
+    url: https://leehamnews.com/2017/12/20/the-supersonic-dilemma/
+    page_or_section: body
+  quote: If we fly the LEAP at the Aerion data, M1.4 and 45kft, the air entering the compressor is at +28°C, a 56°C rise. Now the end of the compressor is around 650°C. This is uncomfortably high for a
+    three-hour cruise and the cooling air for the turbines and combustor is a bit hot.
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: 'Analyst estimate; same article gives ~520 degC at M0.78/35,000 ft for LEAP. Cross-listed: relevant to eCore family.'
+- engine: CFM56 (generic)
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: overall / HPC pressure ratio
+  value: OPR ~27; HPC ~10
+  unit: '-'
+  conditions: most common version, static
+  source:
+    title: Leeham News, 'The Supersonic dilemma' (B. Fehrm), 20 Dec 2017
+    url: https://leehamnews.com/2017/12/20/the-supersonic-dilemma/
+    page_or_section: body
+  quote: Based on the information, we assume the core comes from the CFM56. It has a static thrust between 22klbf and 34klbf dependent on the version. Static Pressure Ratio for the most common version is
+    around 27, with the high-pressure compressor at 10.
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Analyst approximation; conflicts with OPR 32.7-32.8 for -7B (Wikipedia). HPC PR ~10 is approximate.
+- engine: CFM56-7B
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: manufacturer / origin
+  value: CFM International (50/50 GE USA - Safran France)
+  unit: '-'
+  conditions: '-'
+  source:
+    title: 'Wikipedia: CFM International CFM56'
+    url: https://en.wikipedia.org/wiki/CFM_International_CFM56
+    page_or_section: lead
+  quote: is a Franco-American family of [[high-bypass turbofan]] aircraft engines made by [[CFM International]] (CFMI), with a thrust range of {{convert|18500|to|34000|lbf|kN|abbr=on|lk=on|sigfig=2}}. CFMI
+    is a 50–50 joint-owned company of [[Safran Aircraft Engines]] (formerly known as Snecma) of France, and [[GE Aerospace
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation.
+- engine: CFM56-7B
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: export control history of core
+  value: core is US (GE) F101-derived; export restricted
+  unit: '-'
+  conditions: 1972-1973
+  source:
+    title: 'Wikipedia: CFM International CFM56'
+    url: https://en.wikipedia.org/wiki/CFM_International_CFM56
+    page_or_section: History / Development
+  quote: Contemporary reports state that the agreement was based on assurances that the core of the engine, the part that GE was developing from the military F101, would be built in the U.S. and then transported
+    to France in order to protect the sensitive technologies.
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: 'Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation. Directly relevant: the HP core is the US (GE) share of CFM56; buying
+    it as a stand-alone gas generator would be a US export.'
+- engine: CFM56-7B
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: export control history of core
+  value: core built in US, assembled in locked room in France
+  unit: '-'
+  conditions: early production
+  source:
+    title: 'Wikipedia: CFM International CFM56'
+    url: https://en.wikipedia.org/wiki/CFM_International_CFM56
+    page_or_section: History / Development
+  quote: Engines assembled in France were subject to the initially strict export agreement, which meant that GE's core was built in the U.S., then shipped to the Snecma plant in France where it was placed
+    in a locked room into which even the President of Snecma was not allowed.
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation.
+- engine: CFM56 (all)
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: HP compressor stages
+  value: 9
+  unit: stages
+  conditions: all variants
+  source:
+    title: 'Wikipedia: CFM International CFM56'
+    url: https://en.wikipedia.org/wiki/CFM_International_CFM56
+    page_or_section: Design - Compressor
+  quote: The high-pressure [[compressor]] (HPC), that was at the center of the original export controversy, features nine stages in all variants of the CFM56. The compressor stages have been developed from
+    [[General Electric|GE]]'s "GE<sup>1/9</sup> [[Turbojet|core]]" (namely a single-turbine, nine-compressor stage design)
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation.
+- engine: CFM56-7B
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: architecture
+  value: 1 fan, 3 LPC, 9 HPC, annular combustor, 1 HPT, 4 LPT
+  unit: '-'
+  conditions: '-'
+  source:
+    title: EASA TCDS E.004 CFM56-7B series engines, Issue 07, 9 January 2023
+    url: https://www.easa.europa.eu/en/downloads/7795/en
+    page_or_section: III.2 Description (p.13)
+  quote: single stage fan, 3-stage low pressure compressor (LPC), 9-stage high pressure compressor (HPC) • annular combustion chamber • single stage high pressure turbine (HPT), 4-stage low pressure turbine
+    (LPT)
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: ''
+- engine: CFM56-7B
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: take-off thrust
+  value: 9163-12143
+  unit: daN
+  conditions: SLS, -7B20 to -7B27 ratings
+  source:
+    title: EASA TCDS E.004 CFM56-7B series engines, Issue 07, 9 January 2023
+    url: https://www.easa.europa.eu/en/downloads/7795/en
+    page_or_section: III.6 Ratings (p.14-15)
+  quote: CFM56-7B “SAC” - Take-Off Thrust ... 9163 daN 10097 daN 10765 daN 11699 daN 12143 daN
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: TCDS table text flattened by pdftotext -layout; quote shows cells as extracted. = 20,600-27,300 lbf approx.
+- engine: CFM56-7B
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: dry weight
+  value: 2386-2431
+  unit: kg
+  conditions: SAC/TI 2386, DAC 2431, E 2395-2405
+  source:
+    title: EASA TCDS E.004 CFM56-7B series engines, Issue 07, 9 January 2023
+    url: https://www.easa.europa.eu/en/downloads/7795/en
+    page_or_section: III.5 Dry Weight (p.14)
+  quote: CFM56-7B26/B1, CFM56-7B26/B2, CFM56-7B27, CFM56-7B27/B1, ... 2386 kg ... CFM56-7B “DAC” ... 2431 kg
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: TCDS table text flattened by pdftotext -layout; quote shows cells as extracted. Conflicts with Wikipedia 5,216 lb (2,366 kg).
+- engine: CFM56-7B
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: dry weight
+  value: 5216
+  unit: lb
+  conditions: -7B18 to -7B27 per Wikipedia table
+  source:
+    title: 'Wikipedia: CFM International CFM56'
+    url: https://en.wikipedia.org/wiki/CFM_International_CFM56
+    page_or_section: CFM56-7B specifications table
+  quote: '| CFM56-7B27||{{convert|27300|lbf|kN|sigfig=3|abbr=on}}||5.1||32.7||{{convert|5216|lb|kg|sigfig=3|abbr=on}}'
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation. Conflicts with TCDS 2386 kg.
+- engine: CFM56-7B
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: max EGT (displayed)
+  value: 950
+  unit: degC
+  conditions: Take-off; MC 925; measured at T49.5 (stage 2 LPT nozzle)
+  source:
+    title: EASA TCDS E.004 CFM56-7B series engines, Issue 07, 9 January 2023
+    url: https://www.easa.europa.eu/en/downloads/7795/en
+    page_or_section: IV.1.1 EGT (p.17)
+  quote: The exhaust gas temperature is measured at station T49.5 (stage 2 LPT nozzle). Maximum Exhaust Gas Temperature (Displayed) Take-Off 950 Maximum Continuous 925 Starting 725
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: Displayed EGT includes 'shunt' (+10 to +30 degC) and 'trim' functions per TCDS.
+- engine: CFM56-7B
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: EASA type certification date
+  value: '1996-12-17'
+  unit: date
+  conditions: -7B20/22/24/26/27 SAC
+  source:
+    title: EASA TCDS E.004 CFM56-7B series engines, Issue 07, 9 January 2023
+    url: https://www.easa.europa.eu/en/downloads/7795/en
+    page_or_section: I.5 Type Certification Date (p.5)
+  quote: CFM56-7B20, CFM56-7B22, CFM56-7B24, CFM56-7B26, CFM56-7B27 17 December 1996
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: ''
+- engine: CFM56-7B
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: certification basis
+  value: JAR-E Change 8 (04 May 1990) + Orange Papers E/91/1, E/93/1
+  unit: '-'
+  conditions: SAC models
+  source:
+    title: EASA TCDS E.004 CFM56-7B series engines, Issue 07, 9 January 2023
+    url: https://www.easa.europa.eu/en/downloads/7795/en
+    page_or_section: II.1.1 (p.6)
+  quote: JAR-E Change 8 (04 May 1990) as amended by Orange Paper E/91/1 (27 May 1991) and Orange Paper E/93/1 (10 May 1993)
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: ''
+- engine: CFM56-7B
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: manufacturers
+  value: Safran Aircraft Engines (Evry, France) and GE Aviation (Cincinnati, USA)
+  unit: '-'
+  conditions: '-'
+  source:
+    title: EASA TCDS E.004 CFM56-7B series engines, Issue 07, 9 January 2023
+    url: https://www.easa.europa.eu/en/downloads/7795/en
+    page_or_section: I.3 Manufacturer (p.4)
+  quote: Safran Aircraft Engines, formally ... GE Aviation ... F91019 Evry Cedex ... Cincinnati - Ohio 45215 ... United States of America
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: ''
+- engine: CFM56-7B
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: bypass ratio
+  value: 5.1-5.5
+  unit: '-'
+  conditions: -7B family
+  source:
+    title: 'Wikipedia: CFM International CFM56'
+    url: https://en.wikipedia.org/wiki/CFM_International_CFM56
+    page_or_section: Specifications table
+  quote: '! [[Bypass ratio]] ... | 5.1–5.5'
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation.
+- engine: CFM56-7B
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: max OPR
+  value: 32.8
+  unit: '-'
+  conditions: '-'
+  source:
+    title: 'Wikipedia: CFM International CFM56'
+    url: https://en.wikipedia.org/wiki/CFM_International_CFM56
+    page_or_section: Specifications table
+  quote: '! Max [[Overall pressure ratio|OPR]] ... | 32.8'
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation. Variant table lists 32.7 for all -7B ratings.
+- engine: CFM56-7B
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: airflow
+  value: 677-782
+  unit: lb/s
+  conditions: sea level
+  source:
+    title: 'Wikipedia: CFM International CFM56'
+    url: https://en.wikipedia.org/wiki/CFM_International_CFM56
+    page_or_section: Specifications table
+  quote: '![[Airflow|Air flow/sec]] at sea level ... | {{cvt|677-782|lb|disp=br}}'
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation. Total (fan) airflow.
+- engine: CFM56-7B
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: fan diameter
+  value: 61
+  unit: in
+  conditions: '-'
+  source:
+    title: 'Wikipedia: CFM International CFM56'
+    url: https://en.wikipedia.org/wiki/CFM_International_CFM56
+    page_or_section: Specifications table
+  quote: '| {{cvt|61|in|cm|0}}'
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation.
+- engine: GE F101
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: architecture
+  value: 2-stage fan, 9-stage HPC, 1 HPT, 2 LPT
+  unit: '-'
+  conditions: '-'
+  source:
+    title: 'Wikipedia: General Electric F101'
+    url: https://en.wikipedia.org/wiki/General_Electric_F101
+    page_or_section: Specifications
+  quote: '|compressor=[[Axial flow]], 2 stage fan, 9 stage HP compressor ... |turbine=1 stage HP turbine, 2 stage LP turbine'
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation. Spec block has empty ref= field (unsourced on page). Supersonic (B-1B)
+    origin of the CFM56 core.
+- engine: GE F101
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: thrust dry / afterburning
+  value: 17390 / 30780
+  unit: lbf
+  conditions: '-'
+  source:
+    title: 'Wikipedia: General Electric F101'
+    url: https://en.wikipedia.org/wiki/General_Electric_F101
+    page_or_section: Specifications
+  quote: '|thrust={{cvt|17,390|lbf|kN|lk=on}} (dry), {{cvt|30,780|lbf|kN}} (with afterburner)'
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation. Unsourced spec block.
+- engine: GE F101
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: OPR / BPR
+  value: 26.8 / 2.1
+  unit: '-'
+  conditions: '-'
+  source:
+    title: 'Wikipedia: General Electric F101'
+    url: https://en.wikipedia.org/wiki/General_Electric_F101
+    page_or_section: Specifications
+  quote: '|compression=26.8:1 |bypass=2.1:1'
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation. Unsourced spec block.
+- engine: GE F101
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: turbine temperature
+  value: 2550
+  unit: degF
+  conditions: unspecified station
+  source:
+    title: 'Wikipedia: General Electric F101'
+    url: https://en.wikipedia.org/wiki/General_Electric_F101
+    page_or_section: Specifications
+  quote: '|turbinetemp={{cvt|2550|F|C K}}'
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation. Unsourced; station not stated.
+- engine: GE F110-129
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: thrust class / airflow / BPR
+  value: 29,000 lb / 270 lb/s / 0.76
+  unit: '-'
+  conditions: afterburning thrust class
+  source:
+    title: GE Aerospace F110 product page
+    url: https://www.geaerospace.com/military/engines/f110
+    page_or_section: Engine Specifications
+  quote: Thrust class - 29,000 lb Length - 182.3 in Maximum diameter - 46.5 in Airflow - 270 lb/sec Bypass ratio - 0.76
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: 'F110 is the F101-derived fighter engine (see F404 Wikipedia: ''The F110 was derived from the F101 via the F101DFE''). US military (ITAR) item.'
+- engine: CF34-10E
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: architecture
+  value: 1 fan, 3 LPC, 9 HPC, 1 HPT, 4 LPT
+  unit: '-'
+  conditions: '-'
+  source:
+    title: EASA TCDS IM.E.021 CF34-10E series engines, Issue 06, 24 January 2020
+    url: https://www.easa.europa.eu/en/downloads/7761/en
+    page_or_section: III.2 Description
+  quote: Dual rotor, axial flow, high bypass ratio turbofan with single stage fan, 3-stage low pressure compressor, 9-stage high pressure compressor, annular combustion chamber, single stage high pressure
+    turbine, 4-stage low pressure turbine
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: ''
+- engine: CF34-10E
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: core lineage
+  value: derived from CFM56 [citation needed]
+  unit: '-'
+  conditions: '-'
+  source:
+    title: 'Wikipedia: General Electric CF34'
+    url: https://en.wikipedia.org/wiki/General_Electric_CF34
+    page_or_section: Design and development
+  quote: Latest variants, the {{nowrap|-10A}} and {{nowrap|-10E}}, were derived from the [[CFM56]] engine family,{{citation needed|date=July 2020}} and have a radically different HP spool, containing a
+    9-stage compressor driven by a single stage turbine.
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation. Flagged [citation needed] on Wikipedia. Conflicts with GE page calling
+    CF34-10 a 'Clean sheet design'.
+- engine: CF34-10E
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: core lineage
+  value: clean sheet design (GE claim)
+  unit: '-'
+  conditions: '-'
+  source:
+    title: GE Aerospace CF34 product page
+    url: https://www.geaerospace.com/commercial/aircraft-engines/cf34
+    page_or_section: CF34-10 tile
+  quote: CF34-10|Clean sheet design for Embraer and COMAC’s larger and longer-range regional jets
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Conflicts with Wikipedia 'derived from CFM56'. The 9-stage HPC + 1-stage HPT layout matches CFM56 (TCDS) - shared layout, lineage unproven.
+- engine: CF34-10E
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: HP spool layout matches CFM56
+  value: 9-stage HPC + 1-stage HPT in both
+  unit: '-'
+  conditions: comparison of TCDS E.004 and IM.E.021
+  source:
+    title: EASA TCDS IM.E.021 CF34-10E series engines, Issue 06, 24 January 2020
+    url: https://www.easa.europa.eu/en/downloads/7761/en
+    page_or_section: III.2 Description
+  quote: 9-stage high pressure compressor, annular combustion chamber, single stage high pressure turbine
+  source_quality: inferred
+  retrieved: '2026-10-06'
+  notes: INFERRED by comparison with CFM56-7B TCDS; does not prove shared hardware.
+- engine: CF34-10E
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: max take-off thrust
+  value: 75.44-90.57
+  unit: kN
+  conditions: SLS, flat rated 30-35 degC; -10E2A1 to -10E7
+  source:
+    title: EASA TCDS IM.E.021 CF34-10E series engines, Issue 06, 24 January 2020
+    url: https://www.easa.europa.eu/en/downloads/7761/en
+    page_or_section: III.6 Ratings
+  quote: Takeoff (5 min) ... 75.44 (16960) 83.72 (18820) 83.72 (18820) 83.72 (18820) ... 83.72 (18820) 90.57 (20360) 90.57 (20360)
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: TCDS table text flattened by pdftotext -layout; quote shows cells as extracted.
+- engine: CF34-10E
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: dry weight
+  value: 2079
+  unit: kg
+  conditions: incl. thrust reverser, aft core cowl, nozzle per description
+  source:
+    title: EASA TCDS IM.E.021 CF34-10E series engines, Issue 06, 24 January 2020
+    url: https://www.easa.europa.eu/en/downloads/7761/en
+    page_or_section: III.5 Dry Weight
+  quote: 2079 kg (4584 lb)
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: ''
+- engine: CF34-10E
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: max EGT (indicated)
+  value: 983
+  unit: degC
+  conditions: Maximum take-off (5 min); max continuous 960
+  source:
+    title: EASA TCDS IM.E.021 CF34-10E series engines, Issue 06, 24 January 2020
+    url: https://www.easa.europa.eu/en/downloads/7761/en
+    page_or_section: IV.1.1 EGT
+  quote: Maximum Takeoff 983 (1801) 983 (1801) 983 (1801) 983 (1801) ... Maximum 960 (1760)
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: TCDS table text flattened by pdftotext -layout; quote shows cells as extracted.
+- engine: CF34-10E
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: EASA type certification date
+  value: '2006-03-31'
+  unit: date
+  conditions: -10E5/-10E5A1/-10E6/-10E6A1
+  source:
+    title: EASA TCDS IM.E.021 CF34-10E series engines, Issue 06, 24 January 2020
+    url: https://www.easa.europa.eu/en/downloads/7761/en
+    page_or_section: I.6 EASA Type Certification Date
+  quote: CF34-10E5, CF34-10E5A1, CF34-10E6, CF34- ... 31 March 2006
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: TCDS table text flattened by pdftotext -layout; quote shows cells as extracted.
+- engine: CF34-10A/-10E
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: overall pressure ratio
+  value: 29
+  unit: :1
+  conditions: max power
+  source:
+    title: GE Aerospace CF34 product page
+    url: https://www.geaerospace.com/commercial/aircraft-engines/cf34
+    page_or_section: CF34 Comparison table
+  quote: Overall Pressure Ratio at Max Power| 21:1| 28:1| 28:5:1| 29:1| 29:1
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: 'Columns: CF34-3, -8C, -8E, -10A, -10E. ''28:5:1'' typo on GE page for -8E.'
+- engine: CF34-10E
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: max power at sea level
+  value: 20000
+  unit: lbf
+  conditions: SLS
+  source:
+    title: GE Aerospace CF34 product page
+    url: https://www.geaerospace.com/commercial/aircraft-engines/cf34
+    page_or_section: CF34 Comparison table
+  quote: Max Power at Sea Level| 9,220| 13,790| 14,510| 18,285| 20,000
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: 'Columns: CF34-3, -8C, -8E, -10A, -10E.'
+- engine: CF34-10E
+  core_family: CFM56 / GE F101 '1/9' core (9-stage HPC, 1-stage HPT)
+  quantity: max diameter
+  value: 57
+  unit: in
+  conditions: '-'
+  source:
+    title: GE Aerospace CF34 product page
+    url: https://www.geaerospace.com/commercial/aircraft-engines/cf34
+    page_or_section: CF34 Comparison table
+  quote: Maximum Diameter (Inches)| 49| 52| 53.3| 57| 57
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: ''
+- engine: GE Passport 20
+  core_family: 'GE eCore (CFM LEAP / GE Passport): 10-stage HPC, 2-stage HPT'
+  quantity: core lineage
+  value: smaller-scaled LEAP; eCore program
+  unit: '-'
+  conditions: '-'
+  source:
+    title: 'Wikipedia: General Electric Passport'
+    url: https://en.wikipedia.org/wiki/General_Electric_Passport
+    page_or_section: lead / Development
+  quote: The GE eCore research program, which developed a common architecture for business, [[narrowbody]] and [[regional jet]]s, resulted in the [[CFM LEAP]] engine which replaced the [[CFM56]] on the
+    [[Boeing 737 MAX]] and [[Airbus A320neo]].
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: 'Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation. Also: ''A smaller scaled [[CFM LEAP]], it is a twin-spool axial engine...'''
+- engine: GE Passport 20
+  core_family: 'GE eCore (CFM LEAP / GE Passport): 10-stage HPC, 2-stage HPT'
+  quantity: bypass ratio / OPR / HPC PR
+  value: 5.6 / 45 / 23
+  unit: '-'
+  conditions: '-'
+  source:
+    title: EASA TCDS IM.E.113 GE Passport 20 Series Engine, Issue 06, 26 May 2026
+    url: https://www.easa.europa.eu/en/downloads/68115/en
+    page_or_section: III.2 Description
+  quote: The bypass ratio of the engine is 5.6:1 with an overall pressure ratio of 45:1. The High Pressure Compressor (HPC) pressure ratio is 23:1. The HPC is driven by a two stage High Pressure Turbine
+    (HPT). The 10-stage HPC includes five blisk stages for weight reduction.
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: ''
+- engine: GE Passport 20
+  core_family: 'GE eCore (CFM LEAP / GE Passport): 10-stage HPC, 2-stage HPT'
+  quantity: take-off thrust
+  value: 7893 / 8200 / 8416
+  unit: daN
+  conditions: SLS; -17BB1A / -18BB1A / -19BB1A(B1B); flat rated to 35 or 30 degC
+  source:
+    title: EASA TCDS IM.E.113 GE Passport 20 Series Engine, Issue 06, 26 May 2026
+    url: https://www.easa.europa.eu/en/downloads/68115/en
+    page_or_section: III.6 Ratings (p.7)
+  quote: Passport 20-17BB1A 7893 ... 35 Passport 20-18BB1A 8200 ... Passport 20-19BB1A 8416 30
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: TCDS table text flattened by pdftotext -layout; quote shows cells as extracted. ~17,745-18,920 lbf.
+- engine: GE Passport 20
+  core_family: 'GE eCore (CFM LEAP / GE Passport): 10-stage HPC, 2-stage HPT'
+  quantity: dry weight
+  value: 2065.7
+  unit: kg
+  conditions: incl. basic accessories and optional equipment
+  source:
+    title: EASA TCDS IM.E.113 GE Passport 20 Series Engine, Issue 06, 26 May 2026
+    url: https://www.easa.europa.eu/en/downloads/68115/en
+    page_or_section: III.5 Dry Weight
+  quote: 5. Dry Weight ... Model Weight(*) (kg) ... 2065.7
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: TCDS table text flattened by pdftotext -layout; quote shows cells as extracted. Wikipedia gives 4,554 lb (2,066 kg) - consistent.
+- engine: GE Passport 20
+  core_family: 'GE eCore (CFM LEAP / GE Passport): 10-stage HPC, 2-stage HPT'
+  quantity: max EGT (indicated)
+  value: 1035
+  unit: degC
+  conditions: Take-off 5 min; max continuous 995; 15-s excursion 1077
+  source:
+    title: EASA TCDS IM.E.113 GE Passport 20 Series Engine, Issue 06, 26 May 2026
+    url: https://www.easa.europa.eu/en/downloads/68115/en
+    page_or_section: IV.1 Temperature Limits
+  quote: Passport 20-18BB1A 750(**) 1035 1077 995 875 975
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: 'TCDS table text flattened by pdftotext -layout; quote shows cells as extracted. Column order: ground start, take-off, 15-s excursion, MC, inflight starts.'
+- engine: GE Passport 20
+  core_family: 'GE eCore (CFM LEAP / GE Passport): 10-stage HPC, 2-stage HPT'
+  quantity: EASA type certification date
+  value: '2018-12-18'
+  unit: date
+  conditions: -17BB1A/-18BB1A/-19BB1A; -19BB1B on 2025-12-16
+  source:
+    title: EASA TCDS IM.E.113 GE Passport 20 Series Engine, Issue 06, 26 May 2026
+    url: https://www.easa.europa.eu/en/downloads/68115/en
+    page_or_section: I.5
+  quote: Passport 20-17BB1A Passport 20-18BB1A 18 December 2018 Passport 20-19BB1A Passport 20-19BB1B 16 December 2025
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: TCDS table text flattened by pdftotext -layout; quote shows cells as extracted. FAA certification April 2016 per Wikipedia.
+- engine: GE Passport 20
+  core_family: 'GE eCore (CFM LEAP / GE Passport): 10-stage HPC, 2-stage HPT'
+  quantity: fan diameter
+  value: 52
+  unit: in
+  conditions: '-'
+  source:
+    title: 'Wikipedia: General Electric Passport'
+    url: https://en.wikipedia.org/wiki/General_Electric_Passport
+    page_or_section: lead
+  quote: a twin-spool axial engine with a 5.6:1 [[bypass ratio]], a 45:1 [[overall pressure ratio]] and one-piece {{cvt|52|in|cm}} titanium fan [[blisk]] with 18 blades.
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation.
+- engine: GE Passport 20
+  core_family: 'GE eCore (CFM LEAP / GE Passport): 10-stage HPC, 2-stage HPT'
+  quantity: hot-structure capability
+  value: 1000 degC CMC core cowl / mixer
+  unit: degC
+  conditions: ox-ox CMC
+  source:
+    title: 'Wikipedia: General Electric Passport'
+    url: https://en.wikipedia.org/wiki/General_Electric_Passport
+    page_or_section: Design
+  quote: Its core [[cowling]], [[Jet nozzle|exhaust cone]] and [[exhaust mixer|mixer]] are made in ox-ox composites, with inorganic high-temperature-tolerant resins and oxide ceramics [[ceramic matrix composite|CMC]]s
+    to withstand 1,000&nbsp;°C without deformation
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation. Affinity mixer was 'similar to the GE Passport ceramic matrix composite
+    design' (Wikipedia Affinity).
+- engine: GE Passport 20
+  core_family: 'GE eCore (CFM LEAP / GE Passport): 10-stage HPC, 2-stage HPT'
+  quantity: thrust (marketing)
+  value: nearly 19,000
+  unit: lbf
+  conditions: '-'
+  source:
+    title: GE Aerospace Passport product page
+    url: https://www.geaerospace.com/commercial/aircraft-engines/passport
+    page_or_section: body
+  quote: At nearly 19,000 pounds of thrust, GE Aerospace’s Passport engine powers Bombardier’s latest and most elite ultra-long range business jet, the Global 7500 and 8000.
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: ''
+- engine: CFM LEAP-1A
+  core_family: 'GE eCore (CFM LEAP / GE Passport): 10-stage HPC, 2-stage HPT'
+  quantity: architecture
+  value: 1 fan, 3 LPC, 10 HPC, 2 HPT, 7 LPT
+  unit: '-'
+  conditions: '-'
+  source:
+    title: EASA TCDS E.110 LEAP-1A & LEAP-1C series engines
+    url: https://www.easa.europa.eu/en/downloads/20086/en
+    page_or_section: III.2 Description
+  quote: single stage fan, 3-stage low pressure compressor (LPC), 10-stage high pressure compressor (HPC) • annular combustion chamber • 2-stage high pressure turbine (HPT), 7-stage low pressure turbine
+    (LPT)
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: ''
+- engine: CFM LEAP-1A
+  core_family: 'GE eCore (CFM LEAP / GE Passport): 10-stage HPC, 2-stage HPT'
+  quantity: take-off thrust
+  value: 10680-14305
+  unit: daN
+  conditions: SLS
+  source:
+    title: EASA TCDS E.110 LEAP-1A & LEAP-1C series engines
+    url: https://www.easa.europa.eu/en/downloads/20086/en
+    page_or_section: III.6 Ratings
+  quote: Take-Off Thrust (daN) ... 10680 10680 12064 12064 13029 14305 14305 14305
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: TCDS table text flattened by pdftotext -layout; quote shows cells as extracted.
+- engine: CFM LEAP-1A
+  core_family: 'GE eCore (CFM LEAP / GE Passport): 10-stage HPC, 2-stage HPT'
+  quantity: weight with fluids
+  value: 2990 (G01) / 3008 (G02+)
+  unit: kg
+  conditions: basic engine incl. oil, fuel
+  source:
+    title: EASA TCDS E.110 LEAP-1A & LEAP-1C series engines
+    url: https://www.easa.europa.eu/en/downloads/20086/en
+    page_or_section: III.5 Weight
+  quote: With fluids (oil, fuel) 2990 3008
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: TCDS table text flattened by pdftotext -layout; quote shows cells as extracted.
+- engine: CFM LEAP-1A
+  core_family: 'GE eCore (CFM LEAP / GE Passport): 10-stage HPC, 2-stage HPT'
+  quantity: max EGT (indicated)
+  value: 1060
+  unit: degC
+  conditions: Take-off; MC 1025; EGT=T48 at LPT inlet
+  source:
+    title: EASA TCDS E.110 LEAP-1A & LEAP-1C series engines
+    url: https://www.easa.europa.eu/en/downloads/20086/en
+    page_or_section: IV.1.1 EGT
+  quote: 'The Exhaust Gas Temperature (EGT=T48) is measured at the low pressure turbine inlet. Maximum Exhaust Gas Temperature (Indicated): • Take-Off: 1060 • Maximum Continuous: 1025'
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: ''
+- engine: CFM LEAP-1A
+  core_family: 'GE eCore (CFM LEAP / GE Passport): 10-stage HPC, 2-stage HPT'
+  quantity: EASA type certification date
+  value: '2015-11-20'
+  unit: date
+  conditions: LEAP-1A35A; most -1A ratings 2016-03-11
+  source:
+    title: EASA TCDS E.110 LEAP-1A & LEAP-1C series engines
+    url: https://www.easa.europa.eu/en/downloads/20086/en
+    page_or_section: I.5
+  quote: LEAP-1A35A 20 November 2015 LEAP-1A23, LEAP-1A24, LEAP-1A24E1, LEAP-1A26, LEAP-1A26E1, 11 March 2016
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: TCDS table text flattened by pdftotext -layout; quote shows cells as extracted.
+- engine: CFM LEAP-1B
+  core_family: 'GE eCore (CFM LEAP / GE Passport): 10-stage HPC, 2-stage HPT'
+  quantity: architecture
+  value: 1 fan, 3 LPC, 10 HPC, 2 HPT, 5 LPT
+  unit: '-'
+  conditions: '-'
+  source:
+    title: EASA TCDS E.115 LEAP-1B series engines
+    url: https://www.easa.europa.eu/en/downloads/20810/en
+    page_or_section: III.2 Description
+  quote: single stage fan, 3-stage low pressure compressor (LPC), 10-stage high pressure compressor (HPC) • annular combustion chamber • 2-stage high pressure turbine (HPT), 5-stage low pressure turbine
+    (LPT)
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: ''
+- engine: CFM LEAP-1B
+  core_family: 'GE eCore (CFM LEAP / GE Passport): 10-stage HPC, 2-stage HPT'
+  quantity: take-off thrust
+  value: 11127-13041
+  unit: daN
+  conditions: SLS
+  source:
+    title: EASA TCDS E.115 LEAP-1B series engines
+    url: https://www.easa.europa.eu/en/downloads/20810/en
+    page_or_section: III.6 Ratings
+  quote: 11127 11524 11915 12471 13041
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: TCDS table text flattened by pdftotext -layout; quote shows cells as extracted.
+- engine: CFM LEAP-1B
+  core_family: 'GE eCore (CFM LEAP / GE Passport): 10-stage HPC, 2-stage HPT'
+  quantity: dry weight
+  value: <=2780
+  unit: kg
+  conditions: dry, basic engine equipment
+  source:
+    title: EASA TCDS E.115 LEAP-1B series engines
+    url: https://www.easa.europa.eu/en/downloads/20810/en
+    page_or_section: III.5 Weight
+  quote: Weight of the dry engine, including basic engine equipment, will not exceed 2780 kg
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: ''
+- engine: CFM LEAP-1B
+  core_family: 'GE eCore (CFM LEAP / GE Passport): 10-stage HPC, 2-stage HPT'
+  quantity: max EGT
+  value: 1060 / 1040
+  unit: degC
+  conditions: Take-off / MC (indicated 1038/1013), post SB 72-0169
+  source:
+    title: EASA TCDS E.115 LEAP-1B series engines
+    url: https://www.easa.europa.eu/en/downloads/20810/en
+    page_or_section: IV.1.1 EGT
+  quote: LEAP-1B21, LEAP-1B23, LEAP-1B28B2C 1060 1040 LEAP-1B28BBJ1, LEAP-1B28BBJ2 (indicated 1038) (indicated 1013)
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: TCDS table text flattened by pdftotext -layout; quote shows cells as extracted.
+- engine: CFM LEAP-1B
+  core_family: 'GE eCore (CFM LEAP / GE Passport): 10-stage HPC, 2-stage HPT'
+  quantity: EASA type certification date
+  value: '2016-05-04'
+  unit: date
+  conditions: LEAP-1B28, -1B28B2
+  source:
+    title: EASA TCDS E.115 LEAP-1B series engines
+    url: https://www.easa.europa.eu/en/downloads/20810/en
+    page_or_section: I.5
+  quote: LEAP-1B28, LEAP-1B28B2 04 May 2016
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: ''
+- engine: CFM LEAP
+  core_family: 'GE eCore (CFM LEAP / GE Passport): 10-stage HPC, 2-stage HPT'
+  quantity: HPC pressure ratio
+  value: 22
+  unit: :1
+  conditions: '-'
+  source:
+    title: 'Wikipedia: CFM International LEAP'
+    url: https://en.wikipedia.org/wiki/CFM_International_LEAP
+    page_or_section: lead/design
+  quote: The high-pressure compressor has a pressure ratio of 22:1, approximately double that of the CFM56.
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation. Leeham 2017 says ~20.
+- engine: CFM LEAP
+  core_family: 'GE eCore (CFM LEAP / GE Passport): 10-stage HPC, 2-stage HPT'
+  quantity: overall pressure ratio
+  value: 40 (50 at top of climb)
+  unit: :1
+  conditions: '-'
+  source:
+    title: 'Wikipedia: CFM International LEAP'
+    url: https://en.wikipedia.org/wiki/CFM_International_LEAP
+    page_or_section: Specifications
+  quote: '! [[Overall pressure ratio]] | colspan=3 | 40:1 (50:1 at top of climb)'
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation.
+- engine: CFM LEAP
+  core_family: 'GE eCore (CFM LEAP / GE Passport): 10-stage HPC, 2-stage HPT'
+  quantity: bypass ratio
+  value: 11 (-1A/-1C), 9 (-1B)
+  unit: :1
+  conditions: '-'
+  source:
+    title: 'Wikipedia: CFM International LEAP'
+    url: https://en.wikipedia.org/wiki/CFM_International_LEAP
+    page_or_section: Specifications
+  quote: '! [[Bypass ratio]] | 11:1 || 9:1 || 11:1'
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation.
+- engine: CFM LEAP
+  core_family: 'GE eCore (CFM LEAP / GE Passport): 10-stage HPC, 2-stage HPT'
+  quantity: fan diameter
+  value: 78 (-1A), 69.4 (-1B)
+  unit: in
+  conditions: '-'
+  source:
+    title: 'Wikipedia: CFM International LEAP'
+    url: https://en.wikipedia.org/wiki/CFM_International_LEAP
+    page_or_section: Specifications
+  quote: '! Fan diameter | {{convert|78|in|cm|0|abbr=on}} || {{convert|69.4|in|cm|0|abbr=on}} || {{convert|77|in|cm|0|abbr=on}}'
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation.
+- engine: CFM LEAP
+  core_family: 'GE eCore (CFM LEAP / GE Passport): 10-stage HPC, 2-stage HPT'
+  quantity: export control event
+  value: US paused LEAP exports to COMAC May-July 2025
+  unit: '-'
+  conditions: '-'
+  source:
+    title: 'Wikipedia: CFM International LEAP'
+    url: https://en.wikipedia.org/wiki/CFM_International_LEAP
+    page_or_section: Development
+  quote: In May 2025, the United States Department of Commerce paused the export of LEAP engines to [[Commercial Aircraft Corporation of China|COMAC]]. The restrictions were lifted in July 2025
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation. Shows US Commerce (EAR) leverage over CFM products despite 50% French
+    share.
+- engine: CFM LEAP
+  core_family: 'GE eCore (CFM LEAP / GE Passport): 10-stage HPC, 2-stage HPT'
+  quantity: operating limit statement
+  value: lower operating limit than CFM56 for durability
+  unit: '-'
+  conditions: '-'
+  source:
+    title: 'Wikipedia: CFM International LEAP'
+    url: https://en.wikipedia.org/wiki/CFM_International_LEAP
+    page_or_section: Design
+  quote: Although designed with a higher overall pressure ratio than the CFM56, the engine operating limit is lower  to improve durability and service life.
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation.
+- engine: PW1500G
+  core_family: Pratt & Whitney PW1000G / PW800 core (8-stage HPC, 2-stage HPT)
+  quantity: architecture
+  value: geared fan, 3 LPC, 8 HPC, 2 HPT, 3 LPT
+  unit: '-'
+  conditions: '-'
+  source:
+    title: EASA TCDS IM.E.090 PW1500G Series Engines, Issue 11, 21 Sep 2026
+    url: https://www.easa.europa.eu/en/downloads/20863/en
+    page_or_section: III.2 Description
+  quote: The Low Pressure spool consists of a three-stage Low Pressure Turbine that drives a ... three-stage Low Pressure Compressor, and single stage high bypass Fan through the ratio Fan Drive Gear ...
+    speed reduction System. The High Pressure Compressor has eight axial stages driven by a two-stage cooled High Pressure Turbine.
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: ''
+- engine: PW1500G
+  core_family: Pratt & Whitney PW1000G / PW800 core (8-stage HPC, 2-stage HPT)
+  quantity: take-off thrust
+  value: 8796-10854
+  unit: daN
+  conditions: SLS, flat rated 30 degC
+  source:
+    title: EASA TCDS IM.E.090 PW1500G Series Engines, Issue 11, 21 Sep 2026
+    url: https://www.easa.europa.eu/en/downloads/20863/en
+    page_or_section: III.6 Ratings
+  quote: PW1519G 8796 (19775) 30 (86) ... PW1524G / PW1524G-3 10854 (24400) 30 (86)
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: TCDS table text flattened by pdftotext -layout; quote shows cells as extracted.
+- engine: PW1500G
+  core_family: Pratt & Whitney PW1000G / PW800 core (8-stage HPC, 2-stage HPT)
+  quantity: dry weight
+  value: 2177
+  unit: kg
+  conditions: all models
+  source:
+    title: EASA TCDS IM.E.090 PW1500G Series Engines, Issue 11, 21 Sep 2026
+    url: https://www.easa.europa.eu/en/downloads/20863/en
+    page_or_section: III.5 Dry Weight
+  quote: 2177 kg All Models (4800 lbs)
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: TCDS table text flattened by pdftotext -layout; quote shows cells as extracted.
+- engine: PW1500G
+  core_family: Pratt & Whitney PW1000G / PW800 core (8-stage HPC, 2-stage HPT)
+  quantity: max ITT
+  value: 1054
+  unit: degC
+  conditions: Take-off 5 min; MC 1017
+  source:
+    title: EASA TCDS IM.E.090 PW1500G Series Engines, Issue 11, 21 Sep 2026
+    url: https://www.easa.europa.eu/en/downloads/20863/en
+    page_or_section: IV.1 Temperature Limits
+  quote: 1054 (1929) 1017 (1863) 1054 (1929)
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: TCDS table text flattened by pdftotext -layout; quote shows cells as extracted.
+- engine: PW1500G
+  core_family: Pratt & Whitney PW1000G / PW800 core (8-stage HPC, 2-stage HPT)
+  quantity: EASA type certification date
+  value: '2016-05-18'
+  unit: date
+  conditions: PW1519G/1521G/1524G/1525G
+  source:
+    title: EASA TCDS IM.E.090 PW1500G Series Engines, Issue 11, 21 Sep 2026
+    url: https://www.easa.europa.eu/en/downloads/20863/en
+    page_or_section: I.5
+  quote: PW1519G / PW1521G / PW1524G / PW1525G 18 May 2016
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: ''
+- engine: PW1100G-JM
+  core_family: Pratt & Whitney PW1000G / PW800 core (8-stage HPC, 2-stage HPT)
+  quantity: architecture
+  value: geared fan, 3 LPC, 8 HPC, 2 HPT, 3 LPT
+  unit: '-'
+  conditions: '-'
+  source:
+    title: EASA TCDS IM.E.093 PW1100G-JM Series Engines, Issue 13, 02 March 2026
+    url: https://www.easa.europa.eu/en/downloads/20016/en
+    page_or_section: III.2 Description
+  quote: The high pressure compressor has eight axial stages driven by a two-stage cooled high pressure turbine.
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: ''
+- engine: PW1100G-JM
+  core_family: Pratt & Whitney PW1000G / PW800 core (8-stage HPC, 2-stage HPT)
+  quantity: take-off thrust (max)
+  value: 147.28
+  unit: kN
+  conditions: SLS, flat rated 30 degC
+  source:
+    title: EASA TCDS IM.E.093 PW1100G-JM Series Engines, Issue 13, 02 March 2026
+    url: https://www.easa.europa.eu/en/downloads/20016/en
+    page_or_section: III.6 Ratings
+  quote: PW1134GA/2-JM* 147.28 kN (33110 lbf) 30°C/86°F
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: TCDS table text flattened by pdftotext -layout; quote shows cells as extracted.
+- engine: PW1100G-JM
+  core_family: Pratt & Whitney PW1000G / PW800 core (8-stage HPC, 2-stage HPT)
+  quantity: dry weight
+  value: 2857.6
+  unit: kg
+  conditions: with EBU1
+  source:
+    title: EASA TCDS IM.E.093 PW1100G-JM Series Engines, Issue 13, 02 March 2026
+    url: https://www.easa.europa.eu/en/downloads/20016/en
+    page_or_section: III.5 Dry Weight
+  quote: 2857.6 kg (6300 lbs)
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: ''
+- engine: PW1100G-JM
+  core_family: Pratt & Whitney PW1000G / PW800 core (8-stage HPC, 2-stage HPT)
+  quantity: max ITT
+  value: 1083
+  unit: degC
+  conditions: Take-off; MC 1043 (original-standard models)
+  source:
+    title: EASA TCDS IM.E.093 PW1100G-JM Series Engines, Issue 13, 02 March 2026
+    url: https://www.easa.europa.eu/en/downloads/20016/en
+    page_or_section: IV.1 Temperature Limits
+  quote: Take-Off (5 minutes)* Maximum Continuous At start-up 1083°C (1982°F) 1043°C (1909°F) 1083°C (1982°F)
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: ''
+- engine: PW1100G-JM
+  core_family: Pratt & Whitney PW1000G / PW800 core (8-stage HPC, 2-stage HPT)
+  quantity: TC holder / origin
+  value: International Aero Engines (IAE), LLC
+  unit: '-'
+  conditions: '-'
+  source:
+    title: EASA TCDS IM.E.093 PW1100G-JM Series Engines, Issue 13, 02 March 2026
+    url: https://www.easa.europa.eu/en/downloads/20016/en
+    page_or_section: header
+  quote: 'TCDS No.: IM.E.093 ... International Aero Engines (IAE), LLC ... PW1100G-JM Series Engines'
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: IM. prefix = imported (validated) product; state of design is USA.
+- engine: PW1000G family
+  core_family: Pratt & Whitney PW1000G / PW800 core (8-stage HPC, 2-stage HPT)
+  quantity: fan diameter / BPR
+  value: 81 in / 12.5 (PW1100G); 73 in / 12 (PW1500G)
+  unit: '-'
+  conditions: '-'
+  source:
+    title: 'Wikipedia: Pratt & Whitney PW1000G'
+    url: https://en.wikipedia.org/wiki/Pratt_%26_Whitney_PW1000G
+    page_or_section: Specifications table
+  quote: '! Fan Diameter | colspan=2 | {{convert|81|in|cm|0|abbr=on}}, 20 blades | colspan="3" | {{convert|73|in|cm|0|abbr=on}}, 18 blades'
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation.
+- engine: PW1000G core (PW9000 proposal)
+  core_family: Pratt & Whitney PW1000G / PW800 core (8-stage HPC, 2-stage HPT)
+  quantity: military medium-bypass derivative
+  value: 4:1 BPR, direct-drive fan on PW1000G core
+  unit: '-'
+  conditions: 2010 proposal
+  source:
+    title: 'Wikipedia: Pratt & Whitney PW1000G'
+    url: https://en.wikipedia.org/wiki/Pratt_%26_Whitney_PW1000G
+    page_or_section: Military derivatives
+  quote: In 2010, Pratt & Whitney proposed the PW9000 as a family of military engines based on the PW1000G core. One variant was a medium-bypass engine for the [[Next-Generation Bomber]], using a low-pressure
+    section akin to the [[Pratt & Whitney F135|F135]] and the PW1000G core with a direct-drive fan for a 4:1 [[bypass ratio]].
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation. Shows P&W considered this core for a medium-BPR direct-drive engine -
+    closest analogue to an SSBJ cycle. Wikipedia adds B-21 is 'reputed' to use it (unconfirmed).
+- engine: PW814GA / PW815GA
+  core_family: Pratt & Whitney PW1000G / PW800 core (8-stage HPC, 2-stage HPT)
+  quantity: core commonality with PW1000G
+  value: PW814/815 share PW1500G core; PW812D shares PW1200G core
+  unit: '-'
+  conditions: '-'
+  source:
+    title: 'Wikipedia: Pratt & Whitney Canada PW800'
+    url: https://en.wikipedia.org/wiki/Pratt_%26_Whitney_Canada_PW800
+    page_or_section: Development
+  quote: While the PW814/PW815 shares the core of the PW1500G (powering the [[Airbus A220]]) ... and the PW812D shares the core of the PW1200G (powering the [[Mitsubishi MRJ]]), neither model ultimately
+    incorporated the reduction gear system.
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation. Consistent with TCDS (both 8-stage HPC + 2-stage HPT) - commonality itself
+    not stated in TCDS.
+- engine: PW814GA / PW815GA
+  core_family: Pratt & Whitney PW1000G / PW800 core (8-stage HPC, 2-stage HPT)
+  quantity: architecture
+  value: fan, 2 boost, 8 HPC, 2 HPT, 5 LPT (direct drive)
+  unit: '-'
+  conditions: '-'
+  source:
+    title: EASA TCDS IM.E.096 PW800 Series Engines, Issue 07, 08 October 2025
+    url: https://www.easa.europa.eu/en/downloads/33453/en
+    page_or_section: III.2 Description
+  quote: consisting of an eight-stage axial High-Pressure Compressor (HPC), a straight flow annular low emission combustor and a two-stage High Pressure Turbine (HPT). ... pressure rotor consists of a fan,
+    two boost stages and an axial five-stage Low Pressure Turbine (LPT) connected by a one-piece shaft.
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: ''
+- engine: PW814GA / PW815GA / PW812
+  core_family: Pratt & Whitney PW1000G / PW800 core (8-stage HPC, 2-stage HPT)
+  quantity: take-off thrust
+  value: 6863 / 7122 / 6161 (PW812D)
+  unit: daN
+  conditions: SLS; flat rated 33 degC (PW814/815), 35 degC (PW812D)
+  source:
+    title: EASA TCDS IM.E.096 PW800 Series Engines, Issue 07, 08 October 2025
+    url: https://www.easa.europa.eu/en/downloads/33453/en
+    page_or_section: III.6 Ratings
+  quote: PW814GA 6863 (15,429) 33 (91.4) 6296 (14,155) 28 (82.4) PW815GA 7122 (16,011) 33 (91.4) 6925 (15,568) 28 (82.4) PW812D 6161 (13,850) 35 (95)
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: TCDS table text flattened by pdftotext -layout; quote shows cells as extracted.
+- engine: PW814GA / PW815GA
+  core_family: Pratt & Whitney PW1000G / PW800 core (8-stage HPC, 2-stage HPT)
+  quantity: dry weight
+  value: 1408
+  unit: kg
+  conditions: at certification, +/-2%
+  source:
+    title: EASA TCDS IM.E.096 PW800 Series Engines, Issue 07, 08 October 2025
+    url: https://www.easa.europa.eu/en/downloads/33453/en
+    page_or_section: III.5 Dry Weight
+  quote: PW814GA 1408* kg (3105 lbs) PW815GA ... * This is the weight at time of certification, subject to change ± 2% max
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: Conflicts with Wikipedia 3,135.7 lb (FAA). Keep both.
+- engine: PW814GA / PW815GA
+  core_family: Pratt & Whitney PW1000G / PW800 core (8-stage HPC, 2-stage HPT)
+  quantity: fan case nominal diameter
+  value: 1.255
+  unit: m
+  conditions: '-'
+  source:
+    title: EASA TCDS IM.E.096 PW800 Series Engines, Issue 07, 08 October 2025
+    url: https://www.easa.europa.eu/en/downloads/33453/en
+    page_or_section: III.4 Dimensions
+  quote: PW814GA 2.685 3.313 1.255 0.990 PW815GA
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: 'TCDS table text flattened by pdftotext -layout; quote shows cells as extracted. Wikipedia: 50 in fan case.'
+- engine: PW814GA / PW815GA / PW812
+  core_family: Pratt & Whitney PW1000G / PW800 core (8-stage HPC, 2-stage HPT)
+  quantity: max ITT
+  value: 965 (814GA) / 975 (815GA) / 985 (812D)
+  unit: degC
+  conditions: Take-off 5 min; MC 956 (814/815)
+  source:
+    title: EASA TCDS IM.E.096 PW800 Series Engines, Issue 07, 08 October 2025
+    url: https://www.easa.europa.eu/en/downloads/33453/en
+    page_or_section: IV.1 Temperature Limits
+  quote: PW814GA 965 (1769) 956 (1753) PW815GA 975 (1787) PW812D 985 (1805) 920 (1688)
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: TCDS table text flattened by pdftotext -layout; quote shows cells as extracted.
+- engine: PW814GA / PW815GA
+  core_family: Pratt & Whitney PW1000G / PW800 core (8-stage HPC, 2-stage HPT)
+  quantity: EASA type certification date
+  value: '2017-08-31'
+  unit: date
+  conditions: PW812D 2022-08-05
+  source:
+    title: EASA TCDS IM.E.096 PW800 Series Engines, Issue 07, 08 October 2025
+    url: https://www.easa.europa.eu/en/downloads/33453/en
+    page_or_section: I.5
+  quote: PW814GA ... 31 August 2017 ... PW815GA ... PW812D 05 August 2022
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: Transport Canada TC Feb 2015 per Wikipedia.
+- engine: PW814GA
+  core_family: Pratt & Whitney PW1000G / PW800 core (8-stage HPC, 2-stage HPT)
+  quantity: bypass ratio
+  value: 5.5 (approx)
+  unit: :1
+  conditions: '-'
+  source:
+    title: 'Wikipedia: Pratt & Whitney Canada PW800'
+    url: https://en.wikipedia.org/wiki/Pratt_%26_Whitney_Canada_PW800
+    page_or_section: Specifications
+  quote: '|bypass=5.5:1 (approx)'
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation. Cites Aviation Week 1 Nov 2014. OPR not found in any source read.
+- engine: PW800
+  core_family: Pratt & Whitney PW1000G / PW800 core (8-stage HPC, 2-stage HPT)
+  quantity: European workshare
+  value: 'MTU 15%: LPT and various HPC stages'
+  unit: '-'
+  conditions: '-'
+  source:
+    title: MTU Aero Engines PW800 page
+    url: https://www.mtu.de/engines/commercial-aircraft-engines/business-jets/pw800/
+    page_or_section: Partner box
+  quote: 'Program share: 15% ... Development and manufacture of the low-pressure turbine (LPT) and various stages of the high-pressure compressor'
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Relevant to European content of the core (HPC stages from MTU Germany).
+- engine: PW800
+  core_family: Pratt & Whitney PW1000G / PW800 core (8-stage HPC, 2-stage HPT)
+  quantity: thrust category
+  value: 10,000-20,000
+  unit: lbf
+  conditions: family
+  source:
+    title: MTU Aero Engines PW800 page
+    url: https://www.mtu.de/engines/commercial-aircraft-engines/business-jets/pw800/
+    page_or_section: body
+  quote: The PW800 is a two-shaft turbofan engine with a thrust category of 10,000–20,000 lbf
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: ''
+- engine: BR700 family
+  core_family: 'Rolls-Royce Deutschland BR700 / Pearl (Advance2 ''Pearl core''): 10-stage HPC, 2-stage HPT'
+  quantity: manufacturer / origin
+  value: Rolls-Royce Deutschland, Dahlewitz, Germany
+  unit: '-'
+  conditions: '-'
+  source:
+    title: 'Wikipedia: Rolls-Royce BR700 (incl. Pearl family)'
+    url: https://en.wikipedia.org/wiki/Rolls-Royce_BR700
+    page_or_section: lead
+  quote: 'It is manufactured in [[Dahlewitz]], Germany, by [[Rolls-Royce Deutschland]]: this was initially a joint venture of [[BMW]] and [[Rolls-Royce plc]] established in 1990 to develop this engine.'
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation. TCDS E.135 confirms manufacturer 'Rolls-Royce Deutschland Ltd. & Co.
+    KG'. EASA (not IM.) TCDS = EU state of design.
+- engine: BR725 (BR700-725A1-12)
+  core_family: 'Rolls-Royce Deutschland BR700 / Pearl (Advance2 ''Pearl core''): 10-stage HPC, 2-stage HPT'
+  quantity: architecture
+  value: 1 fan, 10 HPC, 2 HPT, 3 LPT
+  unit: '-'
+  conditions: '-'
+  source:
+    title: EASA TCDS E.018 BR700-710 engines (incl. BR700-725A1-12 and BR700-710D5-21 Pearl 15), Issue 16, 24 October 2023
+    url: https://www.easa.europa.eu/en/downloads/7767/en
+    page_or_section: III.2 Description
+  quote: Two spool axial flow engine consisting of a single stage fan, a ten stage axial flow high pressure compressor, an annular combustion chamber, a two stage axial flow high pressure turbine, a two/three*
+    stage axial flow low pressure turbine
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: ''
+- engine: BR725 (BR700-725A1-12)
+  core_family: 'Rolls-Royce Deutschland BR700 / Pearl (Advance2 ''Pearl core''): 10-stage HPC, 2-stage HPT'
+  quantity: take-off thrust
+  value: 75.2
+  unit: kN
+  conditions: SLS; MC 66.6 kN
+  source:
+    title: EASA TCDS E.018 BR700-710 engines (incl. BR700-725A1-12 and BR700-710D5-21 Pearl 15), Issue 16, 24 October 2023
+    url: https://www.easa.europa.eu/en/downloads/7767/en
+    page_or_section: III.6 Ratings
+  quote: Take off 65,6 kN 65,6 kN 68,4 kN 75,2 kN 67,8 kN
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: TCDS table text flattened by pdftotext -layout; quote shows cells as extracted. Column 4 = BR700-725A1-12, column 5 = BR700-710D5-21 (Pearl 15).
+- engine: BR725 (BR700-725A1-12)
+  core_family: 'Rolls-Royce Deutschland BR700 / Pearl (Advance2 ''Pearl core''): 10-stage HPC, 2-stage HPT'
+  quantity: dry weight
+  value: 1635.2
+  unit: kg
+  conditions: excl. thrust reverser and fluids
+  source:
+    title: EASA TCDS E.018 BR700-710 engines (incl. BR700-725A1-12 and BR700-710D5-21 Pearl 15), Issue 16, 24 October 2023
+    url: https://www.easa.europa.eu/en/downloads/7767/en
+    page_or_section: III.5 Dry Weight
+  quote: 1851,2 kg 1891,0 kg 1818,4 kg 1635,2 kg 1828,8 kg
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: TCDS table text flattened by pdftotext -layout; quote shows cells as extracted.
+- engine: BR725 (BR700-725A1-12)
+  core_family: 'Rolls-Royce Deutschland BR700 / Pearl (Advance2 ''Pearl core''): 10-stage HPC, 2-stage HPT'
+  quantity: max TGT (trimmed)
+  value: 900
+  unit: degC
+  conditions: Take-off; MC 885; 20-s overtemp 920
+  source:
+    title: EASA TCDS E.018 BR700-710 engines (incl. BR700-725A1-12 and BR700-710D5-21 Pearl 15), Issue 16, 24 October 2023
+    url: https://www.easa.europa.eu/en/downloads/7767/en
+    page_or_section: IV.1 Temperature Limits
+  quote: Take-off * 900 °C 900°C 890°C ... Maximum Continuous 860 °C 885°C 850°C Maximum 905°C 920°C 915°C
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: 'TCDS table text flattened by pdftotext -layout; quote shows cells as extracted. Columns: BR710, BR725, Pearl 15.'
+- engine: BR725 (BR700-725A1-12)
+  core_family: 'Rolls-Royce Deutschland BR700 / Pearl (Advance2 ''Pearl core''): 10-stage HPC, 2-stage HPT'
+  quantity: EASA type certification date
+  value: '2009-06-23'
+  unit: date
+  conditions: '-'
+  source:
+    title: EASA TCDS E.018 BR700-710 engines (incl. BR700-725A1-12 and BR700-710D5-21 Pearl 15), Issue 16, 24 October 2023
+    url: https://www.easa.europa.eu/en/downloads/7767/en
+    page_or_section: I.5
+  quote: BR700-725A1-12 BR700-710D5-21 ... 23 June 2009 28 February 2018
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: TCDS table text flattened by pdftotext -layout; quote shows cells as extracted.
+- engine: BR725
+  core_family: 'Rolls-Royce Deutschland BR700 / Pearl (Advance2 ''Pearl core''): 10-stage HPC, 2-stage HPT'
+  quantity: bypass ratio / fan diameter
+  value: 4.2 / 50 in
+  unit: '-'
+  conditions: '-'
+  source:
+    title: 'Wikipedia: Rolls-Royce BR700 (incl. Pearl family)'
+    url: https://en.wikipedia.org/wiki/Rolls-Royce_BR700
+    page_or_section: BR725
+  quote: The BR725 has a [[bypass ratio]] of 4.2:1 and is 4 [[Decibel|dB]] quieter than the predecessor BR710.
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: 'Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation. Fan: ''The {{cvt|50|in|cm}} fan with 24 swept blades''. Spec table conflicts:
+    BPR 4.1:1.'
+- engine: BR725 / F130
+  core_family: 'Rolls-Royce Deutschland BR700 / Pearl (Advance2 ''Pearl core''): 10-stage HPC, 2-stage HPT'
+  quantity: military use
+  value: F130 for B-52H CERP, 17,000 lbf
+  unit: lbf
+  conditions: '-'
+  source:
+    title: 'Wikipedia: Rolls-Royce BR700 (incl. Pearl family)'
+    url: https://en.wikipedia.org/wiki/Rolls-Royce_BR700
+    page_or_section: BR725
+  quote: On 24 September 2021, the [[United States Air Force]] (USAF) selected the F130 (the US military designation for the BR725) for the [[Boeing B-52 Stratofortress|B-52H Stratofortress]] [[B-52 Commercial
+    Engine Replacement Program|Commercial Engine Replacement Program]] (CERP).
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation. F130 is built in the US for USAF; the civil BR725/Pearl remains German-built.
+- engine: Pearl 15 (BR700-710D5-21)
+  core_family: 'Rolls-Royce Deutschland BR700 / Pearl (Advance2 ''Pearl core''): 10-stage HPC, 2-stage HPT'
+  quantity: OPR / BPR
+  value: 43 / 4.8
+  unit: :1
+  conditions: '-'
+  source:
+    title: 'Wikipedia: Rolls-Royce BR700 (incl. Pearl family)'
+    url: https://en.wikipedia.org/wiki/Rolls-Royce_BR700
+    page_or_section: Pearl 15
+  quote: Its [[overall pressure ratio]] attains 43:1 and its [[bypass ratio]] 4.8:1.
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation.
+- engine: Pearl 15 (BR700-710D5-21)
+  core_family: 'Rolls-Royce Deutschland BR700 / Pearl (Advance2 ''Pearl core''): 10-stage HPC, 2-stage HPT'
+  quantity: take-off thrust / weight / TGT
+  value: 67.8 kN / 1828.8 kg / 890 degC TO
+  unit: '-'
+  conditions: '-'
+  source:
+    title: EASA TCDS E.018 BR700-710 engines (incl. BR700-725A1-12 and BR700-710D5-21 Pearl 15), Issue 16, 24 October 2023
+    url: https://www.easa.europa.eu/en/downloads/7767/en
+    page_or_section: III.5, III.6, IV.1
+  quote: BR700-710D5-21 ... 1828,8 kg ... 67,8 kN ... Take-off * ... 890°C
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: TCDS table text flattened by pdftotext -layout; quote shows cells as extracted. EASA cert 28 Feb 2018.
+- engine: Pearl 700 (BR700-730B2-14)
+  core_family: 'Rolls-Royce Deutschland BR700 / Pearl (Advance2 ''Pearl core''): 10-stage HPC, 2-stage HPT'
+  quantity: architecture
+  value: 1 fan, 10 HPC, 2 HPT, 4 LPT
+  unit: '-'
+  conditions: '-'
+  source:
+    title: EASA TCDS E.135 BR700-730 engines (Pearl 700), Issue 02, 12 October 2023
+    url: https://www.easa.europa.eu/en/downloads/137046/en
+    page_or_section: III.2 Description
+  quote: The BR700-730B2-14 engine is a two spool axial flow engine consisting of a single stage fan, a ten stage axial flow high pressure compressor, an annular combustion chamber, a two stage axial flow
+    high pressure turbine, a four stage axial flow low pressure turbine
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: ''
+- engine: Pearl 700 (BR700-730B2-14)
+  core_family: 'Rolls-Royce Deutschland BR700 / Pearl (Advance2 ''Pearl core''): 10-stage HPC, 2-stage HPT'
+  quantity: take-off thrust
+  value: 81.2
+  unit: kN
+  conditions: MTO; MCT 72.2 kN
+  source:
+    title: EASA TCDS E.135 BR700-730 engines (Pearl 700), Issue 02, 12 October 2023
+    url: https://www.easa.europa.eu/en/downloads/137046/en
+    page_or_section: III.6 Ratings
+  quote: Maximum Take 81.2 kN ... off (MTO) ... Maximum 72.2 kN ... Continuous
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: TCDS table text flattened by pdftotext -layout; quote shows cells as extracted. = 18,250 lbf per RR.
+- engine: Pearl 700 (BR700-730B2-14)
+  core_family: 'Rolls-Royce Deutschland BR700 / Pearl (Advance2 ''Pearl core''): 10-stage HPC, 2-stage HPT'
+  quantity: dry weight
+  value: 1617.1
+  unit: kg
+  conditions: excl. fluids, EBU, nacelle
+  source:
+    title: EASA TCDS E.135 BR700-730 engines (Pearl 700), Issue 02, 12 October 2023
+    url: https://www.easa.europa.eu/en/downloads/137046/en
+    page_or_section: III.5 Dry Weight
+  quote: BR700-730B2-14 1617.1 kg
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: ''
+- engine: Pearl 700 (BR700-730B2-14)
+  core_family: 'Rolls-Royce Deutschland BR700 / Pearl (Advance2 ''Pearl core''): 10-stage HPC, 2-stage HPT'
+  quantity: max TGT (trimmed)
+  value: 940
+  unit: degC
+  conditions: Take-off and MC 940; 2-min transient 950; max 960
+  source:
+    title: EASA TCDS E.135 BR700-730 engines (Pearl 700), Issue 02, 12 October 2023
+    url: https://www.easa.europa.eu/en/downloads/137046/en
+    page_or_section: IV.1.2 TGT
+  quote: Maximum Take-off 1 940 °C Take-off 950 °C (transient 2 min.) Maximum Continuous 940 °C Maximum 960°C
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: TCDS table text flattened by pdftotext -layout; quote shows cells as extracted.
+- engine: Pearl 700 (BR700-730B2-14)
+  core_family: 'Rolls-Royce Deutschland BR700 / Pearl (Advance2 ''Pearl core''): 10-stage HPC, 2-stage HPT'
+  quantity: climatic envelope
+  value: ISA+40
+  unit: degC
+  conditions: ambient
+  source:
+    title: EASA TCDS E.135 BR700-730 engines (Pearl 700), Issue 02, 12 October 2023
+    url: https://www.easa.europa.eu/en/downloads/137046/en
+    page_or_section: IV.1.1
+  quote: The engine may be used in ambient temperatures up to ISA +40 °C.
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: ''
+- engine: Pearl 700 (BR700-730B2-14)
+  core_family: 'Rolls-Royce Deutschland BR700 / Pearl (Advance2 ''Pearl core''): 10-stage HPC, 2-stage HPT'
+  quantity: EASA type certification date
+  value: '2022-09-14'
+  unit: date
+  conditions: '-'
+  source:
+    title: EASA TCDS E.135 BR700-730 engines (Pearl 700), Issue 02, 12 October 2023
+    url: https://www.easa.europa.eu/en/downloads/137046/en
+    page_or_section: I.6
+  quote: BR700-730B2-14 14th September 2022
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: ''
+- engine: Pearl 700
+  core_family: 'Rolls-Royce Deutschland BR700 / Pearl (Advance2 ''Pearl core''): 10-stage HPC, 2-stage HPT'
+  quantity: HPC stages / pressure ratio
+  value: 10 stages, 24:1
+  unit: '-'
+  conditions: '-'
+  source:
+    title: Rolls-Royce Pearl 700 product page
+    url: https://www.rolls-royce.com/products-and-services/civil-aerospace/business-aviation/pearl-700.aspx
+    page_or_section: technology list
+  quote: 10-stage, lightweight design HPC, featuring 6 titanium blisks and a record 24:1 pressure ratio
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Highest HPC PR among candidates -> highest T3 at supersonic inlet temperatures (inferred, see CANDIDATES.md).
+- engine: Pearl 700
+  core_family: 'Rolls-Royce Deutschland BR700 / Pearl (Advance2 ''Pearl core''): 10-stage HPC, 2-stage HPT'
+  quantity: core = Advance2 'Pearl core'
+  value: BR700 architecture + new Pearl core
+  unit: '-'
+  conditions: '-'
+  source:
+    title: Rolls-Royce Pearl 700 product page
+    url: https://www.rolls-royce.com/products-and-services/civil-aerospace/business-aviation/pearl-700.aspx
+    page_or_section: body
+  quote: Designed in partnership with Gulfstream, the Pearl 700 combines the trusted BR700 architecture with our brand new Pearl core and a number of innovative technologies from our Advance2 portfolio.
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: ''
+- engine: Pearl 700
+  core_family: 'Rolls-Royce Deutschland BR700 / Pearl (Advance2 ''Pearl core''): 10-stage HPC, 2-stage HPT'
+  quantity: OPR / BPR
+  value: '>50 / >6.5'
+  unit: :1
+  conditions: '''should exceed'''
+  source:
+    title: 'Wikipedia: Rolls-Royce BR700 (incl. Pearl family)'
+    url: https://en.wikipedia.org/wiki/Rolls-Royce_BR700
+    page_or_section: Pearl 700
+  quote: its bypass ratio is higher than 6.5:1 and its overall pressure ratio should exceed 50:1.
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation. Cites AvWeek 21 Oct 2019 (projection).
+- engine: Pearl 700
+  core_family: 'Rolls-Royce Deutschland BR700 / Pearl (Advance2 ''Pearl core''): 10-stage HPC, 2-stage HPT'
+  quantity: fan diameter
+  value: 51.8
+  unit: in
+  conditions: blisk fan
+  source:
+    title: 'Wikipedia: Rolls-Royce BR700 (incl. Pearl family)'
+    url: https://en.wikipedia.org/wiki/Rolls-Royce_BR700
+    page_or_section: Pearl 700
+  quote: a fourth low-pressure turbine stage and a {{cvt|2|in|cm}} larger, {{cvt|51.8|in|cm}} blisk fan
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation.
+- engine: Pearl 10X
+  core_family: 'Rolls-Royce Deutschland BR700 / Pearl (Advance2 ''Pearl core''): 10-stage HPC, 2-stage HPT'
+  quantity: thrust
+  value: '>18,000'
+  unit: lbf
+  conditions: '-'
+  source:
+    title: Rolls-Royce Pearl 10X product page
+    url: https://www.rolls-royce.com/products-and-services/civil-aerospace/business-aviation/pearl-10x.aspx
+    page_or_section: body / key figures
+  quote: The Pearl 10X features the Advance2 engine core, the most efficient core available across the business aviation sector, combined with a high-performance low-pressure system, resulting in a superior
+    thrust of more than 18,000lb.
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: ''
+- engine: Pearl 10X
+  core_family: 'Rolls-Royce Deutschland BR700 / Pearl (Advance2 ''Pearl core''): 10-stage HPC, 2-stage HPT'
+  quantity: architecture
+  value: blisk fan, 10 HPC, 2 shroudless HPT, 4 LPT
+  unit: '-'
+  conditions: '-'
+  source:
+    title: 'Wikipedia: Rolls-Royce BR700 (incl. Pearl family)'
+    url: https://en.wikipedia.org/wiki/Rolls-Royce_BR700
+    page_or_section: Pearl 10X
+  quote: The upcoming [[Dassault Falcon 10X]] will be powered by two Pearl 10X engines over {{cvt|18,000|lbf|kN}} thrust, with a titanium fan [[blisk]], a 10-stage {{abbr|HP|high pressure}} compressor,
+    a two-stage shroudless HP turbine and a four-stage {{abbr|LP|low-pressure}} turbine.
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation. No EASA TCDS found for Pearl 10X in search (certification status not
+    confirmed).
+- engine: Pearl 10X
+  core_family: 'Rolls-Royce Deutschland BR700 / Pearl (Advance2 ''Pearl core''): 10-stage HPC, 2-stage HPT'
+  quantity: status
+  value: flying on Falcon 10X (first flight done)
+  unit: '-'
+  conditions: '-'
+  source:
+    title: Rolls-Royce Pearl 10X product page
+    url: https://www.rolls-royce.com/products-and-services/civil-aerospace/business-aviation/pearl-10x.aspx
+    page_or_section: news tile
+  quote: The Pearl 10X successfully powers the first flight of Dassault’s brand-new Falcon 10X business jet
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Date not captured from page text.
+- engine: Rolls-Royce (supersonic engine involvement)
+  core_family: 'Rolls-Royce Deutschland BR700 / Pearl (Advance2 ''Pearl core''): 10-stage HPC, 2-stage HPT'
+  quantity: status of RR supersonic engine work
+  value: RR ended involvement in Boom Overture engine (2022)
+  unit: '-'
+  conditions: '-'
+  source:
+    title: 'Wikipedia: General Electric Affinity'
+    url: https://en.wikipedia.org/wiki/General_Electric_Affinity
+    page_or_section: Development
+  quote: after Rolls-Royce also announced the end of their involvement in the project.
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation. Cites FlightGlobal 8 Sep 2022 'Rolls-Royce exits Boom's supersonic airliner
+    project'. Not BR700-specific; indicates RR appetite.
+- engine: HTF7000 (AS907)
+  core_family: Honeywell HTF7000 / AS907 core (4 axial + 1 centrifugal HPC, 2-stage HPT)
+  quantity: architecture
+  value: 1 fan, 4 axial + 1 centrifugal HPC, 2 HPT, 3 LPT, mixer
+  unit: '-'
+  conditions: '-'
+  source:
+    title: EASA TCDS IM.E.058 Honeywell AS907 series engines (HTF7000 family), Issue 10, 30 July 2026
+    url: https://www.easa.europa.eu/en/downloads/7703/en
+    page_or_section: III.2 Description
+  quote: Turbofan, one stage fan directly driven by a three-stage low pressure turbine, four-stage axial and single stage centrifugal compressor, driven by a two-stage high pressure turbine, annular combustor,
+    bypass duct and exhaust mixer.
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: ''
+- engine: HTF7000 (AS907)
+  core_family: Honeywell HTF7000 / AS907 core (4 axial + 1 centrifugal HPC, 2-stage HPT)
+  quantity: take-off thrust
+  value: 30.73-34.37
+  unit: kN
+  conditions: SLS ISA, 5 min
+  source:
+    title: EASA TCDS IM.E.058 Honeywell AS907 series engines (HTF7000 family), Issue 10, 30 July 2026
+    url: https://www.easa.europa.eu/en/downloads/7703/en
+    page_or_section: III.6 Ratings
+  quote: AS907-1-1A 30.63 30.73 ... AS907-2-1G 32.49 34.37
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: TCDS table text flattened by pdftotext -layout; quote shows cells as extracted. ~6,900-7,700 lbf.
+- engine: HTF7000 (AS907)
+  core_family: Honeywell HTF7000 / AS907 core (4 axial + 1 centrifugal HPC, 2-stage HPT)
+  quantity: dry weight
+  value: 687-696
+  unit: kg
+  conditions: '-'
+  source:
+    title: EASA TCDS IM.E.058 Honeywell AS907 series engines (HTF7000 family), Issue 10, 30 July 2026
+    url: https://www.easa.europa.eu/en/downloads/7703/en
+    page_or_section: III.5 Dry Weight
+  quote: AS907-1-1A 696 AS907-2-1G 696 AS907-2-1A 696 AS907-3-1E 687 AS907-2-1S 696
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: Conflicts with Honeywell page 618.7 kg.
+- engine: HTF7000
+  core_family: Honeywell HTF7000 / AS907 core (4 axial + 1 centrifugal HPC, 2-stage HPT)
+  quantity: dry weight
+  value: 618.7
+  unit: kg
+  conditions: '-'
+  source:
+    title: Honeywell Aerospace HTF7000 product page
+    url: https://aerospace.honeywell.com/us/en/products-and-services/product/hardware-and-systems/engines/htf7000-turbofan-engine
+    page_or_section: Specifications
+  quote: Weight | 618.7 kg (1364 lbs) Dry
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Conflicts with TCDS 687-696 kg.
+- engine: HTF7000 (AS907)
+  core_family: Honeywell HTF7000 / AS907 core (4 axial + 1 centrifugal HPC, 2-stage HPT)
+  quantity: max ITT
+  value: 946 / 955
+  unit: degC
+  conditions: Take-off (-1-1A / later models); MC 928/950
+  source:
+    title: EASA TCDS IM.E.058 Honeywell AS907 series engines (HTF7000 family), Issue 10, 30 July 2026
+    url: https://www.easa.europa.eu/en/downloads/7703/en
+    page_or_section: IV.1.1 ITT
+  quote: AS907-1-1A 928 946 962(1) ... AS907-2-1G 950 955 970(1)
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: TCDS table text flattened by pdftotext -layout; quote shows cells as extracted.
+- engine: HTF7000 (AS907)
+  core_family: Honeywell HTF7000 / AS907 core (4 axial + 1 centrifugal HPC, 2-stage HPT)
+  quantity: EASA type certification date
+  value: '2002-10-22'
+  unit: date
+  conditions: AS907-1-1A
+  source:
+    title: EASA TCDS IM.E.058 Honeywell AS907 series engines (HTF7000 family), Issue 10, 30 July 2026
+    url: https://www.easa.europa.eu/en/downloads/7703/en
+    page_or_section: I.5
+  quote: AS907-1-1A 22 October 2002
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: ''
+- engine: HTF7000
+  core_family: Honeywell HTF7000 / AS907 core (4 axial + 1 centrifugal HPC, 2-stage HPT)
+  quantity: bypass ratio
+  value: 4.2
+  unit: :1
+  conditions: '-'
+  source:
+    title: Honeywell Aerospace HTF7000 product page
+    url: https://aerospace.honeywell.com/us/en/products-and-services/product/hardware-and-systems/engines/htf7000-turbofan-engine
+    page_or_section: Specifications
+  quote: Bypass ratio | 4.2
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Conflicts with Wikipedia 4.4:1.
+- engine: HTF7000
+  core_family: Honeywell HTF7000 / AS907 core (4 axial + 1 centrifugal HPC, 2-stage HPT)
+  quantity: OPR / HPC PR / BPR
+  value: 28.2 / 16 / 4.4
+  unit: '-'
+  conditions: '-'
+  source:
+    title: 'Wikipedia: Honeywell HTF7000'
+    url: https://en.wikipedia.org/wiki/Honeywell_HTF7000
+    page_or_section: Specifications
+  quote: '|compressor= 22 internally reinforced blades fan, 16:1 [[Overall pressure ratio|pressure ratio]] HP: four stage [[Axial compressor|axial]] + one stage [[Centrifugal compressor|centrifugal]] ...
+    |compression=28.2 |bypass=4.4:1'
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation.
+- engine: HTF7000
+  core_family: Honeywell HTF7000 / AS907 core (4 axial + 1 centrifugal HPC, 2-stage HPT)
+  quantity: fan diameter
+  value: 34.2
+  unit: in
+  conditions: '-'
+  source:
+    title: Honeywell Aerospace HTF7000 product page
+    url: https://aerospace.honeywell.com/us/en/products-and-services/product/hardware-and-systems/engines/htf7000-turbofan-engine
+    page_or_section: Specifications
+  quote: Fan Diameter | 34.2 in
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: ''
+- engine: CF34-8C/E
+  core_family: GE CF34-8 core (10-stage HPC, 2-stage HPT)
+  quantity: architecture
+  value: 1 fan, 10-stage compressor, 2 HPT, 4 LPT
+  unit: '-'
+  conditions: '-'
+  source:
+    title: EASA TCDS IM.E.053 CF34-8 series engines, Issue 04, 30 January 2023
+    url: https://www.easa.europa.eu/en/downloads/18525/en
+    page_or_section: III.2 Description
+  quote: Dual rotor, axial flow, high bypass ratio turbofan with single stage fan, ten stage axial compressor, annular combustion chamber, two stage high pressure turbine, four stage low pressure turbine
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: ''
+- engine: CF34-8C/E
+  core_family: GE CF34-8 core (10-stage HPC, 2-stage HPT)
+  quantity: max take-off thrust
+  value: 59.16-64.54
+  unit: kN
+  conditions: SLS, flat rated 30 degC
+  source:
+    title: EASA TCDS IM.E.053 CF34-8 series engines, Issue 04, 30 January 2023
+    url: https://www.easa.europa.eu/en/downloads/18525/en
+    page_or_section: III.6 Ratings
+  quote: Takeoff (5 ... 61.34 64.54 64.54 61.34 64.54 ... 64.54 59.16 59.16 64.54 64.54
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: TCDS table text flattened by pdftotext -layout; quote shows cells as extracted.
+- engine: CF34-8C/E
+  core_family: GE CF34-8 core (10-stage HPC, 2-stage HPT)
+  quantity: dry weight
+  value: 1227-1428
+  unit: kg
+  conditions: -8C1 / -8C5 / -8E (incl. reverser)
+  source:
+    title: EASA TCDS IM.E.053 CF34-8 series engines, Issue 04, 30 January 2023
+    url: https://www.easa.europa.eu/en/downloads/18525/en
+    page_or_section: III.5 Dry Weight
+  quote: CF34-8C1 CF34-8C5 models CF34-8E models Weight 1,227 kg (2,704 lb) 1,261 kg (2,780 lb) 1,428 kg (3,147.6 lb)
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: ''
+- engine: CF34-8C/E
+  core_family: GE CF34-8 core (10-stage HPC, 2-stage HPT)
+  quantity: EASA type certification date
+  value: '2000-06-29'
+  unit: date
+  conditions: CF34-8C1
+  source:
+    title: EASA TCDS IM.E.053 CF34-8 series engines, Issue 04, 30 January 2023
+    url: https://www.easa.europa.eu/en/downloads/18525/en
+    page_or_section: I.6
+  quote: CF34-8C1 ... 29 June 2000
+  source_quality: pdf_read
+  retrieved: '2026-10-06'
+  notes: TCDS table text flattened by pdftotext -layout; quote shows cells as extracted.
+- engine: CF34-8C/E
+  core_family: GE CF34-8 core (10-stage HPC, 2-stage HPT)
+  quantity: OPR
+  value: 28 (-8C)
+  unit: :1
+  conditions: max power
+  source:
+    title: GE Aerospace CF34 product page
+    url: https://www.geaerospace.com/commercial/aircraft-engines/cf34
+    page_or_section: CF34 Comparison table
+  quote: Overall Pressure Ratio at Max Power| 21:1| 28:1| 28:5:1| 29:1| 29:1
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: ''
+- engine: EJ200
+  core_family: Eurojet EJ200 core (5-stage HPC, 1-stage HPT)
+  quantity: thrust dry / reheat
+  value: 13,500 / 20,000
+  unit: lbf
+  conditions: max
+  source:
+    title: MTU Aero Engines EJ200 page
+    url: https://www.mtu.de/engines/military-aircraft-engines/fighter-aircraft/ej200/
+    page_or_section: Technical Data
+  quote: Max. thrust with afterburner 20,000 lbf Max. thrust without afterburner 13,500 lbf Pressure ratio 26:1 Bypass ratio 0.4:1 Length appr. 13.1 ft Weight appr. 2,204 lbs
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: ''
+- engine: EJ200
+  core_family: Eurojet EJ200 core (5-stage HPC, 1-stage HPT)
+  quantity: OPR / BPR
+  value: 26 / 0.4
+  unit: :1
+  conditions: '-'
+  source:
+    title: MTU Aero Engines EJ200 page
+    url: https://www.mtu.de/engines/military-aircraft-engines/fighter-aircraft/ej200/
+    page_or_section: Technical Data
+  quote: Pressure ratio 26:1 Bypass ratio 0.4:1
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: ''
+- engine: EJ200
+  core_family: Eurojet EJ200 core (5-stage HPC, 1-stage HPT)
+  quantity: weight
+  value: ~2,204
+  unit: lb
+  conditions: approx.
+  source:
+    title: MTU Aero Engines EJ200 page
+    url: https://www.mtu.de/engines/military-aircraft-engines/fighter-aircraft/ej200/
+    page_or_section: Technical Data
+  quote: Weight appr. 2,204 lbs
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: 'Wikipedia: 989 kg (2,180 lb).'
+- engine: EJ200
+  core_family: Eurojet EJ200 core (5-stage HPC, 1-stage HPT)
+  quantity: HPC stages
+  value: 5
+  unit: stages
+  conditions: 3 blisk + 2 conventional
+  source:
+    title: MTU Aero Engines EJ200 page
+    url: https://www.mtu.de/engines/military-aircraft-engines/fighter-aircraft/ej200/
+    page_or_section: features
+  quote: High pressure compressors with 5 stages partly in blisk design (3 stages blisk, 2 stages conventional)
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: ''
+- engine: EJ200
+  core_family: Eurojet EJ200 core (5-stage HPC, 1-stage HPT)
+  quantity: airflow
+  value: 75-77
+  unit: kg/s
+  conditions: '-'
+  source:
+    title: 'Wikipedia: Eurojet EJ200'
+    url: https://en.wikipedia.org/wiki/Eurojet_EJ200
+    page_or_section: Specifications
+  quote: '|aircon={{cvt|75|–|77|kg/s|lb/s|0}}'
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation.
+- engine: EJ200
+  core_family: Eurojet EJ200 core (5-stage HPC, 1-stage HPT)
+  quantity: turbine inlet temperature
+  value: 1800
+  unit: K
+  conditions: '-'
+  source:
+    title: 'Wikipedia: Eurojet EJ200'
+    url: https://en.wikipedia.org/wiki/Eurojet_EJ200
+    page_or_section: Specifications
+  quote: '|turbinetemp={{cvt|1800|K|C F|0}}'
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation.
+- engine: EJ200
+  core_family: Eurojet EJ200 core (5-stage HPC, 1-stage HPT)
+  quantity: origin / partners
+  value: Rolls-Royce (UK), MTU (DE), Avio (IT), ITP (ES)
+  unit: '-'
+  conditions: '-'
+  source:
+    title: Rolls-Royce EJ200 product page
+    url: https://www.rolls-royce.com/products-and-services/defence/aerospace/combat-jets/ej200.aspx
+    page_or_section: body
+  quote: It’s a collaborative engine that combines the expertise of Rolls-Royce, MTU, Avio and ITP, who formed in the late 1980s as EUROJET Turbo GmbH.
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: 'European core. MTU: 33% development share, LPC/HPC/DECMU (MTU page).'
+- engine: EJ200 (Typhoon)
+  core_family: Eurojet EJ200 core (5-stage HPC, 1-stage HPT)
+  quantity: supercruise claim
+  value: Mach 1.5 (Eurofighter claim)
+  unit: Mach
+  conditions: aircraft-level
+  source:
+    title: 'Wikipedia: Eurofighter Typhoon'
+    url: https://en.wikipedia.org/wiki/Eurofighter_Typhoon
+    page_or_section: Engines / performance
+  quote: Eurofighter states that the Typhoon can supercruise at Mach&nbsp;1.5.
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation. Same passage cites Mach 1.1 (AFM) and Mach 1.21 (Singapore evaluation)
+    - conflicting.
+- engine: M88-2
+  core_family: Safran M88 core (6-stage HPC, 1-stage HPT)
+  quantity: thrust dry / reheat
+  value: 50 / 75
+  unit: kN
+  conditions: '-'
+  source:
+    title: 'Wikipedia: Snecma M88'
+    url: https://en.wikipedia.org/wiki/Snecma_M88
+    page_or_section: Specifications
+  quote: '|thrust={{convert|50|kN|lbf|abbr=on|lk=on|sigfig=3}} and {{convert|75|kN|lbf|abbr=on|sigfig=3}} (with afterburner)'
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation. Safran pages blocked (Cloudflare 403).
+- engine: M88-2
+  core_family: Safran M88 core (6-stage HPC, 1-stage HPT)
+  quantity: OPR / BPR / airflow
+  value: 24.5 / 0.3 / 65 kg/s
+  unit: '-'
+  conditions: '-'
+  source:
+    title: 'Wikipedia: Snecma M88'
+    url: https://en.wikipedia.org/wiki/Snecma_M88
+    page_or_section: Specifications
+  quote: '|bypass=0.3:1 |compressor=Axial, 3-stage LP, 6-stage HP ... |compression=24.5:1 |aircon=65{{nbsp}}kg/s (143{{nbsp}}lb/s)'
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation.
+- engine: M88-2
+  core_family: Safran M88 core (6-stage HPC, 1-stage HPT)
+  quantity: turbine inlet temperature
+  value: 1850
+  unit: K
+  conditions: '-'
+  source:
+    title: 'Wikipedia: Snecma M88'
+    url: https://en.wikipedia.org/wiki/Snecma_M88
+    page_or_section: Specifications
+  quote: '|turbinetemp={{cvt|1850|K|C F|0}}'
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation.
+- engine: M88-2
+  core_family: Safran M88 core (6-stage HPC, 1-stage HPT)
+  quantity: weight
+  value: 897
+  unit: kg
+  conditions: '-'
+  source:
+    title: 'Wikipedia: Snecma M88'
+    url: https://en.wikipedia.org/wiki/Snecma_M88
+    page_or_section: Specifications
+  quote: '|weight={{convert|897|kg|lb|abbr=on}}'
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation.
+- engine: M88
+  core_family: Safran M88 core (6-stage HPC, 1-stage HPT)
+  quantity: simulated Mach 1.6 qualification
+  value: simulated Mach 1.6 airflows in qualification
+  unit: '-'
+  conditions: '1995'
+  source:
+    title: 'Wikipedia: Snecma M88'
+    url: https://en.wikipedia.org/wiki/Snecma_M88
+    page_or_section: Development
+  quote: The engine obtained flight qualification in 1995 after 5500hrs on the test bench at both sea level and simulated altitude conditions and included simulated Mach 1.6 airflows
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation.
+- engine: M88 (core growth)
+  core_family: Safran M88 core (6-stage HPC, 1-stage HPT)
+  quantity: core growth statement
+  value: 73-105 kN on same core
+  unit: kN
+  conditions: '-'
+  source:
+    title: 'Wikipedia: Snecma M88'
+    url: https://en.wikipedia.org/wiki/Snecma_M88
+    page_or_section: Background
+  quote: Additional considerations were afforded to good maintainability, and upgrade potential (73&nbsp;kN to 105&nbsp;kN using the same core).
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation.
+- engine: M88 (civil derivative)
+  core_family: Safran M88 core (6-stage HPC, 1-stage HPT)
+  quantity: civil derivative precedent
+  value: M123 / CFM88 studied, 63-100 kN
+  unit: kN
+  conditions: proposal, not built
+  source:
+    title: 'Wikipedia: Snecma M88'
+    url: https://en.wikipedia.org/wiki/Snecma_M88
+    page_or_section: Variants
+  quote: A proposed commercial derivative targeted for regional jets, initially with {{cvt|73|kN|kgf lbf}} thrust but eventually spanning a thrust range of {{cvt|63|–|100|kN|kgf lbf}}. Studied with [[General
+    Electric Aviation]] to possibly replace the jointly produced [[CFM56]] engine, the M123 added a seventh high pressure compressor (HPC) stage to the M88's six-stage HPC unit.
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation. European military core once studied as civil gas generator.
+- engine: M88 (Rafale)
+  core_family: Safran M88 core (6-stage HPC, 1-stage HPT)
+  quantity: supercruise
+  value: Rafale supercruise with 4 missiles + tank
+  unit: '-'
+  conditions: aircraft-level
+  source:
+    title: 'Wikipedia: Dassault Rafale'
+    url: https://en.wikipedia.org/wiki/Dassault_Rafale
+    page_or_section: Engines
+  quote: The M88 enables the Rafale to supercruise while carrying four missiles and one drop tank.
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: 'Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation. Same page: ''Mach 1.4 supercruise on Rafale M (navy) version with 6
+    MICA''.'
+- engine: F414-GE-400/39E/INS6
+  core_family: GE F414 core (7-stage HPC, 1-stage HPT)
+  quantity: thrust class / airflow / PR
+  value: 22,000 lb / 170 lb/s / 30:1
+  unit: '-'
+  conditions: afterburning thrust class
+  source:
+    title: GE Aerospace F414 product page
+    url: https://www.geaerospace.com/military/engines/f414
+    page_or_section: Engine Specifications
+  quote: Thrust Class| 22,000 lb| 22,000 lb| 22,000 lb | Length| 154 in| 154 in | 154 in | Maximum diameter| 35 in| 35 in | 35 in | Airflow| 170 lb/sec| 170 lb/sec | 170 lb/sec | Pressure Ratio| 30:1| 30:1
+    | 30:1
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: ''
+- engine: F414-GE-100 (X-59)
+  core_family: GE F414 core (7-stage HPC, 1-stage HPT)
+  quantity: supersonic application
+  value: powers NASA X-59 QueSST
+  unit: '-'
+  conditions: '-'
+  source:
+    title: GE Aerospace F414 product page
+    url: https://www.geaerospace.com/military/engines/f414
+    page_or_section: applications list
+  quote: NASA X-59 QueSST| Single engine, quiet supersonic technology research aircraft| Country of origin - USA|Entry to service - 2022|Number Produced - 1|Powerplant - F414 - GE - 100
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: ''
+- engine: F414
+  core_family: GE F414 core (7-stage HPC, 1-stage HPT)
+  quantity: dry (military) thrust / BPR / stages
+  value: 13,000 lbf / 0.25 / 3 LP + 7 HP
+  unit: '-'
+  conditions: '-'
+  source:
+    title: 'Wikipedia: General Electric F414'
+    url: https://en.wikipedia.org/wiki/General_Electric_F414
+    page_or_section: Specifications
+  quote: '|compressor=[[axial compressor]] with 3 low-pressure stages and 7 high-pressure stages ... * {{convert|13,000|lbf|kN|abbr=on|lk=on|sigfig=3}} military thrust ... |bypass= 0.25:1'
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation.
+- engine: F414
+  core_family: GE F414 core (7-stage HPC, 1-stage HPT)
+  quantity: weight
+  value: 2445
+  unit: lb
+  conditions: max weight
+  source:
+    title: 'Wikipedia: General Electric F414'
+    url: https://en.wikipedia.org/wiki/General_Electric_F414
+    page_or_section: Specifications
+  quote: '|weight= {{convert|2445|lb|kg|abbr=on|sigfig=3}} max weight'
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation.
+- engine: F414-G
+  core_family: GE F414 core (7-stage HPC, 1-stage HPT)
+  quantity: supercruise
+  value: Mach 1.2 (Gripen Demonstrator)
+  unit: Mach
+  conditions: aircraft-level
+  source:
+    title: 'Wikipedia: General Electric F414'
+    url: https://en.wikipedia.org/wiki/General_Electric_F414
+    page_or_section: Variants
+  quote: With it, the Gripen Demonstrator reached Mach 1.2 in [[supercruise]] (without afterburner).
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation.
+- engine: F414
+  core_family: GE F414 core (7-stage HPC, 1-stage HPT)
+  quantity: export control note
+  value: US export authorization required (India co-production needed State Dept/Congress clearance)
+  unit: '-'
+  conditions: '-'
+  source:
+    title: 'Wikipedia: General Electric F414'
+    url: https://en.wikipedia.org/wiki/General_Electric_F414
+    page_or_section: India
+  quote: On 28 July, the [[United States Department of State]] notified the agreement to the [[United States House of Representatives|House of Representatives]] and the [[Senate Foreign Relations Committee]].
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation. Illustrates ITAR process for US military engine technology transfer.
+- engine: F404-GE-102/RM12/IN20
+  core_family: GE F404 core (7-stage HPC, 1-stage HPT) - reference
+  quantity: thrust class / airflow / PR
+  value: 17,700-19,000 lb / 146-153 lb/s / 26-28
+  unit: '-'
+  conditions: afterburning thrust class
+  source:
+    title: GE Aerospace F404 product page
+    url: https://www.geaerospace.com/military/engines/f404
+    page_or_section: Engine Specifications
+  quote: Thrust Class| 17,700 lb| 18,100 lb| 19,000 lb ... Airflow| 146 lb/sec| 152 lb/sec| 153 lb/sec| Pressure Ratio| 26:1| 27:1| 28:1
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: ''
+- engine: F404
+  core_family: GE F404 core (7-stage HPC, 1-stage HPT) - reference
+  quantity: military thrust / BPR / weight
+  value: 11,000 lbf / 0.34 / 2,282 lb
+  unit: '-'
+  conditions: '-'
+  source:
+    title: 'Wikipedia: General Electric F404'
+    url: https://en.wikipedia.org/wiki/General_Electric_F404
+    page_or_section: Specifications
+  quote: '**{{convert|11000|lbf|kN|abbr=on|lk=on|sigfig=3}} military thrust ... |bypass=0.34:1 ... |weight={{convert|2,282|lb|kg|abbr=on|lk=on}}'
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation.
+- engine: Silvercrest 2D
+  core_family: Safran Silvercrest core (4 axial + 1 centrifugal HPC, 1-stage HPT)
+  quantity: take-off thrust
+  value: 11450
+  unit: lbf
+  conditions: '-'
+  source:
+    title: 'Wikipedia: Safran Silvercrest'
+    url: https://en.wikipedia.org/wiki/Safran_Silvercrest
+    page_or_section: Specifications (2D)
+  quote: '|thrust={{convert|11,450|lbf|kN|abbr=on}}'
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation.
+- engine: Silvercrest 2D
+  core_family: Safran Silvercrest core (4 axial + 1 centrifugal HPC, 1-stage HPT)
+  quantity: OPR / BPR / fan
+  value: 38.5 / 5.9 / 42.5 in
+  unit: '-'
+  conditions: '-'
+  source:
+    title: 'Wikipedia: Safran Silvercrest'
+    url: https://en.wikipedia.org/wiki/Safran_Silvercrest
+    page_or_section: Specifications (2D)
+  quote: '|diameter= {{convert|42.5|in|cm}} Fan ... |compression= 38.5 |bypass=5.9:1'
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation. Wikipedia weight is computed as thrust/5 - NOT a sourced figure, not
+    recorded.
+- engine: Silvercrest
+  core_family: Safran Silvercrest core (4 axial + 1 centrifugal HPC, 1-stage HPT)
+  quantity: status
+  value: cancelled in development
+  unit: '-'
+  conditions: '-'
+  source:
+    title: 'Wikipedia: Safran Silvercrest'
+    url: https://en.wikipedia.org/wiki/Safran_Silvercrest
+    page_or_section: lead
+  quote: A project of [[Safran Aircraft Engines]], it did not meet the requirements for either aircraft program and was cancelled while still in the development stage.
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation.
+- engine: Silvercrest
+  core_family: Safran Silvercrest core (4 axial + 1 centrifugal HPC, 1-stage HPT)
+  quantity: core problems
+  value: HPC operability, carcass distortion, tip clearance
+  unit: '-'
+  conditions: '-'
+  source:
+    title: 'Wikipedia: Safran Silvercrest'
+    url: https://en.wikipedia.org/wiki/Safran_Silvercrest
+    page_or_section: Development
+  quote: Problem areas disclosed at the time included high-pressure compressor [[operability]], oil-fuel [[heat exchanger]] performance, [[structural frame|carcass]] distortion and turbine tip [[Tip clearance|clearance]]
+    control.
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation.
+- engine: Boom Symphony
+  core_family: Boom Symphony (clean-sheet; context only, not a purchasable core)
+  quantity: take-off thrust / design Mach
+  value: 40,000 lbf / M1.7
+  unit: '-'
+  conditions: design target
+  source:
+    title: 'Wikipedia: Boom Symphony'
+    url: https://en.wikipedia.org/wiki/Boom_Symphony
+    page_or_section: lead
+  quote: The engine is designed to produce 40,000 pounds (178 kN) of thrust at takeoff, sustain Overture [[supercruise]] at Mach 1.7, and burn up to 100% [[sustainable aviation fuel]].
+  source_quality: page_read
+  retrieved: '2026-10-06'
+  notes: Read as wikitext (action=raw); quote is wiki markup. Wikipedia is secondary - follow its citation for primary confirmation. [inferred] Boom vertically integrating after GE (Affinity) and RR withdrew
+    suggests no off-the-shelf core was offered.
