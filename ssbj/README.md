@@ -3,7 +3,9 @@
 One end-to-end path from a mission spec file to a range and fuel-burn prediction with error
 bars, for a Mach 1.5 transatlantic business jet. It is proved first on Concorde.
 
-**The validation set is three or four cases, not twenty.** One case is done so far (Concorde).
+**The validation set is three or four cases, not twenty.** Done so far: Concorde (aircraft), Olympus 593 and
+NASA STCA (engines), NASA TM X-372 (wave drag); results in `reports/validation_status.yaml` and the
+generated proposal `reports/proposal.md`. Agents taking over: start with `../HANDOFF.md`.
 
 ## Run it
 
