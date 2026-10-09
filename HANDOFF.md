@@ -76,11 +76,11 @@ pytest -q ssbj/validation                    # validation cases, see §5 for exp
 
 ## 5. Current results and test state
 
-- **Concorde run** `20261006T191624-74a9a6`: acceptance test **passes** (3 passed).
-  - Range 3,644 nmi vs 3,550 published (95 % interval 2,457-4,964).
+- **Concorde run** `20261009T024707-d83dc1` (propulsion sigmas 15 %, D-033): acceptance test **passes** (3 passed).
+  - Range 3,644 nmi vs 3,550 published (95 % interval 2,252-6,138; 12 of 200 samples cannot fly the profile).
   - L/D 7.19 vs 7.14-7.5; TSFC 1.20 vs 1.195; 24 % of trip fuel used before cruise vs 20 %.
   - Engine mass is 44 % low and the engine over-predicts cruise thrust, so the agreement is partly offsetting errors.
-  - Snapshot: `ssbj/reports/runs/concorde_20261006T191624-74a9a6.json`; report: `reports/concorde_run_20261006T191624.md`.
+  - Snapshot: `ssbj/reports/runs/concorde_20261009T024707-d83dc1.json`; report: `reports/concorde_run_20261009T024707.md`.
 - **Expected red tests.** These are honest validation failures. Do not skip, loosen or tune them away:
   - `ssbj/validation/test_olympus593.py`: **3 fail** (cruise thrust +23 %, airflow at 55 kft +43 %, SLS airflow +37 %); TSFC passes.
   - `ssbj/validation/test_stca_engine.py`: **2 fail** (SFC −17 %, BPR +61 %); T3, NPR and corrected flow pass.
@@ -95,11 +95,10 @@ pytest -q ssbj/validation                    # validation cases, see §5 for exp
 ## 6. Open owner decisions (do not decide them yourself)
 
 They are listed in `ssbj/reports/open_items.yaml` and shown in the proposal:
-1. **Widen the propulsion sigmas** (5 % → ~15 %), given that both engine validations fail. This changes the Concorde gate interval after results are known.
-2. Meaning of the STCA "extraction ratio": assumed Pt_bypass/Pt_core (D-030).
-3. **Core selection.** CFM56/F101 core is the best fit but US export-controlled; PW800 is second; RR Pearl is the European option but runs hot. Supplier dialogue is needed.
-4. Concorde reserve definition (D-021: IFR 14 CFR 91.167, alternate + 45 min; an assumption).
-5. CI runner labels: waiting on the owner.
+1. Meaning of the STCA "extraction ratio": assumed Pt_bypass/Pt_core (D-030).
+2. **Core selection.** CFM56/F101 core is the best fit but US export-controlled; PW800 is second; RR Pearl is the European option but runs hot. Supplier dialogue is needed.
+3. Concorde reserve definition (D-021: IFR 14 CFR 91.167, alternate + 45 min; an assumption).
+4. CI runner labels: waiting on the owner.
 
 Already decided by the owner:
 - Keep the failing test as the CI gate.
@@ -107,6 +106,7 @@ Already decided by the owner:
 - D-005 (blind = mission + design definition) is good.
 - IFR reserves.
 - Range is the only Concorde gate (D-023).
+- Propulsion thrust and SFC sigmas widened to 15 % (D-033); validation-test tolerances stay at 10 %.
 - Engine = bought hot section (core) plus our own LP system, chosen from the candidate set (D-024).
 - Do the roadmap in sequence.
 
@@ -153,7 +153,7 @@ Already decided by the owner:
 | File | Purpose |
 |---|---|
 | `ssbj/docs/brief.md` | Owner's original brief (honesty rules, deliverables) |
-| `ssbj/reports/decision_log.md` | D-001 … D-032: every decision with rejected alternatives |
+| `ssbj/reports/decision_log.md` | D-001 … D-033: every decision with rejected alternatives |
 | `ssbj/reports/roadmap.md` | The 8 roadmap items |
 | `ssbj/reports/proposal.md` | Generated proposal with "Remaining deficiencies" |
 | `ssbj/reports/phase1_report.md` | Phase 1 report to the owner plus updates |

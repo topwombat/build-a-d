@@ -1,7 +1,6 @@
 # Open items for the proposal's "Remaining deficiencies" section that are not module limits
 # (those come from the known-limits register). Read by ssbj/reports/proposal.py.
 decisions:
-  - "Declared propulsion sigmas (thrust 5 %, SFC 5 %) are contradicted by both engine validations (Olympus thrust +23 %, STCA SFC -17 %). Proposal: widen to thrust 15 %, SFC 15 % until the cycle model passes, which widens the Concorde range interval. Not done without the owner, because it changes the gate after results are known."
   - "Mixer 'extraction ratio' in AIAA 2020-0263 is undefined; read as Pt_bypass / Pt_core (D-030). Confirm from an NPSS reference or the authors."
   - "Core choice for the SSBJ engine: CFM56/F101 '1/9' core is the best technical fit (Affinity precedent) but US-export-controlled; PW800 second; RR Pearl the European option but thermally hot. Supplier dialogue needed before the engine requirement is frozen."
   - "Concorde reserve definition (D-021, IFR 91.167) remains an assumption; ~700 nmi of range depends on it."

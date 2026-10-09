@@ -17,7 +17,7 @@ touch). Start with `HANDOFF.md`; the owner's brief is `ssbj/docs/brief.md`.
    `test_olympus593.py` (3) and `test_stca_engine.py` (2) fail on purpose; see `HANDOFF.md` §5.
 6. **No agent grades its own work.** Validation sign-off needs an independent verifier or a human.
 7. **Known limits register.** Add limits to the module's `LIMITS`; run `python -m ssbj limits`.
-8. **Decisions logged.** Every non-trivial choice goes in `ssbj/reports/decision_log.md` (next: D-033),
+8. **Decisions logged.** Every non-trivial choice goes in `ssbj/reports/decision_log.md` (next: D-034),
    with the alternatives rejected and whether it was made before or after seeing results.
 9. **New solvers earn trust** with a verification test against a closed form or independent code.
 

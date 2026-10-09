@@ -5,9 +5,9 @@ cases:
   - name: Concorde mission (end to end)
     kind: aircraft, blind except the D-021 reserve and D-023 gate decisions
     test: ssbj/validation/test_concorde.py
-    run: 20261006T191624-74a9a6
+    run: 20261009T024707-d83dc1 (propulsion sigmas 15 %, D-033; model code 922b0af, only docs uncommitted)
     checks:
-      - {quantity: "Range at max fuel, 8,845 kg payload", published: "3,550 nmi", model: "3,644 nmi (95 %: 2,457-4,964)", tol: "inside 95 % interval", result: pass}
+      - {quantity: "Range at max fuel, 8,845 kg payload", published: "3,550 nmi", model: "3,644 nmi (95 %: 2,252-6,138; 12/200 samples cannot fly)", tol: "inside 95 % interval", result: pass}
   - name: Olympus 593 Mk 610 engine (two-spool turbojet)
     kind: engine, independent of the Concorde mission data
     test: ssbj/validation/test_olympus593.py

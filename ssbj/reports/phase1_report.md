@@ -119,3 +119,12 @@ What did not change:
 - Engine weight is still 44 % low.
 
 Part of the improved climb therefore comes from excess thrust. The human-readable proposal with "Remaining deficiencies" is `proposal.md`.
+
+## Update 2026-10-09: propulsion sigmas widened to 15 % (owner decision D-033)
+
+Run `20261009T024707-d83dc1`. The nominal values are unchanged: range 3,644 nmi.
+- **95 % range interval:** 2,457-4,964 nmi before, now 2,252-6,138 nmi. The gate still passes.
+- **Cruise TSFC 95 % interval:** 1.10-1.34 /h before, now 0.88-1.59 /h.
+- **Samples that cannot fly the range mission:** 1 of 200 before, now 12 of 200 (10 of them in the subsonic climb).
+
+The engine validation tests keep their 10 % tolerances and still fail.
