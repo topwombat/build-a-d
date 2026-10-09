@@ -38,11 +38,13 @@ from ssbj.disciplines.propulsion.deck import (
 CACHE_DIR = Path(os.environ.get("SSBJ_DECK_CACHE", Path(__file__).parent / "decks"))
 
 UNCERTAINTIES = [
-    Uncertainty("prop.thrust", 0.05,
-                "Generic pyCycle maps scaled to the design point; LP/HP work split and nozzle "
-                "coefficient assumed; installation drags not modelled.", "available thrust"),
-    Uncertainty("prop.sfc", 0.05, "Component efficiencies from published estimates; generic maps.",
-                "fuel flow at given thrust"),
+    Uncertainty("prop.thrust", 0.15,
+                "Owner decision D-033 (was 5 %): widened because both engine validations fail at 2 x 5 % "
+                "(Olympus 593 cruise thrust +23 %, airflow +37-43 %). Generic maps, no duct losses, "
+                "installation drags not modelled.", "available thrust"),
+    Uncertainty("prop.sfc", 0.15,
+                "Owner decision D-033 (was 5 %): widened because the STCA turbofan check gives SFC -17 %. "
+                "Generic efficiencies and maps; no offtakes.", "fuel flow at given thrust"),
     Uncertainty("prop.weight", 0.30,
                 "Scaled from Raymer's 1990s-technology reference engine; biased low for older engines.",
                 "engine dry weight"),
@@ -52,7 +54,7 @@ LIMITS = [
     "Generic compressor and turbine maps (pyCycle LPC/Fan/HPC/HPT/LPT) scaled to the design point.",
     "Dry: fixed nozzle throat area; reheat: nozzle opened to hold the LP compressor on its dry "
     "operating line. Real schedules differ.",
-    "Validation shows errors larger than the declared 5 % sigmas: Olympus 593 (two-spool turbojet) "
+    "Validation errors exceed the original 5 % sigmas (now 15 %, D-033): Olympus 593 (two-spool turbojet) "
     "cruise thrust +23 % and airflow +43 %; NASA STCA (bought-core turbofan) SFC -17 % and BPR +61 %. "
     "No duct or mixer pressure losses are modelled.",
     "Inlet recovery is the MIL-E-5008B standard schedule, not a designed intake.",
